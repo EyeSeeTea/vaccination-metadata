@@ -13,7 +13,8 @@
           "id": "OKhcQ5VPMZI"
         }
       ],
-      "id": "Kyg1O6YEGa9"
+      "id": "Kyg1O6YEGa9",
+      "key": "gender"
     },
     {
       "name": "Antigens",
@@ -49,7 +50,27 @@
           "id": "S0IWCNu9crn"
         }
       ],
-      "id": "umGArccSAqK"
+      "id": "umGArccSAqK",
+      "key": "antigens"
+    },
+    {
+      "name": "Teams",
+      "dataDimensionType": "ATTRIBUTE",
+      "dimensionType": "CATEGORY",
+      "dataDimension": false,
+      "categoryOptions": [
+        {
+          "id": "y0MZQ0RFSmy"
+        },
+        {
+          "id": "qMM7LYcPYCI"
+        },
+        {
+          "id": "CCcHst4fvEk"
+        }
+      ],
+      "id": "C6kHcyZsyLI",
+      "key": "teams"
     },
     {
       "name": "Severity",
@@ -64,7 +85,8 @@
           "id": "uWaATpJppxD"
         }
       ],
-      "id": "iemAs0M9Cnd"
+      "id": "iemAs0M9Cnd",
+      "key": "severity"
     },
     {
       "name": "Age group Measles",
@@ -91,7 +113,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "KuCO3JwzQ4z"
+      "id": "KuCO3JwzQ4z",
+      "key": "age-group-measles"
     },
     {
       "name": "Age group Meningitis Polysaccharide",
@@ -115,7 +138,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "SW0iPoeOm9v"
+      "id": "SW0iPoeOm9v",
+      "key": "age-group-meningitis-polysaccharide"
     },
     {
       "name": "Age group Meningitis Conjugate",
@@ -139,7 +163,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "aUW2zJI2uEZ"
+      "id": "aUW2zJI2uEZ",
+      "key": "age-group-meningitis-conjugate"
     },
     {
       "name": "Age group Cholera",
@@ -163,7 +188,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "eEe41xmcZZQ"
+      "id": "eEe41xmcZZQ",
+      "key": "age-group-cholera"
     },
     {
       "name": "Age group PCV",
@@ -187,7 +213,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "akSNciIvdC7"
+      "id": "akSNciIvdC7",
+      "key": "age-group-pcv"
     },
     {
       "name": "Age group Pertussis Penta",
@@ -211,7 +238,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "iIolqbGe1zM"
+      "id": "iIolqbGe1zM",
+      "key": "age-group-pertussis-penta"
     },
     {
       "name": "Age group Yellow Fever",
@@ -235,7 +263,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "Ceei4U4dVlh"
+      "id": "Ceei4U4dVlh",
+      "key": "age-group-yellow-fever"
     },
     {
       "name": "Age group Japanese Encephalitis",
@@ -259,7 +288,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "aesE3EEB2Et"
+      "id": "aesE3EEB2Et",
+      "key": "age-group-japanese-encephalitis"
     },
     {
       "name": "Age group Dengue",
@@ -283,7 +313,8 @@
           "id": "eIkzGBj9i1G"
         }
       ],
-      "id": "acC2u6NGs94"
+      "id": "acC2u6NGs94",
+      "key": "age-group-dengue"
     }
   ],
   "categoryOptions": [
@@ -352,6 +383,21 @@
       "id": "S0IWCNu9crn"
     },
     {
+      "name": "Team 1",
+      "shortName": "Team 1",
+      "id": "y0MZQ0RFSmy"
+    },
+    {
+      "name": "Team 2",
+      "shortName": "Team 2",
+      "id": "qMM7LYcPYCI"
+    },
+    {
+      "name": "Team 3",
+      "shortName": "Team 3",
+      "id": "CCcHst4fvEk"
+    },
+    {
       "name": "Minor",
       "shortName": "Minor",
       "id": "q80SfcQbyXY"
@@ -397,601 +443,6 @@
       "id": "ayCQ7FPkkhi"
     }
   ],
-  "dataElementGroupSets": [
-    {
-      "name": "Reactive Vaccination",
-      "dataElementGroups": [
-        {
-          "id": "SWQ3Hew9mZH"
-        },
-        {
-          "id": "qoQdHjaM2mr"
-        }
-      ],
-      "id": "GeomRQxOs8b"
-    }
-  ],
-  "indicatorGroupSets": [
-    {
-      "name": "Reactive Vaccination",
-      "indicatorGroups": [
-        {
-          "id": "i4fkdKIHAdz"
-        },
-        {
-          "id": "yQKEEPut9e9"
-        }
-      ],
-      "id": "GQ0w82pElaZ"
-    }
-  ],
-  "indicatorTypes": [
-    {
-      "name": "percentage",
-      "factor": 100,
-      "id": "iECcUqYM9ZM"
-    }
-  ],
-  "indicators": [
-    {
-      "shortName": "ADS wastage rate",
-      "name": "ADS (Auto Disable Syringe) wastage rate",
-      "code": "RVC_IN_AWR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{${dataElements['ads-used'].id}} - #{${dataElements['vaccine-doses-administered'].id}}",
-      "denominator": "#{${dataElements['ads-used'].id}}",
-      "id": "SACyBTOq9mW"
-    },
-    {
-      "shortName": "Safety boxes ratio",
-      "name": "Safety boxes ratio",
-      "code": "RVC_IN_SBR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{${dataElements['syringes'].id}}}",
-      "denominator": "#{${dataElements['safety-boxes'].id}}",
-      "id": "e8w7mCxy9ia"
-    },
-    {
-      "shortName": "Dilution syringes ratio",
-      "name": "Dilution syringes ratio",
-      "code": "RVC_IN_DSR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{${dataElements['syringes-dilution'].id}}}",
-      "denominator": "#{${dataElements['vaccine-doses-used'].id}}",
-      "id": "eqMDzdX0Gug"
-    },
-    {
-      "name": "Measles vaccine utilization rate",
-      "shortName": "Measles utilization rate",
-      "code": "RVC_IN_AMS_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{SQUjh1QilzK}",
-      "denominator": "#{eAowznPsWxl}",
-      "id": "yEAb2sBlyYY"
-    },
-    {
-      "name": "Meningitis Polysaccharide vaccine utilization rate",
-      "shortName": "Meningitis Polysaccharide utilization rate",
-      "code": "RVC_IN_AMP_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{S44yaXqVO6d}",
-      "denominator": "#{S40qrFe4WMa}",
-      "id": "aog9D5F8Id8"
-    },
-    {
-      "name": "Meningitis Conjugate vaccine utilization rate",
-      "shortName": "Meningitis Conjugate utilization rate",
-      "code": "RVC_IN_AMC_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{K2E7cQQQqg8}",
-      "denominator": "#{WygXmjSE1co}",
-      "id": "iYGuAe2liwZ"
-    },
-    {
-      "name": "Cholera vaccine utilization rate",
-      "shortName": "Cholera utilization rate",
-      "code": "RVC_IN_ACH_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{y62J21CxKi9}",
-      "denominator": "#{O8YGTJBdVef}",
-      "id": "Kkm82JL6r5h"
-    },
-    {
-      "name": "PCV vaccine utilization rate",
-      "shortName": "PCV utilization rate",
-      "code": "RVC_IN_APCV_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{C0uQiOAVUou}",
-      "denominator": "#{SyyO39TWzm1}",
-      "id": "eoG6dE83twf"
-    },
-    {
-      "name": "Pertussis Penta vaccine utilization rate",
-      "shortName": "Pertussis Penta utilization rate",
-      "code": "RVC_IN_APP_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{OAbkCC5y6tI}",
-      "denominator": "#{OMn9U8w4Hyd}",
-      "id": "GAmMOmbPlnU"
-    },
-    {
-      "name": "Yellow Fever vaccine utilization rate",
-      "shortName": "Yellow Fever utilization rate",
-      "code": "RVC_IN_AYF_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{uK2AktPdcPq}",
-      "denominator": "#{uiMhCPemRiR}",
-      "id": "OIqnHTgKPPm"
-    },
-    {
-      "name": "Japanese Encephalitis vaccine utilization rate",
-      "shortName": "Japanese Encephalitis utilization rate",
-      "code": "RVC_IN_AJE_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{KSMtgI14T16}",
-      "denominator": "#{mMaScYDWECY}",
-      "id": "KE2h49Li3av"
-    },
-    {
-      "name": "Dengue vaccine utilization rate",
-      "shortName": "Dengue utilization rate",
-      "code": "RVC_IN_ADE_UR",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{uY4J4teOML4}",
-      "denominator": "#{ewGYPT5DoHk}",
-      "id": "uukv4rtBmaV"
-    },
-    {
-      "name": "Measles vaccine campaign coverage",
-      "shortName": "Measles campaign coverage",
-      "code": "RVC_IN_AMS_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{SQUjh1QilzK}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "CKeIXmRUhxl"
-    },
-    {
-      "name": "Meningitis Polysaccharide vaccine campaign coverage",
-      "shortName": "Meningitis Polysaccharide campaign coverage",
-      "code": "RVC_IN_AMP_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{S44yaXqVO6d}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "qCInsglUGJp"
-    },
-    {
-      "name": "Meningitis Conjugate vaccine campaign coverage",
-      "shortName": "Meningitis Conjugate campaign coverage",
-      "code": "RVC_IN_AMC_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{K2E7cQQQqg8}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "SAAhhLjLsBC"
-    },
-    {
-      "name": "Cholera vaccine campaign coverage",
-      "shortName": "Cholera campaign coverage",
-      "code": "RVC_IN_ACH_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{y62J21CxKi9}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "euUdbIrVVEA"
-    },
-    {
-      "name": "PCV vaccine campaign coverage",
-      "shortName": "PCV campaign coverage",
-      "code": "RVC_IN_APCV_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{C0uQiOAVUou}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "qUI7jSg5ub9"
-    },
-    {
-      "name": "Pertussis Penta vaccine campaign coverage",
-      "shortName": "Pertussis Penta campaign coverage",
-      "code": "RVC_IN_APP_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{OAbkCC5y6tI}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "m6eyPxKadAq"
-    },
-    {
-      "name": "Yellow Fever vaccine campaign coverage",
-      "shortName": "Yellow Fever campaign coverage",
-      "code": "RVC_IN_AYF_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{uK2AktPdcPq}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "KWQnSu2Z5Rm"
-    },
-    {
-      "name": "Japanese Encephalitis vaccine campaign coverage",
-      "shortName": "Japanese Encephalitis campaign coverage",
-      "code": "RVC_IN_AJE_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{KSMtgI14T16}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "i6Ga2pSGyr3"
-    },
-    {
-      "name": "Dengue vaccine campaign coverage",
-      "shortName": "Dengue campaign coverage",
-      "code": "RVC_IN_ADE_CC",
-      "indicatorType": {
-        "id": "iECcUqYM9ZM"
-      },
-      "numerator": "#{uY4J4teOML4}",
-      "denominator": "#{mOE5w8jVtuh}",
-      "id": "KGcBDoC6KwC"
-    }
-  ],
-  "dataElements": [
-    {
-      "shortName": "Total population",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "Total population",
-      "code": "RVC_AD_TP",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "mOE5w8jVtuh"
-    },
-    {
-      "shortName": "ADS (Auto Disable Syringe) used",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "ADS (Auto Disable Syringe) used",
-      "code": "RVC_AD_ADS1",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "ywKG3QmCbDi"
-    },
-    {
-      "shortName": "ADS (Auto Disable Syringe) for dilution",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "ADS (Auto Disable Syringe) for dilution",
-      "code": "RVC_AD_ADS2",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "GosjcdpeNlC"
-    },
-    {
-      "shortName": "Safety boxes",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "Safety boxes",
-      "code": "RVC_AD_SB",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "CCqBBZmfsTs"
-    },
-    {
-      "shortName": "Syringes",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "Syringes",
-      "code": "RVC_AD_SYR",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "WCQHqR2RBIX"
-    },
-    {
-      "shortName": "Syringes for dillution",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "Syringes for dillution",
-      "code": "RVC_AD_SYD",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "WORFShJTQOJ"
-    },
-    {
-      "shortName": "Needles",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "Needles",
-      "code": "RVC_AD_NDL",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "OQOgTET6NwY"
-    },
-    {
-      "shortName": "Accidental Exposure to Blood (AEB)",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "bjDvmb4bfuf"
-      },
-      "name": "Accidental Exposure to Blood (AEB)",
-      "code": "RVC_AD_AEB",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "id": "q0MMyiUi0Pl"
-    },
-    {
-      "shortName": "Adverse Event Following Immunization",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "CS8BMAe0nHa"
-      },
-      "name": "Adverse Event Following Immunization",
-      "code": "RVC_AD_AEFI",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "disaggregation": "severity",
-      "id": "OY40ChLj0YE"
-    },
-    {
-      "name": "Measles vaccine doses administered",
-      "shortName": "Measles doses adm",
-      "code": "RVC_AD_AMS_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "aWwB8jPoU7Q"
-      },
-      "id": "SQUjh1QilzK"
-    },
-    {
-      "name": "Meningitis Polysaccharide vaccine doses administered",
-      "shortName": "Meningitis Polysaccharide doses adm",
-      "code": "RVC_AD_AMP_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "ugSouq2PlCt"
-      },
-      "id": "S44yaXqVO6d"
-    },
-    {
-      "name": "Meningitis Conjugate vaccine doses administered",
-      "shortName": "Meningitis Conjugate doses adm",
-      "code": "RVC_AD_AMC_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "Kg2L1ygahms"
-      },
-      "id": "K2E7cQQQqg8"
-    },
-    {
-      "name": "Cholera vaccine doses administered",
-      "shortName": "Cholera doses adm",
-      "code": "RVC_AD_ACH_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "iUqkzsqNY6I"
-      },
-      "id": "y62J21CxKi9"
-    },
-    {
-      "name": "PCV vaccine doses administered",
-      "shortName": "PCV doses adm",
-      "code": "RVC_AD_APCV_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "eegqL36jGl8"
-      },
-      "id": "C0uQiOAVUou"
-    },
-    {
-      "name": "Pertussis Penta vaccine doses administered",
-      "shortName": "Pertussis Penta doses adm",
-      "code": "RVC_AD_APP_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "mYMvpkbWUfC"
-      },
-      "id": "OAbkCC5y6tI"
-    },
-    {
-      "name": "Yellow Fever vaccine doses administered",
-      "shortName": "Yellow Fever doses adm",
-      "code": "RVC_AD_AYF_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "ia6adPgdV9A"
-      },
-      "id": "uK2AktPdcPq"
-    },
-    {
-      "name": "Japanese Encephalitis vaccine doses administered",
-      "shortName": "Japanese Encephalitis doses adm",
-      "code": "RVC_AD_AJE_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "K8CQQM2mBV3"
-      },
-      "id": "KSMtgI14T16"
-    },
-    {
-      "name": "Dengue vaccine doses administered",
-      "shortName": "Dengue doses adm",
-      "code": "RVC_AD_ADE_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "q88jz4TuYxW"
-      },
-      "id": "uY4J4teOML4"
-    },
-    {
-      "name": "Measles vaccine doses used",
-      "shortName": "Measles doses used",
-      "code": "RVC_AD_AMS_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "aWwB8jPoU7Q"
-      },
-      "id": "eAowznPsWxl"
-    },
-    {
-      "name": "Meningitis Polysaccharide vaccine doses used",
-      "shortName": "Meningitis Polysaccharide doses used",
-      "code": "RVC_AD_AMP_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "ugSouq2PlCt"
-      },
-      "id": "S40qrFe4WMa"
-    },
-    {
-      "name": "Meningitis Conjugate vaccine doses used",
-      "shortName": "Meningitis Conjugate doses used",
-      "code": "RVC_AD_AMC_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "Kg2L1ygahms"
-      },
-      "id": "WygXmjSE1co"
-    },
-    {
-      "name": "Cholera vaccine doses used",
-      "shortName": "Cholera doses used",
-      "code": "RVC_AD_ACH_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "iUqkzsqNY6I"
-      },
-      "id": "O8YGTJBdVef"
-    },
-    {
-      "name": "PCV vaccine doses used",
-      "shortName": "PCV doses used",
-      "code": "RVC_AD_APCV_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "eegqL36jGl8"
-      },
-      "id": "SyyO39TWzm1"
-    },
-    {
-      "name": "Pertussis Penta vaccine doses used",
-      "shortName": "Pertussis Penta doses used",
-      "code": "RVC_AD_APP_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "mYMvpkbWUfC"
-      },
-      "id": "OMn9U8w4Hyd"
-    },
-    {
-      "name": "Yellow Fever vaccine doses used",
-      "shortName": "Yellow Fever doses used",
-      "code": "RVC_AD_AYF_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "ia6adPgdV9A"
-      },
-      "id": "uiMhCPemRiR"
-    },
-    {
-      "name": "Japanese Encephalitis vaccine doses used",
-      "shortName": "Japanese Encephalitis doses used",
-      "code": "RVC_AD_AJE_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "K8CQQM2mBV3"
-      },
-      "id": "mMaScYDWECY"
-    },
-    {
-      "name": "Dengue vaccine doses used",
-      "shortName": "Dengue doses used",
-      "code": "RVC_AD_ADE_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "categoryCombo": {
-        "id": "q88jz4TuYxW"
-      },
-      "id": "ewGYPT5DoHk"
-    }
-  ],
   "userRoles": [
     {
       "name": "Campaign Encoder",
@@ -1006,7 +457,8 @@
         "M_dhis-web-visualizer",
         "M_Vaccination_App"
       ],
-      "id": "KsC2ShOI1Ct"
+      "id": "KsC2ShOI1Ct",
+      "key": "encoder"
     },
     {
       "name": "Campaign Configurator",
@@ -1020,7 +472,8 @@
         "M_dhis-web-visualizer",
         "M_Vaccination_App"
       ],
-      "id": "qiKYgc4idyX"
+      "id": "qiKYgc4idyX",
+      "key": "configurator"
     },
     {
       "name": "Campaign Dasbboard",
@@ -1032,7 +485,8 @@
         "M_dhis-web-visualizer",
         "M_Vaccination_App"
       ],
-      "id": "egCI5b9zGop"
+      "id": "egCI5b9zGop",
+      "key": "dashboard"
     },
     {
       "name": "Campaign admin",
@@ -1067,7 +521,8 @@
         "M_dhis-web-messaging",
         "M_Vaccination_App"
       ],
-      "id": "GA895FaYLKP"
+      "id": "GA895FaYLKP",
+      "key": "admin"
     }
   ],
   "dataElementGroups": [
@@ -1102,7 +557,8 @@
           "id": "uY4J4teOML4"
         }
       ],
-      "id": "SWQ3Hew9mZH"
+      "id": "SWQ3Hew9mZH",
+      "key": "vaccine-doses-administered"
     },
     {
       "name": "Vaccine doses used",
@@ -1135,7 +591,377 @@
           "id": "ewGYPT5DoHk"
         }
       ],
-      "id": "qoQdHjaM2mr"
+      "id": "qoQdHjaM2mr",
+      "key": "vaccine-doses-used"
+    }
+  ],
+  "dataElements": [
+    {
+      "name": "Measles vaccine doses administered",
+      "shortName": "Measles doses adm",
+      "code": "RVC_AD_AMS_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "id": "SQUjh1QilzK",
+      "key": "measles-vaccine-doses-administered"
+    },
+    {
+      "name": "Meningitis Polysaccharide vaccine doses administered",
+      "shortName": "Meningitis Polysaccharide doses adm",
+      "code": "RVC_AD_AMP_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "id": "S44yaXqVO6d",
+      "key": "meningitis-polysaccharide-vaccine-doses-administered"
+    },
+    {
+      "name": "Meningitis Conjugate vaccine doses administered",
+      "shortName": "Meningitis Conjugate doses adm",
+      "code": "RVC_AD_AMC_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "id": "K2E7cQQQqg8",
+      "key": "meningitis-conjugate-vaccine-doses-administered"
+    },
+    {
+      "name": "Cholera vaccine doses administered",
+      "shortName": "Cholera doses adm",
+      "code": "RVC_AD_ACH_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "id": "y62J21CxKi9",
+      "key": "cholera-vaccine-doses-administered"
+    },
+    {
+      "name": "PCV vaccine doses administered",
+      "shortName": "PCV doses adm",
+      "code": "RVC_AD_APCV_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "id": "C0uQiOAVUou",
+      "key": "pcv-vaccine-doses-administered"
+    },
+    {
+      "name": "Pertussis Penta vaccine doses administered",
+      "shortName": "Pertussis Penta doses adm",
+      "code": "RVC_AD_APP_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "id": "OAbkCC5y6tI",
+      "key": "pertussis-penta-vaccine-doses-administered"
+    },
+    {
+      "name": "Yellow Fever vaccine doses administered",
+      "shortName": "Yellow Fever doses adm",
+      "code": "RVC_AD_AYF_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "id": "uK2AktPdcPq",
+      "key": "yellow-fever-vaccine-doses-administered"
+    },
+    {
+      "name": "Japanese Encephalitis vaccine doses administered",
+      "shortName": "Japanese Encephalitis doses adm",
+      "code": "RVC_AD_AJE_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "id": "KSMtgI14T16",
+      "key": "japanese-encephalitis-vaccine-doses-administered"
+    },
+    {
+      "name": "Dengue vaccine doses administered",
+      "shortName": "Dengue doses adm",
+      "code": "RVC_AD_ADE_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "id": "uY4J4teOML4",
+      "key": "dengue-vaccine-doses-administered"
+    },
+    {
+      "name": "Measles vaccine doses used",
+      "shortName": "Measles doses used",
+      "code": "RVC_AD_AMS_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "id": "eAowznPsWxl",
+      "key": "measles-vaccine-doses-used"
+    },
+    {
+      "name": "Meningitis Polysaccharide vaccine doses used",
+      "shortName": "Meningitis Polysaccharide doses used",
+      "code": "RVC_AD_AMP_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "id": "S40qrFe4WMa",
+      "key": "meningitis-polysaccharide-vaccine-doses-used"
+    },
+    {
+      "name": "Meningitis Conjugate vaccine doses used",
+      "shortName": "Meningitis Conjugate doses used",
+      "code": "RVC_AD_AMC_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "id": "WygXmjSE1co",
+      "key": "meningitis-conjugate-vaccine-doses-used"
+    },
+    {
+      "name": "Cholera vaccine doses used",
+      "shortName": "Cholera doses used",
+      "code": "RVC_AD_ACH_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "id": "O8YGTJBdVef",
+      "key": "cholera-vaccine-doses-used"
+    },
+    {
+      "name": "PCV vaccine doses used",
+      "shortName": "PCV doses used",
+      "code": "RVC_AD_APCV_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "id": "SyyO39TWzm1",
+      "key": "pcv-vaccine-doses-used"
+    },
+    {
+      "name": "Pertussis Penta vaccine doses used",
+      "shortName": "Pertussis Penta doses used",
+      "code": "RVC_AD_APP_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "id": "OMn9U8w4Hyd",
+      "key": "pertussis-penta-vaccine-doses-used"
+    },
+    {
+      "name": "Yellow Fever vaccine doses used",
+      "shortName": "Yellow Fever doses used",
+      "code": "RVC_AD_AYF_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "id": "uiMhCPemRiR",
+      "key": "yellow-fever-vaccine-doses-used"
+    },
+    {
+      "name": "Japanese Encephalitis vaccine doses used",
+      "shortName": "Japanese Encephalitis doses used",
+      "code": "RVC_AD_AJE_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "id": "mMaScYDWECY",
+      "key": "japanese-encephalitis-vaccine-doses-used"
+    },
+    {
+      "name": "Dengue vaccine doses used",
+      "shortName": "Dengue doses used",
+      "code": "RVC_AD_ADE_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "id": "ewGYPT5DoHk",
+      "key": "dengue-vaccine-doses-used"
+    },
+    {
+      "shortName": "Total population",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Total population",
+      "code": "RVC_AD_TP",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "mOE5w8jVtuh",
+      "key": "total-population"
+    },
+    {
+      "shortName": "ADS (Auto Disable Syringe) used",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "ADS (Auto Disable Syringe) used",
+      "code": "RVC_AD_ADS1",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "ywKG3QmCbDi",
+      "key": "ads-used"
+    },
+    {
+      "shortName": "ADS (Auto Disable Syringe) for dilution",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "ADS (Auto Disable Syringe) for dilution",
+      "code": "RVC_AD_ADS2",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "GosjcdpeNlC",
+      "key": "ads-dilution"
+    },
+    {
+      "shortName": "Safety boxes",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Safety boxes",
+      "code": "RVC_AD_SB",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "CCqBBZmfsTs",
+      "key": "safety-boxes"
+    },
+    {
+      "shortName": "Syringes",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Syringes",
+      "code": "RVC_AD_SYR",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "WCQHqR2RBIX",
+      "key": "syringes"
+    },
+    {
+      "shortName": "Syringes for dillution",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Syringes for dillution",
+      "code": "RVC_AD_SYD",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "WORFShJTQOJ",
+      "key": "syringes-dilution"
+    },
+    {
+      "shortName": "Needles",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Needles",
+      "code": "RVC_AD_NDL",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "OQOgTET6NwY",
+      "key": "needles"
+    },
+    {
+      "shortName": "Accidental Exposure to Blood (AEB)",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Accidental Exposure to Blood (AEB)",
+      "code": "RVC_AD_AEB",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "q0MMyiUi0Pl",
+      "key": "aeb"
+    },
+    {
+      "shortName": "Adverse Event Following Immunization",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "CS8BMAe0nHa"
+      },
+      "name": "Adverse Event Following Immunization",
+      "code": "RVC_AD_AEFI",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "disaggregation": "severity",
+      "id": "OY40ChLj0YE",
+      "key": "adverse-event"
+    }
+  ],
+  "dataElementGroupSets": [
+    {
+      "name": "Reactive Vaccination",
+      "dataElementGroups": [
+        {
+          "id": "SWQ3Hew9mZH"
+        },
+        {
+          "id": "qoQdHjaM2mr"
+        }
+      ],
+      "id": "GeomRQxOs8b",
+      "key": "reactive-vaccination"
     }
   ],
   "indicatorGroups": [
@@ -1170,7 +996,8 @@
           "id": "uukv4rtBmaV"
         }
       ],
-      "id": "i4fkdKIHAdz"
+      "id": "i4fkdKIHAdz",
+      "key": "vaccine-utilization-rate"
     },
     {
       "name": "Vaccine campaign coverage",
@@ -1203,10 +1030,347 @@
           "id": "KGcBDoC6KwC"
         }
       ],
-      "id": "yQKEEPut9e9"
+      "id": "yQKEEPut9e9",
+      "key": "vaccine-campaign-coverage"
+    }
+  ],
+  "indicators": [
+    {
+      "shortName": "Measles utilization rate",
+      "name": "Measles vaccine utilization rate",
+      "code": "RVC_IN_AMS_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{SQUjh1QilzK}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{eAowznPsWxl}",
+      "id": "yEAb2sBlyYY",
+      "key": "measles-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Meningitis Polysaccharide utilization rate",
+      "name": "Meningitis Polysaccharide vaccine utilization rate",
+      "code": "RVC_IN_AMP_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{S44yaXqVO6d}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{S40qrFe4WMa}",
+      "id": "aog9D5F8Id8",
+      "key": "meningitis-polysaccharide-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Meningitis Conjugate utilization rate",
+      "name": "Meningitis Conjugate vaccine utilization rate",
+      "code": "RVC_IN_AMC_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{K2E7cQQQqg8}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{WygXmjSE1co}",
+      "id": "iYGuAe2liwZ",
+      "key": "meningitis-conjugate-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Cholera utilization rate",
+      "name": "Cholera vaccine utilization rate",
+      "code": "RVC_IN_ACH_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{y62J21CxKi9}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{O8YGTJBdVef}",
+      "id": "Kkm82JL6r5h",
+      "key": "cholera-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "PCV utilization rate",
+      "name": "PCV vaccine utilization rate",
+      "code": "RVC_IN_APCV_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{C0uQiOAVUou}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{SyyO39TWzm1}",
+      "id": "eoG6dE83twf",
+      "key": "pcv-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Pertussis Penta utilization rate",
+      "name": "Pertussis Penta vaccine utilization rate",
+      "code": "RVC_IN_APP_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{OAbkCC5y6tI}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{OMn9U8w4Hyd}",
+      "id": "GAmMOmbPlnU",
+      "key": "pertussis-penta-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Yellow Fever utilization rate",
+      "name": "Yellow Fever vaccine utilization rate",
+      "code": "RVC_IN_AYF_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{uK2AktPdcPq}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{uiMhCPemRiR}",
+      "id": "OIqnHTgKPPm",
+      "key": "yellow-fever-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Japanese Encephalitis utilization rate",
+      "name": "Japanese Encephalitis vaccine utilization rate",
+      "code": "RVC_IN_AJE_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{KSMtgI14T16}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{mMaScYDWECY}",
+      "id": "KE2h49Li3av",
+      "key": "japanese-encephalitis-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Dengue utilization rate",
+      "name": "Dengue vaccine utilization rate",
+      "code": "RVC_IN_ADE_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{uY4J4teOML4}",
+      "denominatorDescription": "Doses used",
+      "denominator": "#{ewGYPT5DoHk}",
+      "id": "uukv4rtBmaV",
+      "key": "dengue-vaccine-utilization-rate"
+    },
+    {
+      "shortName": "Measles campaign coverage",
+      "name": "Measles vaccine campaign coverage",
+      "code": "RVC_IN_AMS_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{SQUjh1QilzK}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "CKeIXmRUhxl",
+      "key": "measles-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Meningitis Polysaccharide campaign coverage",
+      "name": "Meningitis Polysaccharide vaccine campaign coverage",
+      "code": "RVC_IN_AMP_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{S44yaXqVO6d}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "qCInsglUGJp",
+      "key": "meningitis-polysaccharide-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Meningitis Conjugate campaign coverage",
+      "name": "Meningitis Conjugate vaccine campaign coverage",
+      "code": "RVC_IN_AMC_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{K2E7cQQQqg8}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "SAAhhLjLsBC",
+      "key": "meningitis-conjugate-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Cholera campaign coverage",
+      "name": "Cholera vaccine campaign coverage",
+      "code": "RVC_IN_ACH_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{y62J21CxKi9}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "euUdbIrVVEA",
+      "key": "cholera-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "PCV campaign coverage",
+      "name": "PCV vaccine campaign coverage",
+      "code": "RVC_IN_APCV_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{C0uQiOAVUou}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "qUI7jSg5ub9",
+      "key": "pcv-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Pertussis Penta campaign coverage",
+      "name": "Pertussis Penta vaccine campaign coverage",
+      "code": "RVC_IN_APP_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{OAbkCC5y6tI}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "m6eyPxKadAq",
+      "key": "pertussis-penta-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Yellow Fever campaign coverage",
+      "name": "Yellow Fever vaccine campaign coverage",
+      "code": "RVC_IN_AYF_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{uK2AktPdcPq}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "KWQnSu2Z5Rm",
+      "key": "yellow-fever-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Japanese Encephalitis campaign coverage",
+      "name": "Japanese Encephalitis vaccine campaign coverage",
+      "code": "RVC_IN_AJE_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{KSMtgI14T16}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "i6Ga2pSGyr3",
+      "key": "japanese-encephalitis-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "Dengue campaign coverage",
+      "name": "Dengue vaccine campaign coverage",
+      "code": "RVC_IN_ADE_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Doses administered",
+      "numerator": "#{uY4J4teOML4}",
+      "denominatorDescription": "Total population",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "KGcBDoC6KwC",
+      "key": "dengue-vaccine-campaign-coverage"
+    },
+    {
+      "shortName": "ADS wastage rate",
+      "name": "ADS (Auto Disable Syringe) wastage rate",
+      "code": "RVC_IN_AWR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "(ADS used - Total Doses adm) / ADS used",
+      "numerator": "#{ywKG3QmCbDi} - (#{SQUjh1QilzK} + #{S44yaXqVO6d} + #{K2E7cQQQqg8} + #{y62J21CxKi9} + #{C0uQiOAVUou} + #{OAbkCC5y6tI} + #{uK2AktPdcPq} + #{KSMtgI14T16} + #{uY4J4teOML4})",
+      "denominatorDescription": "ADS used",
+      "denominator": "#{ywKG3QmCbDi}",
+      "id": "SACyBTOq9mW",
+      "key": "ads-wastage-rate"
+    },
+    {
+      "shortName": "Safety boxes ratio",
+      "name": "Safety boxes ratio",
+      "code": "RVC_IN_SBR",
+      "indicatorType": {
+        "id": "SGwb9PVZYy8"
+      },
+      "numeratorDescription": "Syringes",
+      "numerator": "#{WCQHqR2RBIX}",
+      "denominatorDescription": "Safety Boxes",
+      "denominator": "#{CCqBBZmfsTs}",
+      "id": "e8w7mCxy9ia",
+      "key": "safety-boxes-ratio"
+    },
+    {
+      "shortName": "Dilution syringes ratio",
+      "name": "Dilution syringes ratio",
+      "code": "RVC_IN_DSR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numeratorDescription": "Syringes for dilution",
+      "numerator": "#{WORFShJTQOJ}",
+      "denominatorDescription": "Total doses used",
+      "denominator": "#{eAowznPsWxl} + #{S40qrFe4WMa} + #{WygXmjSE1co} + #{O8YGTJBdVef} + #{SyyO39TWzm1} + #{OMn9U8w4Hyd} + #{uiMhCPemRiR} + #{mMaScYDWECY} + #{ewGYPT5DoHk}",
+      "id": "eqMDzdX0Gug",
+      "key": "dilution-syringes-ratio"
+    }
+  ],
+  "indicatorGroupSets": [
+    {
+      "name": "Reactive Vaccination",
+      "indicatorGroups": [
+        {
+          "id": "i4fkdKIHAdz"
+        },
+        {
+          "id": "yQKEEPut9e9"
+        }
+      ],
+      "id": "GQ0w82pElaZ",
+      "key": "reactive-vaccination"
+    }
+  ],
+  "indicatorTypes": [
+    {
+      "name": "ratio",
+      "factor": 1,
+      "id": "SGwb9PVZYy8",
+      "key": "ratio"
+    },
+    {
+      "name": "percentage",
+      "factor": 100,
+      "id": "iECcUqYM9ZM",
+      "key": "percentage"
     }
   ],
   "categoryCombos": [
+    {
+      "name": "Teams",
+      "dataDimensionType": "ATTRIBUTE",
+      "categories": [
+        {
+          "id": "C6kHcyZsyLI"
+        }
+      ],
+      "id": "qaGIfedeGnT",
+      "key": "teams"
+    },
     {
       "name": "Severity",
       "dataDimensionType": "DISAGGREGATION",
@@ -1215,7 +1379,8 @@
           "id": "iemAs0M9Cnd"
         }
       ],
-      "id": "CS8BMAe0nHa"
+      "id": "CS8BMAe0nHa",
+      "key": "severity"
     },
     {
       "name": "Age group / Gender Measles",
@@ -1228,7 +1393,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "aWwB8jPoU7Q"
+      "id": "aWwB8jPoU7Q",
+      "key": "age-group-gender-measles"
     },
     {
       "name": "Age group / Gender Meningitis Polysaccharide",
@@ -1241,7 +1407,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "ugSouq2PlCt"
+      "id": "ugSouq2PlCt",
+      "key": "age-group-gender-meningitis-polysaccharide"
     },
     {
       "name": "Age group / Gender Meningitis Conjugate",
@@ -1254,7 +1421,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "Kg2L1ygahms"
+      "id": "Kg2L1ygahms",
+      "key": "age-group-gender-meningitis-conjugate"
     },
     {
       "name": "Age group / Gender Cholera",
@@ -1267,7 +1435,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "iUqkzsqNY6I"
+      "id": "iUqkzsqNY6I",
+      "key": "age-group-gender-cholera"
     },
     {
       "name": "Age group / Gender PCV",
@@ -1280,7 +1449,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "eegqL36jGl8"
+      "id": "eegqL36jGl8",
+      "key": "age-group-gender-pcv"
     },
     {
       "name": "Age group / Gender Pertussis Penta",
@@ -1293,7 +1463,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "mYMvpkbWUfC"
+      "id": "mYMvpkbWUfC",
+      "key": "age-group-gender-pertussis-penta"
     },
     {
       "name": "Age group / Gender Yellow Fever",
@@ -1306,7 +1477,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "ia6adPgdV9A"
+      "id": "ia6adPgdV9A",
+      "key": "age-group-gender-yellow-fever"
     },
     {
       "name": "Age group / Gender Japanese Encephalitis",
@@ -1319,7 +1491,8 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "K8CQQM2mBV3"
+      "id": "K8CQQM2mBV3",
+      "key": "age-group-gender-japanese-encephalitis"
     },
     {
       "name": "Age group / Gender Dengue",
@@ -1332,10 +1505,50 @@
           "id": "Kyg1O6YEGa9"
         }
       ],
-      "id": "q88jz4TuYxW"
+      "id": "q88jz4TuYxW",
+      "key": "age-group-gender-dengue"
     }
   ],
   "categoryOptionCombos": [
+    {
+      "name": "Team 1",
+      "categoryCombo": {
+        "id": "qaGIfedeGnT"
+      },
+      "categoryOptions": [
+        {
+          "id": "y0MZQ0RFSmy"
+        }
+      ],
+      "id": "yUwl6nTlN3d",
+      "key": "qaGIfedeGnT.y0MZQ0RFSmy"
+    },
+    {
+      "name": "Team 2",
+      "categoryCombo": {
+        "id": "qaGIfedeGnT"
+      },
+      "categoryOptions": [
+        {
+          "id": "qMM7LYcPYCI"
+        }
+      ],
+      "id": "Gmqw7j2Ts1k",
+      "key": "qaGIfedeGnT.qMM7LYcPYCI"
+    },
+    {
+      "name": "Team 3",
+      "categoryCombo": {
+        "id": "qaGIfedeGnT"
+      },
+      "categoryOptions": [
+        {
+          "id": "CCcHst4fvEk"
+        }
+      ],
+      "id": "ioGIDhroUN6",
+      "key": "qaGIfedeGnT.CCcHst4fvEk"
+    },
     {
       "name": "Minor",
       "categoryCombo": {

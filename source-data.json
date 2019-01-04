@@ -54,22 +54,28 @@
                 "shortName": "ADS wastage rate",
                 "code": "RVC_IN_AWR",
                 "indicatorType": "percentage",
-                "numerator": "#{${dataElements['ads-used'].id}} - #{${dataElements['vaccine-doses-administered'].id}}",
+                "numeratorDescription": "(ADS used - Total Doses adm) / ADS used",
+                "numerator": "#{${dataElements['ads-used'].id}} - (${dataElementGroups['vaccine-doses-administered'].dataElements.map(de => '#{' + de.id + '}').join(' + ')})",
+                "denominatorDescription": "ADS used",
                 "denominator": "#{${dataElements['ads-used'].id}}"
             },
             "safety-boxes-ratio": {
                 "name": "Safety boxes ratio",
                 "code": "RVC_IN_SBR",
-                "indicatorType": "percentage",
-                "numerator": "#{${dataElements['syringes'].id}}}",
+                "indicatorType": "ratio",
+                "numeratorDescription": "Syringes",
+                "numerator": "#{${dataElements['syringes'].id}}",
+                "denominatorDescription": "Safety Boxes",
                 "denominator": "#{${dataElements['safety-boxes'].id}}"
             },
             "dilution-syringes-ratio": {
                 "name": "Dilution syringes ratio",
                 "code": "RVC_IN_DSR",
                 "indicatorType": "percentage",
-                "numerator": "#{${dataElements['syringes-dilution'].id}}}",
-                "denominator": "#{${dataElements['vaccine-doses-used'].id}}"
+                "numeratorDescription": "Syringes for dilution",
+                "numerator": "#{${dataElements['syringes-dilution'].id}}",
+                "denominatorDescription": "Total doses used",
+                "denominator": "${dataElementGroups['vaccine-doses-used'].dataElements.map(de => '#{' + de.id + '}').join(' + ')}"
             }
         },
         "byAntigen": {
@@ -81,7 +87,9 @@
                     "shortName": "${antigen.name} utilization rate",
                     "code": "RVC_IN_${antigen.code}_UR",
                     "indicatorType": "percentage",
+                    "numeratorDescription": "Doses administered",
                     "numerator": "#{${dataElements[antigen.key + '-vaccine-doses-administered'].id}}",
+                    "denominatorDescription": "Doses used",
                     "denominator": "#{${dataElements[antigen.key + '-vaccine-doses-used'].id}}"
                 }
             },
@@ -93,7 +101,9 @@
                     "shortName": "${antigen.name} campaign coverage",
                     "code": "RVC_IN_${antigen.code}_CC",
                     "indicatorType": "percentage",
+                    "numeratorDescription": "Doses administered",
                     "numerator": "#{${dataElements[antigen.key + '-vaccine-doses-administered'].id}}",
+                    "denominatorDescription": "Total population",
                     "denominator": "#{${dataElements['total-population'].id}}"
                 }
             }
@@ -174,6 +184,11 @@
     },
 
     "categories": {
+        "teams": {
+            "name": "Teams",
+            "dataDimensionType": "ATTRIBUTE",
+            "categoryOptions": ["Team 1", "Team 2", "Team 3"]
+        },
         "severity": {
             "name": "Severity",
             "categoryOptions": ["Minor", "Severe"]
@@ -181,6 +196,10 @@
     },
 
     "indicatorTypes": {
+        "ratio": {
+            "name": "ratio",
+            "factor": 1
+        },
         "percentage": {
             "name": "percentage",
             "factor": 100

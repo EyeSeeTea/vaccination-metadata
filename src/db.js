@@ -2,7 +2,6 @@ const _ = require("lodash");
 const pMap = require("p-map");
 const md5 = require("md5");
 const fetch = require("node-fetch");
-
 const {repeat, inspect} = require("./utils");
 
 // DHIS2 UID :: /^[a-zA-Z]{1}[a-zA-Z0-9]{10}$/
@@ -57,7 +56,7 @@ class Db {
         return this.data[model];
     }
 
-    getByKeyAndName(model, allAttributes) {
+    getByName(model, allAttributes) {
         const {key, ...attributes} = allAttributes;
         const name = attributes.name;
         const valuesByName = this.data[model];

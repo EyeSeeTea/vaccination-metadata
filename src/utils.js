@@ -31,7 +31,8 @@ function get(obj, path, {defaultValue} = {}) {
 
     if (_.isUndefined(value)) {
         if (_.isUndefined(defaultValue)) {
-            throw new Error(`No path in obj: ${inspect(obj)} -> ${path.join(", ")}`);
+            const pathString = _(path).castArray().join(", ");
+            throw new Error(`No path '${pathString}' in object: ${inspect(obj)}`);
         } else {
             return defaultValue;
         }
