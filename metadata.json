@@ -1,40 +1,70 @@
 {
   "categories": [
     {
+      "name": "Gender",
+      "dataDimensionType": "DISAGGREGATION",
+      "dimensionType": "CATEGORY",
+      "dataDimension": false,
+      "categoryOptions": [
+        {
+          "id": "eKqKAA1Noe8"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "Kyg1O6YEGa9"
+    },
+    {
       "name": "Antigens",
       "dataDimensionType": "DISAGGREGATION",
       "dimensionType": "CATEGORY",
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "oDJIHTUvyNp"
+          "id": "e2QdJjfgZSD"
         },
         {
-          "id": "qeSkIKWujzQ"
+          "id": "OGcZlHNHPMb"
         },
         {
-          "id": "DmJEKr2b4i4"
+          "id": "eQgD7wLpMRF"
         },
         {
-          "id": "N3Xq2v5jlr8"
+          "id": "Oi2juOtDoM1"
         },
         {
-          "id": "BkZvP7b8XZn"
+          "id": "uQAHejpj2rw"
         },
         {
-          "id": "GihCA3MgX8v"
+          "id": "KAacAPncWqD"
         },
         {
-          "id": "j8BsTD5S5Tf"
+          "id": "qymECOlRnp4"
         },
         {
-          "id": "GPGJtuV3fzc"
+          "id": "O0TF99WW0PL"
         },
         {
-          "id": "mamKJm7THe4"
+          "id": "S0IWCNu9crn"
         }
       ],
-      "id": "NQ5DB3L2bE9"
+      "id": "umGArccSAqK"
+    },
+    {
+      "name": "Severity",
+      "dataDimensionType": "DISAGGREGATION",
+      "dimensionType": "CATEGORY",
+      "dataDimension": false,
+      "categoryOptions": [
+        {
+          "id": "q80SfcQbyXY"
+        },
+        {
+          "id": "uWaATpJppxD"
+        }
+      ],
+      "id": "iemAs0M9Cnd"
     },
     {
       "name": "Age group Measles",
@@ -43,22 +73,22 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "fnZu45UhqYW"
+          "id": "Wue1ApOfnkA"
         },
         {
-          "id": "mL5SUc8K5Zx"
+          "id": "OuMRcVdyAzS"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "KuCO3JwzQ4z"
@@ -70,19 +100,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "SW0iPoeOm9v"
@@ -94,19 +124,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "aUW2zJI2uEZ"
@@ -118,19 +148,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "eEe41xmcZZQ"
@@ -142,19 +172,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "akSNciIvdC7"
@@ -166,19 +196,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "iIolqbGe1zM"
@@ -190,19 +220,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "Ceei4U4dVlh"
@@ -214,19 +244,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "aesE3EEB2Et"
@@ -238,19 +268,19 @@
       "dataDimension": true,
       "categoryOptions": [
         {
-          "id": "FDdhOKnwzQ6"
+          "id": "SW5gDJRtAPw"
         },
         {
-          "id": "Y86VjYO1RjK"
+          "id": "mumcXknOYkC"
         },
         {
-          "id": "mO2bbBTrNv3"
+          "id": "ayCQ7FPkkhi"
         },
         {
-          "id": "Qeo0TBePh98"
+          "id": "SmSejNFYEXD"
         },
         {
-          "id": "CTU4Nsrhu9T"
+          "id": "eIkzGBj9i1G"
         }
       ],
       "id": "acC2u6NGs94"
@@ -258,105 +288,791 @@
   ],
   "categoryOptions": [
     {
+      "name": "Female",
+      "shortName": "Female",
+      "id": "eKqKAA1Noe8"
+    },
+    {
+      "name": "Male",
+      "shortName": "Male",
+      "id": "OKhcQ5VPMZI"
+    },
+    {
       "name": "Measles",
       "code": "AMS",
       "shortName": "Measles",
-      "id": "oDJIHTUvyNp"
+      "id": "e2QdJjfgZSD"
     },
     {
       "name": "Meningitis Polysaccharide",
       "code": "AMP",
       "shortName": "Meningitis Polysaccharide",
-      "id": "qeSkIKWujzQ"
+      "id": "OGcZlHNHPMb"
     },
     {
       "name": "Meningitis Conjugate",
       "code": "AMC",
       "shortName": "Meningitis Conjugate",
-      "id": "DmJEKr2b4i4"
+      "id": "eQgD7wLpMRF"
     },
     {
       "name": "Cholera",
       "code": "ACH",
       "shortName": "Cholera",
-      "id": "N3Xq2v5jlr8"
+      "id": "Oi2juOtDoM1"
     },
     {
       "name": "PCV",
       "code": "APCV",
       "shortName": "PCV",
-      "id": "BkZvP7b8XZn"
+      "id": "uQAHejpj2rw"
     },
     {
       "name": "Pertussis Penta",
       "code": "APP",
       "shortName": "Pertussis Penta",
-      "id": "GihCA3MgX8v"
+      "id": "KAacAPncWqD"
     },
     {
       "name": "Yellow Fever",
       "code": "AYF",
       "shortName": "Yellow Fever",
-      "id": "j8BsTD5S5Tf"
+      "id": "qymECOlRnp4"
     },
     {
       "name": "Japanese Encephalitis",
       "code": "AJE",
       "shortName": "Japanese Encephalitis",
-      "id": "GPGJtuV3fzc"
+      "id": "O0TF99WW0PL"
     },
     {
       "name": "Dengue",
       "code": "ADE",
       "shortName": "Dengue",
-      "id": "mamKJm7THe4"
+      "id": "S0IWCNu9crn"
+    },
+    {
+      "name": "Minor",
+      "shortName": "Minor",
+      "id": "q80SfcQbyXY"
+    },
+    {
+      "name": "Severe",
+      "shortName": "Severe",
+      "id": "uWaATpJppxD"
     },
     {
       "name": "6 - 8 m",
       "shortName": "6 - 8 m",
-      "id": "FDdhOKnwzQ6"
+      "id": "SW5gDJRtAPw"
     },
     {
       "name": "9 - 11 m",
       "shortName": "9 - 11 m",
-      "id": "Y86VjYO1RjK"
+      "id": "mumcXknOYkC"
     },
     {
       "name": "12 - 23 m",
       "shortName": "12 - 23 m",
-      "id": "fnZu45UhqYW"
+      "id": "Wue1ApOfnkA"
     },
     {
       "name": "24 - 59 m",
       "shortName": "24 - 59 m",
-      "id": "mL5SUc8K5Zx"
+      "id": "OuMRcVdyAzS"
     },
     {
       "name": "5 - 14 y",
       "shortName": "5 - 14 y",
-      "id": "Qeo0TBePh98"
+      "id": "SmSejNFYEXD"
     },
     {
       "name": "15 - 29 y",
       "shortName": "15 - 29 y",
-      "id": "CTU4Nsrhu9T"
+      "id": "eIkzGBj9i1G"
     },
     {
       "name": "12 - 59 m",
       "shortName": "12 - 59 m",
-      "id": "mO2bbBTrNv3"
+      "id": "ayCQ7FPkkhi"
+    }
+  ],
+  "dataElementGroupSets": [
+    {
+      "name": "Reactive Vaccination",
+      "dataElementGroups": [
+        {
+          "id": "SWQ3Hew9mZH"
+        },
+        {
+          "id": "qoQdHjaM2mr"
+        }
+      ],
+      "id": "GeomRQxOs8b"
+    }
+  ],
+  "indicatorGroupSets": [
+    {
+      "name": "Reactive Vaccination",
+      "indicatorGroups": [
+        {
+          "id": "i4fkdKIHAdz"
+        },
+        {
+          "id": "yQKEEPut9e9"
+        }
+      ],
+      "id": "GQ0w82pElaZ"
+    }
+  ],
+  "indicatorTypes": [
+    {
+      "name": "percentage",
+      "factor": 100,
+      "id": "iECcUqYM9ZM"
+    }
+  ],
+  "indicators": [
+    {
+      "shortName": "ADS wastage rate",
+      "name": "ADS (Auto Disable Syringe) wastage rate",
+      "code": "RVC_IN_AWR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{${dataElements['ads-used'].id}} - #{${dataElements['vaccine-doses-administered'].id}}",
+      "denominator": "#{${dataElements['ads-used'].id}}",
+      "id": "SACyBTOq9mW"
+    },
+    {
+      "shortName": "Safety boxes ratio",
+      "name": "Safety boxes ratio",
+      "code": "RVC_IN_SBR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{${dataElements['syringes'].id}}}",
+      "denominator": "#{${dataElements['safety-boxes'].id}}",
+      "id": "e8w7mCxy9ia"
+    },
+    {
+      "shortName": "Dilution syringes ratio",
+      "name": "Dilution syringes ratio",
+      "code": "RVC_IN_DSR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{${dataElements['syringes-dilution'].id}}}",
+      "denominator": "#{${dataElements['vaccine-doses-used'].id}}",
+      "id": "eqMDzdX0Gug"
+    },
+    {
+      "name": "Measles vaccine utilization rate",
+      "shortName": "Measles utilization rate",
+      "code": "RVC_IN_AMS_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{SQUjh1QilzK}",
+      "denominator": "#{eAowznPsWxl}",
+      "id": "yEAb2sBlyYY"
+    },
+    {
+      "name": "Meningitis Polysaccharide vaccine utilization rate",
+      "shortName": "Meningitis Polysaccharide utilization rate",
+      "code": "RVC_IN_AMP_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{S44yaXqVO6d}",
+      "denominator": "#{S40qrFe4WMa}",
+      "id": "aog9D5F8Id8"
+    },
+    {
+      "name": "Meningitis Conjugate vaccine utilization rate",
+      "shortName": "Meningitis Conjugate utilization rate",
+      "code": "RVC_IN_AMC_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{K2E7cQQQqg8}",
+      "denominator": "#{WygXmjSE1co}",
+      "id": "iYGuAe2liwZ"
+    },
+    {
+      "name": "Cholera vaccine utilization rate",
+      "shortName": "Cholera utilization rate",
+      "code": "RVC_IN_ACH_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{y62J21CxKi9}",
+      "denominator": "#{O8YGTJBdVef}",
+      "id": "Kkm82JL6r5h"
+    },
+    {
+      "name": "PCV vaccine utilization rate",
+      "shortName": "PCV utilization rate",
+      "code": "RVC_IN_APCV_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{C0uQiOAVUou}",
+      "denominator": "#{SyyO39TWzm1}",
+      "id": "eoG6dE83twf"
+    },
+    {
+      "name": "Pertussis Penta vaccine utilization rate",
+      "shortName": "Pertussis Penta utilization rate",
+      "code": "RVC_IN_APP_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{OAbkCC5y6tI}",
+      "denominator": "#{OMn9U8w4Hyd}",
+      "id": "GAmMOmbPlnU"
+    },
+    {
+      "name": "Yellow Fever vaccine utilization rate",
+      "shortName": "Yellow Fever utilization rate",
+      "code": "RVC_IN_AYF_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{uK2AktPdcPq}",
+      "denominator": "#{uiMhCPemRiR}",
+      "id": "OIqnHTgKPPm"
+    },
+    {
+      "name": "Japanese Encephalitis vaccine utilization rate",
+      "shortName": "Japanese Encephalitis utilization rate",
+      "code": "RVC_IN_AJE_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{KSMtgI14T16}",
+      "denominator": "#{mMaScYDWECY}",
+      "id": "KE2h49Li3av"
+    },
+    {
+      "name": "Dengue vaccine utilization rate",
+      "shortName": "Dengue utilization rate",
+      "code": "RVC_IN_ADE_UR",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{uY4J4teOML4}",
+      "denominator": "#{ewGYPT5DoHk}",
+      "id": "uukv4rtBmaV"
+    },
+    {
+      "name": "Measles vaccine campaign coverage",
+      "shortName": "Measles campaign coverage",
+      "code": "RVC_IN_AMS_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{SQUjh1QilzK}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "CKeIXmRUhxl"
+    },
+    {
+      "name": "Meningitis Polysaccharide vaccine campaign coverage",
+      "shortName": "Meningitis Polysaccharide campaign coverage",
+      "code": "RVC_IN_AMP_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{S44yaXqVO6d}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "qCInsglUGJp"
+    },
+    {
+      "name": "Meningitis Conjugate vaccine campaign coverage",
+      "shortName": "Meningitis Conjugate campaign coverage",
+      "code": "RVC_IN_AMC_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{K2E7cQQQqg8}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "SAAhhLjLsBC"
+    },
+    {
+      "name": "Cholera vaccine campaign coverage",
+      "shortName": "Cholera campaign coverage",
+      "code": "RVC_IN_ACH_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{y62J21CxKi9}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "euUdbIrVVEA"
+    },
+    {
+      "name": "PCV vaccine campaign coverage",
+      "shortName": "PCV campaign coverage",
+      "code": "RVC_IN_APCV_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{C0uQiOAVUou}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "qUI7jSg5ub9"
+    },
+    {
+      "name": "Pertussis Penta vaccine campaign coverage",
+      "shortName": "Pertussis Penta campaign coverage",
+      "code": "RVC_IN_APP_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{OAbkCC5y6tI}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "m6eyPxKadAq"
+    },
+    {
+      "name": "Yellow Fever vaccine campaign coverage",
+      "shortName": "Yellow Fever campaign coverage",
+      "code": "RVC_IN_AYF_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{uK2AktPdcPq}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "KWQnSu2Z5Rm"
+    },
+    {
+      "name": "Japanese Encephalitis vaccine campaign coverage",
+      "shortName": "Japanese Encephalitis campaign coverage",
+      "code": "RVC_IN_AJE_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{KSMtgI14T16}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "i6Ga2pSGyr3"
+    },
+    {
+      "name": "Dengue vaccine campaign coverage",
+      "shortName": "Dengue campaign coverage",
+      "code": "RVC_IN_ADE_CC",
+      "indicatorType": {
+        "id": "iECcUqYM9ZM"
+      },
+      "numerator": "#{uY4J4teOML4}",
+      "denominator": "#{mOE5w8jVtuh}",
+      "id": "KGcBDoC6KwC"
+    }
+  ],
+  "dataElements": [
+    {
+      "shortName": "Total population",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Total population",
+      "code": "RVC_AD_TP",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "mOE5w8jVtuh"
+    },
+    {
+      "shortName": "ADS (Auto Disable Syringe) used",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "ADS (Auto Disable Syringe) used",
+      "code": "RVC_AD_ADS1",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "ywKG3QmCbDi"
+    },
+    {
+      "shortName": "ADS (Auto Disable Syringe) for dilution",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "ADS (Auto Disable Syringe) for dilution",
+      "code": "RVC_AD_ADS2",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "GosjcdpeNlC"
+    },
+    {
+      "shortName": "Safety boxes",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Safety boxes",
+      "code": "RVC_AD_SB",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "CCqBBZmfsTs"
+    },
+    {
+      "shortName": "Syringes",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Syringes",
+      "code": "RVC_AD_SYR",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "WCQHqR2RBIX"
+    },
+    {
+      "shortName": "Syringes for dillution",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Syringes for dillution",
+      "code": "RVC_AD_SYD",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "WORFShJTQOJ"
+    },
+    {
+      "shortName": "Needles",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Needles",
+      "code": "RVC_AD_NDL",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "OQOgTET6NwY"
+    },
+    {
+      "shortName": "Accidental Exposure to Blood (AEB)",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
+      "name": "Accidental Exposure to Blood (AEB)",
+      "code": "RVC_AD_AEB",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "id": "q0MMyiUi0Pl"
+    },
+    {
+      "shortName": "Adverse Event Following Immunization",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "CS8BMAe0nHa"
+      },
+      "name": "Adverse Event Following Immunization",
+      "code": "RVC_AD_AEFI",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "disaggregation": "severity",
+      "id": "OY40ChLj0YE"
+    },
+    {
+      "name": "Measles vaccine doses administered",
+      "shortName": "Measles doses adm",
+      "code": "RVC_AD_AMS_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "id": "SQUjh1QilzK"
+    },
+    {
+      "name": "Meningitis Polysaccharide vaccine doses administered",
+      "shortName": "Meningitis Polysaccharide doses adm",
+      "code": "RVC_AD_AMP_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "id": "S44yaXqVO6d"
+    },
+    {
+      "name": "Meningitis Conjugate vaccine doses administered",
+      "shortName": "Meningitis Conjugate doses adm",
+      "code": "RVC_AD_AMC_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "id": "K2E7cQQQqg8"
+    },
+    {
+      "name": "Cholera vaccine doses administered",
+      "shortName": "Cholera doses adm",
+      "code": "RVC_AD_ACH_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "id": "y62J21CxKi9"
+    },
+    {
+      "name": "PCV vaccine doses administered",
+      "shortName": "PCV doses adm",
+      "code": "RVC_AD_APCV_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "id": "C0uQiOAVUou"
+    },
+    {
+      "name": "Pertussis Penta vaccine doses administered",
+      "shortName": "Pertussis Penta doses adm",
+      "code": "RVC_AD_APP_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "id": "OAbkCC5y6tI"
+    },
+    {
+      "name": "Yellow Fever vaccine doses administered",
+      "shortName": "Yellow Fever doses adm",
+      "code": "RVC_AD_AYF_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "id": "uK2AktPdcPq"
+    },
+    {
+      "name": "Japanese Encephalitis vaccine doses administered",
+      "shortName": "Japanese Encephalitis doses adm",
+      "code": "RVC_AD_AJE_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "id": "KSMtgI14T16"
+    },
+    {
+      "name": "Dengue vaccine doses administered",
+      "shortName": "Dengue doses adm",
+      "code": "RVC_AD_ADE_DA",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "id": "uY4J4teOML4"
+    },
+    {
+      "name": "Measles vaccine doses used",
+      "shortName": "Measles doses used",
+      "code": "RVC_AD_AMS_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "id": "eAowznPsWxl"
+    },
+    {
+      "name": "Meningitis Polysaccharide vaccine doses used",
+      "shortName": "Meningitis Polysaccharide doses used",
+      "code": "RVC_AD_AMP_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "id": "S40qrFe4WMa"
+    },
+    {
+      "name": "Meningitis Conjugate vaccine doses used",
+      "shortName": "Meningitis Conjugate doses used",
+      "code": "RVC_AD_AMC_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "id": "WygXmjSE1co"
+    },
+    {
+      "name": "Cholera vaccine doses used",
+      "shortName": "Cholera doses used",
+      "code": "RVC_AD_ACH_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "id": "O8YGTJBdVef"
+    },
+    {
+      "name": "PCV vaccine doses used",
+      "shortName": "PCV doses used",
+      "code": "RVC_AD_APCV_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "id": "SyyO39TWzm1"
+    },
+    {
+      "name": "Pertussis Penta vaccine doses used",
+      "shortName": "Pertussis Penta doses used",
+      "code": "RVC_AD_APP_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "id": "OMn9U8w4Hyd"
+    },
+    {
+      "name": "Yellow Fever vaccine doses used",
+      "shortName": "Yellow Fever doses used",
+      "code": "RVC_AD_AYF_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "id": "uiMhCPemRiR"
+    },
+    {
+      "name": "Japanese Encephalitis vaccine doses used",
+      "shortName": "Japanese Encephalitis doses used",
+      "code": "RVC_AD_AJE_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "id": "mMaScYDWECY"
+    },
+    {
+      "name": "Dengue vaccine doses used",
+      "shortName": "Dengue doses used",
+      "code": "RVC_AD_ADE_DU",
+      "valueType": "INTEGER_ZERO_OR_POSITIVE",
+      "domainType": "AGGREGATE",
+      "aggregationType": "SUM",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "id": "ewGYPT5DoHk"
+    }
+  ],
+  "userRoles": [
+    {
+      "name": "Campaign Encoder",
+      "authorities": [
+        "F_DATAVALUE_ADD",
+        "F_DATAVALUE_DELETE",
+        "M_dhis-web-cache-cleaner",
+        "M_dhis-web-dataentry",
+        "M_dhis-web-pivot",
+        "M_dhis-web-messaging",
+        "M_dhis-web-dashboard",
+        "M_dhis-web-visualizer",
+        "M_Vaccination_App"
+      ],
+      "id": "KsC2ShOI1Ct"
+    },
+    {
+      "name": "Campaign Configurator",
+      "authorities": [
+        "F_DATASET_ADD",
+        "F_DATASET_DELETE",
+        "M_dhis-web-cache-cleaner",
+        "M_dhis-web-pivot",
+        "M_dhis-web-messaging",
+        "M_dhis-web-dashboard",
+        "M_dhis-web-visualizer",
+        "M_Vaccination_App"
+      ],
+      "id": "qiKYgc4idyX"
+    },
+    {
+      "name": "Campaign Dasbboard",
+      "authorities": [
+        "M_dhis-web-cache-cleaner",
+        "M_dhis-web-pivot",
+        "M_dhis-web-messaging",
+        "M_dhis-web-dashboard",
+        "M_dhis-web-visualizer",
+        "M_Vaccination_App"
+      ],
+      "id": "egCI5b9zGop"
+    },
+    {
+      "name": "Campaign admin",
+      "authorities": [
+        "F_CATEGORY_COMBO_DELETE",
+        "F_CATEGORY_COMBO_PUBLIC_ADD",
+        "F_CATEGORY_DELETE",
+        "F_CATEGORY_OPTION_DELETE",
+        "F_CATEGORY_OPTION_GROUP_DELETE",
+        "F_CATEGORY_OPTION_GROUP_PUBLIC_ADD",
+        "F_CATEGORY_OPTION_GROUP_SET_DELETE",
+        "F_CATEGORY_OPTION_GROUP_SET_PUBLIC_ADD",
+        "F_CATEGORY_OPTION_PUBLIC_ADD",
+        "F_CATEGORY_PUBLIC_ADD",
+        "F_DATAELEMENT_DELETE",
+        "F_DATAELEMENTGROUP_DELETE",
+        "F_DATAELEMENTGROUP_PUBLIC_ADD",
+        "F_DATAELEMENTGROUPSET_DELETE",
+        "F_DATAELEMENTGROUPSET_PUBLIC_ADD",
+        "F_DATAELEMENT_PUBLIC_ADD",
+        "F_DATASET_DELETE",
+        "F_DATASET_PUBLIC_ADD",
+        "F_INDICATOR_DELETE",
+        "F_INDICATORGROUP_DELETE",
+        "F_INDICATORGROUP_PUBLIC_ADD",
+        "F_INDICATORGROUPSET_DELETE",
+        "F_INDICATORGROUPSET_PUBLIC_ADD",
+        "F_INDICATOR_PUBLIC_ADD",
+        "F_INDICATORTYPE_ADD",
+        "F_INDICATORTYPE_DELETE",
+        "M_dhis-web-cache-cleaner",
+        "M_dhis-web-messaging",
+        "M_Vaccination_App"
+      ],
+      "id": "GA895FaYLKP"
     }
   ],
   "dataElementGroups": [
     {
       "name": "Vaccine doses administered",
-      "items": {
-        "key": "${antigen.key}-vaccine-doses-administered",
-        "name": "${antigen.name} vaccine doses administered",
-        "shortName": "${antigen.name} doses adm",
-        "code": "RVC_AD_${antigen.code}_DA",
-        "valueType": "INTEGER_ZERO_OR_POSITIVE"
-      },
       "dataElements": [
         {
           "id": "SQUjh1QilzK"
@@ -390,13 +1106,6 @@
     },
     {
       "name": "Vaccine doses used",
-      "items": {
-        "key": "${antigen.key}-vaccine-doses-used",
-        "name": "${antigen.name} vaccine doses used",
-        "shortName": "${antigen.name} doses used",
-        "code": "RVC_AD_${antigen.code}_DU",
-        "valueType": "INTEGER_ZERO_OR_POSITIVE"
-      },
       "dataElements": [
         {
           "id": "eAowznPsWxl"
@@ -429,182 +1138,1701 @@
       "id": "qoQdHjaM2mr"
     }
   ],
-  "dataElements": [
+  "indicatorGroups": [
     {
-      "name": "Measles vaccine doses administered",
-      "shortName": "Measles doses adm",
-      "code": "RVC_AD_AMS_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "SQUjh1QilzK"
-    },
-    {
-      "name": "Meningitis Polysaccharide vaccine doses administered",
-      "shortName": "Meningitis Polysaccharide doses adm",
-      "code": "RVC_AD_AMP_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "S44yaXqVO6d"
-    },
-    {
-      "name": "Meningitis Conjugate vaccine doses administered",
-      "shortName": "Meningitis Conjugate doses adm",
-      "code": "RVC_AD_AMC_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "K2E7cQQQqg8"
-    },
-    {
-      "name": "Cholera vaccine doses administered",
-      "shortName": "Cholera doses adm",
-      "code": "RVC_AD_ACH_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "y62J21CxKi9"
-    },
-    {
-      "name": "PCV vaccine doses administered",
-      "shortName": "PCV doses adm",
-      "code": "RVC_AD_APCV_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "C0uQiOAVUou"
-    },
-    {
-      "name": "Pertussis Penta vaccine doses administered",
-      "shortName": "Pertussis Penta doses adm",
-      "code": "RVC_AD_APP_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "OAbkCC5y6tI"
-    },
-    {
-      "name": "Yellow Fever vaccine doses administered",
-      "shortName": "Yellow Fever doses adm",
-      "code": "RVC_AD_AYF_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "uK2AktPdcPq"
-    },
-    {
-      "name": "Japanese Encephalitis vaccine doses administered",
-      "shortName": "Japanese Encephalitis doses adm",
-      "code": "RVC_AD_AJE_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "KSMtgI14T16"
-    },
-    {
-      "name": "Dengue vaccine doses administered",
-      "shortName": "Dengue doses adm",
-      "code": "RVC_AD_ADE_DA",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "uY4J4teOML4"
-    },
-    {
-      "name": "Measles vaccine doses used",
-      "shortName": "Measles doses used",
-      "code": "RVC_AD_AMS_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "eAowznPsWxl"
-    },
-    {
-      "name": "Meningitis Polysaccharide vaccine doses used",
-      "shortName": "Meningitis Polysaccharide doses used",
-      "code": "RVC_AD_AMP_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "S40qrFe4WMa"
-    },
-    {
-      "name": "Meningitis Conjugate vaccine doses used",
-      "shortName": "Meningitis Conjugate doses used",
-      "code": "RVC_AD_AMC_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "WygXmjSE1co"
-    },
-    {
-      "name": "Cholera vaccine doses used",
-      "shortName": "Cholera doses used",
-      "code": "RVC_AD_ACH_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "O8YGTJBdVef"
-    },
-    {
-      "name": "PCV vaccine doses used",
-      "shortName": "PCV doses used",
-      "code": "RVC_AD_APCV_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "SyyO39TWzm1"
-    },
-    {
-      "name": "Pertussis Penta vaccine doses used",
-      "shortName": "Pertussis Penta doses used",
-      "code": "RVC_AD_APP_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "OMn9U8w4Hyd"
-    },
-    {
-      "name": "Yellow Fever vaccine doses used",
-      "shortName": "Yellow Fever doses used",
-      "code": "RVC_AD_AYF_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "uiMhCPemRiR"
-    },
-    {
-      "name": "Japanese Encephalitis vaccine doses used",
-      "shortName": "Japanese Encephalitis doses used",
-      "code": "RVC_AD_AJE_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "mMaScYDWECY"
-    },
-    {
-      "name": "Dengue vaccine doses used",
-      "shortName": "Dengue doses used",
-      "code": "RVC_AD_ADE_DU",
-      "valueType": "INTEGER_ZERO_OR_POSITIVE",
-      "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
-      "id": "ewGYPT5DoHk"
-    }
-  ],
-  "dataElementGroupSets": [
-    {
-      "name": "Reactive Vaccination",
-      "dataElementGroups": [
+      "name": "Vaccine utilization rate",
+      "indicators": [
         {
-          "id": "SWQ3Hew9mZH"
+          "id": "yEAb2sBlyYY"
         },
         {
-          "id": "qoQdHjaM2mr"
+          "id": "aog9D5F8Id8"
+        },
+        {
+          "id": "iYGuAe2liwZ"
+        },
+        {
+          "id": "Kkm82JL6r5h"
+        },
+        {
+          "id": "eoG6dE83twf"
+        },
+        {
+          "id": "GAmMOmbPlnU"
+        },
+        {
+          "id": "OIqnHTgKPPm"
+        },
+        {
+          "id": "KE2h49Li3av"
+        },
+        {
+          "id": "uukv4rtBmaV"
         }
       ],
-      "id": "GeomRQxOs8b"
+      "id": "i4fkdKIHAdz"
+    },
+    {
+      "name": "Vaccine campaign coverage",
+      "indicators": [
+        {
+          "id": "CKeIXmRUhxl"
+        },
+        {
+          "id": "qCInsglUGJp"
+        },
+        {
+          "id": "SAAhhLjLsBC"
+        },
+        {
+          "id": "euUdbIrVVEA"
+        },
+        {
+          "id": "qUI7jSg5ub9"
+        },
+        {
+          "id": "m6eyPxKadAq"
+        },
+        {
+          "id": "KWQnSu2Z5Rm"
+        },
+        {
+          "id": "i6Ga2pSGyr3"
+        },
+        {
+          "id": "KGcBDoC6KwC"
+        }
+      ],
+      "id": "yQKEEPut9e9"
+    }
+  ],
+  "categoryCombos": [
+    {
+      "name": "Severity",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "iemAs0M9Cnd"
+        }
+      ],
+      "id": "CS8BMAe0nHa"
+    },
+    {
+      "name": "Age group / Gender Measles",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "KuCO3JwzQ4z"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "aWwB8jPoU7Q"
+    },
+    {
+      "name": "Age group / Gender Meningitis Polysaccharide",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "SW0iPoeOm9v"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "ugSouq2PlCt"
+    },
+    {
+      "name": "Age group / Gender Meningitis Conjugate",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "aUW2zJI2uEZ"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "Kg2L1ygahms"
+    },
+    {
+      "name": "Age group / Gender Cholera",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "eEe41xmcZZQ"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "iUqkzsqNY6I"
+    },
+    {
+      "name": "Age group / Gender PCV",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "akSNciIvdC7"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "eegqL36jGl8"
+    },
+    {
+      "name": "Age group / Gender Pertussis Penta",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "iIolqbGe1zM"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "mYMvpkbWUfC"
+    },
+    {
+      "name": "Age group / Gender Yellow Fever",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "Ceei4U4dVlh"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "ia6adPgdV9A"
+    },
+    {
+      "name": "Age group / Gender Japanese Encephalitis",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "aesE3EEB2Et"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "K8CQQM2mBV3"
+    },
+    {
+      "name": "Age group / Gender Dengue",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "acC2u6NGs94"
+        },
+        {
+          "id": "Kyg1O6YEGa9"
+        }
+      ],
+      "id": "q88jz4TuYxW"
+    }
+  ],
+  "categoryOptionCombos": [
+    {
+      "name": "Minor",
+      "categoryCombo": {
+        "id": "CS8BMAe0nHa"
+      },
+      "categoryOptions": [
+        {
+          "id": "q80SfcQbyXY"
+        }
+      ],
+      "id": "Oo2LdPRyvSC",
+      "key": "CS8BMAe0nHa.q80SfcQbyXY"
+    },
+    {
+      "name": "Severe",
+      "categoryCombo": {
+        "id": "CS8BMAe0nHa"
+      },
+      "categoryOptions": [
+        {
+          "id": "uWaATpJppxD"
+        }
+      ],
+      "id": "uCGcxLwXJEQ",
+      "key": "CS8BMAe0nHa.uWaATpJppxD"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "K2Mzpos9o94",
+      "key": "aWwB8jPoU7Q.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "WsFnJ3Z8o9N",
+      "key": "aWwB8jPoU7Q.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "WEQpVvPumq5",
+      "key": "aWwB8jPoU7Q.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "mqYrqNpsERI",
+      "key": "aWwB8jPoU7Q.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 23 m, Female",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "Wue1ApOfnkA"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "Cg4el7kGkZ9",
+      "key": "aWwB8jPoU7Q.Wue1ApOfnkA.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 23 m, Male",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "Wue1ApOfnkA"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "Ci6pTbuQUHb",
+      "key": "aWwB8jPoU7Q.Wue1ApOfnkA.OKhcQ5VPMZI"
+    },
+    {
+      "name": "24 - 59 m, Female",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "OuMRcVdyAzS"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "CwO0laKsX6s",
+      "key": "aWwB8jPoU7Q.OuMRcVdyAzS.eKqKAA1Noe8"
+    },
+    {
+      "name": "24 - 59 m, Male",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "OuMRcVdyAzS"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "K2GCrCvjEge",
+      "key": "aWwB8jPoU7Q.OuMRcVdyAzS.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "OEAjmL8nht9",
+      "key": "aWwB8jPoU7Q.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "qiy6oJWwASV",
+      "key": "aWwB8jPoU7Q.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "KW049IJYuAZ",
+      "key": "aWwB8jPoU7Q.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "aWwB8jPoU7Q"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "K6MvMPJU7ve",
+      "key": "aWwB8jPoU7Q.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "OYE8J59BBlM",
+      "key": "ugSouq2PlCt.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "eccPsX510bz",
+      "key": "ugSouq2PlCt.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "C8e43WNe0GD",
+      "key": "ugSouq2PlCt.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "uEBgstEOdQu",
+      "key": "ugSouq2PlCt.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "i6QH6C1mzLs",
+      "key": "ugSouq2PlCt.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "uiAjSr5mwpp",
+      "key": "ugSouq2PlCt.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "akcrh3sm6eY",
+      "key": "ugSouq2PlCt.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "S6E25bTTnxg",
+      "key": "ugSouq2PlCt.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "qSMuGxBR7ve",
+      "key": "ugSouq2PlCt.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "ugSouq2PlCt"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "uySsEs45XZG",
+      "key": "ugSouq2PlCt.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "i6Q93ytmOwC",
+      "key": "Kg2L1ygahms.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "y2mGdAzVFQT",
+      "key": "Kg2L1ygahms.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "y4E3RcFJa5w",
+      "key": "Kg2L1ygahms.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "e4iAXl2IBix",
+      "key": "Kg2L1ygahms.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "Cgaov7eirej",
+      "key": "Kg2L1ygahms.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "qkobHL8et4H",
+      "key": "Kg2L1ygahms.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "G0WvBxECSa2",
+      "key": "Kg2L1ygahms.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "SWWswKV75qf",
+      "key": "Kg2L1ygahms.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "qYUF6cNAYdQ",
+      "key": "Kg2L1ygahms.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "Kg2L1ygahms"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "uQkXyu7ZTBv",
+      "key": "Kg2L1ygahms.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "iqOuAkLlBKt",
+      "key": "iUqkzsqNY6I.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "eQ0AvYVWMLG",
+      "key": "iUqkzsqNY6I.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "uekxp5Xhuyu",
+      "key": "iUqkzsqNY6I.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "acWqiA4q5wS",
+      "key": "iUqkzsqNY6I.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "OiiIwbTSSrt",
+      "key": "iUqkzsqNY6I.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "aMYNu6J93yc",
+      "key": "iUqkzsqNY6I.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "ewIhMw7kftb",
+      "key": "iUqkzsqNY6I.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "SQkPEoRYdtl",
+      "key": "iUqkzsqNY6I.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "SuqrzF7WzUm",
+      "key": "iUqkzsqNY6I.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "iUqkzsqNY6I"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "iOQ7BUOLBtV",
+      "key": "iUqkzsqNY6I.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "OYcLOMBTFws",
+      "key": "eegqL36jGl8.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "mueEEqVDdaM",
+      "key": "eegqL36jGl8.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "SKmedkd1SmR",
+      "key": "eegqL36jGl8.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "OaO0OYPBKmg",
+      "key": "eegqL36jGl8.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "iGE1rJlyryQ",
+      "key": "eegqL36jGl8.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "igsbfiwRdLG",
+      "key": "eegqL36jGl8.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "mMucYXYIpUM",
+      "key": "eegqL36jGl8.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "WYIHMZmTCQU",
+      "key": "eegqL36jGl8.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "iM8BYUzKmlM",
+      "key": "eegqL36jGl8.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "eegqL36jGl8"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "iSsNPEoypk7",
+      "key": "eegqL36jGl8.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "e6yTKiPhJJn",
+      "key": "mYMvpkbWUfC.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "SYGi8PUJam1",
+      "key": "mYMvpkbWUfC.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "yKcb46wzNQw",
+      "key": "mYMvpkbWUfC.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "C2Oyk5W5Zl9",
+      "key": "mYMvpkbWUfC.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "quikJxEB0tD",
+      "key": "mYMvpkbWUfC.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "qsNJKpLTl7N",
+      "key": "mYMvpkbWUfC.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "ig2fzuRoBNz",
+      "key": "mYMvpkbWUfC.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "myQd8zIHqHS",
+      "key": "mYMvpkbWUfC.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "Cwcnu2QMfxC",
+      "key": "mYMvpkbWUfC.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "mYMvpkbWUfC"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "Wq2t2kFQEiy",
+      "key": "mYMvpkbWUfC.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "KUWwnWInpI9",
+      "key": "ia6adPgdV9A.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "CyKGlm6iFdy",
+      "key": "ia6adPgdV9A.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "Gg5bXtUq48y",
+      "key": "ia6adPgdV9A.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "OCMf9oPJ7QF",
+      "key": "ia6adPgdV9A.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "iaQxVrBPg8T",
+      "key": "ia6adPgdV9A.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "CIOABsm3sfn",
+      "key": "ia6adPgdV9A.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "OKgjJMamxnu",
+      "key": "ia6adPgdV9A.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "ygIl3FJOMeD",
+      "key": "ia6adPgdV9A.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "O4I9F3Ht9wE",
+      "key": "ia6adPgdV9A.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "ia6adPgdV9A"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "SesnvPUfBUx",
+      "key": "ia6adPgdV9A.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "is48geJ09DX",
+      "key": "K8CQQM2mBV3.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "GyKQQV16knc",
+      "key": "K8CQQM2mBV3.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "OKk3ibaHi8I",
+      "key": "K8CQQM2mBV3.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "uWagvefVGsC",
+      "key": "K8CQQM2mBV3.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "eEY94JF8leO",
+      "key": "K8CQQM2mBV3.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "mmKVC2CJJVp",
+      "key": "K8CQQM2mBV3.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "Ku6bsn1dYLB",
+      "key": "K8CQQM2mBV3.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "msXEnk38olP",
+      "key": "K8CQQM2mBV3.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "K0NKRqpNVEx",
+      "key": "K8CQQM2mBV3.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "K8CQQM2mBV3"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "Wo00hAH4RFg",
+      "key": "K8CQQM2mBV3.eIkzGBj9i1G.OKhcQ5VPMZI"
+    },
+    {
+      "name": "6 - 8 m, Female",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "KQITqiD9mfN",
+      "key": "q88jz4TuYxW.SW5gDJRtAPw.eKqKAA1Noe8"
+    },
+    {
+      "name": "6 - 8 m, Male",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "SCOUzUTyr3n",
+      "key": "q88jz4TuYxW.SW5gDJRtAPw.OKhcQ5VPMZI"
+    },
+    {
+      "name": "9 - 11 m, Female",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "CCeaL7ZhNBK",
+      "key": "q88jz4TuYxW.mumcXknOYkC.eKqKAA1Noe8"
+    },
+    {
+      "name": "9 - 11 m, Male",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "u402jqhQQIk",
+      "key": "q88jz4TuYxW.mumcXknOYkC.OKhcQ5VPMZI"
+    },
+    {
+      "name": "12 - 59 m, Female",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "aEYRno98168",
+      "key": "q88jz4TuYxW.ayCQ7FPkkhi.eKqKAA1Noe8"
+    },
+    {
+      "name": "12 - 59 m, Male",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "ayCQ7FPkkhi"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "O0GAl0ccaPg",
+      "key": "q88jz4TuYxW.ayCQ7FPkkhi.OKhcQ5VPMZI"
+    },
+    {
+      "name": "5 - 14 y, Female",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "q8sXUH8qglF",
+      "key": "q88jz4TuYxW.SmSejNFYEXD.eKqKAA1Noe8"
+    },
+    {
+      "name": "5 - 14 y, Male",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "y2iYf9RemQJ",
+      "key": "q88jz4TuYxW.SmSejNFYEXD.OKhcQ5VPMZI"
+    },
+    {
+      "name": "15 - 29 y, Female",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "eKqKAA1Noe8"
+        }
+      ],
+      "id": "GaEdSvylWSB",
+      "key": "q88jz4TuYxW.eIkzGBj9i1G.eKqKAA1Noe8"
+    },
+    {
+      "name": "15 - 29 y, Male",
+      "categoryCombo": {
+        "id": "q88jz4TuYxW"
+      },
+      "categoryOptions": [
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "OKhcQ5VPMZI"
+        }
+      ],
+      "id": "uiI3bWLIg2a",
+      "key": "q88jz4TuYxW.eIkzGBj9i1G.OKhcQ5VPMZI"
     }
   ]
 }

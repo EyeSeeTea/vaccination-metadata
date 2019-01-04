@@ -1,0 +1,264 @@
+{
+    "antigens": {
+        "measles": {
+            "name": "Measles",
+            "code": "AMS",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 23 m", "24 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "meningitis-polysaccharide": {
+            "name": "Meningitis Polysaccharide",
+            "code": "AMP",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "meningitis-conjugate": {
+            "name": "Meningitis Conjugate",
+            "code": "AMC",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "cholera": {
+            "name": "Cholera",
+            "code": "ACH",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "pcv": {
+            "name": "PCV",
+            "code": "APCV",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "pertussis-penta": {
+            "name": "Pertussis Penta",
+            "code": "APP",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "yellow-fever": {
+            "name": "Yellow Fever",
+            "code": "AYF",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "japanese-encephalitis": {
+            "name": "Japanese Encephalitis",
+            "code": "AJE",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "dengue": {
+            "name": "Dengue",
+            "code": "ADE",
+            "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        }
+    },
+
+    "vaccinationIndicators": {
+        "global": {
+            "ads-wastage-rate": {
+                "name": "ADS (Auto Disable Syringe) wastage rate",
+                "shortName": "ADS wastage rate",
+                "code": "RVC_IN_AWR",
+                "indicatorType": "percentage",
+                "numerator": "#{${dataElements['ads-used'].id}} - #{${dataElements['vaccine-doses-administered'].id}}",
+                "denominator": "#{${dataElements['ads-used'].id}}"
+            },
+            "safety-boxes-ratio": {
+                "name": "Safety boxes ratio",
+                "code": "RVC_IN_SBR",
+                "indicatorType": "percentage",
+                "numerator": "#{${dataElements['syringes'].id}}}",
+                "denominator": "#{${dataElements['safety-boxes'].id}}"
+            },
+            "dilution-syringes-ratio": {
+                "name": "Dilution syringes ratio",
+                "code": "RVC_IN_DSR",
+                "indicatorType": "percentage",
+                "numerator": "#{${dataElements['syringes-dilution'].id}}}",
+                "denominator": "#{${dataElements['vaccine-doses-used'].id}}"
+            }
+        },
+        "byAntigen": {
+            "vaccine-utilization-rate": {
+                "name": "Vaccine utilization rate",
+                "items": {
+                    "key": "${antigen.key}-vaccine-utilization-rate",
+                    "name": "${antigen.name} vaccine utilization rate",
+                    "shortName": "${antigen.name} utilization rate",
+                    "code": "RVC_IN_${antigen.code}_UR",
+                    "indicatorType": "percentage",
+                    "numerator": "#{${dataElements[antigen.key + '-vaccine-doses-administered'].id}}",
+                    "denominator": "#{${dataElements[antigen.key + '-vaccine-doses-used'].id}}"
+                }
+            },
+            "vaccine-campaign-coverage": {
+                "name": "Vaccine campaign coverage",
+                "items": {
+                    "key": "${antigen.key}-vaccine-campaign-coverage",
+                    "name": "${antigen.name} vaccine campaign coverage",
+                    "shortName": "${antigen.name} campaign coverage",
+                    "code": "RVC_IN_${antigen.code}_CC",
+                    "indicatorType": "percentage",
+                    "numerator": "#{${dataElements[antigen.key + '-vaccine-doses-administered'].id}}",
+                    "denominator": "#{${dataElements['total-population'].id}}"
+                }
+            }
+        }
+    },
+
+    "vaccinationData": {
+        "global": {
+            "total-population": {
+                "name": "Total population",
+                "code": "RVC_AD_TP",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "ads-used": {
+                "name": "ADS (Auto Disable Syringe) used",
+                "code": "RVC_AD_ADS1",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "ads-dilution": {
+                "name": "ADS (Auto Disable Syringe) for dilution",
+                "code": "RVC_AD_ADS2",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "safety-boxes": {
+                "name": "Safety boxes",
+                "code": "RVC_AD_SB",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "syringes": {
+                "name": "Syringes",
+                "code": "RVC_AD_SYR",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "syringes-dilution": {
+                "name": "Syringes for dillution",
+                "code": "RVC_AD_SYD",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "needles": {
+                "name": "Needles",
+                "code": "RVC_AD_NDL",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "aeb": {
+                "name": "Accidental Exposure to Blood (AEB)",
+                "code": "RVC_AD_AEB",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            },
+            "adverse-event": {
+                "name": "Adverse Event Following Immunization",
+                "code": "RVC_AD_AEFI",
+                "valueType": "INTEGER_ZERO_OR_POSITIVE",
+                "disaggregation": "severity"
+            }
+        },
+        "byAntigen": {
+            "vaccine-doses-administered": {
+                "name": "Vaccine doses administered",
+                "items": {
+                    "key": "${antigen.key}-vaccine-doses-administered",
+                    "name": "${antigen.name} vaccine doses administered",
+                    "shortName": "${antigen.name} doses adm",
+                    "code": "RVC_AD_${antigen.code}_DA",
+                    "valueType": "INTEGER_ZERO_OR_POSITIVE"
+                }
+            },
+            "vaccine-doses-used": {
+                "name": "Vaccine doses used",
+                "items": {
+                    "key": "${antigen.key}-vaccine-doses-used",
+                    "name": "${antigen.name} vaccine doses used",
+                    "shortName": "${antigen.name} doses used",
+                    "code": "RVC_AD_${antigen.code}_DU",
+                    "valueType": "INTEGER_ZERO_OR_POSITIVE"
+                }
+            }
+        }
+    },
+
+    "categories": {
+        "severity": {
+            "name": "Severity",
+            "categoryOptions": ["Minor", "Severe"]
+        }
+    },
+
+    "indicatorTypes": {
+        "percentage": {
+            "name": "percentage",
+            "factor": 100
+        }
+    },
+
+    "userRoles": {
+        "encoder": {
+            "name": "Campaign Encoder",
+            "authorities": [
+                "F_DATAVALUE_ADD",
+                "F_DATAVALUE_DELETE",
+                "M_dhis-web-cache-cleaner",
+                "M_dhis-web-dataentry",
+                "M_dhis-web-pivot",
+                "M_dhis-web-messaging",
+                "M_dhis-web-dashboard",
+                "M_dhis-web-visualizer",
+                "M_Vaccination_App"
+            ]
+        },
+        "configurator": {
+            "name": "Campaign Configurator",
+            "authorities": [
+                "F_DATASET_ADD",
+                "F_DATASET_DELETE",
+                "M_dhis-web-cache-cleaner",
+                "M_dhis-web-pivot",
+                "M_dhis-web-messaging",
+                "M_dhis-web-dashboard",
+                "M_dhis-web-visualizer",
+                "M_Vaccination_App"
+            ]
+        },
+        "dashboard": {
+            "name": "Campaign Dasbboard",
+            "authorities": [
+                "M_dhis-web-cache-cleaner",
+                "M_dhis-web-pivot",
+                "M_dhis-web-messaging",
+                "M_dhis-web-dashboard",
+                "M_dhis-web-visualizer",
+                "M_Vaccination_App"
+            ]
+        },
+        "admin": {
+            "name": "Campaign admin",
+            "authorities": [
+                "F_CATEGORY_COMBO_DELETE",
+                "F_CATEGORY_COMBO_PUBLIC_ADD",
+                "F_CATEGORY_DELETE",
+                "F_CATEGORY_OPTION_DELETE",
+                "F_CATEGORY_OPTION_GROUP_DELETE",
+                "F_CATEGORY_OPTION_GROUP_PUBLIC_ADD",
+                "F_CATEGORY_OPTION_GROUP_SET_DELETE",
+                "F_CATEGORY_OPTION_GROUP_SET_PUBLIC_ADD",
+                "F_CATEGORY_OPTION_PUBLIC_ADD",
+                "F_CATEGORY_PUBLIC_ADD",
+                "F_DATAELEMENT_DELETE",
+                "F_DATAELEMENTGROUP_DELETE",
+                "F_DATAELEMENTGROUP_PUBLIC_ADD",
+                "F_DATAELEMENTGROUPSET_DELETE",
+                "F_DATAELEMENTGROUPSET_PUBLIC_ADD",
+                "F_DATAELEMENT_PUBLIC_ADD",
+                "F_DATASET_DELETE",
+                "F_DATASET_PUBLIC_ADD",
+                "F_INDICATOR_DELETE",
+                "F_INDICATORGROUP_DELETE",
+                "F_INDICATORGROUP_PUBLIC_ADD",
+                "F_INDICATORGROUPSET_DELETE",
+                "F_INDICATORGROUPSET_PUBLIC_ADD",
+                "F_INDICATOR_PUBLIC_ADD",
+                "F_INDICATORTYPE_ADD",
+                "F_INDICATORTYPE_DELETE",
+                "M_dhis-web-cache-cleaner",
+                "M_dhis-web-messaging",
+                "M_Vaccination_App"
+            ]
+        }
+    }
+}

@@ -3,7 +3,7 @@ const pMap = require("p-map");
 const md5 = require("md5");
 const fetch = require("node-fetch");
 
-const {repeat} = require("./utils");
+const {repeat, inspect} = require("./utils");
 
 // DHIS2 UID :: /^[a-zA-Z]{1}[a-zA-Z0-9]{10}$/
 const asciiLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -52,7 +52,11 @@ class Db {
 
         return new Db(url, data);
     }
-    
+
+    getObjectsForModel(model) {
+        return this.data[model];
+    }
+
     getByKeyAndName(model, allAttributes) {
         const {key, ...attributes} = allAttributes;
         const name = attributes.name;
@@ -61,10 +65,21 @@ class Db {
         if (!valuesByName) {
             throw `Model not found in data: ${model}`;
         } else if (!name) {
-            throw `Name attribute is required in attributes: ${attributes}`;
+            throw `Name attribute is required in attributes: ${inspect(attributes)}`;
         } else {
-            const uid = _(valuesByName).get([name, "id"]) || getUid(key, model + "-");
-            return {...attributes, id: uid};
+            const uid = _(valuesByName).get([name, "id"]) ||
+                getUid(key || name, model + "-");
+            return {...attributes, id: uid, key};
+        }
+    }
+
+    getByKey(model, allAttributes) {
+        const {key, ...attributes} = allAttributes;
+        if (!key) {
+            throw `Name key is required in attributes: ${inspect(attributes)}`;
+        } else {
+            const uid = getUid(key, model + "-");
+            return {...attributes, id: uid, key};
         }
     }
 
