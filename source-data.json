@@ -1,4 +1,53 @@
 {
+    "testing": {
+        "organisationUnits": {
+            "name": "MSF",
+            "children": {
+                "center": {
+                    "name": "OCBA",
+                    "children": {
+                        "office1" : {
+                            "name": "MALI",
+                            "children": {
+                                "project1": {
+                                    "name": "KIDAL, PHC",
+                                    "children": {
+                                        "site1": {
+                                            "name": "Vaccination Preventive (CPS)",
+                                            "children": {
+                                                "service1": {
+                                                    "name": "Vaccination - Tanainat"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "office2": {
+                            "name": "CAR",
+                            "children": {
+                                "project2": {
+                                    "name": "KABO",
+                                    "children": {
+                                        "site2": {
+                                            "name": "BELALO",
+                                            "children": {
+                                                "service2": {
+                                                    "name": "Vaccination"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+
     "antigens": {
         "measles": {
             "name": "Measles",
@@ -7,11 +56,13 @@
         },
         "meningitis-polysaccharide": {
             "name": "Meningitis Polysaccharide",
+            "shortName": "MenPol",
             "code": "AMP",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "meningitis-conjugate": {
             "name": "Meningitis Conjugate",
+            "shortName": "MenCon",
             "code": "AMC",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
@@ -47,139 +98,163 @@
         }
     },
 
-    "vaccinationIndicators": {
-        "global": {
-            "ads-wastage-rate": {
-                "name": "ADS (Auto Disable Syringe) wastage rate",
-                "shortName": "ADS wastage rate",
-                "code": "RVC_IN_AWR",
-                "indicatorType": "percentage",
-                "numeratorDescription": "(ADS used - Total Doses adm) / ADS used",
-                "numerator": "#{${dataElements['ads-used'].id}} - (${dataElementGroups['vaccine-doses-administered'].dataElements.map(de => '#{' + de.id + '}').join(' + ')})",
-                "denominatorDescription": "ADS used",
-                "denominator": "#{${dataElements['ads-used'].id}}"
-            },
-            "safety-boxes-ratio": {
-                "name": "Safety boxes ratio",
-                "code": "RVC_IN_SBR",
-                "indicatorType": "ratio",
-                "numeratorDescription": "Syringes",
-                "numerator": "#{${dataElements['syringes'].id}}",
-                "denominatorDescription": "Safety Boxes",
-                "denominator": "#{${dataElements['safety-boxes'].id}}"
-            },
-            "dilution-syringes-ratio": {
-                "name": "Dilution syringes ratio",
-                "code": "RVC_IN_DSR",
-                "indicatorType": "percentage",
-                "numeratorDescription": "Syringes for dilution",
-                "numerator": "#{${dataElements['syringes-dilution'].id}}",
-                "denominatorDescription": "Total doses used",
-                "denominator": "${dataElementGroups['vaccine-doses-used'].dataElements.map(de => '#{' + de.id + '}').join(' + ')}"
-            }
+    "dataElements": {
+        "total-population": {
+            "name": "Total population (catchment/target)",
+            "code": "DEM1",
+            "valueType": "NUMBER"
         },
-        "byAntigen": {
-            "vaccine-utilization-rate": {
-                "name": "Vaccine utilization rate",
-                "items": {
-                    "key": "${antigen.key}-vaccine-utilization-rate",
-                    "name": "${antigen.name} vaccine utilization rate",
-                    "shortName": "${antigen.name} utilization rate",
-                    "code": "RVC_IN_${antigen.code}_UR",
-                    "indicatorType": "percentage",
-                    "numeratorDescription": "Doses administered",
-                    "numerator": "#{${dataElements[antigen.key + '-vaccine-doses-administered'].id}}",
-                    "denominatorDescription": "Doses used",
-                    "denominator": "#{${dataElements[antigen.key + '-vaccine-doses-used'].id}}"
-                }
-            },
-            "vaccine-campaign-coverage": {
-                "name": "Vaccine campaign coverage",
-                "items": {
-                    "key": "${antigen.key}-vaccine-campaign-coverage",
-                    "name": "${antigen.name} vaccine campaign coverage",
-                    "shortName": "${antigen.name} campaign coverage",
-                    "code": "RVC_IN_${antigen.code}_CC",
-                    "indicatorType": "percentage",
-                    "numeratorDescription": "Doses administered",
-                    "numerator": "#{${dataElements[antigen.key + '-vaccine-doses-administered'].id}}",
-                    "denominatorDescription": "Total population",
-                    "denominator": "#{${dataElements['total-population'].id}}"
-                }
-            }
+        "total-population-by-age": {
+            "name": "Total population by age (catchment/target)",
+            "code": "DEM4",
+            "valueType": "NUMBER"
+        },
+        "age-distribution": {
+            "name": "Age Distribution",
+            "valueType": "NUMBER",
+            "code": "DEM3"
+        },
+        "comments-demographic": {
+            "name": "Comments DS_DEM",
+            "valueType": "LONG_TEXT",
+            "code": "DE_DS_DEM"
+        },
+        "comments-population": {
+            "name": "Comments DS_POP",
+            "valueType": "LONG_TEXT",
+            "code": "DE_DS_POP"
+        },
+        "birth-rate": {
+            "name": "Crude Birth Rate (%)",
+            "valueType": "NUMBER",
+            "code": "DEM2"
+        },
+
+        "vaccine-doses-administered": {
+            "$byAntigen": true,
+            "name": "Vaccine doses administered",
+            "shortName": "Doses adm",
+            "code": "RVC_AD_DA",
+            "valueType": "NUMBER",
+            "$categoryCombo": "age-group-${antigen.key}"
+        },
+        "vaccine-doses-used": {
+            "$byAntigen": true,
+            "name": "Vaccine doses used",
+            "shortName": "Doses used",
+            "code": "RVC_AD_DU",
+            "valueType": "NUMBER",
+            "$categoryCombo": "age-group-${antigen.key}"
+        },
+        "ads-used": {
+            "$byAntigen": true,
+            "name": "ADS (Auto Disable Syringe) used",
+            "shortName": "ADS used",
+            "code": "RVC_AD_ADSU",
+            "valueType": "NUMBER"
+        },
+        "ads-dilution": {
+            "$byAntigen": true,
+            "name": "ADS (Auto Disable Syringe) for dilution",
+            "shortName": "ADS dilution",
+            "code": "RVC_AD_ADSD",
+            "valueType": "NUMBER"
+        },
+        "safety-boxes": {
+            "$byAntigen": true,
+            "name": "Safety boxes",
+            "code": "RVC_AD_SB",
+            "valueType": "NUMBER"
+        },
+        "syringes": {
+            "$byAntigen": true,
+            "name": "Syringes",
+            "code": "RVC_AD_SYR",
+            "valueType": "NUMBER"
+        },
+        "syringes-dilution": {
+            "$byAntigen": true,
+            "name": "Syringes for dilution",
+            "code": "RVC_AD_SYD",
+            "valueType": "NUMBER"
+        },
+        "needles": {
+            "$byAntigen": true,
+            "name": "Needles",
+            "key": "needles",
+            "code": "RVC_AD_NDL",
+            "valueType": "NUMBER"
+        },
+        "aeb": {
+            "$byAntigen": true,
+            "name": "Accidental Exposure to Blood (AEB)",
+            "shortName": "AEB",
+            "code": "RVC_AD_AEB",
+            "valueType": "NUMBER"
+        },
+        "adverse-event": {
+            "$byAntigen": true,
+            "name": "Adverse Event Following Immunization",
+            "shortName": "AEFI",
+            "code": "RVC_AD_AEFI",
+            "valueType": "NUMBER",
+            "$disaggregation": "severity"
         }
     },
 
-    "vaccinationData": {
-        "global": {
-            "total-population": {
-                "name": "Total population",
-                "code": "RVC_AD_TP",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "ads-used": {
-                "name": "ADS (Auto Disable Syringe) used",
-                "code": "RVC_AD_ADS1",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "ads-dilution": {
-                "name": "ADS (Auto Disable Syringe) for dilution",
-                "code": "RVC_AD_ADS2",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "safety-boxes": {
-                "name": "Safety boxes",
-                "code": "RVC_AD_SB",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "syringes": {
-                "name": "Syringes",
-                "code": "RVC_AD_SYR",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "syringes-dilution": {
-                "name": "Syringes for dillution",
-                "code": "RVC_AD_SYD",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "needles": {
-                "name": "Needles",
-                "code": "RVC_AD_NDL",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "aeb": {
-                "name": "Accidental Exposure to Blood (AEB)",
-                "code": "RVC_AD_AEB",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE"
-            },
-            "adverse-event": {
-                "name": "Adverse Event Following Immunization",
-                "code": "RVC_AD_AEFI",
-                "valueType": "INTEGER_ZERO_OR_POSITIVE",
-                "disaggregation": "severity"
-            }
+    "indicators": {
+        "ads-wastage-rate": {
+            "$byAntigen": true,
+            "name": "ADS (Auto Disable Syringe) wastage rate",
+            "shortName": "ADS wastage rate",
+            "code": "RVC_IN_AWR",
+            "$indicatorType": "percentage",
+            "numeratorDescription": "ADS used - Total Doses adm",
+            "numerator": "#{${dataElements['ads-used-' + antigen.key].id}} - #{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
+            "denominatorDescription": "ADS used",
+            "denominator": "#{${dataElements['ads-used-' + antigen.key].id}}"
         },
-        "byAntigen": {
-            "vaccine-doses-administered": {
-                "name": "Vaccine doses administered",
-                "items": {
-                    "key": "${antigen.key}-vaccine-doses-administered",
-                    "name": "${antigen.name} vaccine doses administered",
-                    "shortName": "${antigen.name} doses adm",
-                    "code": "RVC_AD_${antigen.code}_DA",
-                    "valueType": "INTEGER_ZERO_OR_POSITIVE"
-                }
-            },
-            "vaccine-doses-used": {
-                "name": "Vaccine doses used",
-                "items": {
-                    "key": "${antigen.key}-vaccine-doses-used",
-                    "name": "${antigen.name} vaccine doses used",
-                    "shortName": "${antigen.name} doses used",
-                    "code": "RVC_AD_${antigen.code}_DU",
-                    "valueType": "INTEGER_ZERO_OR_POSITIVE"
-                }
-            }
+        "safety-boxes-ratio": {
+            "$byAntigen": true,
+            "name": "Safety boxes ratio",
+            "code": "RVC_IN_SBR",
+            "$indicatorType": "ratio",
+            "numeratorDescription": "Syringes",
+            "numerator": "#{${dataElements['syringes-' + antigen.key].id}}",
+            "denominatorDescription": "Safety Boxes",
+            "denominator": "#{${dataElements['safety-boxes-' + antigen.key].id}}"
+        },
+        "dilution-syringes-ratio": {
+            "$byAntigen": true,
+            "name": "Dilution syringes ratio",
+            "code": "RVC_IN_DSR",
+            "$indicatorType": "percentage",
+            "numeratorDescription": "Syringes for dilution",
+            "numerator": "#{${dataElements['syringes-dilution-' + antigen.key].id}}",
+            "denominatorDescription": "Total doses used",
+            "denominator": "#{${dataElements['vaccine-doses-used-' + antigen.key].id}}"
+        },
+        "vaccine-utilization-rate": {
+            "$byAntigen": true,
+            "name": "Vaccine utilization rate",
+            "shortName": "Utilization rate",
+            "code": "RVC_IN_UR",
+            "$indicatorType": "percentage",
+            "numeratorDescription": "Doses administered",
+            "numerator": "#{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
+            "denominatorDescription": "Doses used",
+            "denominator": "#{${dataElements['vaccine-doses-used-' + antigen.key].id}}"
+        },
+        "vaccine-campaign-coverage": {
+            "$byAntigen": true,
+            "name": "Vaccine campaign coverage",
+            "shortName": "Campaign coverage",
+            "code": "RVC_IN_CC",
+            "$indicatorType": "percentage",
+            "numeratorDescription": "Doses administered",
+            "numerator": "#{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
+            "denominatorDescription": "Total population",
+            "denominator": "#{${dataElements['total-population'].id}}"
         }
     },
 
@@ -189,10 +264,19 @@
             "dataDimensionType": "ATTRIBUTE",
             "categoryOptions": ["Team 1", "Team 2", "Team 3"]
         },
+        "gender": {
+            "name": "Gender",
+            "dataDimensionType": "DISAGGREGATION",
+            "categoryOptions": ["Female", "Male"]
+        },
         "severity": {
             "name": "Severity",
+            "dataDimensionType": "DISAGGREGATION",
             "categoryOptions": ["Minor", "Severe"]
         }
+    },
+
+    "categoryCombos": {
     },
 
     "indicatorTypes": {
@@ -278,6 +362,69 @@
                 "M_dhis-web-messaging",
                 "M_Vaccination_App"
             ]
+        }
+    },
+
+    "dataSets": {
+        "demograhic-yearly": {
+            "name": "Demographic Information - Yearly",
+            "shortName": "Demographic Information",
+            "code": "DS_DEM",
+            "periodType": "Yearly",
+            "dataElementDecoration": true,
+            "renderAsTabs": true,
+            "openFuturePeriods": 1,
+            "timelyDays": 15,
+            "$dataElements": ["age-distribution", "comments-demographic", "birth-rate"],
+            "$organisationUnitsLevels": {"names": ["OCBA"], "levels": [4, 5]},
+            "$sections": {
+                "birth-rate": {
+                    "name": "Crude Birth Rate (%)",
+                    "showRowTotals": true,
+                    "$dataElements": ["birth-rate"]
+                },
+                "age-distribution": {
+                    "name": "Population Age Distribution (%)",
+                    "showRowTotals": true,
+                    "$dataElements": ["age-distribution"]
+                },
+                "comments": {
+                    "name": "comments",
+                    "$dataElements": ["comments-demographic"]
+                }
+            }
+        },
+        "population-quarterly": {
+            "name": "Population - Quarterly",
+            "shortName": "Population - Quarterly",
+            "code": "DS_POP_Q",
+            "periodType": "Quarterly",
+            "dataElementDecoration": true,
+            "renderAsTabs": true,
+            "openFuturePeriods": 4,
+            "timelyDays": 15,
+            "$dataElements": [
+                "total-population",
+                "total-population-by-age",
+                "comments-population"
+            ],
+            "$organisationUnitsLevels": {"names": ["OCBA"], "levels": [4, 5]},
+            "$sections": {
+                "population": {
+                    "name": "Population",
+                    "showRowTotals": true,
+                    "$dataElements": [
+                        "total-population",
+                        "total-population-by-age"
+                    ]
+                },
+                "comments": {
+                    "name": "comments",
+                    "$dataElements": [
+                        "comments-population"
+                    ]
+                }
+            }
         }
     }
 }

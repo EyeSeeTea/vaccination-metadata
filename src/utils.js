@@ -32,7 +32,7 @@ function get(obj, path, {defaultValue} = {}) {
     if (_.isUndefined(value)) {
         if (_.isUndefined(defaultValue)) {
             const pathString = _(path).castArray().join(", ");
-            throw new Error(`No path '${pathString}' in object: ${inspect(obj)}`);
+            throw new Error(`No path '${pathString}' in object:\n${inspect(obj)}`);
         } else {
             return defaultValue;
         }
@@ -47,7 +47,7 @@ function interpolate(template, namespace) {
     try {
         return new Function(...names, `return \`${template}\`;`)(...values);
     } catch (err) {
-        console.error(`Interpolate error: template=${template}`); // eslint-disable-line no-console
+        console.error(`Interpolate error.\nTemplate: ${template}`); // eslint-disable-line no-console
         throw err;
     }
 }

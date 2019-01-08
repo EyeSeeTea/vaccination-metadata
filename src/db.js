@@ -39,7 +39,7 @@ class Db {
 
         if (models) {
             const getExistingAsPairs = async (model) => {
-                const json = await fetch(`${url}/api/${model}?fields=id,name&paging=false`)
+                const json = await fetch(`${url}/api/${model}?fields=id,name,level&paging=false`)
                     .then(res => res.json());
                 const valuesByName = _(json[model]).keyBy("name").value();
                 return [model, valuesByName];
@@ -53,7 +53,7 @@ class Db {
     }
 
     getObjectsForModel(model) {
-        return this.data[model];
+        return _.values(this.data[model]);
     }
 
     getByName(model, allAttributes) {
@@ -72,16 +72,6 @@ class Db {
         }
     }
 
-    getByKey(model, allAttributes) {
-        const {key, ...attributes} = allAttributes;
-        if (!key) {
-            throw `Name key is required in attributes: ${inspect(attributes)}`;
-        } else {
-            const uid = getUid(key, model + "-");
-            return {...attributes, id: uid, key};
-        }
-    }
-
     async postMetadata(payload) {
         const headers = {"Content-Type": "application/json"};
         const response = await fetch(`${this.url}/api/metadata`, {
@@ -90,6 +80,12 @@ class Db {
             headers,
         });
         return response.json();
+    }
+
+    async updateCOCs() {
+        return fetch(`${this.url}/maintenance/categoryOptionComboUpdate`, {
+            method: "POST",
+        });
     }
 }
 

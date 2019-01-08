@@ -15,7 +15,7 @@ async function generate({url, sourceDataFilePath, outputMetadataFilePath}) {
 
 async function post({url, sourceMetadataFilePath}) {
     const payload = JSON.parse(fs.readFileSync(sourceMetadataFilePath, "utf8"));
-    const responseJson = await postPayload(url, payload);
+    const responseJson = await postPayload(url, payload, {updateCOCs: true});
 
     if (responseJson.status === "OK") {
         debug(`Import success:" ${inspect(responseJson.stats)}`);
