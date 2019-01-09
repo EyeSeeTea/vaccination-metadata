@@ -1,53 +1,4 @@
 {
-    "testing": {
-        "organisationUnits": {
-            "name": "MSF",
-            "children": {
-                "center": {
-                    "name": "OCBA",
-                    "children": {
-                        "office1" : {
-                            "name": "MALI",
-                            "children": {
-                                "project1": {
-                                    "name": "KIDAL, PHC",
-                                    "children": {
-                                        "site1": {
-                                            "name": "Vaccination Preventive (CPS)",
-                                            "children": {
-                                                "service1": {
-                                                    "name": "Vaccination - Tanainat"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "office2": {
-                            "name": "CAR",
-                            "children": {
-                                "project2": {
-                                    "name": "KABO",
-                                    "children": {
-                                        "site2": {
-                                            "name": "BELALO",
-                                            "children": {
-                                                "service2": {
-                                                    "name": "Vaccination"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
-
     "antigens": {
         "measles": {
             "name": "Measles",
@@ -102,17 +53,22 @@
         "total-population": {
             "name": "Total population (catchment/target)",
             "code": "DEM1",
+            "aggregationType": "LAST_AVERAGE_ORG_UNIT",
             "valueType": "NUMBER"
         },
         "total-population-by-age": {
             "name": "Total population by age (catchment/target)",
             "code": "DEM4",
-            "valueType": "NUMBER"
+            "valueType": "NUMBER",
+            "aggregationType": "LAST_AVERAGE_ORG_UNIT",
+            "$categoryCombo": "demographic-age"
         },
         "age-distribution": {
             "name": "Age Distribution",
             "valueType": "NUMBER",
-            "code": "DEM3"
+            "code": "DEM3",
+            "aggregationType": "LAST_AVERAGE_ORG_UNIT",
+            "$categoryCombo": "demographic-age"
         },
         "comments-demographic": {
             "name": "Comments DS_DEM",
@@ -127,6 +83,7 @@
         "birth-rate": {
             "name": "Crude Birth Rate (%)",
             "valueType": "NUMBER",
+            "aggregationType": "LAST_AVERAGE_ORG_UNIT",
             "code": "DEM2"
         },
 
@@ -198,7 +155,7 @@
             "shortName": "AEFI",
             "code": "RVC_AD_AEFI",
             "valueType": "NUMBER",
-            "$disaggregation": "severity"
+            "$categoryCombo": "severity"
         }
     },
 
@@ -254,7 +211,7 @@
             "numeratorDescription": "Doses administered",
             "numerator": "#{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
             "denominatorDescription": "Total population",
-            "denominator": "#{${dataElements['total-population'].id}}"
+            "denominator": "#{${dataElements['total-population'].id}} * #{${dataElements['age-distribution'].id}}"
         }
     },
 
@@ -273,10 +230,22 @@
             "name": "Severity",
             "dataDimensionType": "DISAGGREGATION",
             "categoryOptions": ["Minor", "Severe"]
+        },
+        "demographic-age": {
+            "name": "Demographic age distribution",
+            "dataDimensionType": "DISAGGREGATION",
+            "categoryOptions": [
+                "0 - 6 w", "7 w - 2 m", "3 - 5 m", "6 - 8 m", "9 - 11 m",
+                "12 - 23 m", "24 - 59 m", "5 - 14 y", "15 - 29 y", ">= 30y"
+            ]
         }
     },
 
-    "categoryCombos": {
+    "categoryCombosNOTUSED": {
+        "demographic-age": {
+            "name": "Demographic Age Distribution Combo",
+            "$category": ["demograhic-age"]
+        }
     },
 
     "indicatorTypes": {
@@ -376,7 +345,7 @@
             "openFuturePeriods": 1,
             "timelyDays": 15,
             "$dataElements": ["age-distribution", "comments-demographic", "birth-rate"],
-            "$organisationUnitsLevels": {"names": ["OCBA"], "levels": [4, 5]},
+            "$organisationUnits": {"names": ["OCBA"], "levels": [4, 5]},
             "$sections": {
                 "birth-rate": {
                     "name": "Crude Birth Rate (%)",
@@ -408,7 +377,7 @@
                 "total-population-by-age",
                 "comments-population"
             ],
-            "$organisationUnitsLevels": {"names": ["OCBA"], "levels": [4, 5]},
+            "$organisationUnits": {"names": ["OCBA"], "levels": [4, 5]},
             "$sections": {
                 "population": {
                     "name": "Population",
@@ -423,6 +392,85 @@
                     "$dataElements": [
                         "comments-population"
                     ]
+                }
+            }
+        }
+    },
+    "test": {
+        "organisationUnits": {
+            "name": "MSF",
+            "children": {
+                "center": {
+                    "name": "OCBA",
+                    "children": {
+                        "office1": {
+                            "name": "MALI",
+                            "children": {
+                                "project1": {
+                                    "name": "KIDAL, PHC",
+                                    "code": "OU_KIDAL",
+                                    "children": {
+                                        "site1": {
+                                            "name": "Vaccination Preventive (CPS)",
+                                            "children": {
+                                                "service1": {
+                                                    "name": "Vaccination - Tanainat"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "office2": {
+                            "name": "CAR",
+                            "children": {
+                                "project2": {
+                                    "name": "KABO",
+                                    "code": "OU_KABO",
+                                    "children": {
+                                        "site2": {
+                                            "name": "BELALO",
+                                            "children": {
+                                                "service2": {
+                                                    "name": "Vaccination"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "dataSets": {
+            "test-campaign1": {
+                "name": "Vaccination Campaign 2019 Winter",
+                "periodType": "Daily",
+                "dataElementDecoration": true,
+                "renderAsTabs": true,
+                "openFuturePeriods": 1,
+                "timelyDays": 15,
+                "$categoryCombo": "teams",
+                "$organisationUnits": {
+                    "names": [
+                        "Vaccination",
+                        "Vaccination - Tanainat"
+                    ]
+                },
+                "$sections": {
+                    "test-campaign1-cholera": {
+                        "name": "Cholera",
+                        "$dataElementsByGroups": ["cholera"],
+                        "$dataElements": []
+                    },
+                    "test-campaign1-measles": {
+                        "name": "Measles",
+                        "$dataElementsByGroups": ["measles"],
+                        "$dataElements": []
+                    }
                 }
             }
         }

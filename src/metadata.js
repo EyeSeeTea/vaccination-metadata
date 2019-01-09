@@ -47,7 +47,10 @@ function toKeyList(object, path) {
     } else if (!_.has(object, path)) {
         throw new Error(`Path ${path} not found in object:\n${inspect(object)}`);
     } else {
-        const innerObject =_.get(object, path);
+        const innerObject = {
+            ..._.get(object, path),
+            ..._.get(object, "test." + path),
+        };
         return _(innerObject).map((value, key) => ({...value, key})).value();
     }
 }
@@ -83,13 +86,13 @@ async function getPayloadFromDb(db, sourceData) {
 
     const indicatorsMetadata = getIndicatorsMetadata(db, sourceData, dataElementsMetadata);
 
-    const orgUnitsMetadata = getOrgUnitsMetadata(db, sourceData)
+    const orgUnitsMetadata = getTestOrgUnitsMetadata(db, sourceData)
 
     const userRoles = toKeyList(sourceData, "userRoles").map(userRole => {
         return db.getByName("userRoles", userRole);
     });
 
-    const dataSetsMetadata = getDataSetsMetadata(db, sourceData, dataElementsMetadata);
+    const dataSetsMetadata = getDataSetsMetadata(db, sourceData,  categoriesMetadata, dataElementsMetadata);
 
     const payloadBase = {
         categories: [categoryAntigens],
@@ -107,31 +110,42 @@ async function getPayloadFromDb(db, sourceData) {
     ]);
 }
 
-function getDataSetsMetadata(db, sourceData, dataElementsMetadata) {
+function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMetadata) {
     const organisationUnits = db.getObjectsForModel("organisationUnits");
+    const dataElementsById = _.keyBy(dataElementsMetadata.dataElements, "id");
     const dataElementsByKey = _.keyBy(dataElementsMetadata.dataElements, "key");
+    const dataElementGroupsByKey = _.keyBy(dataElementsMetadata.dataElementGroups, "key");
 
-    const dataSets = toKeyList(sourceData, "dataSets").map($dataSet => {
+    return flattenPayloads(toKeyList(sourceData, "dataSets").map($dataSet => {
         const sections = toKeyList($dataSet, "$sections").map($section => {
-            return db.getByName("sections", {
+            const dataElements = _.concat(
+                _(dataElementsByKey).at($section.$dataElements || []).value(),
+                _(dataElementGroupsByKey)
+                    .at($section.$dataElementsByGroups || [])
+                    .flatMap("dataElements")
+                    .map(de => dataElementsById[de.id])
+                    .value(),
+            );
+            return db.getByKey("sections", {
                 ...$section,
-                dataElements: getIds(_(dataElementsByKey).at($section.$dataElements).value()),
+                dataElements: getIds(dataElements),
             });
         });
 
         const organisationUnitsForDataSet = organisationUnits.filter(orgUnit => {
-            const { names, levels } = $dataSet.$organisationUnitsLevels;
+            const { names, levels } = $dataSet.$organisationUnits;
             return _(names).includes(orgUnit.name) || _(levels).includes(orgUnit.level);
         });
 
         const dataSet = db.getByName("dataSets", {
             ...$dataSet,
-            sections: getIds(sections),
+            categoryCombo: getCategoryComboId(db, categoriesMetadata, $dataSet),
             organisationUnits: getIds(organisationUnitsForDataSet),
         });
 
-        const dataSetElements = _(dataElementsByKey)
-            .at($dataSet.$dataElements)
+        const dataSetElements = _(sections)
+            .flatMap("dataElements")
+            .map(de => dataElementsById[de.id])
             .map(dataElement => ({
                 dataElement: {id: dataElement.id},
                 dataSet: {id: dataSet.id},
@@ -139,10 +153,15 @@ function getDataSetsMetadata(db, sourceData, dataElementsMetadata) {
             }))
             .value();
 
-        return {...dataSet, dataSetElements};
-
-    });
-    return {dataSets};
+        return {
+            dataSets: [{...dataSet, dataSetElements}],
+            _sections: sections.map((section, idx) => ({
+                ...section,
+                sortOrder: idx,
+                dataSet: {id: dataSet.id},
+            })),
+        };
+    }));
 }
 
 function getOrgUnitsFromTree(db, parentOrgUnit, orgUnitsByKey) {
@@ -162,8 +181,8 @@ function getOrgUnitsFromTree(db, parentOrgUnit, orgUnitsByKey) {
     }).value();
 }
 
-function getOrgUnitsMetadata(db, sourceData) {
-    const organisationUnits = getOrgUnitsFromTree(db, null, {root: sourceData.testing.organisationUnits});
+function getTestOrgUnitsMetadata(db, sourceData) {
+    const organisationUnits = getOrgUnitsFromTree(db, null, {root: sourceData.test.organisationUnits});
     return {organisationUnits};
 }
 
@@ -212,16 +231,16 @@ function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
     });
 }
 
-function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
+function getCategoryComboId(db, categoriesMetadata, obj) {
     const categoryCombosByName = _.keyBy(db.getObjectsForModel("categoryCombos"), "name");
     const categoryCombosByKey = _.keyBy(categoriesMetadata.categoryCombos, "key");
-    
-    const getCategoryComboId = (dataElement) => {
-        return dataElement.$disaggregation
-            ? get(categoryCombosByKey, [dataElement.$disaggregation, "id"])
-            : get(categoryCombosByName, ["default", "id"]);
-    };
+    const ccId = obj.$categoryCombo
+        ? get(categoryCombosByKey, [obj.$categoryCombo, "id"])
+        : get(categoryCombosByName, ["default", "id"]);
+    return {id: ccId};
+}
 
+function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
     const dataElementsMetadata = flattenPayloads(toKeyList(sourceData, "dataElements").map(dataElement => {
         if (dataElement.$byAntigen) {
             const dataElements = toKeyList(sourceData, "antigens").map(antigen => {
@@ -232,12 +251,13 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
                 return db.getByName("dataElements", {
                     ...dataElement,
                     key: `${dataElement.key}-${antigen.key}`,
-                    name: `${antigen.name} ${dataElement.name}`,
+                    name: `${dataElement.name} - ${antigen.name}`,
                     shortName: `${antigen.shortName || antigen.name} ${dataElement.shortName || dataElement.name}`,
                     code: `${dataElement.code}_${antigen.code}`,
                     domainType: "AGGREGATE",
                     aggregationType: "SUM",
-                    categoryCombo: {id: getCategoryComboId(dataElementInterpolated)},
+                    categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElementInterpolated),
+                    $antigen: antigen,
                 }, {antigen});
             });
 
@@ -253,13 +273,26 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
                 shortName: dataElement.shortName || dataElement.name,
                 domainType: "AGGREGATE",
                 aggregationType: "SUM",
-                categoryCombo: {id: getCategoryComboId(dataElement)},
+                categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElement),
                 ...dataElement,
             });
 
             return {dataElements: [dataElementDb]};
         }
     }));
+
+    const dataElementGroupsForAntigens = _(dataElementsMetadata.dataElements)
+        .filter("$antigen")
+        .groupBy(dataElement => dataElement.$antigen.key)
+        .map((dataElementsForAntigen, antigenKey) => {
+            const antigen = sourceData.antigens[antigenKey];
+            return db.getByName("dataElementGroups", {
+                name: antigen.name,
+                key: antigenKey,
+                dataElements: getIds(dataElementsForAntigen),
+            });
+        })
+        .value();
 
     const dataElementGroupSet = db.getByName("dataElementGroupSets", {
         key: "reactive-vaccination",
@@ -269,7 +302,10 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
 
     return flattenPayloads([
         dataElementsMetadata,
-        {dataElementGroupSets: [dataElementGroupSet]},
+        {
+            dataElementGroups: dataElementGroupsForAntigens,
+            dataElementGroupSets: [dataElementGroupSet],
+        },
     ]);
 }
 
@@ -378,7 +414,10 @@ async function postPayload(url, payload, {updateCOCs = false} = {}) {
 
     if (responseJson.status === "OK" && updateCOCs) {
         debug("Update category option combinations");
-        await db.updateCOCs();
+        const res = await db.updateCOCs();
+        if (res.status < 200 || res.status > 299) {
+            throw `Error upding category option combo: ${inspect(res)}`;
+        }
     }
     return responseJson;
 }

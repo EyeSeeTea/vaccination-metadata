@@ -72,6 +72,16 @@ class Db {
         }
     }
 
+    getByKey(model, allAttributes) {
+        const { key, ...attributes } = allAttributes;
+        if (!key) {
+                throw `Name key is required in attributes: ${inspect(attributes)}`;
+            } else {
+                const uid = getUid(key, model + "-");
+                return { ...attributes, id: uid, key };
+            }
+    }
+
     async postMetadata(payload) {
         const headers = {"Content-Type": "application/json"};
         const response = await fetch(`${this.url}/api/metadata`, {
@@ -83,7 +93,7 @@ class Db {
     }
 
     async updateCOCs() {
-        return fetch(`${this.url}/maintenance/categoryOptionComboUpdate`, {
+        return fetch(`${this.url}/api/maintenance/categoryOptionComboUpdate`, {
             method: "POST",
         });
     }

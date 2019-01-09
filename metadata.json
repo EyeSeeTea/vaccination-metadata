@@ -89,6 +89,46 @@
       "key": "severity"
     },
     {
+      "name": "Demographic age distribution",
+      "dataDimensionType": "DISAGGREGATION",
+      "dimensionType": "CATEGORY",
+      "dataDimension": false,
+      "categoryOptions": [
+        {
+          "id": "q48bbaKRKrL"
+        },
+        {
+          "id": "u0DlVDSXOaz"
+        },
+        {
+          "id": "yMOO3qWMPAs"
+        },
+        {
+          "id": "SW5gDJRtAPw"
+        },
+        {
+          "id": "mumcXknOYkC"
+        },
+        {
+          "id": "Wue1ApOfnkA"
+        },
+        {
+          "id": "OuMRcVdyAzS"
+        },
+        {
+          "id": "SmSejNFYEXD"
+        },
+        {
+          "id": "eIkzGBj9i1G"
+        },
+        {
+          "id": "KcuuPoCU0el"
+        }
+      ],
+      "id": "SK2jVQiEpwZ",
+      "key": "demographic-age"
+    },
+    {
       "name": "Age group Measles",
       "dataDimensionType": "DISAGGREGATION",
       "dimensionType": "CATEGORY",
@@ -408,6 +448,21 @@
       "id": "uWaATpJppxD"
     },
     {
+      "name": "0 - 6 w",
+      "shortName": "0 - 6 w",
+      "id": "q48bbaKRKrL"
+    },
+    {
+      "name": "7 w - 2 m",
+      "shortName": "7 w - 2 m",
+      "id": "u0DlVDSXOaz"
+    },
+    {
+      "name": "3 - 5 m",
+      "shortName": "3 - 5 m",
+      "id": "yMOO3qWMPAs"
+    },
+    {
       "name": "6 - 8 m",
       "shortName": "6 - 8 m",
       "id": "SW5gDJRtAPw"
@@ -436,6 +491,11 @@
       "name": "15 - 29 y",
       "shortName": "15 - 29 y",
       "id": "eIkzGBj9i1G"
+    },
+    {
+      "name": ">= 30y",
+      "shortName": ">= 30y",
+      "id": "KcuuPoCU0el"
     },
     {
       "name": "12 - 59 m",
@@ -529,7 +589,7 @@
     {
       "shortName": "Total population (catchment/target)",
       "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
+      "aggregationType": "LAST_AVERAGE_ORG_UNIT",
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
@@ -542,26 +602,28 @@
     {
       "shortName": "Total population by age (catchment/target)",
       "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
+      "aggregationType": "LAST_AVERAGE_ORG_UNIT",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "SO0g4L7AFAA"
       },
       "name": "Total population by age (catchment/target)",
       "code": "DEM4",
       "valueType": "NUMBER",
+      "$categoryCombo": "demographic-age",
       "id": "ecuwq7NxBCx",
       "key": "total-population-by-age"
     },
     {
       "shortName": "Age Distribution",
       "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
+      "aggregationType": "LAST_AVERAGE_ORG_UNIT",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "SO0g4L7AFAA"
       },
       "name": "Age Distribution",
       "valueType": "NUMBER",
       "code": "DEM3",
+      "$categoryCombo": "demographic-age",
       "id": "e0cPRcP5XNc",
       "key": "age-distribution"
     },
@@ -594,7 +656,7 @@
     {
       "shortName": "Crude Birth Rate (%)",
       "domainType": "AGGREGATE",
-      "aggregationType": "SUM",
+      "aggregationType": "LAST_AVERAGE_ORG_UNIT",
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
@@ -606,7 +668,7 @@
     },
     {
       "$byAntigen": true,
-      "name": "Measles Vaccine doses administered",
+      "name": "Vaccine doses administered - Measles",
       "shortName": "Measles Doses adm",
       "code": "RVC_AD_DA_AMS",
       "valueType": "NUMBER",
@@ -614,14 +676,27 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "GW4y8wDQXAS"
+      },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
       },
       "id": "eugN4bKaJUY",
       "key": "vaccine-doses-administered-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Vaccine doses administered",
+      "name": "Vaccine doses administered - Meningitis Polysaccharide",
       "shortName": "MenPol Doses adm",
       "code": "RVC_AD_DA_AMP",
       "valueType": "NUMBER",
@@ -629,14 +704,27 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "O2kbck8UUe4"
+      },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
       },
       "id": "mUoNIuPA7NP",
       "key": "vaccine-doses-administered-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Vaccine doses administered",
+      "name": "Vaccine doses administered - Meningitis Conjugate",
       "shortName": "MenCon Doses adm",
       "code": "RVC_AD_DA_AMC",
       "valueType": "NUMBER",
@@ -644,14 +732,27 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "yIaWemE0wYP"
+      },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
       },
       "id": "KGKgSnVs2JR",
       "key": "vaccine-doses-administered-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Vaccine doses administered",
+      "name": "Vaccine doses administered - Cholera",
       "shortName": "Cholera Doses adm",
       "code": "RVC_AD_DA_ACH",
       "valueType": "NUMBER",
@@ -659,14 +760,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "OWe0njLAeRs"
+      },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
       },
       "id": "GgofwPNtEft",
       "key": "vaccine-doses-administered-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Vaccine doses administered",
+      "name": "Vaccine doses administered - PCV",
       "shortName": "PCV Doses adm",
       "code": "RVC_AD_DA_APCV",
       "valueType": "NUMBER",
@@ -674,14 +787,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "muAuIUoAFPl"
+      },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
       },
       "id": "aKicYtuFZFy",
       "key": "vaccine-doses-administered-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Vaccine doses administered",
+      "name": "Vaccine doses administered - Pertussis Penta",
       "shortName": "Pertussis Penta Doses adm",
       "code": "RVC_AD_DA_APP",
       "valueType": "NUMBER",
@@ -689,14 +814,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "aGchzPaw8wC"
+      },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
       },
       "id": "OgAnyO0K9We",
       "key": "vaccine-doses-administered-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Vaccine doses administered",
+      "name": "Vaccine doses administered - Yellow Fever",
       "shortName": "Yellow Fever Doses adm",
       "code": "RVC_AD_DA_AYF",
       "valueType": "NUMBER",
@@ -704,14 +841,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "GAE5hLlHdVx"
+      },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
       },
       "id": "mYRXcy1M6mh",
       "key": "vaccine-doses-administered-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Vaccine doses administered",
+      "name": "Vaccine doses administered - Japanese Encephalitis",
       "shortName": "Japanese Encephalitis Doses adm",
       "code": "RVC_AD_DA_AJE",
       "valueType": "NUMBER",
@@ -719,14 +868,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "SUU7E3KKD0w"
+      },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
       },
       "id": "eGoz3rI8Ceb",
       "key": "vaccine-doses-administered-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Vaccine doses administered",
+      "name": "Vaccine doses administered - Dengue",
       "shortName": "Dengue Doses adm",
       "code": "RVC_AD_DA_ADE",
       "valueType": "NUMBER",
@@ -734,14 +895,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "e2W8ucoVwWh"
+      },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
       },
       "id": "WuEJK8Cu7O9",
       "key": "vaccine-doses-administered-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Vaccine doses used",
+      "name": "Vaccine doses used - Measles",
       "shortName": "Measles Doses used",
       "code": "RVC_AD_DU_AMS",
       "valueType": "NUMBER",
@@ -749,14 +922,27 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "GW4y8wDQXAS"
+      },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
       },
       "id": "qk6tBH36Nb3",
       "key": "vaccine-doses-used-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Vaccine doses used",
+      "name": "Vaccine doses used - Meningitis Polysaccharide",
       "shortName": "MenPol Doses used",
       "code": "RVC_AD_DU_AMP",
       "valueType": "NUMBER",
@@ -764,14 +950,27 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "O2kbck8UUe4"
+      },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
       },
       "id": "amWGOEqrTww",
       "key": "vaccine-doses-used-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Vaccine doses used",
+      "name": "Vaccine doses used - Meningitis Conjugate",
       "shortName": "MenCon Doses used",
       "code": "RVC_AD_DU_AMC",
       "valueType": "NUMBER",
@@ -779,14 +978,27 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "yIaWemE0wYP"
+      },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
       },
       "id": "qYgIqnzVaqs",
       "key": "vaccine-doses-used-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Vaccine doses used",
+      "name": "Vaccine doses used - Cholera",
       "shortName": "Cholera Doses used",
       "code": "RVC_AD_DU_ACH",
       "valueType": "NUMBER",
@@ -794,14 +1006,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "OWe0njLAeRs"
+      },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
       },
       "id": "WIOuie9JV8d",
       "key": "vaccine-doses-used-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Vaccine doses used",
+      "name": "Vaccine doses used - PCV",
       "shortName": "PCV Doses used",
       "code": "RVC_AD_DU_APCV",
       "valueType": "NUMBER",
@@ -809,14 +1033,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "muAuIUoAFPl"
+      },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
       },
       "id": "yyO0k3S32ui",
       "key": "vaccine-doses-used-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Vaccine doses used",
+      "name": "Vaccine doses used - Pertussis Penta",
       "shortName": "Pertussis Penta Doses used",
       "code": "RVC_AD_DU_APP",
       "valueType": "NUMBER",
@@ -824,14 +1060,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "aGchzPaw8wC"
+      },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
       },
       "id": "K6oNL72r1HE",
       "key": "vaccine-doses-used-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Vaccine doses used",
+      "name": "Vaccine doses used - Yellow Fever",
       "shortName": "Yellow Fever Doses used",
       "code": "RVC_AD_DU_AYF",
       "valueType": "NUMBER",
@@ -839,14 +1087,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "GAE5hLlHdVx"
+      },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
       },
       "id": "OsobDLJ1yqW",
       "key": "vaccine-doses-used-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Vaccine doses used",
+      "name": "Vaccine doses used - Japanese Encephalitis",
       "shortName": "Japanese Encephalitis Doses used",
       "code": "RVC_AD_DU_AJE",
       "valueType": "NUMBER",
@@ -854,14 +1114,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "SUU7E3KKD0w"
+      },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
       },
       "id": "yCqgh41nvWW",
       "key": "vaccine-doses-used-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Vaccine doses used",
+      "name": "Vaccine doses used - Dengue",
       "shortName": "Dengue Doses used",
       "code": "RVC_AD_DU_ADE",
       "valueType": "NUMBER",
@@ -869,14 +1141,26 @@
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
-        "id": "bjDvmb4bfuf"
+        "id": "e2W8ucoVwWh"
+      },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
       },
       "id": "e6gOq3C0tA3",
       "key": "vaccine-doses-used-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Measles",
       "shortName": "Measles ADS used",
       "code": "RVC_AD_ADSU_AMS",
       "valueType": "NUMBER",
@@ -885,12 +1169,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "SW0EcDY1aWO",
       "key": "ads-used-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Meningitis Polysaccharide",
       "shortName": "MenPol ADS used",
       "code": "RVC_AD_ADSU_AMP",
       "valueType": "NUMBER",
@@ -899,12 +1196,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "umOd1kaLUFS",
       "key": "ads-used-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Meningitis Conjugate",
       "shortName": "MenCon ADS used",
       "code": "RVC_AD_ADSU_AMC",
       "valueType": "NUMBER",
@@ -913,12 +1223,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "OcMVS1r00SJ",
       "key": "ads-used-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Cholera",
       "shortName": "Cholera ADS used",
       "code": "RVC_AD_ADSU_ACH",
       "valueType": "NUMBER",
@@ -927,12 +1250,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "GCWiiiVNvPy",
       "key": "ads-used-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - PCV",
       "shortName": "PCV ADS used",
       "code": "RVC_AD_ADSU_APCV",
       "valueType": "NUMBER",
@@ -941,12 +1276,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "iewIIt4cI8q",
       "key": "ads-used-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Pertussis Penta",
       "shortName": "Pertussis Penta ADS used",
       "code": "RVC_AD_ADSU_APP",
       "valueType": "NUMBER",
@@ -955,12 +1302,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "ioKafYqYICB",
       "key": "ads-used-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Yellow Fever",
       "shortName": "Yellow Fever ADS used",
       "code": "RVC_AD_ADSU_AYF",
       "valueType": "NUMBER",
@@ -969,12 +1328,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "ao0ulfTiIDC",
       "key": "ads-used-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Japanese Encephalitis",
       "shortName": "Japanese Encephalitis ADS used",
       "code": "RVC_AD_ADSU_AJE",
       "valueType": "NUMBER",
@@ -983,12 +1354,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "yeIqgFAQEV2",
       "key": "ads-used-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue ADS (Auto Disable Syringe) used",
+      "name": "ADS (Auto Disable Syringe) used - Dengue",
       "shortName": "Dengue ADS used",
       "code": "RVC_AD_ADSU_ADE",
       "valueType": "NUMBER",
@@ -997,12 +1380,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "qO2ZQiIkpKt",
       "key": "ads-used-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Measles",
       "shortName": "Measles ADS dilution",
       "code": "RVC_AD_ADSD_AMS",
       "valueType": "NUMBER",
@@ -1011,12 +1406,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "GKmUY1IXKCr",
       "key": "ads-dilution-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Meningitis Polysaccharide",
       "shortName": "MenPol ADS dilution",
       "code": "RVC_AD_ADSD_AMP",
       "valueType": "NUMBER",
@@ -1025,12 +1433,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "maMpyZZ83aN",
       "key": "ads-dilution-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Meningitis Conjugate",
       "shortName": "MenCon ADS dilution",
       "code": "RVC_AD_ADSD_AMC",
       "valueType": "NUMBER",
@@ -1039,12 +1460,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "eEHBhVWwdkr",
       "key": "ads-dilution-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Cholera",
       "shortName": "Cholera ADS dilution",
       "code": "RVC_AD_ADSD_ACH",
       "valueType": "NUMBER",
@@ -1053,12 +1487,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "C8igNlwSjHy",
       "key": "ads-dilution-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - PCV",
       "shortName": "PCV ADS dilution",
       "code": "RVC_AD_ADSD_APCV",
       "valueType": "NUMBER",
@@ -1067,12 +1513,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "WYodiEWEwFx",
       "key": "ads-dilution-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Pertussis Penta",
       "shortName": "Pertussis Penta ADS dilution",
       "code": "RVC_AD_ADSD_APP",
       "valueType": "NUMBER",
@@ -1081,12 +1539,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "Oeuu3Z9cu56",
       "key": "ads-dilution-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Yellow Fever",
       "shortName": "Yellow Fever ADS dilution",
       "code": "RVC_AD_ADSD_AYF",
       "valueType": "NUMBER",
@@ -1095,12 +1565,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "eKwr5355Wjy",
       "key": "ads-dilution-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Japanese Encephalitis",
       "shortName": "Japanese Encephalitis ADS dilution",
       "code": "RVC_AD_ADSD_AJE",
       "valueType": "NUMBER",
@@ -1109,12 +1591,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "Cq46Tsqjvj9",
       "key": "ads-dilution-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue ADS (Auto Disable Syringe) for dilution",
+      "name": "ADS (Auto Disable Syringe) for dilution - Dengue",
       "shortName": "Dengue ADS dilution",
       "code": "RVC_AD_ADSD_ADE",
       "valueType": "NUMBER",
@@ -1123,12 +1617,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "ayqqO2pq74L",
       "key": "ads-dilution-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Safety boxes",
+      "name": "Safety boxes - Measles",
       "code": "RVC_AD_SB_AMS",
       "valueType": "NUMBER",
       "shortName": "Measles Safety boxes",
@@ -1137,12 +1643,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "Wqmw6PBzsEE",
       "key": "safety-boxes-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Safety boxes",
+      "name": "Safety boxes - Meningitis Polysaccharide",
       "code": "RVC_AD_SB_AMP",
       "valueType": "NUMBER",
       "shortName": "MenPol Safety boxes",
@@ -1151,12 +1670,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "WQw7KAND1nb",
       "key": "safety-boxes-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Safety boxes",
+      "name": "Safety boxes - Meningitis Conjugate",
       "code": "RVC_AD_SB_AMC",
       "valueType": "NUMBER",
       "shortName": "MenCon Safety boxes",
@@ -1165,12 +1697,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "a22Pl97JfHF",
       "key": "safety-boxes-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Safety boxes",
+      "name": "Safety boxes - Cholera",
       "code": "RVC_AD_SB_ACH",
       "valueType": "NUMBER",
       "shortName": "Cholera Safety boxes",
@@ -1179,12 +1724,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "qkQzIlsD9X9",
       "key": "safety-boxes-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Safety boxes",
+      "name": "Safety boxes - PCV",
       "code": "RVC_AD_SB_APCV",
       "valueType": "NUMBER",
       "shortName": "PCV Safety boxes",
@@ -1193,12 +1750,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "a2O6SxFbOvH",
       "key": "safety-boxes-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Safety boxes",
+      "name": "Safety boxes - Pertussis Penta",
       "code": "RVC_AD_SB_APP",
       "valueType": "NUMBER",
       "shortName": "Pertussis Penta Safety boxes",
@@ -1207,12 +1776,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "GKEH5YOPaND",
       "key": "safety-boxes-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Safety boxes",
+      "name": "Safety boxes - Yellow Fever",
       "code": "RVC_AD_SB_AYF",
       "valueType": "NUMBER",
       "shortName": "Yellow Fever Safety boxes",
@@ -1221,12 +1802,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "SuImjvyHFed",
       "key": "safety-boxes-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Safety boxes",
+      "name": "Safety boxes - Japanese Encephalitis",
       "code": "RVC_AD_SB_AJE",
       "valueType": "NUMBER",
       "shortName": "Japanese Encephalitis Safety boxes",
@@ -1235,12 +1828,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "WQWqajPXeFr",
       "key": "safety-boxes-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Safety boxes",
+      "name": "Safety boxes - Dengue",
       "code": "RVC_AD_SB_ADE",
       "valueType": "NUMBER",
       "shortName": "Dengue Safety boxes",
@@ -1249,12 +1854,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "yQaWM1oCV8G",
       "key": "safety-boxes-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Syringes",
+      "name": "Syringes - Measles",
       "code": "RVC_AD_SYR_AMS",
       "valueType": "NUMBER",
       "shortName": "Measles Syringes",
@@ -1263,12 +1880,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "GOu8xLuS86N",
       "key": "syringes-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Syringes",
+      "name": "Syringes - Meningitis Polysaccharide",
       "code": "RVC_AD_SYR_AMP",
       "valueType": "NUMBER",
       "shortName": "MenPol Syringes",
@@ -1277,12 +1907,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "uSyoPrgJHCo",
       "key": "syringes-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Syringes",
+      "name": "Syringes - Meningitis Conjugate",
       "code": "RVC_AD_SYR_AMC",
       "valueType": "NUMBER",
       "shortName": "MenCon Syringes",
@@ -1291,12 +1934,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "CWriKRokC8A",
       "key": "syringes-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Syringes",
+      "name": "Syringes - Cholera",
       "code": "RVC_AD_SYR_ACH",
       "valueType": "NUMBER",
       "shortName": "Cholera Syringes",
@@ -1305,12 +1961,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "awMJ6UnQn5P",
       "key": "syringes-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Syringes",
+      "name": "Syringes - PCV",
       "code": "RVC_AD_SYR_APCV",
       "valueType": "NUMBER",
       "shortName": "PCV Syringes",
@@ -1319,12 +1987,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "ygy4cKlHJLT",
       "key": "syringes-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Syringes",
+      "name": "Syringes - Pertussis Penta",
       "code": "RVC_AD_SYR_APP",
       "valueType": "NUMBER",
       "shortName": "Pertussis Penta Syringes",
@@ -1333,12 +2013,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "SCqDA0vNtgd",
       "key": "syringes-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Syringes",
+      "name": "Syringes - Yellow Fever",
       "code": "RVC_AD_SYR_AYF",
       "valueType": "NUMBER",
       "shortName": "Yellow Fever Syringes",
@@ -1347,12 +2039,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "mq0wGKWhAfA",
       "key": "syringes-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Syringes",
+      "name": "Syringes - Japanese Encephalitis",
       "code": "RVC_AD_SYR_AJE",
       "valueType": "NUMBER",
       "shortName": "Japanese Encephalitis Syringes",
@@ -1361,12 +2065,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "WCgfBzFKCMM",
       "key": "syringes-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Syringes",
+      "name": "Syringes - Dengue",
       "code": "RVC_AD_SYR_ADE",
       "valueType": "NUMBER",
       "shortName": "Dengue Syringes",
@@ -1375,12 +2091,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "u6YXkrzQ3yc",
       "key": "syringes-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Syringes for dilution",
+      "name": "Syringes for dilution - Measles",
       "code": "RVC_AD_SYD_AMS",
       "valueType": "NUMBER",
       "shortName": "Measles Syringes for dilution",
@@ -1389,12 +2117,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "CSusGktiEBM",
       "key": "syringes-dilution-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Syringes for dilution",
+      "name": "Syringes for dilution - Meningitis Polysaccharide",
       "code": "RVC_AD_SYD_AMP",
       "valueType": "NUMBER",
       "shortName": "MenPol Syringes for dilution",
@@ -1403,12 +2144,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "SmCDfO7PMEs",
       "key": "syringes-dilution-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Syringes for dilution",
+      "name": "Syringes for dilution - Meningitis Conjugate",
       "code": "RVC_AD_SYD_AMC",
       "valueType": "NUMBER",
       "shortName": "MenCon Syringes for dilution",
@@ -1417,12 +2171,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "G6ApXaicArX",
       "key": "syringes-dilution-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Syringes for dilution",
+      "name": "Syringes for dilution - Cholera",
       "code": "RVC_AD_SYD_ACH",
       "valueType": "NUMBER",
       "shortName": "Cholera Syringes for dilution",
@@ -1431,12 +2198,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "uOYZWFSkVI6",
       "key": "syringes-dilution-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Syringes for dilution",
+      "name": "Syringes for dilution - PCV",
       "code": "RVC_AD_SYD_APCV",
       "valueType": "NUMBER",
       "shortName": "PCV Syringes for dilution",
@@ -1445,12 +2224,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "C8GSQudj6c8",
       "key": "syringes-dilution-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Syringes for dilution",
+      "name": "Syringes for dilution - Pertussis Penta",
       "code": "RVC_AD_SYD_APP",
       "valueType": "NUMBER",
       "shortName": "Pertussis Penta Syringes for dilution",
@@ -1459,12 +2250,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "CUSupqzvneT",
       "key": "syringes-dilution-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Syringes for dilution",
+      "name": "Syringes for dilution - Yellow Fever",
       "code": "RVC_AD_SYD_AYF",
       "valueType": "NUMBER",
       "shortName": "Yellow Fever Syringes for dilution",
@@ -1473,12 +2276,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "aI0gEo2dU2t",
       "key": "syringes-dilution-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Syringes for dilution",
+      "name": "Syringes for dilution - Japanese Encephalitis",
       "code": "RVC_AD_SYD_AJE",
       "valueType": "NUMBER",
       "shortName": "Japanese Encephalitis Syringes for dilution",
@@ -1487,12 +2302,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "CSIZF7jl6gV",
       "key": "syringes-dilution-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Syringes for dilution",
+      "name": "Syringes for dilution - Dengue",
       "code": "RVC_AD_SYD_ADE",
       "valueType": "NUMBER",
       "shortName": "Dengue Syringes for dilution",
@@ -1501,12 +2328,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "aMgD1KhSdMS",
       "key": "syringes-dilution-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Needles",
+      "name": "Needles - Measles",
       "code": "RVC_AD_NDL_AMS",
       "valueType": "NUMBER",
       "shortName": "Measles Needles",
@@ -1515,12 +2354,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "GQgnJ6rMeJd",
       "key": "needles-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Needles",
+      "name": "Needles - Meningitis Polysaccharide",
       "code": "RVC_AD_NDL_AMP",
       "valueType": "NUMBER",
       "shortName": "MenPol Needles",
@@ -1529,12 +2381,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "CwMTTs8yqhM",
       "key": "needles-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Needles",
+      "name": "Needles - Meningitis Conjugate",
       "code": "RVC_AD_NDL_AMC",
       "valueType": "NUMBER",
       "shortName": "MenCon Needles",
@@ -1543,12 +2408,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "SesDQMxyfIQ",
       "key": "needles-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Needles",
+      "name": "Needles - Cholera",
       "code": "RVC_AD_NDL_ACH",
       "valueType": "NUMBER",
       "shortName": "Cholera Needles",
@@ -1557,12 +2435,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "iOm4rdPShkc",
       "key": "needles-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Needles",
+      "name": "Needles - PCV",
       "code": "RVC_AD_NDL_APCV",
       "valueType": "NUMBER",
       "shortName": "PCV Needles",
@@ -1571,12 +2461,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "SucLeonlr0Y",
       "key": "needles-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Needles",
+      "name": "Needles - Pertussis Penta",
       "code": "RVC_AD_NDL_APP",
       "valueType": "NUMBER",
       "shortName": "Pertussis Penta Needles",
@@ -1585,12 +2487,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "KoTBOijQKwD",
       "key": "needles-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Needles",
+      "name": "Needles - Yellow Fever",
       "code": "RVC_AD_NDL_AYF",
       "valueType": "NUMBER",
       "shortName": "Yellow Fever Needles",
@@ -1599,12 +2513,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "K8jxXHIxA3f",
       "key": "needles-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Needles",
+      "name": "Needles - Japanese Encephalitis",
       "code": "RVC_AD_NDL_AJE",
       "valueType": "NUMBER",
       "shortName": "Japanese Encephalitis Needles",
@@ -1613,12 +2539,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "CcAXWTjWn7P",
       "key": "needles-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Needles",
+      "name": "Needles - Dengue",
       "code": "RVC_AD_NDL_ADE",
       "valueType": "NUMBER",
       "shortName": "Dengue Needles",
@@ -1627,12 +2565,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "uWhpsfh4lMy",
       "key": "needles-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Measles",
       "shortName": "Measles AEB",
       "code": "RVC_AD_AEB_AMS",
       "valueType": "NUMBER",
@@ -1641,12 +2591,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
+      },
       "id": "SUCaZSL132j",
       "key": "aeb-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Meningitis Polysaccharide",
       "shortName": "MenPol AEB",
       "code": "RVC_AD_AEB_AMP",
       "valueType": "NUMBER",
@@ -1655,12 +2618,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
+      },
       "id": "SgW0wglgUO1",
       "key": "aeb-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Meningitis Conjugate",
       "shortName": "MenCon AEB",
       "code": "RVC_AD_AEB_AMC",
       "valueType": "NUMBER",
@@ -1669,12 +2645,25 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
+      },
       "id": "WeiP3Gze82r",
       "key": "aeb-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Cholera",
       "shortName": "Cholera AEB",
       "code": "RVC_AD_AEB_ACH",
       "valueType": "NUMBER",
@@ -1683,12 +2672,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
+      },
       "id": "Oe0caMEnsg3",
       "key": "aeb-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - PCV",
       "shortName": "PCV AEB",
       "code": "RVC_AD_AEB_APCV",
       "valueType": "NUMBER",
@@ -1697,12 +2698,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
+      },
       "id": "WQmmbdBPJZx",
       "key": "aeb-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Pertussis Penta",
       "shortName": "Pertussis Penta AEB",
       "code": "RVC_AD_AEB_APP",
       "valueType": "NUMBER",
@@ -1711,12 +2724,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
+      },
       "id": "qEoXPM5GSrH",
       "key": "aeb-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Yellow Fever",
       "shortName": "Yellow Fever AEB",
       "code": "RVC_AD_AEB_AYF",
       "valueType": "NUMBER",
@@ -1725,12 +2750,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
+      },
       "id": "OogPl9JIHhK",
       "key": "aeb-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Japanese Encephalitis",
       "shortName": "Japanese Encephalitis AEB",
       "code": "RVC_AD_AEB_AJE",
       "valueType": "NUMBER",
@@ -1739,12 +2776,24 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
+      },
       "id": "a0sJzTLOoO5",
       "key": "aeb-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Accidental Exposure to Blood (AEB)",
+      "name": "Accidental Exposure to Blood (AEB) - Dengue",
       "shortName": "Dengue AEB",
       "code": "RVC_AD_AEB_ADE",
       "valueType": "NUMBER",
@@ -1753,140 +2802,263 @@
       "categoryCombo": {
         "id": "bjDvmb4bfuf"
       },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
+      },
       "id": "mGkDSIIu1py",
       "key": "aeb-dengue"
     },
     {
       "$byAntigen": true,
-      "name": "Measles Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Measles",
       "shortName": "Measles AEFI",
       "code": "RVC_AD_AEFI_AMS",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Measles",
+        "code": "AMS",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 23 m",
+          "24 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "measles"
       },
       "id": "KGCiX6LCnuE",
       "key": "adverse-event-measles"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Polysaccharide Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Meningitis Polysaccharide",
       "shortName": "MenPol AEFI",
       "code": "RVC_AD_AEFI_AMP",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Meningitis Polysaccharide",
+        "shortName": "MenPol",
+        "code": "AMP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-polysaccharide"
       },
       "id": "Oq2N2LpORs7",
       "key": "adverse-event-meningitis-polysaccharide"
     },
     {
       "$byAntigen": true,
-      "name": "Meningitis Conjugate Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Meningitis Conjugate",
       "shortName": "MenCon AEFI",
       "code": "RVC_AD_AEFI_AMC",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Meningitis Conjugate",
+        "shortName": "MenCon",
+        "code": "AMC",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "meningitis-conjugate"
       },
       "id": "KYSQOKyNd6L",
       "key": "adverse-event-meningitis-conjugate"
     },
     {
       "$byAntigen": true,
-      "name": "Cholera Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Cholera",
       "shortName": "Cholera AEFI",
       "code": "RVC_AD_AEFI_ACH",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Cholera",
+        "code": "ACH",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "cholera"
       },
       "id": "GSMjdL4hm43",
       "key": "adverse-event-cholera"
     },
     {
       "$byAntigen": true,
-      "name": "PCV Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - PCV",
       "shortName": "PCV AEFI",
       "code": "RVC_AD_AEFI_APCV",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "PCV",
+        "code": "APCV",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pcv"
       },
       "id": "ic29ZfUZyAa",
       "key": "adverse-event-pcv"
     },
     {
       "$byAntigen": true,
-      "name": "Pertussis Penta Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Pertussis Penta",
       "shortName": "Pertussis Penta AEFI",
       "code": "RVC_AD_AEFI_APP",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Pertussis Penta",
+        "code": "APP",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "pertussis-penta"
       },
       "id": "eGCss8boPKg",
       "key": "adverse-event-pertussis-penta"
     },
     {
       "$byAntigen": true,
-      "name": "Yellow Fever Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Yellow Fever",
       "shortName": "Yellow Fever AEFI",
       "code": "RVC_AD_AEFI_AYF",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Yellow Fever",
+        "code": "AYF",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "yellow-fever"
       },
       "id": "Ku2L5EL9Uka",
       "key": "adverse-event-yellow-fever"
     },
     {
       "$byAntigen": true,
-      "name": "Japanese Encephalitis Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Japanese Encephalitis",
       "shortName": "Japanese Encephalitis AEFI",
       "code": "RVC_AD_AEFI_AJE",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Japanese Encephalitis",
+        "code": "AJE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "japanese-encephalitis"
       },
       "id": "KkLElU1tySp",
       "key": "adverse-event-japanese-encephalitis"
     },
     {
       "$byAntigen": true,
-      "name": "Dengue Adverse Event Following Immunization",
+      "name": "Adverse Event Following Immunization - Dengue",
       "shortName": "Dengue AEFI",
       "code": "RVC_AD_AEFI_ADE",
       "valueType": "NUMBER",
-      "$disaggregation": "severity",
+      "$categoryCombo": "severity",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "categoryCombo": {
         "id": "CS8BMAe0nHa"
+      },
+      "$antigen": {
+        "name": "Dengue",
+        "code": "ADE",
+        "ageGroups": [
+          "6 - 8 m",
+          "9 - 11 m",
+          "12 - 59 m",
+          "5 - 14 y",
+          "15 - 29 y"
+        ],
+        "key": "dengue"
       },
       "id": "SqOKKZpQODi",
       "key": "adverse-event-dengue"
@@ -2232,6 +3404,339 @@
       ],
       "id": "mwiwn0U1HKg",
       "key": "adverse-event"
+    },
+    {
+      "name": "Measles",
+      "dataElements": [
+        {
+          "id": "eugN4bKaJUY"
+        },
+        {
+          "id": "qk6tBH36Nb3"
+        },
+        {
+          "id": "SW0EcDY1aWO"
+        },
+        {
+          "id": "GKmUY1IXKCr"
+        },
+        {
+          "id": "Wqmw6PBzsEE"
+        },
+        {
+          "id": "GOu8xLuS86N"
+        },
+        {
+          "id": "CSusGktiEBM"
+        },
+        {
+          "id": "GQgnJ6rMeJd"
+        },
+        {
+          "id": "SUCaZSL132j"
+        },
+        {
+          "id": "KGCiX6LCnuE"
+        }
+      ],
+      "id": "mocFhCwKd9Q",
+      "key": "measles"
+    },
+    {
+      "name": "Meningitis Polysaccharide",
+      "dataElements": [
+        {
+          "id": "mUoNIuPA7NP"
+        },
+        {
+          "id": "amWGOEqrTww"
+        },
+        {
+          "id": "umOd1kaLUFS"
+        },
+        {
+          "id": "maMpyZZ83aN"
+        },
+        {
+          "id": "WQw7KAND1nb"
+        },
+        {
+          "id": "uSyoPrgJHCo"
+        },
+        {
+          "id": "SmCDfO7PMEs"
+        },
+        {
+          "id": "CwMTTs8yqhM"
+        },
+        {
+          "id": "SgW0wglgUO1"
+        },
+        {
+          "id": "Oq2N2LpORs7"
+        }
+      ],
+      "id": "micthc4tjPg",
+      "key": "meningitis-polysaccharide"
+    },
+    {
+      "name": "Meningitis Conjugate",
+      "dataElements": [
+        {
+          "id": "KGKgSnVs2JR"
+        },
+        {
+          "id": "qYgIqnzVaqs"
+        },
+        {
+          "id": "OcMVS1r00SJ"
+        },
+        {
+          "id": "eEHBhVWwdkr"
+        },
+        {
+          "id": "a22Pl97JfHF"
+        },
+        {
+          "id": "CWriKRokC8A"
+        },
+        {
+          "id": "G6ApXaicArX"
+        },
+        {
+          "id": "SesDQMxyfIQ"
+        },
+        {
+          "id": "WeiP3Gze82r"
+        },
+        {
+          "id": "KYSQOKyNd6L"
+        }
+      ],
+      "id": "S2QJy7Z7JoD",
+      "key": "meningitis-conjugate"
+    },
+    {
+      "name": "Cholera",
+      "dataElements": [
+        {
+          "id": "GgofwPNtEft"
+        },
+        {
+          "id": "WIOuie9JV8d"
+        },
+        {
+          "id": "GCWiiiVNvPy"
+        },
+        {
+          "id": "C8igNlwSjHy"
+        },
+        {
+          "id": "qkQzIlsD9X9"
+        },
+        {
+          "id": "awMJ6UnQn5P"
+        },
+        {
+          "id": "uOYZWFSkVI6"
+        },
+        {
+          "id": "iOm4rdPShkc"
+        },
+        {
+          "id": "Oe0caMEnsg3"
+        },
+        {
+          "id": "GSMjdL4hm43"
+        }
+      ],
+      "id": "u4k95p6siaS",
+      "key": "cholera"
+    },
+    {
+      "name": "PCV",
+      "dataElements": [
+        {
+          "id": "aKicYtuFZFy"
+        },
+        {
+          "id": "yyO0k3S32ui"
+        },
+        {
+          "id": "iewIIt4cI8q"
+        },
+        {
+          "id": "WYodiEWEwFx"
+        },
+        {
+          "id": "a2O6SxFbOvH"
+        },
+        {
+          "id": "ygy4cKlHJLT"
+        },
+        {
+          "id": "C8GSQudj6c8"
+        },
+        {
+          "id": "SucLeonlr0Y"
+        },
+        {
+          "id": "WQmmbdBPJZx"
+        },
+        {
+          "id": "ic29ZfUZyAa"
+        }
+      ],
+      "id": "yw25cs5JHAg",
+      "key": "pcv"
+    },
+    {
+      "name": "Pertussis Penta",
+      "dataElements": [
+        {
+          "id": "OgAnyO0K9We"
+        },
+        {
+          "id": "K6oNL72r1HE"
+        },
+        {
+          "id": "ioKafYqYICB"
+        },
+        {
+          "id": "Oeuu3Z9cu56"
+        },
+        {
+          "id": "GKEH5YOPaND"
+        },
+        {
+          "id": "SCqDA0vNtgd"
+        },
+        {
+          "id": "CUSupqzvneT"
+        },
+        {
+          "id": "KoTBOijQKwD"
+        },
+        {
+          "id": "qEoXPM5GSrH"
+        },
+        {
+          "id": "eGCss8boPKg"
+        }
+      ],
+      "id": "WoaIfRFuELs",
+      "key": "pertussis-penta"
+    },
+    {
+      "name": "Yellow Fever",
+      "dataElements": [
+        {
+          "id": "mYRXcy1M6mh"
+        },
+        {
+          "id": "OsobDLJ1yqW"
+        },
+        {
+          "id": "ao0ulfTiIDC"
+        },
+        {
+          "id": "eKwr5355Wjy"
+        },
+        {
+          "id": "SuImjvyHFed"
+        },
+        {
+          "id": "mq0wGKWhAfA"
+        },
+        {
+          "id": "aI0gEo2dU2t"
+        },
+        {
+          "id": "K8jxXHIxA3f"
+        },
+        {
+          "id": "OogPl9JIHhK"
+        },
+        {
+          "id": "Ku2L5EL9Uka"
+        }
+      ],
+      "id": "mIuTWJL7rhv",
+      "key": "yellow-fever"
+    },
+    {
+      "name": "Japanese Encephalitis",
+      "dataElements": [
+        {
+          "id": "eGoz3rI8Ceb"
+        },
+        {
+          "id": "yCqgh41nvWW"
+        },
+        {
+          "id": "yeIqgFAQEV2"
+        },
+        {
+          "id": "Cq46Tsqjvj9"
+        },
+        {
+          "id": "WQWqajPXeFr"
+        },
+        {
+          "id": "WCgfBzFKCMM"
+        },
+        {
+          "id": "CSIZF7jl6gV"
+        },
+        {
+          "id": "CcAXWTjWn7P"
+        },
+        {
+          "id": "a0sJzTLOoO5"
+        },
+        {
+          "id": "KkLElU1tySp"
+        }
+      ],
+      "id": "WcoZK9vYspW",
+      "key": "japanese-encephalitis"
+    },
+    {
+      "name": "Dengue",
+      "dataElements": [
+        {
+          "id": "WuEJK8Cu7O9"
+        },
+        {
+          "id": "e6gOq3C0tA3"
+        },
+        {
+          "id": "qO2ZQiIkpKt"
+        },
+        {
+          "id": "ayqqO2pq74L"
+        },
+        {
+          "id": "yQaWM1oCV8G"
+        },
+        {
+          "id": "u6YXkrzQ3yc"
+        },
+        {
+          "id": "aMgD1KhSdMS"
+        },
+        {
+          "id": "uWhpsfh4lMy"
+        },
+        {
+          "id": "mGkDSIIu1py"
+        },
+        {
+          "id": "SqOKKZpQODi"
+        }
+      ],
+      "id": "KYAFDnp5Fpw",
+      "key": "dengue"
     }
   ],
   "dataElementGroupSets": [
@@ -3101,7 +4606,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{eugN4bKaJUY}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "KoQV5a3CKrp",
@@ -3119,7 +4624,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{mUoNIuPA7NP}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "iY42FMQ0QuW",
@@ -3137,7 +4642,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{KGKgSnVs2JR}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "SEQpn0dVkwS",
@@ -3155,7 +4660,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{GgofwPNtEft}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "ysqKSc6xKWo",
@@ -3173,7 +4678,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{aKicYtuFZFy}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "uGAX2QVbJcx",
@@ -3191,7 +4696,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{OgAnyO0K9We}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "O6SoKKcTnMq",
@@ -3209,7 +4714,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{mYRXcy1M6mh}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "KM8GKdmKVnW",
@@ -3227,7 +4732,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{eGoz3rI8Ceb}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "eSiSM2cpmIw",
@@ -3245,7 +4750,7 @@
       "numeratorDescription": "Doses administered",
       "numerator": "#{WuEJK8Cu7O9}",
       "denominatorDescription": "Total population",
-      "denominator": "#{mOE5w8jVtuh}",
+      "denominator": "#{mOE5w8jVtuh} * #{e0cPRcP5XNc}",
       "domainType": "AGGREGATE",
       "aggregationType": "SUM",
       "id": "a0oLD6nRnO6",
@@ -3323,6 +4828,17 @@
       ],
       "id": "CS8BMAe0nHa",
       "key": "severity"
+    },
+    {
+      "name": "Demographic age distribution",
+      "dataDimensionType": "DISAGGREGATION",
+      "categories": [
+        {
+          "id": "SK2jVQiEpwZ"
+        }
+      ],
+      "id": "SO0g4L7AFAA",
+      "key": "demographic-age"
     },
     {
       "name": "Age group Measles",
@@ -3463,6 +4979,7 @@
         "id": "i4Efx8l9p4X"
       },
       "name": "KIDAL, PHC",
+      "code": "OU_KIDAL",
       "id": "uEa0eBq5ttP",
       "key": "project1"
     },
@@ -3507,6 +5024,7 @@
         "id": "CAmg2LYBxYT"
       },
       "name": "KABO",
+      "code": "OU_KABO",
       "id": "ayag93EwDn3",
       "key": "project2"
     },
@@ -3548,7 +5066,7 @@
         "comments-demographic",
         "birth-rate"
       ],
-      "$organisationUnitsLevels": {
+      "$organisationUnits": {
         "names": [
           "OCBA"
         ],
@@ -3579,17 +5097,9 @@
           ]
         }
       },
-      "sections": [
-        {
-          "id": "Cw78AIzspkN"
-        },
-        {
-          "id": "OGu0BfkQjBP"
-        },
-        {
-          "id": "awkptcGa87z"
-        }
-      ],
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
       "organisationUnits": [
         {
           "id": "GMRmolDKx9q"
@@ -3612,29 +5122,29 @@
       "dataSetElements": [
         {
           "dataElement": {
+            "id": "iICjeRZazT0"
+          },
+          "dataSet": {
+            "id": "Co4GaUgGOaG"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
             "id": "e0cPRcP5XNc"
           },
           "dataSet": {
             "id": "Co4GaUgGOaG"
           },
           "categoryCombo": {
-            "id": "bjDvmb4bfuf"
+            "id": "SO0g4L7AFAA"
           }
         },
         {
           "dataElement": {
             "id": "mSGeUb9WBxV"
-          },
-          "dataSet": {
-            "id": "Co4GaUgGOaG"
-          },
-          "categoryCombo": {
-            "id": "bjDvmb4bfuf"
-          }
-        },
-        {
-          "dataElement": {
-            "id": "iICjeRZazT0"
           },
           "dataSet": {
             "id": "Co4GaUgGOaG"
@@ -3659,7 +5169,7 @@
         "total-population-by-age",
         "comments-population"
       ],
-      "$organisationUnitsLevels": {
+      "$organisationUnits": {
         "names": [
           "OCBA"
         ],
@@ -3684,14 +5194,9 @@
           ]
         }
       },
-      "sections": [
-        {
-          "id": "OqwNofXQChD"
-        },
-        {
-          "id": "awkptcGa87z"
-        }
-      ],
+      "categoryCombo": {
+        "id": "bjDvmb4bfuf"
+      },
       "organisationUnits": [
         {
           "id": "GMRmolDKx9q"
@@ -3731,7 +5236,7 @@
             "id": "GyUf1lHbTjs"
           },
           "categoryCombo": {
-            "id": "bjDvmb4bfuf"
+            "id": "SO0g4L7AFAA"
           }
         },
         {
@@ -3746,6 +5251,439 @@
           }
         }
       ]
+    },
+    {
+      "name": "Vaccination Campaign 2019 Winter",
+      "periodType": "Daily",
+      "dataElementDecoration": true,
+      "renderAsTabs": true,
+      "openFuturePeriods": 1,
+      "timelyDays": 15,
+      "$categoryCombo": "teams",
+      "$organisationUnits": {
+        "names": [
+          "Vaccination",
+          "Vaccination - Tanainat"
+        ]
+      },
+      "$sections": {
+        "test-campaign1-cholera": {
+          "name": "Cholera",
+          "$dataElementsByGroups": [
+            "cholera"
+          ],
+          "$dataElements": []
+        },
+        "test-campaign1-measles": {
+          "name": "Measles",
+          "$dataElementsByGroups": [
+            "measles"
+          ],
+          "$dataElements": []
+        }
+      },
+      "categoryCombo": {
+        "id": "qaGIfedeGnT"
+      },
+      "organisationUnits": [
+        {
+          "id": "iWbsBYCR5Qo"
+        },
+        {
+          "id": "uQ27SK0TcnR"
+        }
+      ],
+      "id": "CMSWZHYi1HY",
+      "key": "test-campaign1",
+      "dataSetElements": [
+        {
+          "dataElement": {
+            "id": "GgofwPNtEft"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "OWe0njLAeRs"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "WIOuie9JV8d"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "OWe0njLAeRs"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "GCWiiiVNvPy"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "C8igNlwSjHy"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "qkQzIlsD9X9"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "awMJ6UnQn5P"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "uOYZWFSkVI6"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "iOm4rdPShkc"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "Oe0caMEnsg3"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "GSMjdL4hm43"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "CS8BMAe0nHa"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "eugN4bKaJUY"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "GW4y8wDQXAS"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "qk6tBH36Nb3"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "GW4y8wDQXAS"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "SW0EcDY1aWO"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "GKmUY1IXKCr"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "Wqmw6PBzsEE"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "GOu8xLuS86N"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "CSusGktiEBM"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "GQgnJ6rMeJd"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "SUCaZSL132j"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "bjDvmb4bfuf"
+          }
+        },
+        {
+          "dataElement": {
+            "id": "KGCiX6LCnuE"
+          },
+          "dataSet": {
+            "id": "CMSWZHYi1HY"
+          },
+          "categoryCombo": {
+            "id": "CS8BMAe0nHa"
+          }
+        }
+      ]
+    }
+  ],
+  "_sections": [
+    {
+      "name": "Crude Birth Rate (%)",
+      "showRowTotals": true,
+      "$dataElements": [
+        "birth-rate"
+      ],
+      "dataElements": [
+        {
+          "id": "iICjeRZazT0"
+        }
+      ],
+      "id": "Cw78AIzspkN",
+      "key": "birth-rate",
+      "sortOrder": 0,
+      "dataSet": {
+        "id": "Co4GaUgGOaG"
+      }
+    },
+    {
+      "name": "Population Age Distribution (%)",
+      "showRowTotals": true,
+      "$dataElements": [
+        "age-distribution"
+      ],
+      "dataElements": [
+        {
+          "id": "e0cPRcP5XNc"
+        }
+      ],
+      "id": "OGu0BfkQjBP",
+      "key": "age-distribution",
+      "sortOrder": 1,
+      "dataSet": {
+        "id": "Co4GaUgGOaG"
+      }
+    },
+    {
+      "name": "comments",
+      "$dataElements": [
+        "comments-demographic"
+      ],
+      "dataElements": [
+        {
+          "id": "mSGeUb9WBxV"
+        }
+      ],
+      "id": "awkptcGa87z",
+      "key": "comments",
+      "sortOrder": 2,
+      "dataSet": {
+        "id": "Co4GaUgGOaG"
+      }
+    },
+    {
+      "name": "Population",
+      "showRowTotals": true,
+      "$dataElements": [
+        "total-population",
+        "total-population-by-age"
+      ],
+      "dataElements": [
+        {
+          "id": "mOE5w8jVtuh"
+        },
+        {
+          "id": "ecuwq7NxBCx"
+        }
+      ],
+      "id": "OqwNofXQChD",
+      "key": "population",
+      "sortOrder": 0,
+      "dataSet": {
+        "id": "GyUf1lHbTjs"
+      }
+    },
+    {
+      "name": "Cholera",
+      "$dataElementsByGroups": [
+        "cholera"
+      ],
+      "$dataElements": [],
+      "dataElements": [
+        {
+          "id": "GgofwPNtEft"
+        },
+        {
+          "id": "WIOuie9JV8d"
+        },
+        {
+          "id": "GCWiiiVNvPy"
+        },
+        {
+          "id": "C8igNlwSjHy"
+        },
+        {
+          "id": "qkQzIlsD9X9"
+        },
+        {
+          "id": "awMJ6UnQn5P"
+        },
+        {
+          "id": "uOYZWFSkVI6"
+        },
+        {
+          "id": "iOm4rdPShkc"
+        },
+        {
+          "id": "Oe0caMEnsg3"
+        },
+        {
+          "id": "GSMjdL4hm43"
+        }
+      ],
+      "id": "OGojXcgs2do",
+      "key": "test-campaign1-cholera",
+      "sortOrder": 0,
+      "dataSet": {
+        "id": "CMSWZHYi1HY"
+      }
+    },
+    {
+      "name": "Measles",
+      "$dataElementsByGroups": [
+        "measles"
+      ],
+      "$dataElements": [],
+      "dataElements": [
+        {
+          "id": "eugN4bKaJUY"
+        },
+        {
+          "id": "qk6tBH36Nb3"
+        },
+        {
+          "id": "SW0EcDY1aWO"
+        },
+        {
+          "id": "GKmUY1IXKCr"
+        },
+        {
+          "id": "Wqmw6PBzsEE"
+        },
+        {
+          "id": "GOu8xLuS86N"
+        },
+        {
+          "id": "CSusGktiEBM"
+        },
+        {
+          "id": "GQgnJ6rMeJd"
+        },
+        {
+          "id": "SUCaZSL132j"
+        },
+        {
+          "id": "KGCiX6LCnuE"
+        }
+      ],
+      "id": "aW8hM2MpwPr",
+      "key": "test-campaign1-measles",
+      "sortOrder": 1,
+      "dataSet": {
+        "id": "CMSWZHYi1HY"
+      }
     }
   ]
 }
