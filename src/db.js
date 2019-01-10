@@ -38,11 +38,14 @@ class Db {
         let data;
 
         if (models) {
-            const getExistingAsPairs = async (model) => {
-                const json = await fetch(`${url}/api/${model}?fields=id,name,level&paging=false`)
+            const getExistingAsPairs = async (value) => {
+                const {name: model, fields} = value.name
+                    ? value
+                    : {name: value, fields: ["id", "name"]};
+
+                const json = await fetch(`${url}/api/${model}?fields=${fields.join(',')}&paging=false`)
                     .then(res => res.json());
-                const valuesByName = _(json[model]).keyBy("name").value();
-                return [model, valuesByName];
+                return [model, json[model]];
             };
             data = _.fromPairs(await pMap(models, getExistingAsPairs, {concurrency: 2}));
         } else {
@@ -53,21 +56,21 @@ class Db {
     }
 
     getObjectsForModel(model) {
-        return _.values(this.data[model]);
+        return this.data[model];
     }
 
-    getByName(model, allAttributes) {
+    getByName(model, allAttributes, {field = "name"} = {}) {
         const {key, ...attributes} = allAttributes;
-        const name = attributes.name;
-        const valuesByName = this.data[model];
+        const value = attributes[field];
+        const valuesByField = _.keyBy(this.data[model], field);
 
-        if (!valuesByName) {
+        if (!valuesByField) {
             throw `Model not found in data: ${model}`;
-        } else if (!name) {
-            throw `Name attribute is required in attributes: ${inspect(attributes)}`;
+        } else if (!value) {
+            throw `Property ${field} is required in attributes: ${inspect(attributes)}`;
         } else {
-            const uid = _(valuesByName).get([name, "id"]) ||
-                getUid(key || name, model + "-");
+            const uid = _(valuesByField).get([value, "id"]) ||
+                getUid(key || value, model + "-");
             return {...attributes, id: uid, key};
         }
     }

@@ -51,47 +51,32 @@
 
     "dataElements": {
         "total-population": {
-            "name": "Total population (catchment/target)",
-            "code": "DEM1",
+            "name": "Total population",
+            "code": "SV_TK_001",
             "aggregationType": "LAST_AVERAGE_ORG_UNIT",
             "valueType": "NUMBER"
         },
-        "total-population-by-age": {
-            "name": "Total population by age (catchment/target)",
-            "code": "DEM4",
-            "valueType": "NUMBER",
-            "aggregationType": "LAST_AVERAGE_ORG_UNIT",
-            "$categoryCombo": "demographic-age"
-        },
         "age-distribution": {
-            "name": "Age Distribution",
-            "valueType": "NUMBER",
-            "code": "DEM3",
+            "name": "Age distribution",
+            "valueType": "PERCENTAGE",
+            "code": "SV_TK_002",
             "aggregationType": "LAST_AVERAGE_ORG_UNIT",
             "$categoryCombo": "demographic-age"
         },
-        "comments-demographic": {
-            "name": "Comments DS_DEM",
-            "valueType": "LONG_TEXT",
-            "code": "DE_DS_DEM"
-        },
-        "comments-population": {
-            "name": "Comments DS_POP",
-            "valueType": "LONG_TEXT",
-            "code": "DE_DS_POP"
-        },
-        "birth-rate": {
-            "name": "Crude Birth Rate (%)",
+        "population-by-age": {
+            "$byAntigen": true,
+            "name": "Population by age",
+            "code": "SV_TK_003",
             "valueType": "NUMBER",
             "aggregationType": "LAST_AVERAGE_ORG_UNIT",
-            "code": "DEM2"
+            "$categoryCombo": "age-group-${antigen.key}"
         },
 
         "vaccine-doses-administered": {
             "$byAntigen": true,
             "name": "Vaccine doses administered",
             "shortName": "Doses adm",
-            "code": "RVC_AD_DA",
+            "code": "SV_TK_005",
             "valueType": "NUMBER",
             "$categoryCombo": "age-group-${antigen.key}"
         },
@@ -99,7 +84,7 @@
             "$byAntigen": true,
             "name": "Vaccine doses used",
             "shortName": "Doses used",
-            "code": "RVC_AD_DU",
+            "code": "SV_TK_006",
             "valueType": "NUMBER",
             "$categoryCombo": "age-group-${antigen.key}"
         },
@@ -107,53 +92,53 @@
             "$byAntigen": true,
             "name": "ADS (Auto Disable Syringe) used",
             "shortName": "ADS used",
-            "code": "RVC_AD_ADSU",
+            "code": "SV_TK_007",
             "valueType": "NUMBER"
         },
         "ads-dilution": {
             "$byAntigen": true,
             "name": "ADS (Auto Disable Syringe) for dilution",
             "shortName": "ADS dilution",
-            "code": "RVC_AD_ADSD",
+            "code": "SV_TK_008",
             "valueType": "NUMBER"
         },
         "safety-boxes": {
             "$byAntigen": true,
             "name": "Safety boxes",
-            "code": "RVC_AD_SB",
+            "code": "SV_TK_009",
             "valueType": "NUMBER"
         },
         "syringes": {
             "$byAntigen": true,
             "name": "Syringes",
-            "code": "RVC_AD_SYR",
+            "code": "SV_TK_010",
             "valueType": "NUMBER"
         },
         "syringes-dilution": {
             "$byAntigen": true,
             "name": "Syringes for dilution",
-            "code": "RVC_AD_SYD",
+            "code": "SV_TK_011",
             "valueType": "NUMBER"
         },
         "needles": {
             "$byAntigen": true,
             "name": "Needles",
             "key": "needles",
-            "code": "RVC_AD_NDL",
+            "code": "SV_TK_012",
             "valueType": "NUMBER"
         },
         "aeb": {
             "$byAntigen": true,
             "name": "Accidental Exposure to Blood (AEB)",
             "shortName": "AEB",
-            "code": "RVC_AD_AEB",
+            "code": "SV_TK_013",
             "valueType": "NUMBER"
         },
         "adverse-event": {
             "$byAntigen": true,
             "name": "Adverse Event Following Immunization",
             "shortName": "AEFI",
-            "code": "RVC_AD_AEFI",
+            "code": "SV_TK_014",
             "valueType": "NUMBER",
             "$categoryCombo": "severity"
         }
@@ -164,7 +149,7 @@
             "$byAntigen": true,
             "name": "ADS (Auto Disable Syringe) wastage rate",
             "shortName": "ADS wastage rate",
-            "code": "RVC_IN_AWR",
+            "code": "SV_IN_001",
             "$indicatorType": "percentage",
             "numeratorDescription": "ADS used - Total Doses adm",
             "numerator": "#{${dataElements['ads-used-' + antigen.key].id}} - #{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
@@ -174,7 +159,7 @@
         "safety-boxes-ratio": {
             "$byAntigen": true,
             "name": "Safety boxes ratio",
-            "code": "RVC_IN_SBR",
+            "code": "SV_IN_002",
             "$indicatorType": "ratio",
             "numeratorDescription": "Syringes",
             "numerator": "#{${dataElements['syringes-' + antigen.key].id}}",
@@ -184,7 +169,7 @@
         "dilution-syringes-ratio": {
             "$byAntigen": true,
             "name": "Dilution syringes ratio",
-            "code": "RVC_IN_DSR",
+            "code": "SV_IN_003",
             "$indicatorType": "percentage",
             "numeratorDescription": "Syringes for dilution",
             "numerator": "#{${dataElements['syringes-dilution-' + antigen.key].id}}",
@@ -195,7 +180,7 @@
             "$byAntigen": true,
             "name": "Vaccine utilization rate",
             "shortName": "Utilization rate",
-            "code": "RVC_IN_UR",
+            "code": "SV_IN_004",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
             "numerator": "#{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
@@ -206,12 +191,12 @@
             "$byAntigen": true,
             "name": "Vaccine campaign coverage",
             "shortName": "Campaign coverage",
-            "code": "RVC_IN_CC",
+            "code": "SV_IN_005",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
             "numerator": "#{${dataElements['vaccine-doses-administered-' + antigen.key].id}}",
-            "denominatorDescription": "Total population",
-            "denominator": "#{${dataElements['total-population'].id}} * #{${dataElements['age-distribution'].id}}"
+            "denominatorDescription": "Population by age ${antigen.name}",
+            "denominator": "#{${dataElements['population-by-age-' + antigen.key].id}}"
         }
     },
 
@@ -231,6 +216,11 @@
             "dataDimensionType": "DISAGGREGATION",
             "categoryOptions": ["Minor", "Severe"]
         },
+        "displacement-status": {
+            "name": "Displacement Status",
+            "dataDimensionType": "DISAGGREGATION",
+            "categoryOptions": ["Host", "IDP", "Refugees"]
+        },
         "demographic-age": {
             "name": "Demographic age distribution",
             "dataDimensionType": "DISAGGREGATION",
@@ -241,10 +231,12 @@
         }
     },
 
-    "categoryCombosNOTUSED": {
-        "demographic-age": {
-            "name": "Demographic Age Distribution Combo",
-            "$category": ["demograhic-age"]
+    "categoryCombos": {
+        "age-group-gender": {
+            "$byAntigen": true,
+            "key": "age-group-gender-${antigen.key}",
+            "name": "Age group / gender - ${antigen.name}",
+            "$categories": ["age-group-${antigen.key}", "gender"]
         }
     },
 
@@ -335,67 +327,54 @@
     },
 
     "dataSets": {
-        "demograhic-yearly": {
-            "name": "Demographic Information - Yearly",
+        "demography": {
+            "name": "Demographic Information",
             "shortName": "Demographic Information",
-            "code": "DS_DEM",
-            "periodType": "Yearly",
+            "code": "DS_ERm",
+            "periodType": "Monthly",
             "dataElementDecoration": true,
             "renderAsTabs": true,
             "openFuturePeriods": 1,
             "timelyDays": 15,
-            "$dataElements": ["age-distribution", "comments-demographic", "birth-rate"],
+            "$dataElements": ["total-population", "age-distribution"],
             "$organisationUnits": {"names": ["OCBA"], "levels": [4, 5]},
             "$sections": {
-                "birth-rate": {
-                    "name": "Crude Birth Rate (%)",
-                    "showRowTotals": true,
-                    "$dataElements": ["birth-rate"]
-                },
-                "age-distribution": {
+                "Population": {
                     "name": "Population Age Distribution (%)",
                     "showRowTotals": true,
-                    "$dataElements": ["age-distribution"]
-                },
-                "comments": {
-                    "name": "comments",
-                    "$dataElements": ["comments-demographic"]
-                }
-            }
-        },
-        "population-quarterly": {
-            "name": "Population - Quarterly",
-            "shortName": "Population - Quarterly",
-            "code": "DS_POP_Q",
-            "periodType": "Quarterly",
-            "dataElementDecoration": true,
-            "renderAsTabs": true,
-            "openFuturePeriods": 4,
-            "timelyDays": 15,
-            "$dataElements": [
-                "total-population",
-                "total-population-by-age",
-                "comments-population"
-            ],
-            "$organisationUnits": {"names": ["OCBA"], "levels": [4, 5]},
-            "$sections": {
-                "population": {
-                    "name": "Population",
-                    "showRowTotals": true,
-                    "$dataElements": [
-                        "total-population",
-                        "total-population-by-age"
-                    ]
-                },
-                "comments": {
-                    "name": "comments",
-                    "$dataElements": [
-                        "comments-population"
-                    ]
+                    "$dataElements": ["total-population", "age-distribution"]
                 }
             }
         }
     },
+
+    "organisationUnitLevels": {
+        "msf-international": {
+            "name": "MSF International",
+            "level": 1
+        },
+        "operational-center": {
+            "name": "Operational Center",
+            "level": 2
+        },
+        "missing-office": {
+            "name": "Mission Office",
+            "level": 3
+        },
+        "project": {
+            "name": "Project",
+            "level": 4
+        },
+        "health-site": {
+            "name": "Health Site",
+            "level": 5
+        },
+        "health-service": {
+            "name": "Health Service",
+            "level": 6
+        }
+    },
+
     "test": {
         "organisationUnits": {
             "name": "MSF",
@@ -408,12 +387,15 @@
                             "children": {
                                 "project1": {
                                     "name": "KIDAL, PHC",
-                                    "code": "OU_KIDAL",
+                                    "code": "ESML105",
                                     "children": {
                                         "site1": {
                                             "name": "Vaccination Preventive (CPS)",
                                             "children": {
                                                 "service1": {
+                                                    "name": "Vaccination - Abadjo"
+                                                },
+                                                "service2": {
                                                     "name": "Vaccination - Tanainat"
                                                 }
                                             }
@@ -427,12 +409,12 @@
                             "children": {
                                 "project2": {
                                     "name": "KABO",
-                                    "code": "OU_KABO",
+                                    "code": "ESCF105",
                                     "children": {
                                         "site2": {
                                             "name": "BELALO",
                                             "children": {
-                                                "service2": {
+                                                "service3": {
                                                     "name": "Vaccination"
                                                 }
                                             }
@@ -447,7 +429,7 @@
         },
         "dataSets": {
             "test-campaign1": {
-                "name": "Vaccination Campaign 2019 Winter",
+                "name": "Vaccination Reactive Campaign - ESML105 - Daily",
                 "periodType": "Daily",
                 "dataElementDecoration": true,
                 "renderAsTabs": true,
@@ -455,21 +437,24 @@
                 "timelyDays": 15,
                 "$categoryCombo": "teams",
                 "$organisationUnits": {
-                    "names": [
-                        "Vaccination",
-                        "Vaccination - Tanainat"
+                    "keys": [
+                        "service1",
+                        "service2",
+                        "service3"
                     ]
                 },
                 "$sections": {
                     "test-campaign1-cholera": {
                         "name": "Cholera",
                         "$dataElementsByGroups": ["cholera"],
-                        "$dataElements": []
+                        "$dataElements": [],
+                        "$greyedDataElements": ["population-by-age-cholera"]
                     },
                     "test-campaign1-measles": {
                         "name": "Measles",
                         "$dataElementsByGroups": ["measles"],
-                        "$dataElements": []
+                        "$dataElements": [],
+                        "$greyedDataElements": ["population-by-age-measles"]
                     }
                 }
             }

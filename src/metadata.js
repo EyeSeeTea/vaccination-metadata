@@ -1,13 +1,13 @@
 const _ = require("lodash");
-const {interpolate, get, debug, inspect} = require("./utils");
+const {interpolate, get, debug, inspect, cartesianProduct} = require("./utils");
 const {Db} = require("./db");
 
 const models = [
-    "organisationUnits",
+    {name: "organisationUnits", fields: ["id", "name", "level"]},
     "organisationUnitLevels",
 
     "categories",
-    "categoryCombos",
+    { name: "categoryCombos", fields: ["id", "name", "categoryOptionCombos"] },
     "categoryOptions",
     "categoryOptionCombos",
 
@@ -41,6 +41,32 @@ function flattenPayloads(payloads) {
         .value();
 }
 
+function addCategoryOptionCombos(db, payload) {
+    const {categories, categoryOptions, categoryCombos} = payload;
+    const categoriesById = _.keyBy(categories, "id");
+    const categoryOptionsById = _.keyBy(categoryOptions, "id");
+
+    const categoryOptionCombos = _(categoryCombos).flatMap(categoryCombo => {
+        const categoryOptionsList = _(categoryCombo.categories)
+            .map(category => get(categoriesById, [category.id, "categoryOptions"]).map(co => co.id))
+            .value();
+
+        return cartesianProduct(...categoryOptionsList).map(categoryOptionIds => {
+            const categoryOptions = _(categoryOptionsById).at(categoryOptionIds).value();
+            const key = [categoryCombo.id, ...categoryOptionIds].join(".");
+
+            return db.getByKey("categoryOptionCombos", {
+                key: key,
+                name: _(categoryOptions).map("name").join(", "),
+                categoryCombo: {id: categoryCombo.id},
+                categoryOptions: categoryOptionIds.map(id => ({id})),
+            });
+        });
+    }).value();
+
+    return {...payload, categoryOptionCombos};
+}
+
 function toKeyList(object, path) {
     if (!object) {
         throw new Error("No object");
@@ -51,7 +77,9 @@ function toKeyList(object, path) {
             ..._.get(object, path),
             ..._.get(object, "test." + path),
         };
-        return _(innerObject).map((value, key) => ({...value, key})).value();
+        return _(innerObject)
+            .map((value, key) => _(value).has("key") ? value : ({...value, key}))
+            .value();
     }
 }
 
@@ -77,10 +105,10 @@ async function getPayloadFromDb(db, sourceData) {
         categoryOptions: getIds(categoryOptionsAntigens),
     });
 
-    const categoriesMetadata = flattenPayloads([
-        ...getCustomCategories(sourceData, db),
-        ...getCategoriesMetadataForAntigens(db, sourceData),
-    ]);
+    const categoriesAntigensMetadata = getCategoriesMetadataForAntigens(db, sourceData);
+
+    const categoriesMetadata = addCategoryOptionCombos(db,
+        getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata))
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
 
@@ -92,7 +120,8 @@ async function getPayloadFromDb(db, sourceData) {
         return db.getByName("userRoles", userRole);
     });
 
-    const dataSetsMetadata = getDataSetsMetadata(db, sourceData,  categoriesMetadata, dataElementsMetadata);
+    const dataSetsMetadata = getDataSetsMetadata(db, sourceData,
+        categoriesMetadata, dataElementsMetadata, orgUnitsMetadata);
 
     const payloadBase = {
         categories: [categoryAntigens],
@@ -110,11 +139,12 @@ async function getPayloadFromDb(db, sourceData) {
     ]);
 }
 
-function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMetadata) {
-    const organisationUnits = db.getObjectsForModel("organisationUnits");
+function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMetadata, orgUnitsMetadata) {
+    const organisationUnits = orgUnitsMetadata.organisationUnits;
     const dataElementsById = _.keyBy(dataElementsMetadata.dataElements, "id");
     const dataElementsByKey = _.keyBy(dataElementsMetadata.dataElements, "key");
     const dataElementGroupsByKey = _.keyBy(dataElementsMetadata.dataElementGroups, "key");
+    const cocsByCategoryComboId = _.groupBy(categoriesMetadata.categoryOptionCombos, coc => coc.categoryCombo.id);
 
     return flattenPayloads(toKeyList(sourceData, "dataSets").map($dataSet => {
         const sections = toKeyList($dataSet, "$sections").map($section => {
@@ -126,15 +156,27 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
                     .map(de => dataElementsById[de.id])
                     .value(),
             );
+            
+            const greyedFields = _(dataElementsByKey)
+                .at($section.$greyedDataElements || [])
+                .flatMap(dataElement => {
+                    const cocs = _.flatten(get(cocsByCategoryComboId, dataElement.categoryCombo.id));
+                    return cocs.map(coc => ({
+                        dataElement: {id: dataElement.id},
+                        categoryOptionCombo: {id: coc.id},
+                    }));
+                });
+
             return db.getByKey("sections", {
                 ...$section,
+                greyedFields: [],
                 dataElements: getIds(dataElements),
             });
         });
 
+        const {keys, levels} = $dataSet.$organisationUnits;
         const organisationUnitsForDataSet = organisationUnits.filter(orgUnit => {
-            const { names, levels } = $dataSet.$organisationUnits;
-            return _(names).includes(orgUnit.name) || _(levels).includes(orgUnit.level);
+            return _(keys).includes(orgUnit.key) || _(levels).includes(orgUnit.level);
         });
 
         const dataSet = db.getByName("dataSets", {
@@ -155,7 +197,7 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
 
         return {
             dataSets: [{...dataSet, dataSetElements}],
-            _sections: sections.map((section, idx) => ({
+            sections: sections.map((section, idx) => ({
                 ...section,
                 sortOrder: idx,
                 dataSet: {id: dataSet.id},
@@ -183,11 +225,15 @@ function getOrgUnitsFromTree(db, parentOrgUnit, orgUnitsByKey) {
 
 function getTestOrgUnitsMetadata(db, sourceData) {
     const organisationUnits = getOrgUnitsFromTree(db, null, {root: sourceData.test.organisationUnits});
-    return {organisationUnits};
+    const organisationUnitLevels = toKeyList(sourceData, "organisationUnitLevels").map(orgUnitLevel => {
+        return db.getByName("organisationUnitLevels", orgUnitLevel, {field: "level"});
+    });
+
+    return {organisationUnits, organisationUnitLevels};
 }
 
 function getCategoriesMetadataForAntigens(db, sourceData) {
-    return toKeyList(sourceData, "antigens").map(antigen => {
+    return flattenPayloads(toKeyList(sourceData, "antigens").map(antigen => {
         const categoryOptionsForAge = antigen.ageGroups.map(ageGroupName => {
             return db.getByName("categoryOptions", {
                 name: ageGroupName,
@@ -210,17 +256,34 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
             dataDimensionType: "DISAGGREGATION",
             categories: getIds([categoryAgeGroup]),
         });
-
+        
         return {
             categories: [categoryAgeGroup],
             categoryOptions: categoryOptionsForAge,
             categoryCombos: [categoryComboAge],
         };
-    });
+    }));
+}
+
+function interpolateObj(attributes, namespace) {
+    return _(attributes)
+        .mapValues(value => {
+            if (_(value).isString()) {
+                return interpolate(value, namespace);
+            } else if (_(value).isArray()) {
+                return value.map(v => interpolate(v, namespace))
+            } else if(_(value).isObject()) {
+                return interpolateObj(value, namespace);
+            } else if (_(value).isBoolean()) {
+                return value;
+            } else {
+                throw `Unsupported interpolation object: ${inspect(value)}`;
+            }
+        }).value();
 }
 
 function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
-    const attributes = _(plainAttributes).mapValues(s => interpolate(s, namespace)).value();
+    const attributes = interpolateObj(plainAttributes, namespace);
     
     return db.getByName("indicators", {
         shortName: attributes.name,
@@ -244,9 +307,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
     const dataElementsMetadata = flattenPayloads(toKeyList(sourceData, "dataElements").map(dataElement => {
         if (dataElement.$byAntigen) {
             const dataElements = toKeyList(sourceData, "antigens").map(antigen => {
-                const dataElementInterpolated = _(dataElement)
-                    .mapValues(s => interpolate(s, {antigen}))
-                    .value();
+                const dataElementInterpolated = interpolateObj(dataElement, {antigen});
 
                 return db.getByName("dataElements", {
                     ...dataElement,
@@ -326,7 +387,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
                 return getIndicator(db, indicatorTypesByKey, {...namespace, antigen}, {
                     ...indicator,
                     key: `${indicator.key}-${antigen.key}`,
-                    name: `${antigen.name} ${indicator.name}`,
+                    name: `${indicator.name} - ${antigen.name}`,
                     shortName: `${antigen.shortName || antigen.name} ${indicator.shortName || indicator.name}`,
                     code: `${indicator.code}_${antigen.code}`,
                     domainType: "AGGREGATE",
@@ -358,14 +419,16 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
         indicatorGroups: getIds(indicatorsMetadata.indicatorGroups),
     });
 
-    return flattenPayloads([
-        indicatorsMetadata,
-        {indicatorGroupSets: [indicatorGroupSet], indicatorTypes: _.values(indicatorTypesByKey)},
-    ]);
+    const groupsMetadata = {
+        indicatorGroupSets: [indicatorGroupSet],
+        indicatorTypes: _.values(indicatorTypesByKey),
+    };
+
+    return flattenPayloads([indicatorsMetadata, groupsMetadata]);
 }
 
-function getCustomCategories(sourceData, db) {
-    return toKeyList(sourceData, "categories").map(info => {
+function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
+    const customMetadata = flattenPayloads(toKeyList(sourceData, "categories").map(info => {
         const dataDimensionType = info.dataDimensionType || "DISAGGREGATION";
 
         const categoryOptions = get(info, "categoryOptions").map(name => {
@@ -380,7 +443,7 @@ function getCustomCategories(sourceData, db) {
             name: info.name,
             dataDimensionType,
             dimensionType: "CATEGORY",
-            dataDimension: false,
+            dataDimension: true,
             categoryOptions: getIds(categoryOptions),
         });
 
@@ -396,7 +459,28 @@ function getCustomCategories(sourceData, db) {
             categoryOptions,
             categoryCombos: [categoryCombo],
         };
+    }));
+
+    const payload = flattenPayloads([categoriesAntigensMetadata, customMetadata]);
+
+    const categoryCombos = toKeyList(sourceData, "categoryCombos").flatMap(categoryCombo => {
+        const categoryCombos = categoryCombo.$byAntigen
+            ? toKeyList(sourceData, "antigens").map(antigen => interpolateObj(categoryCombo, { antigen }))
+            : [categoryCombo]
+
+        return categoryCombos.map(categoryCombo => {
+            const categoriesForCatCombo =
+                _(payload.categories).keyBy("key").at(categoryCombo.$categories).value();
+
+            return db.getByName("categoryCombos", {
+                dataDimensionType: "DISAGGREGATION",
+                categories: getIds(categoriesForCatCombo),
+                ...categoryCombo,
+            });
+        });
     });
+
+    return flattenPayloads([payload, {categoryCombos}])
 }
 
 /* Public interface */
@@ -414,10 +498,12 @@ async function postPayload(url, payload, {updateCOCs = false} = {}) {
 
     if (responseJson.status === "OK" && updateCOCs) {
         debug("Update category option combinations");
+        /*
         const res = await db.updateCOCs();
         if (res.status < 200 || res.status > 299) {
             throw `Error upding category option combo: ${inspect(res)}`;
         }
+        */
     }
     return responseJson;
 }
