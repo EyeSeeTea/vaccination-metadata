@@ -36,7 +36,6 @@ function flattenPayloads(payloads) {
             _(pairs)
                 .flatMap(([_key, values]) => values)
                 .uniqBy("id")
-                //.map(obj => _.omit(obj, ["key"]))
                 .value())
         .value();
 }
@@ -89,19 +88,19 @@ function getIds(objs) {
 
 async function getPayloadFromDb(db, sourceData) {
     const categoryOptionsAntigens = toKeyList(sourceData, "antigens").map(antigen => {
-        return db.getByName("categoryOptions", {
+        return db.get("categoryOptions", {
             name: antigen.name,
             code: antigen.code,
             shortName: antigen.name,
         });
     });
 
-    const categoryAntigens = db.getByName("categories", {
+    const categoryAntigens = db.get("categories", {
         key: "antigens",
         name: "Antigens",
         dataDimensionType: "DISAGGREGATION",
         dimensionType: "CATEGORY",
-        dataDimension: true,
+        dataDimension: false,
         categoryOptions: getIds(categoryOptionsAntigens),
     });
 
@@ -117,7 +116,7 @@ async function getPayloadFromDb(db, sourceData) {
     const orgUnitsMetadata = getTestOrgUnitsMetadata(db, sourceData)
 
     const userRoles = toKeyList(sourceData, "userRoles").map(userRole => {
-        return db.getByName("userRoles", userRole);
+        return db.get("userRoles", userRole);
     });
 
     const dataSetsMetadata = getDataSetsMetadata(db, sourceData,
@@ -169,7 +168,7 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
 
             return db.getByKey("sections", {
                 ...$section,
-                greyedFields: [],
+                greyedFields,
                 dataElements: getIds(dataElements),
             });
         });
@@ -179,7 +178,7 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
             return _(keys).includes(orgUnit.key) || _(levels).includes(orgUnit.level);
         });
 
-        const dataSet = db.getByName("dataSets", {
+        const dataSet = db.get("dataSets", {
             ...$dataSet,
             categoryCombo: getCategoryComboId(db, categoriesMetadata, $dataSet),
             organisationUnits: getIds(organisationUnitsForDataSet),
@@ -197,9 +196,8 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
 
         return {
             dataSets: [{...dataSet, dataSetElements}],
-            sections: sections.map((section, idx) => ({
+            sections: sections.map(section => ({
                 ...section,
-                sortOrder: idx,
                 dataSet: {id: dataSet.id},
             })),
         };
@@ -208,13 +206,14 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
 
 function getOrgUnitsFromTree(db, parentOrgUnit, orgUnitsByKey) {
     return _(orgUnitsByKey).map((values, key) => ({...values, key})).flatMap(attributes => {
-        const orgUnit = db.getByName("organisationUnits", {
+        const orgUnit = db.get("organisationUnits", {
             level: parentOrgUnit ? parentOrgUnit.level + 1 : 1,
             shortName: attributes.name,
             openingDate: "1970-01-01T00:00:00.000",
             parent: parentOrgUnit ? {id: parentOrgUnit.id} : undefined,
             ..._.omit(attributes, ["children"]),
         });
+
         const childrenOrgUnits = attributes.children
             ? getOrgUnitsFromTree(db, orgUnit, attributes.children)
             : [];
@@ -225,8 +224,9 @@ function getOrgUnitsFromTree(db, parentOrgUnit, orgUnitsByKey) {
 
 function getTestOrgUnitsMetadata(db, sourceData) {
     const organisationUnits = getOrgUnitsFromTree(db, null, {root: sourceData.test.organisationUnits});
+
     const organisationUnitLevels = toKeyList(sourceData, "organisationUnitLevels").map(orgUnitLevel => {
-        return db.getByName("organisationUnitLevels", orgUnitLevel, {field: "level"});
+        return db.get("organisationUnitLevels", orgUnitLevel, {field: "level"});
     });
 
     return {organisationUnits, organisationUnitLevels};
@@ -235,13 +235,13 @@ function getTestOrgUnitsMetadata(db, sourceData) {
 function getCategoriesMetadataForAntigens(db, sourceData) {
     return flattenPayloads(toKeyList(sourceData, "antigens").map(antigen => {
         const categoryOptionsForAge = antigen.ageGroups.map(ageGroupName => {
-            return db.getByName("categoryOptions", {
+            return db.get("categoryOptions", {
                 name: ageGroupName,
                 shortName: ageGroupName,
             });
         });
 
-        const categoryAgeGroup = db.getByName("categories", {
+        const categoryAgeGroup = db.get("categories", {
             key: `age-group-${antigen.key}`,
             name: `Age group ${antigen.name}`,
             dataDimensionType: "DISAGGREGATION",
@@ -250,7 +250,7 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
             categoryOptions: getIds(categoryOptionsForAge),
         });
 
-        const categoryComboAge = db.getByName("categoryCombos", {
+        const categoryComboAge = db.get("categoryCombos", {
             key: `age-group-${antigen.key}`,
             name: `Age group ${antigen.name}`,
             dataDimensionType: "DISAGGREGATION",
@@ -285,7 +285,7 @@ function interpolateObj(attributes, namespace) {
 function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
     const attributes = interpolateObj(plainAttributes, namespace);
     
-    return db.getByName("indicators", {
+    return db.get("indicators", {
         shortName: attributes.name,
         indicatorType: {
             id: get(indicatorTypesByKey, [attributes.$indicatorType, "id"]),
@@ -309,7 +309,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             const dataElements = toKeyList(sourceData, "antigens").map(antigen => {
                 const dataElementInterpolated = interpolateObj(dataElement, {antigen});
 
-                return db.getByName("dataElements", {
+                return db.get("dataElements", {
                     ...dataElement,
                     key: `${dataElement.key}-${antigen.key}`,
                     name: `${dataElement.name} - ${antigen.name}`,
@@ -322,7 +322,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
                 }, {antigen});
             });
 
-            const dataElementGroup = db.getByName("dataElementGroups", {
+            const dataElementGroup = db.get("dataElementGroups", {
                 name: dataElement.name,
                 key: dataElement.key,
                 dataElements: getIds(dataElements),
@@ -330,7 +330,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
 
             return {dataElementGroups: [dataElementGroup], dataElements};
         } else {
-            const dataElementDb = db.getByName("dataElements", {
+            const dataElementDb = db.get("dataElements", {
                 shortName: dataElement.shortName || dataElement.name,
                 domainType: "AGGREGATE",
                 aggregationType: "SUM",
@@ -347,7 +347,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
         .groupBy(dataElement => dataElement.$antigen.key)
         .map((dataElementsForAntigen, antigenKey) => {
             const antigen = sourceData.antigens[antigenKey];
-            return db.getByName("dataElementGroups", {
+            return db.get("dataElementGroups", {
                 name: antigen.name,
                 key: antigenKey,
                 dataElements: getIds(dataElementsForAntigen),
@@ -355,9 +355,10 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
         })
         .value();
 
-    const dataElementGroupSet = db.getByName("dataElementGroupSets", {
+    const dataElementGroupSet = db.get("dataElementGroupSets", {
         key: "reactive-vaccination",
         name: "Reactive Vaccination",
+        dataDimension: false,
         dataElementGroups: getIds(dataElementsMetadata.dataElementGroups),
     });
 
@@ -372,7 +373,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
 
 function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
     const indicatorTypesByKey = _(toKeyList(sourceData, "indicatorTypes"))
-        .map(indicatorType => db.getByName("indicatorTypes", indicatorType))
+        .map(indicatorType => db.get("indicatorTypes", indicatorType))
         .keyBy("key")
         .value();
 
@@ -395,7 +396,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
                 });
             });
 
-            const indicatorGroup = db.getByName("indicatorGroups", {
+            const indicatorGroup = db.get("indicatorGroups", {
                 name: indicator.name,
                 indicators: getIds(indicators),
             });
@@ -413,7 +414,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
         }
     }));
 
-    const indicatorGroupSet = db.getByName("indicatorGroupSets", {
+    const indicatorGroupSet = db.get("indicatorGroupSets", {
         key: "reactive-vaccination",
         name: "Reactive Vaccination",
         indicatorGroups: getIds(indicatorsMetadata.indicatorGroups),
@@ -428,29 +429,26 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
 }
 
 function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
-    const customMetadata = flattenPayloads(toKeyList(sourceData, "categories").map(info => {
-        const dataDimensionType = info.dataDimensionType || "DISAGGREGATION";
-
-        const categoryOptions = get(info, "categoryOptions").map(name => {
-            return db.getByName("categoryOptions", {
+    const customMetadata = flattenPayloads(toKeyList(sourceData, "categories").map(attributes => {
+        const categoryOptions = get(attributes, "$categoryOptions").map(name => {
+            return db.get("categoryOptions", {
                 name: name,
                 shortName: name,
             });
         });
 
-        const category = db.getByName("categories", {
-            key: info.key,
-            name: info.name,
-            dataDimensionType,
+        const category = db.get("categories", {
+            dataDimensionType: "DISAGGREGATION",
             dimensionType: "CATEGORY",
-            dataDimension: true,
+            dataDimension: false,
             categoryOptions: getIds(categoryOptions),
+            ...attributes,
         });
 
-        const categoryCombo = db.getByName("categoryCombos", {
-            key: info.key,
-            name: info.name,
-            dataDimensionType,
+        const categoryCombo = db.get("categoryCombos", {
+            key: attributes.key,
+            name: attributes.name,
+            dataDimensionType: attributes.dataDimensionType || "DISAGGREGATION",
             categories: getIds([category]),
         });
 
@@ -463,7 +461,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
 
     const payload = flattenPayloads([categoriesAntigensMetadata, customMetadata]);
 
-    const categoryCombos = toKeyList(sourceData, "categoryCombos").flatMap(categoryCombo => {
+    const categoryCombos = _(toKeyList(sourceData, "categoryCombos")).flatMap(categoryCombo => {
         const categoryCombos = categoryCombo.$byAntigen
             ? toKeyList(sourceData, "antigens").map(antigen => interpolateObj(categoryCombo, { antigen }))
             : [categoryCombo]
@@ -472,13 +470,13 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             const categoriesForCatCombo =
                 _(payload.categories).keyBy("key").at(categoryCombo.$categories).value();
 
-            return db.getByName("categoryCombos", {
+            return db.get("categoryCombos", {
                 dataDimensionType: "DISAGGREGATION",
                 categories: getIds(categoriesForCatCombo),
                 ...categoryCombo,
             });
         });
-    });
+    }).value();
 
     return flattenPayloads([payload, {categoryCombos}])
 }

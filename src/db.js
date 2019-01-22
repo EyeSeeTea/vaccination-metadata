@@ -59,7 +59,7 @@ class Db {
         return this.data[model];
     }
 
-    getByName(model, allAttributes, {field = "name"} = {}) {
+    get(model, allAttributes, {field = "name"} = {}) {
         const {key, ...attributes} = allAttributes;
         const value = attributes[field];
         const valuesByField = _.keyBy(this.data[model], field);
@@ -81,7 +81,7 @@ class Db {
                 throw `Name key is required in attributes: ${inspect(attributes)}`;
             } else {
                 const uid = getUid(key, model + "-");
-                return { ...attributes, id: uid, key };
+                return {...attributes, id: uid, key};
             }
     }
 
