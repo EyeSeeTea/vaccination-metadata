@@ -1,0 +1,23 @@
+{
+  "name": "vaccination-metadata",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/EyeSeeTea/vaccination-metadata",
+  "author": "arnau@eyeseetea.com",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "lodash": "^4.17.11",
+    "md5": "^2.2.1",
+    "node-fetch": "^2.3.0",
+    "p-map": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}
