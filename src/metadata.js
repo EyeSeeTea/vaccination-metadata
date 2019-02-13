@@ -108,13 +108,13 @@ async function getPayloadFromDb(db, sourceData) {
     const categoriesAntigensMetadata = getCategoriesMetadataForAntigens(db, sourceData);
 
     const categoriesMetadata = addCategoryOptionCombos(db,
-        getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata))
+        getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata));
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
 
     const indicatorsMetadata = getIndicatorsMetadata(db, sourceData, dataElementsMetadata);
 
-    const orgUnitsMetadata = getTestOrgUnitsMetadata(db, sourceData)
+    const orgUnitsMetadata = getTestOrgUnitsMetadata(db, sourceData);
 
     const userRoles = toKeyList(sourceData, "userRoles").map(userRole => {
         return db.get("userRoles", userRole);
@@ -156,7 +156,7 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
                     .map(de => dataElementsById[de.id])
                     .value(),
             );
-            
+
             const greyedFields = _(dataElementsByKey)
                 .at($section.$greyedDataElements || [])
                 .flatMap(dataElement => {
@@ -219,7 +219,7 @@ function getOrgUnitsFromTree(db, parentOrgUnit, orgUnitsByKey) {
             ? getOrgUnitsFromTree(db, orgUnit, attributes.children)
             : [];
 
-        return [orgUnit, ...childrenOrgUnits]
+        return [orgUnit, ...childrenOrgUnits];
     }).value();
 }
 
@@ -273,7 +273,7 @@ function interpolateObj(attributes, namespace) {
             if (_(value).isString()) {
                 return interpolate(value, namespace);
             } else if (_(value).isArray()) {
-                return value.map(v => interpolate(v, namespace))
+                return value.map(v => interpolate(v, namespace));
             } else if(_(value).isObject()) {
                 return interpolateObj(value, namespace);
             } else if (_(value).isBoolean()) {
@@ -286,7 +286,7 @@ function interpolateObj(attributes, namespace) {
 
 function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
     const attributes = interpolateObj(plainAttributes, namespace);
-    
+
     return db.get("indicators", {
         shortName: attributes.name,
         indicatorType: {
@@ -383,7 +383,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
     const namespace = {
         dataElements: _.keyBy(dataElementsMetadata.dataElements, "key"),
         dataElementGroups: _.keyBy(dataElementsMetadata.dataElementGroups, "key"),
-    }
+    };
 
     const indicatorsMetadata = flattenPayloads(toKeyList(sourceData, "indicators").map(indicator => {
         if (indicator.$byAntigen) {
@@ -468,7 +468,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
     const categoryCombos = _(toKeyList(sourceData, "categoryCombos")).flatMap(categoryCombo => {
         const categoryCombos = categoryCombo.$byAntigen
             ? toKeyList(sourceData, "antigens").map(antigen => interpolateObj(categoryCombo, { antigen }))
-            : [categoryCombo]
+            : [categoryCombo];
 
         return categoryCombos.map(categoryCombo => {
             const categoriesForCatCombo =
@@ -482,7 +482,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
         });
     }).value();
 
-    return flattenPayloads([payload, {categoryCombos}])
+    return flattenPayloads([payload, {categoryCombos}]);
 }
 
 /* Public interface */
