@@ -98,6 +98,7 @@ async function getPayloadFromDb(db, sourceData) {
     const categoryAntigens = db.get("categories", {
         key: "antigens",
         name: "Antigens",
+        code: "RVC_ANTIGENS",
         dataDimensionType: "DISAGGREGATION",
         dimensionType: "CATEGORY",
         dataDimension: false,
@@ -252,11 +253,12 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
 
         const categoryComboAge = db.get("categoryCombos", {
             key: `age-group-${antigen.key}`,
+            code: antigen.code,
             name: `Age group ${antigen.name}`,
             dataDimensionType: "DISAGGREGATION",
             categories: getIds([categoryAgeGroup]),
         });
-        
+
         return {
             categories: [categoryAgeGroup],
             categoryOptions: categoryOptionsForAge,
@@ -350,6 +352,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             return db.get("dataElementGroups", {
                 name: antigen.name,
                 key: antigenKey,
+                code: antigen.code,
                 dataElements: getIds(dataElementsForAntigen),
             });
         })
@@ -403,7 +406,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
 
             return {indicatorGroups: [indicatorGroup], indicators: indicators};
         } else {
-            const indicatorDb = getIndicator(db, indicatorTypesByKey, antigen, {
+            const indicatorDb = getIndicator(db, indicatorTypesByKey, namespace, {
                 shortName: indicator.shortName || indicator.name,
                 domainType: "AGGREGATE",
                 aggregationType: "SUM",
@@ -448,6 +451,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
         const categoryCombo = db.get("categoryCombos", {
             key: attributes.key,
             name: attributes.name,
+            code: attributes.code,
             dataDimensionType: attributes.dataDimensionType || "DISAGGREGATION",
             categories: getIds([category]),
         });

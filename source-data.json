@@ -2,50 +2,55 @@
     "antigens": {
         "measles": {
             "name": "Measles",
-            "code": "AMS",
+            "code": "RVC_MEASLES",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 23 m", "24 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "meningitis-polysaccharide": {
             "name": "Meningitis Polysaccharide",
             "shortName": "MenPol",
-            "code": "AMP",
+            "code": "RVC_MENPOLY",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "meningitis-conjugate": {
             "name": "Meningitis Conjugate",
             "shortName": "MenCon",
-            "code": "AMC",
+            "code": "RVC_MENCONJ",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "cholera": {
             "name": "Cholera",
-            "code": "ACH",
+            "code": "RVC_CHOLERA",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "pcv": {
             "name": "PCV",
-            "code": "APCV",
+            "code": "RVC_PCV",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "pertussis-penta": {
             "name": "Pertussis Penta",
-            "code": "APP",
+            "code": "RVC_PERTPENTA",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "yellow-fever": {
             "name": "Yellow Fever",
-            "code": "AYF",
+            "code": "RVC_YELLOW_FEVER",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "japanese-encephalitis": {
             "name": "Japanese Encephalitis",
-            "code": "AJE",
+            "code": "RVC_JPENC",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "dengue": {
             "name": "Dengue",
-            "code": "ADE",
+            "code": "RVC_DENGUE",
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
+        },
+        "typhoid-fever": {
+            "name": "Typhoid Fever",
+            "code": "RVC_TYPHOID_FEVER",
+            "ageGroups": ["6 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 45 y"]
         }
     },
 
@@ -203,6 +208,7 @@
     "categories": {
         "teams": {
             "name": "Teams",
+            "code": "RVC_TEAMS",
             "dataDimensionType": "ATTRIBUTE",
             "dataDimension": true,
             "$categoryOptions": ["Team 1", "Team 2", "Team 3"]
