@@ -14,7 +14,11 @@ async function generate({url, sourceDataFilePath, outputMetadataFilePath}) {
 }
 
 async function post({url, sourceMetadataFilePath}) {
-    const payload = JSON.parse(fs.readFileSync(sourceMetadataFilePath, "utf8"));
+    const payloadAll = JSON.parse(fs.readFileSync(sourceMetadataFilePath, "utf8"));
+    const payload = _(payloadAll)
+        .omit(["organisationUnitLevels", "organisationUnits", "dataSets", "sections"])
+        .value();
+
     const responseJson = await postPayload(url, payload, {updateCOCs: true});
 
     if (responseJson.status === "OK") {
@@ -45,19 +49,19 @@ function getArgsParser() {
     }];
 
     parserGenerate.addArgument(...urlArg);
-    parserGenerate.addArgument([ "-i", "--data-input" ], {
+    parserGenerate.addArgument(["-i", "--data-input"], {
         dest: "sourceDataFilePath",
         help: "Source JSON data path",
         required: true,
     });
-    parserGenerate.addArgument([ "-o", "--metadata-output" ], {
+    parserGenerate.addArgument(["-o", "--metadata-output"], {
         dest: "outputMetadataFilePath",
         help: "Output JSON metadata path",
         required: true,
     });
 
     parserPost.addArgument(...urlArg);
-    parserPost.addArgument([ "-i", "--metadata-input" ], {
+    parserPost.addArgument(["-i", "--metadata-input"], {
         dest: "sourceMetadataFilePath",
         help: "Source JSON metadata path",
         required: true,

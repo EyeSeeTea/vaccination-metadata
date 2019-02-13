@@ -29,6 +29,6 @@
             "error",
             {"args": "all", "argsIgnorePattern": "^_"}
         ],
-        "space-in-brackets": ["error", "never"]
+        "array-bracket-spacing": ["error", "never"]
     }
 }
