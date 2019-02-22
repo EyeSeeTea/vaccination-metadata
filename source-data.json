@@ -3,53 +3,145 @@
         "measles": {
             "name": "Measles",
             "code": "RVC_MEASLES",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 23 m", "24 - 59 m", "5 - 14 y", "15 - 29 y"]
+
         },
         "meningitis-polysaccharide": {
             "name": "Meningitis Polysaccharide",
             "shortName": "MenPol",
             "code": "RVC_MENPOLY",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "meningitis-conjugate": {
             "name": "Meningitis Conjugate",
             "shortName": "MenCon",
             "code": "RVC_MENCONJ",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "cholera": {
             "name": "Cholera",
             "code": "RVC_CHOLERA",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "pcv": {
             "name": "PCV",
             "code": "RVC_PCV",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "pertussis-penta": {
             "name": "Pertussis Penta",
             "code": "RVC_PERTPENTA",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "yellow-fever": {
             "name": "Yellow Fever",
             "code": "RVC_YELLOW_FEVER",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "japanese-encephalitis": {
             "name": "Japanese Encephalitis",
             "code": "RVC_JPENC",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "dengue": {
             "name": "Dengue",
             "code": "RVC_DENGUE",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 8 m", "9 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 29 y"]
         },
         "typhoid-fever": {
             "name": "Typhoid Fever",
             "code": "RVC_TYPHOID_FEVER",
+            "dataElements": [
+                "vaccine-doses-administered",
+                "vaccine-doses-used",
+                "ads-used",
+                "syringes",
+                "needles",
+                "safety-boxes",
+                "aeb",
+                "adverse-event"
+            ],
             "ageGroups": ["6 - 11 m", "12 - 59 m", "5 - 14 y", "15 - 45 y"]
         }
     },
@@ -57,21 +149,21 @@
     "dataElements": {
         "total-population": {
             "name": "Total population",
-            "code": "RVC_AD_001",
+            "code": "RVC_TOTAL_POPULATION",
             "aggregationType": "LAST",
             "valueType": "NUMBER"
         },
         "age-distribution": {
             "name": "Age distribution (%)",
             "valueType": "PERCENTAGE",
-            "code": "RVC_AD_002",
+            "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "demographic-age"
         },
         "population-by-age": {
             "$byAntigen": false,
             "name": "Population by age",
-            "code": "RVC_AD_003",
+            "code": "RVC_POPULATION_BY_AGE",
             "valueType": "NUMBER",
             "aggregationType": "LAST",
             "$categoryCombo": "demographic-age"
@@ -81,7 +173,7 @@
             "$byAntigen": true,
             "name": "Vaccine doses administered",
             "shortName": "Doses adm",
-            "code": "RVC_AD_005",
+            "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "NUMBER",
             "$categoryCombo": "age-group-${antigen.key}"
         },
@@ -89,61 +181,49 @@
             "$byAntigen": true,
             "name": "Vaccine doses used",
             "shortName": "Doses used",
-            "code": "RVC_AD_006",
+            "code": "RVC_DOSES_USED",
             "valueType": "NUMBER",
             "$categoryCombo": "age-group-${antigen.key}"
         },
+
         "ads-used": {
             "$byAntigen": true,
             "name": "ADS (Auto Disable Syringe) used",
             "shortName": "ADS used",
-            "code": "RVC_AD_007",
+            "code": "RVC_ADS_USED",
             "valueType": "NUMBER"
         },
-        "ads-dilution": {
+        "syringes": {
             "$byAntigen": true,
-            "name": "ADS (Auto Disable Syringe) for dilution",
-            "shortName": "ADS dilution",
-            "code": "RVC_AD_008",
+            "name": "Syringes for dilution",
+            "code": "RVC_SYRINGES",
+            "valueType": "NUMBER"
+        },
+        "needles": {
+            "$byAntigen": true,
+            "name": "Needles for dilution",
+            "key": "needles",
+            "code": "RVC_NEEDLES",
             "valueType": "NUMBER"
         },
         "safety-boxes": {
             "$byAntigen": true,
             "name": "Safety boxes",
-            "code": "RVC_AD_009",
-            "valueType": "NUMBER"
-        },
-        "syringes": {
-            "$byAntigen": true,
-            "name": "Syringes",
-            "code": "RVC_AD_010",
-            "valueType": "NUMBER"
-        },
-        "syringes-dilution": {
-            "$byAntigen": true,
-            "name": "Syringes for dilution",
-            "code": "RVC_AD_011",
-            "valueType": "NUMBER"
-        },
-        "needles": {
-            "$byAntigen": true,
-            "name": "Needles",
-            "key": "needles",
-            "code": "RVC_AD_012",
+            "code": "RVC_SAFETY_BOXES",
             "valueType": "NUMBER"
         },
         "aeb": {
             "$byAntigen": true,
             "name": "Accidental Exposure to Blood (AEB)",
             "shortName": "AEB",
-            "code": "RVC_AD_013",
+            "code": "RVC_AEB",
             "valueType": "NUMBER"
         },
         "adverse-event": {
             "$byAntigen": true,
             "name": "Adverse Event Following Immunization",
             "shortName": "AEFI",
-            "code": "RVC_AD_014",
+            "code": "RVC_AEFI",
             "valueType": "NUMBER",
             "$categoryCombo": "severity"
         }
@@ -152,6 +232,7 @@
     "indicators": {
         "ads-wastage-rate": {
             "$byAntigen": true,
+            "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
             "name": "ADS (Auto Disable Syringe) wastage rate",
             "shortName": "ADS wastage rate",
             "code": "RVC_IN_001",
@@ -163,6 +244,7 @@
         },
         "safety-boxes-ratio": {
             "$byAntigen": true,
+            "$dataElementsRequired": ["syringes", "safety-boxes"],
             "name": "Safety boxes ratio",
             "code": "RVC_IN_002",
             "$indicatorType": "ratio",
@@ -173,16 +255,18 @@
         },
         "dilution-syringes-ratio": {
             "$byAntigen": true,
+            "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
             "name": "Dilution syringes ratio",
             "code": "RVC_IN_003",
             "$indicatorType": "percentage",
             "numeratorDescription": "Syringes for dilution",
-            "numerator": "#{${dataElements['syringes-dilution-' + antigen.key].id}}",
+            "numerator": "#{${dataElements['syringes-' + antigen.key].id}}",
             "denominatorDescription": "Total doses used",
             "denominator": "#{${dataElements['vaccine-doses-used-' + antigen.key].id}}"
         },
         "vaccine-utilization-rate": {
             "$byAntigen": true,
+            "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
             "name": "Vaccine utilization rate",
             "shortName": "Utilization rate",
             "code": "RVC_IN_004",
@@ -194,6 +278,7 @@
         },
         "vaccine-campaign-coverage": {
             "$byAntigen": true,
+            "$dataElementsRequired": ["vaccine-doses-administered", "population-by-age"],
             "name": "Vaccine campaign coverage",
             "shortName": "Campaign coverage",
             "code": "RVC_IN_005",
@@ -243,12 +328,6 @@
     },
 
     "categoryCombos": {
-        "age-group-gender": {
-            "$byAntigen": true,
-            "key": "age-group-gender-${antigen.key}",
-            "name": "Age group / gender - ${antigen.name}",
-            "$categories": ["age-group-${antigen.key}", "gender"]
-        }
     },
 
     "indicatorTypes": {
@@ -348,7 +427,7 @@
             "openFuturePeriods": 1,
             "timelyDays": 15,
             "$dataElements": ["total-population", "age-distribution"],
-            "$organisationUnits": {"names": ["OCBA"], "levels": [4, 5]},
+            "$organisationUnits": {"levels": [4, 5]},
             "$sections": {
                 "Population": {
                     "sortOrder": 0,

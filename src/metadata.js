@@ -66,6 +66,14 @@ function addCategoryOptionCombos(db, payload) {
     return {...payload, categoryOptionCombos};
 }
 
+function getOrThrow(obj, property, message) {
+    if (obj && obj.hasOwnProperty(property)) {
+        return obj[property];
+    } else {
+        throw new Error(message || `Object has no property ${property}: ${inspect(obj)}`);
+    }
+}
+
 function toKeyList(object, path) {
     if (!object) {
         throw new Error("No object");
@@ -83,7 +91,7 @@ function toKeyList(object, path) {
 }
 
 function getIds(objs) {
-    return objs.map(obj => ({id: obj.id}));
+    return objs.map(obj => ({id: getOrThrow(obj, "id")}));
 }
 
 async function getPayloadFromDb(db, sourceData) {
@@ -139,8 +147,8 @@ async function getPayloadFromDb(db, sourceData) {
     ]);
 }
 
-function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMetadata, orgUnitsMetadata) {
-    const organisationUnits = orgUnitsMetadata.organisationUnits;
+function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMetadata, _orgUnitsMetadata) {
+    const organisationUnits = db.getObjectsForModel("organisationUnits"); //.concat(orgUnitsMetadata.organisationUnits);
     const dataElementsById = _.keyBy(dataElementsMetadata.dataElements, "id");
     const dataElementsByKey = _.keyBy(dataElementsMetadata.dataElements, "key");
     const dataElementGroupsByKey = _.keyBy(dataElementsMetadata.dataElementGroups, "key");
@@ -174,7 +182,7 @@ function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMet
             });
         });
 
-        const {keys, levels} = $dataSet.$organisationUnits;
+        const {keys, levels} = $dataSet.$organisationUnits || [];
         const organisationUnitsForDataSet = organisationUnits.filter(orgUnit => {
             return _(keys).includes(orgUnit.key) || _(levels).includes(orgUnit.level);
         });
@@ -308,21 +316,22 @@ function getCategoryComboId(db, categoriesMetadata, obj) {
 function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
     const dataElementsMetadata = flattenPayloads(toKeyList(sourceData, "dataElements").map(dataElement => {
         if (dataElement.$byAntigen) {
-            const dataElements = toKeyList(sourceData, "antigens").map(antigen => {
-                const dataElementInterpolated = interpolateObj(dataElement, {antigen});
-
-                return db.get("dataElements", {
-                    ...dataElement,
-                    key: `${dataElement.key}-${antigen.key}`,
-                    name: `${dataElement.name} - ${antigen.name}`,
-                    shortName: `${antigen.shortName || antigen.name} ${dataElement.shortName || dataElement.name}`,
-                    code: `${dataElement.code}_${antigen.code}`,
-                    domainType: "AGGREGATE",
-                    aggregationType: "SUM",
-                    categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElementInterpolated),
-                    $antigen: antigen,
-                }, {antigen});
-            });
+            const dataElements = _.compact(toKeyList(sourceData, "antigens").map(antigen => {
+                if (antigen.dataElements && antigen.dataElements.includes(dataElement.key)) {
+                    const dataElementInterpolated = interpolateObj(dataElement, {antigen});
+                    return db.get("dataElements", {
+                        ...dataElement,
+                        key: `${dataElement.key}-${antigen.key}`,
+                        name: `${dataElement.name} - ${antigen.name}`,
+                        shortName: `${antigen.shortName || antigen.name} ${dataElement.shortName || dataElement.name}`,
+                        code: `${dataElement.code}_${antigen.code}`,
+                        domainType: "AGGREGATE",
+                        aggregationType: "SUM",
+                        categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElementInterpolated),
+                        $antigen: antigen,
+                    }, {antigen});
+                }
+            }));
 
             const dataElementGroup = db.get("dataElementGroups", {
                 name: dataElement.name,
@@ -387,17 +396,20 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
 
     const indicatorsMetadata = flattenPayloads(toKeyList(sourceData, "indicators").map(indicator => {
         if (indicator.$byAntigen) {
-            const indicators = toKeyList(sourceData, "antigens").map(antigen => {
-                return getIndicator(db, indicatorTypesByKey, {...namespace, antigen}, {
-                    ...indicator,
-                    key: `${indicator.key}-${antigen.key}`,
-                    name: `${indicator.name} - ${antigen.name}`,
-                    shortName: `${antigen.shortName || antigen.name} ${indicator.shortName || indicator.name}`,
-                    code: `${indicator.code}_${antigen.code}`,
-                    domainType: "AGGREGATE",
-                    aggregationType: "SUM",
-                });
-            });
+            const indicators = _.compact(toKeyList(sourceData, "antigens").map(antigen => {
+                const required = indicator.$dataElementsRequired.map(key => `${key}-${antigen.key}`);
+                if (_(required).difference(_.keys(namespace.dataElements)).isEmpty()) {
+                    return getIndicator(db, indicatorTypesByKey, {...namespace, antigen}, {
+                        ...indicator,
+                        key: `${indicator.key}-${antigen.key}`,
+                        name: `${indicator.name} - ${antigen.name}`,
+                        shortName: `${antigen.shortName || antigen.name} ${indicator.shortName || indicator.name}`,
+                        code: `${indicator.code}_${antigen.code}`,
+                        domainType: "AGGREGATE",
+                        aggregationType: "SUM",
+                    });
+                }
+            }));
 
             const indicatorGroup = db.get("indicatorGroups", {
                 name: indicator.name,
@@ -472,7 +484,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
 
         return categoryCombos.map(categoryCombo => {
             const categoriesForCatCombo =
-                _(payload.categories).keyBy("key").at(categoryCombo.$categories).value();
+                _(payload.categories).keyBy("key").at(categoryCombo.$categories).compact().value();
 
             return db.get("categoryCombos", {
                 dataDimensionType: "DISAGGREGATION",

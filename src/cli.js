@@ -16,7 +16,7 @@ async function generate({url, sourceDataFilePath, outputMetadataFilePath}) {
 async function post({url, sourceMetadataFilePath}) {
     const payloadAll = JSON.parse(fs.readFileSync(sourceMetadataFilePath, "utf8"));
     const payload = _(payloadAll)
-        .omit(["organisationUnitLevels", "organisationUnits", "dataSets", "sections"])
+        .omit(["organisationUnitLevels", "organisationUnits"])
         .value();
 
     const responseJson = await postPayload(url, payload, {updateCOCs: true});

@@ -43,7 +43,7 @@ class Db {
                     ? value
                     : {name: value, fields: ["id", "name"]};
 
-                const json = await fetch(`${url}/api/${model}?fields=${fields.join(',')}&paging=false`)
+                const json = await fetch(`${url}/api/${model}?fields=${fields.join(",")}&paging=false`)
                     .then(res => res.json());
                 return [model, json[model]];
             };
@@ -78,11 +78,11 @@ class Db {
     getByKey(model, allAttributes) {
         const { key, ...attributes } = allAttributes;
         if (!key) {
-                throw `Name key is required in attributes: ${inspect(attributes)}`;
-            } else {
-                const uid = getUid(key, model + "-");
-                return {...attributes, id: uid, key};
-            }
+            throw `Name key is required in attributes: ${inspect(attributes)}`;
+        } else {
+            const uid = getUid(key, model + "-");
+            return {...attributes, id: uid, key};
+        }
     }
 
     async postMetadata(payload) {
