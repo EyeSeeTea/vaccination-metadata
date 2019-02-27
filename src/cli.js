@@ -22,7 +22,7 @@ async function post({url, sourceMetadataFilePath}) {
     const responseJson = await postPayload(url, payload, {updateCOCs: true});
 
     if (responseJson.status === "OK") {
-        debug(`Import success:" ${inspect(responseJson.stats)}`);
+        debug(`Import success: ${inspect(responseJson.stats)}`);
         _(responseJson.typeReports).each(typeReport => {
             const modelName = _.last(typeReport.klass.split("."));
             debug(" - " + `${modelName}: ${inspect(typeReport.stats)}`);
