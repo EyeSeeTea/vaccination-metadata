@@ -2,7 +2,7 @@
     "antigens": {
         "measles": {
             "name": "Measles",
-            "code": "RVC_MEASLES",
+            "code": "RVC_ANTIGEN_MEASLES",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -22,7 +22,7 @@
         },
         "meningitis-polysaccharide": {
             "name": "Meningitis Polysaccharide",
-            "code": "RVC_MENPOLY",
+            "code": "RVC_ANTIGEN_MENPOLY",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -37,7 +37,7 @@
         },
         "meningitis-conjugate": {
             "name": "Meningitis Conjugate",
-            "code": "RVC_MENCONJ",
+            "code": "RVC_ANTIGEN_MENCONJ",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -52,7 +52,7 @@
         },
         "cholera": {
             "name": "Cholera",
-            "code": "RVC_CHOLERA",
+            "code": "RVC_ANTIGEN_CHOLERA",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -62,7 +62,7 @@
         },
         "pcv": {
             "name": "PCV",
-            "code": "RVC_PCV",
+            "code": "RVC_ANTIGEN_PCV",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -80,7 +80,7 @@
         },
         "pertussis-penta": {
             "name": "Pertussis Penta",
-            "code": "RVC_PERTPENTA",
+            "code": "RVC_ANTIGEN_PERTPENTA",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -98,7 +98,7 @@
         },
         "yellow-fever": {
             "name": "Yellow Fever",
-            "code": "RVC_YELLOW_FEVER",
+            "code": "RVC_ANTIGEN_YELLOW_FEVER",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -123,7 +123,7 @@
         },
         "japanese-encephalitis": {
             "name": "Japanese Encephalitis",
-            "code": "RVC_JPENC",
+            "code": "RVC_ANTIGEN_JPENC",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -143,7 +143,7 @@
         },
         "dengue": {
             "name": "Dengue",
-            "code": "RVC_DENGUE",
+            "code": "RVC_ANTIGEN_DENGUE",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -158,7 +158,7 @@
         },
         "typhoid-fever": {
             "name": "Typhoid Fever",
-            "code": "RVC_TYPHOID_FEVER",
+            "code": "RVC_ANTIGEN_TYPHOID_FEVER",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -262,7 +262,7 @@
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
             "name": "ADS (Auto Disable Syringe) wastage rate",
-            "code": "RVC_IN_001",
+            "code": "RVC_ADS_WASTAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "ADS used - Total Doses adm",
             "numerator": "#{${dataElements['ads-used']}} - #{${dataElements['vaccine-doses-administered']}}",
@@ -272,7 +272,7 @@
         "safety-boxes-ratio": {
             "$dataElementsRequired": ["syringes", "safety-boxes"],
             "name": "Safety boxes ratio",
-            "code": "RVC_IN_002",
+            "code": "RVC_SAFETY_BOXES",
             "$indicatorType": "ratio",
             "numeratorDescription": "Syringes",
             "numerator": "#{${dataElements['syringes']}}",
@@ -282,7 +282,7 @@
         "dilution-syringes-ratio": {
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
             "name": "Dilution syringes ratio",
-            "code": "RVC_IN_003",
+            "code": "RVC_DILUTION_SYRINGES_RATIO",
             "$indicatorType": "percentage",
             "numeratorDescription": "Syringes for dilution",
             "numerator": "#{${dataElements['syringes']}}",
@@ -292,7 +292,7 @@
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
             "name": "Vaccine utilization rate",
-            "code": "RVC_IN_004",
+            "code": "RVC_VACCINE_UTILITZATION",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
             "numerator": "#{${dataElements['vaccine-doses-administered']}}",
@@ -302,7 +302,7 @@
         "vaccine-campaign-coverage": {
             "$dataElementsRequired": ["vaccine-doses-administered", "population-by-age"],
             "name": "Vaccine campaign coverage",
-            "code": "RVC_IN_005",
+            "code": "RVC_CAMPAIGN_COVERAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
             "numerator": "#{${dataElements['vaccine-doses-administered']}}",
@@ -312,10 +312,16 @@
     },
 
     "attributes": {
-        "createdByApp": {
+        "create-by-app": {
             "name": "Created by Vaccination App",
-            "code": "CREATED_BY_VACCINATION_APP",
+            "code": "RVC_CREATED_BY_VACCINATION_APP",
             "valueType": "BOOLEAN",
+            "dataSetAttribute": true
+        },
+        "dashboard-id": {
+            "name": "Dashboard ID",
+            "code": "RVC_DASHBOARD_ID",
+            "valueType": "TEXT",
             "dataSetAttribute": true
         }
     },
@@ -330,7 +336,7 @@
         },
         "age-group": {
             "name": "Age group",
-            "code": "RVC_AGE_GROUP",
+            "code": "RVC_AGE_GROUPS",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAgeGroups" }
@@ -490,7 +496,7 @@
     "dataSets": {
         "demography": {
             "name": "Demographic Information",
-            "code": "DS_ERm",
+            "code": "RVC_DEMOGRAPHIC_INFORMATION",
             "periodType": "Monthly",
             "dataElementDecoration": true,
             "renderAsTabs": true,

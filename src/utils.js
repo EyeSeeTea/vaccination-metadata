@@ -26,12 +26,14 @@ function inspect(obj) {
     return util.inspect(obj, false, null, true);
 }
 
-function get(obj, path, {defaultValue} = {}) {
+function getOrThrow(obj, path, { defaultValue } = {}) {
     const value = _.get(obj, path);
 
     if (_.isUndefined(value)) {
         if (_.isUndefined(defaultValue)) {
-            const pathString = _(path).castArray().join(" -> ");
+            const pathString = _(path)
+                .castArray()
+                .join(" -> ");
             throw new Error(`No path '${pathString}' in object:\n${inspect(obj)}`);
         } else {
             return defaultValue;
@@ -53,11 +55,7 @@ function interpolate(template, namespace) {
 }
 
 function cartesianProduct(...rest) {
-    return fp.reduce((a, b) =>
-        fp.flatMap(x =>
-            fp.map(y => x.concat([y]))(b)
-        )(a)
-    )([[]])(rest);
+    return fp.reduce((a, b) => fp.flatMap(x => fp.map(y => x.concat([y]))(b))(a))([[]])(rest);
 }
 
 module.exports = {
@@ -68,6 +66,6 @@ module.exports = {
     base64Encode,
     inspect,
     interpolate,
-    get,
+    getOrThrow,
     cartesianProduct,
 };
