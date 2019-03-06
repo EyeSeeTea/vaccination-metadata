@@ -152,7 +152,7 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
 
     const mainGroup = db.get("categoryOptionGroup", {
         name: name,
-        code: `${antigen.code}_AGE_GROUPS`,
+        code: `${antigen.code}_AGE_GROUP`,
         shortName: name,
         categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
     });
@@ -308,7 +308,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
         toKeyList(sourceData, "antigens").map(antigen => {
             const mainGroup = db.get("dataElementGroups", {
                 key: "data-elements-antigens",
-                code: "RVC_ANTIGENS",
+                code: "RVC_ANTIGEN",
                 name: "Antigens",
                 shortName: "Antigens",
                 dataElements: getIds(dataElementsMetadata.dataElements),
@@ -323,6 +323,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             const dataElementGroupSetForAntigen = db.get("dataElementGroupSets", {
                 key: `data-elements-${antigen.key}`,
                 code: `${antigen.code}`,
+                dataDimension: false,
                 name: getName(["Antigen", antigen.name]),
                 dataElementGroups: getIds(dataElementGroupsForAntigen),
             });
@@ -413,18 +414,18 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
     });
 
     const payload = flattenPayloads([categoriesAntigensMetadata, ...customMetadata]);
+    const categoryByKey = _.keyBy(payload.categories, "key");
 
     const categoryCombos = _(toKeyList(sourceData, "categoryCombos"))
         .flatMap(categoryCombo => {
-            const categoriesForCatCombo = _(payload.categories)
-                .keyBy("key")
-                .at(categoryCombo.$categories)
-                .compact()
-                .value();
+            const categoriesForCatCombo = categoryCombo.$categories.map(categoryKey =>
+                getOrThrow(categoryByKey, categoryKey)
+            );
 
             return db.get("categoryCombos", {
                 dataDimensionType: "DISAGGREGATION",
                 categories: getIds(categoriesForCatCombo),
+                code: categoriesForCatCombo.map(category => category.code).join("_"),
                 ...categoryCombo,
             });
         })

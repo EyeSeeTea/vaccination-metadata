@@ -190,14 +190,14 @@
             "valueType": "PERCENTAGE",
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
-            "$categoryCombo": "demographic-age"
+            "$categoryCombo": "age-group"
         },
         "population-by-age": {
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "NUMBER",
             "aggregationType": "LAST",
-            "$categoryCombo": "demographic-age"
+            "$categoryCombo": "age-group"
         },
 
         "vaccine-doses-administered": {
@@ -327,23 +327,23 @@
     },
 
     "categories": {
-        "antigens": {
-            "name": "Antigens",
-            "code": "RVC_ANTIGENS",
+        "antigen": {
+            "name": "Antigen",
+            "code": "RVC_ANTIGEN",
             "dataDimensionType": "DISAGGREGATION",
-            "dataDimension": false,
+            "dataDimension": true,
             "$categoryOptions": { "kind": "fromAntigens" }
         },
         "age-group": {
             "name": "Age group",
-            "code": "RVC_AGE_GROUPS",
+            "code": "RVC_AGE_GROUP",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAgeGroups" }
         },
-        "teams": {
-            "name": "Teams",
-            "code": "RVC_TEAMS",
+        "team": {
+            "name": "Team",
+            "code": "RVC_TEAM",
             "dataDimensionType": "ATTRIBUTE",
             "dataDimension": true,
             "$categoryOptions": {
@@ -367,42 +367,45 @@
         },
         "displacement-status": {
             "name": "Displacement Status",
-            "code": "RVC_DISPLACEMENT_STATUS",
+            "code": "RVC_DISTATUS",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "values", "values": ["Host", "IDP", "Refugees"] }
-        },
-        "demographic-age": {
-            "name": "Demographic age distribution",
-            "code": "RVC_DEMOGRAPHIC_AGE",
-            "dataDimensionType": "DISAGGREGATION",
-            "dataDimension": false,
-            "$categoryOptions": { "kind": "values", "values": [] }
         }
     },
 
     "categoryCombos": {
-        "teams": {
-            "name": "Teams",
-            "code": "RVC_TEAMS",
+        "team": {
+            "name": "Vaccination Team",
             "dataDimensionType": "ATTRIBUTE",
-            "$categories": ["teams"]
-        },
-        "demographic-age": {
-            "name": "Demographic age",
-            "$categories": ["demographic-age"]
+            "$categories": ["team"]
         },
         "antigen": {
-            "name": "Antigen",
-            "code": "RVC_ANTIGENS",
+            "name": "Vaccination Antigen",
             "$categories": ["antigen"]
         },
+        "age-group": {
+            "name": "Vaccination Age Group",
+            "$categories": ["age-group"]
+        },
+        "antigen-age-group": {
+            "name": "Vaccination Age Group",
+            "$categories": ["antigen", "age-group"]
+        },
+        "antigen-age-group-gender": {
+            "name": "Vaccination Age Group / Gender",
+            "$categories": ["antigen", "age-group", "gender"]
+        },
+        "antigen-age-group-displacement-status": {
+            "name": "Vaccination Age Group / Displacement Status",
+            "$categories": ["antigen", "age-group", "displacement-status"]
+        },
         "antigen-age-gender-displacement": {
-            "name": "Antigen / Age Group / Gender / Displacement Status",
+            "name": "Vaccination Age Group / Gender / Displacement Status",
             "$categories": ["antigen", "age-group", "gender", "displacement-status"]
         },
         "antigen-severity": {
-            "name": "Antigen / Severity",
+            "name": "Vaccination Severity",
             "$categories": ["antigen", "severity"]
         }
     },
