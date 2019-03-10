@@ -425,6 +425,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             return db.get("categoryCombos", {
                 dataDimensionType: "DISAGGREGATION",
                 categories: getIds(categoriesForCatCombo),
+                name: categoriesForCatCombo.map(category => category.name).join(" / "),
                 code: categoriesForCatCombo.map(category => category.code).join("_"),
                 ...categoryCombo,
             });
@@ -449,6 +450,8 @@ async function postPayload(url, payload, { updateCOCs = false } = {}) {
 
     if (responseJson.status === "OK" && updateCOCs) {
         debug("Update category option combinations");
+        // We may need references to Category Option Combos in datasets->greyfields, so for
+        // now we generate them there
         /* const res = await db.updateCOCs();
         if (res.status < 200 || res.status > 299) {
             throw `Error upding category option combo: ${inspect(res)}`;

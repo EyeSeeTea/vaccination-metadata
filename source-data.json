@@ -254,7 +254,7 @@
             "code": "RVC_AEFI",
             "valueType": "NUMBER",
             "$categoryCombo": ["antigen-severity"],
-            "$categories": [{ "key": "severity", "optional": true }]
+            "$categories": [{ "key": "severity", "optional": false }]
         }
     },
 
@@ -376,36 +376,28 @@
 
     "categoryCombos": {
         "team": {
-            "name": "Vaccination Team",
             "dataDimensionType": "ATTRIBUTE",
             "$categories": ["team"]
         },
         "antigen": {
-            "name": "Vaccination Antigen",
             "$categories": ["antigen"]
         },
         "age-group": {
-            "name": "Vaccination Age Group",
             "$categories": ["age-group"]
         },
         "antigen-age-group": {
-            "name": "Vaccination Age Group",
             "$categories": ["antigen", "age-group"]
         },
         "antigen-age-group-gender": {
-            "name": "Vaccination Age Group / Gender",
             "$categories": ["antigen", "age-group", "gender"]
         },
         "antigen-age-group-displacement-status": {
-            "name": "Vaccination Age Group / Displacement Status",
             "$categories": ["antigen", "age-group", "displacement-status"]
         },
         "antigen-age-gender-displacement": {
-            "name": "Vaccination Age Group / Gender / Displacement Status",
             "$categories": ["antigen", "age-group", "gender", "displacement-status"]
         },
         "antigen-severity": {
-            "name": "Vaccination Severity",
             "$categories": ["antigen", "severity"]
         }
     },
