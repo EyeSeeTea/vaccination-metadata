@@ -292,7 +292,7 @@
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
             "name": "Vaccine utilization rate",
-            "code": "RVC_VACCINE_UTILITZATION",
+            "code": "RVC_VACCINE_UTILIZATION",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
             "numerator": "#{${dataElements['vaccine-doses-administered']}}",
