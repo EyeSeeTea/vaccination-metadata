@@ -16,13 +16,13 @@ async function generate({url, sourceDataFilePath, outputMetadataFilePath}) {
 async function post({url, sourceMetadataFilePath}) {
     const payloadAll = JSON.parse(fs.readFileSync(sourceMetadataFilePath, "utf8"));
     const payload = _(payloadAll)
-        .omit(["organisationUnitLevels", "organisationUnits", "dataSets", "sections"])
+        .omit(["organisationUnitLevels", "organisationUnits"])
         .value();
 
     const responseJson = await postPayload(url, payload, {updateCOCs: true});
 
     if (responseJson.status === "OK") {
-        debug(`Import success:" ${inspect(responseJson.stats)}`);
+        debug(`Import success: ${inspect(responseJson.stats)}`);
         _(responseJson.typeReports).each(typeReport => {
             const modelName = _.last(typeReport.klass.split("."));
             debug(" - " + `${modelName}: ${inspect(typeReport.stats)}`);
