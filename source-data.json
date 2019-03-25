@@ -175,6 +175,48 @@
                 [["5 - 14 y"]],
                 [["15 - 45 y"], ["15 - 29 y", "30 - 45 y"]]
             ]
+        },
+        "polio-oral": {
+            "name": "Poliomyelitis Oral",
+            "code": "RVC_ANTIGEN_POLIO_ORAL",
+            "dataElements": [
+                { "key": "vaccine-doses-administered", "optional": false },
+                { "key": "vaccine-doses-used", "optional": false },
+                { "key": "ads-used", "optional": true },
+                { "key": "syringes", "optional": true },
+                { "key": "needles", "optional": true },
+                { "key": "safety-boxes", "optional": true },
+                { "key": "aeb", "optional": true },
+                { "key": "adverse-event", "optional": false }
+            ],
+            "ageGroups": [
+                [["0 - 11 m"]],
+                [["12 - 59 m"], ["12 - 23 m", "24 - 59 m"]],
+                [["5 - 14 y"]],
+                [["15 - 29 y"]],
+                [["> 30 y"]]
+            ]
+        },
+        "polio-injectable": {
+            "name": "Poliomyelitis Injectable",
+            "code": "RVC_ANTIGEN_POLIO_INJECTABLE",
+            "dataElements": [
+                { "key": "vaccine-doses-administered", "optional": false },
+                { "key": "vaccine-doses-used", "optional": false },
+                { "key": "ads-used", "optional": false },
+                { "key": "syringes", "optional": false },
+                { "key": "needles", "optional": false },
+                { "key": "safety-boxes", "optional": false },
+                { "key": "aeb", "optional": false },
+                { "key": "adverse-event", "optional": false }
+            ],
+            "ageGroups": [
+                [["6 w - 11 m"]],
+                [["12 - 59 m"], ["12 - 23 m", "24 - 59 m"]],
+                [["5 - 14 y"]],
+                [["15 - 29 y"]],
+                [["> 30 y"]]
+            ]
         }
     },
 
