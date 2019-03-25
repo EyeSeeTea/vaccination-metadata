@@ -45,8 +45,8 @@
                 { "key": "syringes", "optional": true },
                 { "key": "needles", "optional": true },
                 { "key": "safety-boxes", "optional": true },
-                { "key": "aeb", "optional": true },
-                { "key": "adverse-event", "optional": true }
+                { "key": "aeb", "optional": false },
+                { "key": "adverse-event", "optional": false }
             ],
             "ageGroups": [[["12 - 59 m"]], [["5 - 14 y"]], [["15 - 29 y"], ["15 - 19 y"]]]
         },
