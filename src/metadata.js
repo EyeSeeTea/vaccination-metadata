@@ -2,7 +2,7 @@ const _ = require("lodash");
 const { Db } = require("./db");
 const { getOrThrow, debug } = require("./utils");
 const { flattenPayloads, interpolateObj, getName, getCode } = require("./metadata-utils");
-const { toKeyList, getIds, addCategoryOptionCombos } = require("./metadata-utils");
+const { toKeyList, getIds, addCategoryOptionCombos, sortAgeGroups } = require("./metadata-utils");
 
 const models = [
     "attributes",
@@ -187,7 +187,7 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
         .uniq()
         .value();
 
-    const categoryOptionsAgeGroups = ageGroups.map(ageGroup => {
+    const categoryOptionsAgeGroups = sortAgeGroups(ageGroups).map(ageGroup => {
         return db.get("categoryOptions", {
             name: ageGroup,
             shortName: ageGroup,
@@ -384,13 +384,12 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
         const antigenCodes = Object.values(sourceData.antigens).map(antigen => antigen.code);
 
         const [antigenOptions, ageGroupOptions] = _(categoriesAntigensMetadata.categoryOptions)
-            .sortBy("name")
             .partition(categoryOption => antigenCodes.includes(categoryOption.code))
             .value();
 
         let categoryOptions;
         if ($categoryOptions.kind == "fromAntigens") {
-            categoryOptions = antigenOptions;
+            categoryOptions = _.sortBy(antigenOptions, "name");
         } else if ($categoryOptions.kind == "fromAgeGroups") {
             categoryOptions = ageGroupOptions;
         } else if ($categoryOptions.kind == "values") {
