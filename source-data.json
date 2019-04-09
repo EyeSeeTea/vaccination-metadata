@@ -225,21 +225,24 @@
             "name": "Total population",
             "code": "RVC_TOTAL_POPULATION",
             "aggregationType": "LAST",
-            "valueType": "INTEGER_ZERO_OR_POSITIVE"
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "age-distribution": {
             "name": "Age distribution (%)",
             "valueType": "PERCENTAGE",
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
-            "$categoryCombo": "age-group"
+            "$categoryCombo": "age-group",
+            "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "population-by-age": {
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "aggregationType": "LAST",
-            "$categoryCombo": "antigen-age-group"
+            "$categoryCombo": "antigen-age-group",
+            "aggregationLevels": []
         },
 
         "vaccine-doses-administered": {
