@@ -225,7 +225,7 @@
             "name": "Total population",
             "code": "RVC_TOTAL_POPULATION",
             "aggregationType": "LAST",
-            "valueType": "NUMBER"
+            "valueType": "INTEGER_ZERO_OR_POSITIVE"
         },
         "age-distribution": {
             "name": "Age distribution (%)",
@@ -237,7 +237,7 @@
         "population-by-age": {
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group"
         },
@@ -245,7 +245,7 @@
         "vaccine-doses-administered": {
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
                 { "key": "age-group", "optional": false },
@@ -256,45 +256,45 @@
         "vaccine-doses-used": {
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
 
         "ads-used": {
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "syringes": {
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "needles": {
             "name": "Needles for dilution",
             "key": "needles",
             "code": "RVC_NEEDLES",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "safety-boxes": {
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": ["antigen-severity"],
             "$categories": [{ "key": "severity", "optional": false }]
         }
