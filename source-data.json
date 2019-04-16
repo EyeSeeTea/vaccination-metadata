@@ -45,8 +45,8 @@
                 { "key": "syringes", "optional": true },
                 { "key": "needles", "optional": true },
                 { "key": "safety-boxes", "optional": true },
-                { "key": "aeb", "optional": true },
-                { "key": "adverse-event", "optional": true }
+                { "key": "aeb", "optional": false },
+                { "key": "adverse-event", "optional": false }
             ],
             "ageGroups": [[["12 - 59 m"]], [["5 - 14 y"]], [["15 - 29 y"], ["15 - 19 y"]]]
         },
@@ -175,6 +175,48 @@
                 [["5 - 14 y"]],
                 [["15 - 45 y"], ["15 - 29 y", "30 - 45 y"]]
             ]
+        },
+        "polio-oral": {
+            "name": "Poliomyelitis Oral",
+            "code": "RVC_ANTIGEN_POLIO_ORAL",
+            "dataElements": [
+                { "key": "vaccine-doses-administered", "optional": false },
+                { "key": "vaccine-doses-used", "optional": false },
+                { "key": "ads-used", "optional": true },
+                { "key": "syringes", "optional": true },
+                { "key": "needles", "optional": true },
+                { "key": "safety-boxes", "optional": true },
+                { "key": "aeb", "optional": true },
+                { "key": "adverse-event", "optional": false }
+            ],
+            "ageGroups": [
+                [["0 - 11 m"]],
+                [["12 - 59 m"], ["12 - 23 m", "24 - 59 m"]],
+                [["5 - 14 y"]],
+                [["15 - 29 y"]],
+                [["> 30 y"]]
+            ]
+        },
+        "polio-injectable": {
+            "name": "Poliomyelitis Injectable",
+            "code": "RVC_ANTIGEN_POLIO_INJECTABLE",
+            "dataElements": [
+                { "key": "vaccine-doses-administered", "optional": false },
+                { "key": "vaccine-doses-used", "optional": false },
+                { "key": "ads-used", "optional": false },
+                { "key": "syringes", "optional": false },
+                { "key": "needles", "optional": false },
+                { "key": "safety-boxes", "optional": false },
+                { "key": "aeb", "optional": false },
+                { "key": "adverse-event", "optional": false }
+            ],
+            "ageGroups": [
+                [["6 w - 11 m"]],
+                [["12 - 59 m"], ["12 - 23 m", "24 - 59 m"]],
+                [["5 - 14 y"]],
+                [["15 - 29 y"]],
+                [["> 30 y"]]
+            ]
         }
     },
 
@@ -183,27 +225,30 @@
             "name": "Total population",
             "code": "RVC_TOTAL_POPULATION",
             "aggregationType": "LAST",
-            "valueType": "NUMBER"
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "age-distribution": {
             "name": "Age distribution (%)",
             "valueType": "PERCENTAGE",
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
-            "$categoryCombo": "age-group"
+            "$categoryCombo": "age-group",
+            "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "population-by-age": {
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "aggregationType": "LAST",
-            "$categoryCombo": "age-group"
+            "$categoryCombo": "antigen-age-group",
+            "aggregationLevels": []
         },
 
         "vaccine-doses-administered": {
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
                 { "key": "age-group", "optional": false },
@@ -214,45 +259,45 @@
         "vaccine-doses-used": {
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
 
         "ads-used": {
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "syringes": {
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "needles": {
             "name": "Needles for dilution",
             "key": "needles",
             "code": "RVC_NEEDLES",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "safety-boxes": {
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": "antigen"
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
-            "valueType": "NUMBER",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$categoryCombo": ["antigen-severity"],
             "$categories": [{ "key": "severity", "optional": false }]
         }

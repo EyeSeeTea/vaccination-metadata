@@ -2,7 +2,7 @@ const _ = require("lodash");
 const { Db } = require("./db");
 const { getOrThrow, debug } = require("./utils");
 const { flattenPayloads, interpolateObj, getName, getCode } = require("./metadata-utils");
-const { toKeyList, getIds, addCategoryOptionCombos } = require("./metadata-utils");
+const { toKeyList, getIds, addCategoryOptionCombos, sortAgeGroups } = require("./metadata-utils");
 
 const models = [
     "attributes",
@@ -12,6 +12,7 @@ const models = [
     "categories",
     { name: "categoryCombos", fields: ["id", "name", "categoryOptionCombos"] },
     "categoryOptions",
+    "categoryOptionGroups",
     "categoryOptionCombos",
 
     "dataElementGroupSets",
@@ -148,12 +149,11 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
     const categoryOptionsAgeGroupsByName = _.keyBy(categoryOptionsAgeGroups, "name");
     const ageGroups = getOrThrow(antigen, "ageGroups");
     const mainAgeGroups = ageGroups.map(group => group[0][0]);
-    const name = getName([antigen.name, "Age groups"]);
 
-    const mainGroup = db.get("categoryOptionGroup", {
-        name: name,
+    const mainGroup = db.get("categoryOptionGroups", {
+        name: getName([antigen.name, "Age groups"]),
         code: `${antigen.code}_AGE_GROUP`,
-        shortName: name,
+        shortName: getName([antigen.shortName || antigen.name, "AG"]),
         categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
     });
 
@@ -167,10 +167,14 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
         } else {
             return restOfAgeGroup.map((options, index) => {
                 const sIndex = (index + 1).toString();
-                const name = getName([antigen.name, "Age group", mainGroup, sIndex]);
-                return db.get("categoryOptionGroup", {
-                    name: name,
-                    shortName: name,
+                return db.get("categoryOptionGroups", {
+                    name: getName([antigen.name, "Age group", mainGroup, sIndex]),
+                    shortName: getName([
+                        antigen.shortName || antigen.name,
+                        "AGE",
+                        mainGroup,
+                        sIndex,
+                    ]),
                     code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
                     categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
                 });
@@ -187,7 +191,7 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
         .uniq()
         .value();
 
-    const categoryOptionsAgeGroups = ageGroups.map(ageGroup => {
+    const categoryOptionsAgeGroups = sortAgeGroups(ageGroups).map(ageGroup => {
         return db.get("categoryOptions", {
             name: ageGroup,
             shortName: ageGroup,
@@ -384,13 +388,12 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
         const antigenCodes = Object.values(sourceData.antigens).map(antigen => antigen.code);
 
         const [antigenOptions, ageGroupOptions] = _(categoriesAntigensMetadata.categoryOptions)
-            .sortBy("name")
             .partition(categoryOption => antigenCodes.includes(categoryOption.code))
             .value();
 
         let categoryOptions;
         if ($categoryOptions.kind == "fromAntigens") {
-            categoryOptions = antigenOptions;
+            categoryOptions = _.sortBy(antigenOptions, "name");
         } else if ($categoryOptions.kind == "fromAgeGroups") {
             categoryOptions = ageGroupOptions;
         } else if ($categoryOptions.kind == "values") {
