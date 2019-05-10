@@ -307,12 +307,16 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
 function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
     const dataElementsMetadata = flattenPayloads(
         toKeyList(sourceData, "dataElements").map(dataElement => {
+            const formName = _([dataElement.name, dataElement.$order])
+                .compact()
+                .join(" - ");
             const dataElements = db.get("dataElements", {
                 shortName: dataElement.shortName || dataElement.name,
                 domainType: "AGGREGATE",
                 aggregationType: "SUM",
                 categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElement),
                 ...dataElement,
+                formName,
             });
 
             const categoryCombosForDataElements = getCategoryCombosForDataElements(

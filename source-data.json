@@ -249,6 +249,7 @@
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 1,
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
                 { "key": "age-group", "optional": false },
@@ -260,6 +261,7 @@
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 2,
             "$categoryCombo": "antigen"
         },
 
@@ -267,12 +269,14 @@
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 3,
             "$categoryCombo": "antigen"
         },
         "syringes": {
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 5,
             "$categoryCombo": "antigen"
         },
         "needles": {
@@ -280,24 +284,28 @@
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 4,
             "$categoryCombo": "antigen"
         },
         "safety-boxes": {
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 6,
             "$categoryCombo": "antigen"
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 7,
             "$categoryCombo": "antigen"
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 8,
             "$categoryCombo": ["antigen-severity"],
             "$categories": [{ "key": "severity", "optional": false }]
         }
