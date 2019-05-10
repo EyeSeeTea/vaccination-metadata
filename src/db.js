@@ -2,7 +2,7 @@ const _ = require("lodash");
 const pMap = require("p-map");
 const md5 = require("md5");
 const fetch = require("node-fetch");
-const { repeat, inspect } = require("./utils");
+const { repeat, inspect, getOrThrow } = require("./utils");
 
 // DHIS2 UID :: /^[a-zA-Z]{1}[a-zA-Z0-9]{10}$/
 const asciiLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -77,6 +77,10 @@ class Db {
             throw `Model not found in data: ${model}`;
         } else if (!value) {
             throw `Property ${field} is required in attributes: ${inspect(attributes)}`;
+        } else if (valuesByField[value]) {
+            const oldAttributes = valuesByField[value];
+            const uid = getOrThrow(oldAttributes, "id");
+            return { ...oldAttributes, ...attributes, id: uid, key };
         } else {
             const uid = _(valuesByField).get([value, "id"]) || getUid(key || value, model + "-");
             return { ...attributes, id: uid, key };
