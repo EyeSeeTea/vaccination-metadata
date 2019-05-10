@@ -48,8 +48,11 @@ class Db {
                     ? value
                     : { name: value, fields: ["id", "name"] };
 
+                // Always add code so we can reference by that field on existing objects
+                const allFields = fields.concat(["code"]);
+
                 const json = await fetch(
-                    `${url}/api/${model}?fields=${fields.join(",")}&paging=false`
+                    `${url}/api/${model}?fields=${allFields.join(",")}&paging=false`
                 ).then(res => res.json());
                 return [model, json[model]];
             };
