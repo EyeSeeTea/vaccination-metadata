@@ -389,11 +389,7 @@
             "name": "Team",
             "code": "RVC_TEAM",
             "dataDimensionType": "ATTRIBUTE",
-            "dataDimension": true,
-            "$categoryOptions": {
-                "kind": "values",
-                "values": ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5"]
-            }
+            "dataDimension": true
         },
         "gender": {
             "name": "Gender",

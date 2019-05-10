@@ -9,7 +9,7 @@ const models = [
 
     { name: "organisationUnits", fields: ["id", "name", "level"] },
 
-    "categories",
+    { name: "categories", fields: ["id", "name", "categoryOptions[id]"] },
     { name: "categoryCombos", fields: ["id", "name", "categoryOptionCombos"] },
     "categoryOptions",
     "categoryOptionGroups",
@@ -195,16 +195,25 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
         return db.get("categoryOptions", {
             name: ageGroup,
             shortName: ageGroup,
+            publicAccess: "rwrw----",
         });
     });
 
     const metadata = flattenPayloads(
         toKeyList(sourceData, "antigens").map(antigen => {
-            const categoryOptions = db.get("categoryOptions", {
-                name: antigen.name,
-                code: antigen.code,
-                shortName: antigen.name,
-            });
+            const categoryOptions = db.get(
+                "categoryOptions",
+                {
+                    key: antigen.key,
+                    name: antigen.name,
+                    code: antigen.code,
+                    shortName: antigen.name,
+                    publicAccess: "rwrw----",
+                },
+                {
+                    field: "code",
+                }
+            );
 
             const categoryOptionGroups = getCategoryOptionGroupsForAgeGroups(
                 db,
@@ -384,7 +393,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
 
 function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
     const customMetadata = toKeyList(sourceData, "categories").map(attributes => {
-        const $categoryOptions = getOrThrow(attributes, "$categoryOptions");
+        const $categoryOptions = attributes.$categoryOptions;
         const antigenCodes = Object.values(sourceData.antigens).map(antigen => antigen.code);
 
         const [antigenOptions, ageGroupOptions] = _(categoriesAntigensMetadata.categoryOptions)
@@ -392,7 +401,9 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             .value();
 
         let categoryOptions;
-        if ($categoryOptions.kind == "fromAntigens") {
+        if (!$categoryOptions) {
+            categoryOptions = null;
+        } else if ($categoryOptions.kind == "fromAntigens") {
             categoryOptions = _.sortBy(antigenOptions, "name");
         } else if ($categoryOptions.kind == "fromAgeGroups") {
             categoryOptions = ageGroupOptions;
@@ -401,6 +412,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
                 return db.get("categoryOptions", {
                     name: name,
                     shortName: name,
+                    publicAccess: "rwrw----",
                 });
             });
         }
@@ -409,11 +421,11 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             dataDimensionType: "DISAGGREGATION",
             dimensionType: "CATEGORY",
             dataDimension: false,
-            categoryOptions: getIds(categoryOptions),
+            ...(categoryOptions ? { categoryOptions: getIds(categoryOptions) } : {}),
             ...attributes,
         });
 
-        return { categories: [category], categoryOptions };
+        return { categories: [category], categoryOptions: categoryOptions || [] };
     });
 
     const payload = flattenPayloads([categoriesAntigensMetadata, ...customMetadata]);
