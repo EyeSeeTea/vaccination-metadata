@@ -150,12 +150,16 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
     const ageGroups = getOrThrow(antigen, "ageGroups");
     const mainAgeGroups = ageGroups.map(group => group[0][0]);
 
-    const mainGroup = db.get("categoryOptionGroups", {
-        name: getName([antigen.name, "Age groups"]),
-        code: `${antigen.code}_AGE_GROUP`,
-        shortName: getName([antigen.shortName || antigen.name, "AG"]),
-        categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
-    });
+    const mainGroup = db.get(
+        "categoryOptionGroups",
+        {
+            name: getName([antigen.name, "Age groups"]),
+            code: `${antigen.code}_AGE_GROUP`,
+            shortName: getName([antigen.shortName || antigen.name, "AG"]),
+            categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
+        },
+        { field: "code" }
+    );
 
     const disaggregatedGroups = _.flatMap(ageGroups, group => {
         const [mainGroupValues, ...restOfAgeGroup] = group;
@@ -167,17 +171,21 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
         } else {
             return restOfAgeGroup.map((options, index) => {
                 const sIndex = (index + 1).toString();
-                return db.get("categoryOptionGroups", {
-                    name: getName([antigen.name, "Age group", mainGroup, sIndex]),
-                    shortName: getName([
-                        antigen.shortName || antigen.name,
-                        "AGE",
-                        mainGroup,
-                        sIndex,
-                    ]),
-                    code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
-                    categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
-                });
+                return db.get(
+                    "categoryOptionGroups",
+                    {
+                        name: getName([antigen.name, "Age group", mainGroup, sIndex]),
+                        shortName: getName([
+                            antigen.shortName || antigen.name,
+                            "AGE",
+                            mainGroup,
+                            sIndex,
+                        ]),
+                        code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
+                        categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
+                    },
+                    { field: "code" }
+                );
             });
         }
     });
