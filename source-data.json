@@ -79,7 +79,8 @@
             ]
         },
         "pertussis-penta": {
-            "name": "Pertussis Penta",
+            "name": "DTP - Hib - HEP B",
+            "shortName": "DTP",
             "code": "RVC_ANTIGEN_PERTPENTA",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
