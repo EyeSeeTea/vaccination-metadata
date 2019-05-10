@@ -469,7 +469,7 @@
                 "M_dhis-web-messaging",
                 "M_dhis-web-dashboard",
                 "M_dhis-web-visualizer",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         },
         "configurator": {
@@ -482,18 +482,18 @@
                 "M_dhis-web-messaging",
                 "M_dhis-web-dashboard",
                 "M_dhis-web-visualizer",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         },
         "dashboard": {
-            "name": "Campaign Dasbboard",
+            "name": "Campaign Dashboard",
             "authorities": [
                 "M_dhis-web-cache-cleaner",
                 "M_dhis-web-pivot",
                 "M_dhis-web-messaging",
                 "M_dhis-web-dashboard",
                 "M_dhis-web-visualizer",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         },
         "admin": {
@@ -527,7 +527,7 @@
                 "F_INDICATORTYPE_DELETE",
                 "M_dhis-web-cache-cleaner",
                 "M_dhis-web-messaging",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         }
     },
