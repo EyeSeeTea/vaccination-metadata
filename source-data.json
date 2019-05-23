@@ -230,7 +230,7 @@
         },
         "age-distribution": {
             "name": "Age distribution (%)",
-            "valueType": "PERCENTAGE",
+            "valueType": "NUMBER",
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group",
