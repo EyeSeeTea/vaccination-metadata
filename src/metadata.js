@@ -9,7 +9,7 @@ const models = [
 
     { name: "organisationUnits", fields: ["id", "name", "level"] },
 
-    "categories",
+    { name: "categories", fields: ["id", "name", "categoryOptions[id]"] },
     { name: "categoryCombos", fields: ["id", "name", "categoryOptionCombos"] },
     "categoryOptions",
     "categoryOptionGroups",
@@ -150,12 +150,16 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
     const ageGroups = getOrThrow(antigen, "ageGroups");
     const mainAgeGroups = ageGroups.map(group => group[0][0]);
 
-    const mainGroup = db.get("categoryOptionGroups", {
-        name: getName([antigen.name, "Age groups"]),
-        code: `${antigen.code}_AGE_GROUP`,
-        shortName: getName([antigen.shortName || antigen.name, "AG"]),
-        categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
-    });
+    const mainGroup = db.get(
+        "categoryOptionGroups",
+        {
+            name: getName([antigen.name, "Age groups"]),
+            code: `${antigen.code}_AGE_GROUP`,
+            shortName: getName([antigen.shortName || antigen.name, "AG"]),
+            categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
+        },
+        { field: "code" }
+    );
 
     const disaggregatedGroups = _.flatMap(ageGroups, group => {
         const [mainGroupValues, ...restOfAgeGroup] = group;
@@ -167,17 +171,21 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
         } else {
             return restOfAgeGroup.map((options, index) => {
                 const sIndex = (index + 1).toString();
-                return db.get("categoryOptionGroups", {
-                    name: getName([antigen.name, "Age group", mainGroup, sIndex]),
-                    shortName: getName([
-                        antigen.shortName || antigen.name,
-                        "AGE",
-                        mainGroup,
-                        sIndex,
-                    ]),
-                    code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
-                    categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
-                });
+                return db.get(
+                    "categoryOptionGroups",
+                    {
+                        name: getName([antigen.name, "Age group", mainGroup, sIndex]),
+                        shortName: getName([
+                            antigen.shortName || antigen.name,
+                            "AGE",
+                            mainGroup,
+                            sIndex,
+                        ]),
+                        code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
+                        categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
+                    },
+                    { field: "code" }
+                );
             });
         }
     });
@@ -195,16 +203,25 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
         return db.get("categoryOptions", {
             name: ageGroup,
             shortName: ageGroup,
+            publicAccess: "rwrw----",
         });
     });
 
     const metadata = flattenPayloads(
         toKeyList(sourceData, "antigens").map(antigen => {
-            const categoryOptions = db.get("categoryOptions", {
-                name: antigen.name,
-                code: antigen.code,
-                shortName: antigen.name,
-            });
+            const categoryOptions = db.get(
+                "categoryOptions",
+                {
+                    key: antigen.key,
+                    name: antigen.name,
+                    code: antigen.code,
+                    shortName: antigen.name,
+                    publicAccess: "rwrw----",
+                },
+                {
+                    field: "code",
+                }
+            );
 
             const categoryOptionGroups = getCategoryOptionGroupsForAgeGroups(
                 db,
@@ -290,12 +307,16 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
 function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
     const dataElementsMetadata = flattenPayloads(
         toKeyList(sourceData, "dataElements").map(dataElement => {
+            const formName = _([dataElement.name, dataElement.$order])
+                .compact()
+                .join(" - ");
             const dataElements = db.get("dataElements", {
                 shortName: dataElement.shortName || dataElement.name,
                 domainType: "AGGREGATE",
                 aggregationType: "SUM",
                 categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElement),
                 ...dataElement,
+                formName,
             });
 
             const categoryCombosForDataElements = getCategoryCombosForDataElements(
@@ -384,7 +405,7 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
 
 function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
     const customMetadata = toKeyList(sourceData, "categories").map(attributes => {
-        const $categoryOptions = getOrThrow(attributes, "$categoryOptions");
+        const $categoryOptions = attributes.$categoryOptions;
         const antigenCodes = Object.values(sourceData.antigens).map(antigen => antigen.code);
 
         const [antigenOptions, ageGroupOptions] = _(categoriesAntigensMetadata.categoryOptions)
@@ -392,7 +413,9 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             .value();
 
         let categoryOptions;
-        if ($categoryOptions.kind == "fromAntigens") {
+        if (!$categoryOptions) {
+            categoryOptions = null;
+        } else if ($categoryOptions.kind == "fromAntigens") {
             categoryOptions = _.sortBy(antigenOptions, "name");
         } else if ($categoryOptions.kind == "fromAgeGroups") {
             categoryOptions = ageGroupOptions;
@@ -401,6 +424,7 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
                 return db.get("categoryOptions", {
                     name: name,
                     shortName: name,
+                    publicAccess: "rwrw----",
                 });
             });
         }
@@ -409,11 +433,11 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             dataDimensionType: "DISAGGREGATION",
             dimensionType: "CATEGORY",
             dataDimension: false,
-            categoryOptions: getIds(categoryOptions),
+            ...(categoryOptions ? { categoryOptions: getIds(categoryOptions) } : {}),
             ...attributes,
         });
 
-        return { categories: [category], categoryOptions };
+        return { categories: [category], categoryOptions: categoryOptions || [] };
     });
 
     const payload = flattenPayloads([categoriesAntigensMetadata, ...customMetadata]);

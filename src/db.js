@@ -2,7 +2,7 @@ const _ = require("lodash");
 const pMap = require("p-map");
 const md5 = require("md5");
 const fetch = require("node-fetch");
-const { repeat, inspect } = require("./utils");
+const { repeat, inspect, getOrThrow } = require("./utils");
 
 // DHIS2 UID :: /^[a-zA-Z]{1}[a-zA-Z0-9]{10}$/
 const asciiLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -48,8 +48,11 @@ class Db {
                     ? value
                     : { name: value, fields: ["id", "name"] };
 
+                // Always add code so we can reference by that field on existing objects
+                const allFields = fields.concat(["code"]);
+
                 const json = await fetch(
-                    `${url}/api/${model}?fields=${fields.join(",")}&paging=false`
+                    `${url}/api/${model}?fields=${allFields.join(",")}&paging=false`
                 ).then(res => res.json());
                 return [model, json[model]];
             };
@@ -74,6 +77,10 @@ class Db {
             throw `Model not found in data: ${model}`;
         } else if (!value) {
             throw `Property ${field} is required in attributes: ${inspect(attributes)}`;
+        } else if (valuesByField[value]) {
+            const oldAttributes = valuesByField[value];
+            const uid = getOrThrow(oldAttributes, "id");
+            return { ...oldAttributes, ...attributes, id: uid, key };
         } else {
             const uid = _(valuesByField).get([value, "id"]) || getUid(key || value, model + "-");
             return { ...attributes, id: uid, key };

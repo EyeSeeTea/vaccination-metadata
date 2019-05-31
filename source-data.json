@@ -79,7 +79,8 @@
             ]
         },
         "pertussis-penta": {
-            "name": "Pertussis Penta",
+            "name": "DTP - Hib - HEP B",
+            "shortName": "DTP",
             "code": "RVC_ANTIGEN_PERTPENTA",
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
@@ -116,7 +117,6 @@
                     ["12 - 59 m"],
                     ["12 - 23 m", "25 - 59 m"]
                 ],
-                [["12 - 23 m"]],
                 [["5 - 14 y"]],
                 [["15 - 99 y"], ["15 - 29 y", "> 30 y"]]
             ]
@@ -230,7 +230,7 @@
         },
         "age-distribution": {
             "name": "Age distribution (%)",
-            "valueType": "PERCENTAGE",
+            "valueType": "NUMBER",
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group",
@@ -249,6 +249,7 @@
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 1,
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
                 { "key": "age-group", "optional": false },
@@ -260,6 +261,7 @@
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 2,
             "$categoryCombo": "antigen"
         },
 
@@ -267,12 +269,14 @@
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 3,
             "$categoryCombo": "antigen"
         },
         "syringes": {
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 5,
             "$categoryCombo": "antigen"
         },
         "needles": {
@@ -280,24 +284,28 @@
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 4,
             "$categoryCombo": "antigen"
         },
         "safety-boxes": {
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 6,
             "$categoryCombo": "antigen"
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 7,
             "$categoryCombo": "antigen"
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 8,
             "$categoryCombo": ["antigen-severity"],
             "$categories": [{ "key": "severity", "optional": false }]
         }
@@ -390,11 +398,7 @@
             "name": "Team",
             "code": "RVC_TEAM",
             "dataDimensionType": "ATTRIBUTE",
-            "dataDimension": true,
-            "$categoryOptions": {
-                "kind": "values",
-                "values": ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5"]
-            }
+            "dataDimension": true
         },
         "gender": {
             "name": "Gender",
@@ -470,7 +474,7 @@
                 "M_dhis-web-messaging",
                 "M_dhis-web-dashboard",
                 "M_dhis-web-visualizer",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         },
         "configurator": {
@@ -483,18 +487,18 @@
                 "M_dhis-web-messaging",
                 "M_dhis-web-dashboard",
                 "M_dhis-web-visualizer",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         },
         "dashboard": {
-            "name": "Campaign Dasbboard",
+            "name": "Campaign Dashboard",
             "authorities": [
                 "M_dhis-web-cache-cleaner",
                 "M_dhis-web-pivot",
                 "M_dhis-web-messaging",
                 "M_dhis-web-dashboard",
                 "M_dhis-web-visualizer",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         },
         "admin": {
@@ -528,7 +532,7 @@
                 "F_INDICATORTYPE_DELETE",
                 "M_dhis-web-cache-cleaner",
                 "M_dhis-web-messaging",
-                "M_Vaccination_App"
+                "M_vaccinationapp"
             ]
         }
     },

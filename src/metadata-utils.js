@@ -65,7 +65,7 @@ function addCategoryOptionCombos(db, payload) {
         .flatMap(categoryCombo => {
             const categoryOptionsList = _(categoryCombo.categories)
                 .map(category =>
-                    getOrThrow(categoriesById, [category.id, "categoryOptions"]).map(co => co.id)
+                    (_(categoriesById).get([category.id, "categoryOptions"]) || []).map(co => co.id)
                 )
                 .value();
 
