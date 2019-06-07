@@ -31,15 +31,12 @@ const models = [
 ];
 
 async function getPayloadFromDb(db, sourceData) {
-    const categoriesAntigensMetadata = getCategoriesMetadataForAntigens(db, sourceData);
-
-    const categoriesMetadata = addCategoryOptionCombos(
-        db,
-        flattenPayloads([
-            categoriesAntigensMetadata,
-            getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata),
-        ])
-    );
+    const categoryOptionsByKind = getCategoryOptionsByKind(db, sourceData);
+    const categoryMetadataBase = flattenPayloads([
+        categoryOptionsByKind.metadata,
+        getCategoriesMetadata(sourceData, db, categoryOptionsByKind),
+    ]);
+    const categoriesMetadata = addCategoryOptionCombos(db, categoryMetadataBase);
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
 
@@ -192,12 +189,16 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
 
     return [mainGroup, ...disaggregatedGroups];
 }
-function getCategoriesMetadataForAntigens(db, sourceData) {
+function getCategoryOptionsByKind(db, sourceData) {
     const ageGroups = _(toKeyList(sourceData, "antigens"))
         .map("ageGroups")
         .flattenDeep()
         .uniq()
         .value();
+
+    const maxDoses = _(toKeyList(sourceData, "antigens"))
+        .map("doses")
+        .max();
 
     const categoryOptionsAgeGroups = sortAgeGroups(ageGroups).map(ageGroup => {
         return db.get("categoryOptions", {
@@ -207,33 +208,34 @@ function getCategoriesMetadataForAntigens(db, sourceData) {
         });
     });
 
-    const metadata = flattenPayloads(
-        toKeyList(sourceData, "antigens").map(antigen => {
-            const categoryOptions = db.get(
-                "categoryOptions",
-                {
-                    key: antigen.key,
-                    name: antigen.name,
-                    code: antigen.code,
-                    shortName: antigen.name,
-                    publicAccess: "rwrw----",
-                },
-                {
-                    field: "code",
-                }
-            );
+    const categoryOptionsDoses = _.range(1, maxDoses + 1).map(nDose => {
+        return db.get("categoryOptions", {
+            name: `Dose ${nDose}`,
+            publicAccess: "rwrw----",
+        });
+    });
 
-            const categoryOptionGroups = getCategoryOptionGroupsForAgeGroups(
-                db,
-                antigen,
-                categoryOptionsAgeGroups
-            );
+    const categoryOptionAntigens = toKeyList(sourceData, "antigens").map(antigen => {
+        return db.get(
+            "categoryOptions",
+            {
+                key: antigen.key,
+                name: antigen.name,
+                code: antigen.code,
+                shortName: antigen.name,
+                publicAccess: "rwrw----",
+            },
+            {
+                field: "code",
+            }
+        );
+    });
 
-            return { categoryOptions, categoryOptionGroups };
-        })
-    );
-
-    return flattenPayloads([metadata, { categoryOptions: categoryOptionsAgeGroups }]);
+    return {
+        fromAntigens: categoryOptionAntigens,
+        fromAgeGroups: categoryOptionsAgeGroups,
+        fromDoses: categoryOptionsDoses,
+    };
 }
 
 function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
@@ -403,22 +405,13 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
     return flattenPayloads([indicatorsMetadata, groupsMetadata]);
 }
 
-function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
+function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
     const customMetadata = toKeyList(sourceData, "categories").map(attributes => {
         const $categoryOptions = attributes.$categoryOptions;
-        const antigenCodes = Object.values(sourceData.antigens).map(antigen => antigen.code);
-
-        const [antigenOptions, ageGroupOptions] = _(categoriesAntigensMetadata.categoryOptions)
-            .partition(categoryOption => antigenCodes.includes(categoryOption.code))
-            .value();
 
         let categoryOptions;
-        if (!$categoryOptions) {
+        if (!$categoryOptions || !$categoryOptions.kind) {
             categoryOptions = null;
-        } else if ($categoryOptions.kind == "fromAntigens") {
-            categoryOptions = _.sortBy(antigenOptions, "name");
-        } else if ($categoryOptions.kind == "fromAgeGroups") {
-            categoryOptions = ageGroupOptions;
         } else if ($categoryOptions.kind == "values") {
             categoryOptions = $categoryOptions.values.map(name => {
                 return db.get("categoryOptions", {
@@ -427,6 +420,8 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
                     publicAccess: "rwrw----",
                 });
             });
+        } else {
+            categoryOptions = getOrThrow(categoryOptionsByKind, $categoryOptions.kind);
         }
 
         const category = db.get("categories", {
@@ -434,14 +429,33 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             dimensionType: "CATEGORY",
             dataDimension: false,
             ...(categoryOptions ? { categoryOptions: getIds(categoryOptions) } : {}),
-            ...attributes,
+            ..._.omit(attributes, ["$categoryOptions"]),
         });
 
         return { categories: [category], categoryOptions: categoryOptions || [] };
     });
 
-    const payload = flattenPayloads([categoriesAntigensMetadata, ...customMetadata]);
+    const payload = flattenPayloads(customMetadata);
     const categoryByKey = _.keyBy(payload.categories, "key");
+    const { fromAgeGroups, fromDoses } = categoryOptionsByKind;
+
+    const categoryOptionGroupsAgeGroups = _.flatten(
+        toKeyList(sourceData, "antigens").map(antigen =>
+            getCategoryOptionGroupsForAgeGroups(db, antigen, fromAgeGroups)
+        )
+    );
+
+    const categoryOptionGroupsDoses = _.flatten(
+        toKeyList(sourceData, "antigens").map(antigen => {
+            const attributes = {
+                name: getName([antigen.name, "Doses"]),
+                shortName: getName([antigen.shortName || antigen.name, "Doses"]),
+                code: getCode([antigen.code, "DOSES"]),
+                categoryOptions: getIds(_.take(fromDoses, antigen.doses)),
+            };
+            return db.get("categoryOptionGroups", attributes, { field: "code" });
+        })
+    );
 
     const categoryCombos = _(toKeyList(sourceData, "categoryCombos"))
         .flatMap(categoryCombo => {
@@ -459,7 +473,9 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
         })
         .value();
 
-    return flattenPayloads([payload, { categoryCombos }]);
+    const categoryOptionGroups = _.concat(categoryOptionGroupsAgeGroups, categoryOptionGroupsDoses);
+
+    return flattenPayloads([payload, { categoryCombos, categoryOptionGroups }]);
 }
 
 /* Public interface */

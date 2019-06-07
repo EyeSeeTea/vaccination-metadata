@@ -3,6 +3,7 @@
         "measles": {
             "name": "Measles",
             "code": "RVC_ANTIGEN_MEASLES",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -23,6 +24,7 @@
         "meningitis-polysaccharide": {
             "name": "Meningitis Polysaccharide",
             "code": "RVC_ANTIGEN_MENPOLY",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -38,6 +40,7 @@
         "meningitis-conjugate": {
             "name": "Meningitis Conjugate",
             "code": "RVC_ANTIGEN_MENCONJ",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -53,6 +56,7 @@
         "cholera": {
             "name": "Cholera",
             "code": "RVC_ANTIGEN_CHOLERA",
+            "doses": 2,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -63,6 +67,7 @@
         "pcv": {
             "name": "PCV",
             "code": "RVC_ANTIGEN_PCV",
+            "doses": 3,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -82,6 +87,7 @@
             "name": "DTP - Hib - HEP B",
             "shortName": "DTP",
             "code": "RVC_ANTIGEN_PERTPENTA",
+            "doses": 3,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -100,6 +106,7 @@
         "yellow-fever": {
             "name": "Yellow Fever",
             "code": "RVC_ANTIGEN_YELLOW_FEVER",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -124,6 +131,7 @@
         "japanese-encephalitis": {
             "name": "Japanese Encephalitis",
             "code": "RVC_ANTIGEN_JPENC",
+            "doses": 2,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -144,6 +152,7 @@
         "dengue": {
             "name": "Dengue",
             "code": "RVC_ANTIGEN_DENGUE",
+            "doses": 2,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -159,6 +168,7 @@
         "typhoid-fever": {
             "name": "Typhoid Fever",
             "code": "RVC_ANTIGEN_TYPHOID_FEVER",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -179,6 +189,7 @@
         "polio-oral": {
             "name": "Poliomyelitis Oral",
             "code": "RVC_ANTIGEN_POLIO_ORAL",
+            "doses": 3,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -200,6 +211,7 @@
         "polio-injectable": {
             "name": "Poliomyelitis Injectable",
             "code": "RVC_ANTIGEN_POLIO_INJECTABLE",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -393,6 +405,13 @@
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAgeGroups" }
+        },
+        "dose": {
+            "name": "Dose",
+            "code": "RVC_DOSE",
+            "dataDimensionType": "DISAGGREGATION",
+            "dataDimension": true,
+            "$categoryOptions": { "kind": "fromDoses" }
         },
         "team": {
             "name": "Team",
