@@ -264,6 +264,7 @@
             "$order": 1,
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
+                { "key": "dose", "optional": false },
                 { "key": "age-group", "optional": false },
                 { "key": "gender", "optional": true },
                 { "key": "displacement-status", "optional": true }
@@ -456,14 +457,17 @@
         "antigen-age-group": {
             "$categories": ["antigen", "age-group"]
         },
+        "antigen-dose-age-group": {
+            "$categories": ["antigen", "dose", "age-group"]
+        },
         "antigen-age-group-gender": {
-            "$categories": ["antigen", "age-group", "gender"]
+            "$categories": ["antigen", "dose", "age-group", "gender"]
         },
         "antigen-age-group-displacement-status": {
-            "$categories": ["antigen", "age-group", "displacement-status"]
+            "$categories": ["antigen", "dose", "age-group", "displacement-status"]
         },
         "antigen-age-gender-displacement": {
-            "$categories": ["antigen", "age-group", "gender", "displacement-status"]
+            "$categories": ["antigen", "dose", "age-group", "gender", "displacement-status"]
         },
         "antigen-severity": {
             "$categories": ["antigen", "severity"]
