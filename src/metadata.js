@@ -467,7 +467,7 @@ function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
                 dataDimensionType: "DISAGGREGATION",
                 categories: getIds(categoriesForCatCombo),
                 name: categoriesForCatCombo.map(category => category.name).join(" / "),
-                code: categoriesForCatCombo.map(category => category.code).join("_"),
+                code: getCode(categoriesForCatCombo.map(category => category.code)),
                 ...categoryCombo,
             });
         })
