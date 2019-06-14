@@ -486,6 +486,10 @@
     },
 
     "userRoles": {
+        "feedback": {
+            "name": "RVC Feedback",
+            "authorities": []
+        },
         "encoder": {
             "name": "Campaign Encoder",
             "authorities": [
