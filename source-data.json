@@ -264,6 +264,7 @@
             "$order": 1,
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
+                { "key": "antigen", "optional": false },
                 { "key": "dose", "optional": false },
                 { "key": "age-group", "optional": false },
                 { "key": "gender", "optional": true },
@@ -275,7 +276,8 @@
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 2,
-            "$categoryCombo": "antigen"
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
 
         "ads-used": {
@@ -290,7 +292,8 @@
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 5,
-            "$categoryCombo": "antigen"
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
         "needles": {
             "name": "Needles for dilution",
@@ -298,7 +301,8 @@
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 4,
-            "$categoryCombo": "antigen"
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
         "safety-boxes": {
             "name": "Safety boxes",
@@ -312,7 +316,8 @@
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 7,
-            "$categoryCombo": "antigen"
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
@@ -320,7 +325,10 @@
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 8,
             "$categoryCombo": ["antigen-severity"],
-            "$categories": [{ "key": "severity", "optional": false }]
+            "$categories": [
+                { "key": "antigen", "optional": false },
+                { "key": "severity", "optional": false }
+            ]
         }
     },
 
