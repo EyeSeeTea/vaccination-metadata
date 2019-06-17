@@ -283,7 +283,7 @@
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 3,
-            "$categoryCombo": "antigen"
+            "$categoryCombo": null
         },
         "syringes": {
             "name": "Syringes for dilution",
@@ -305,7 +305,7 @@
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 6,
-            "$categoryCombo": "antigen"
+            "$categoryCombo": null
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
