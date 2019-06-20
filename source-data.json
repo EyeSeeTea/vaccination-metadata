@@ -402,48 +402,55 @@
 
     "categories": {
         "antigen": {
-            "name": "Antigen",
+            "name": "_23.1 RVC Antigen",
+            "shortName": "Antigen",
             "code": "RVC_ANTIGEN",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAntigens" }
         },
         "age-group": {
-            "name": "Age group",
+            "name": "_23.5 RVC Age groups",
+            "shortName": "Age group",
             "code": "RVC_AGE_GROUP",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAgeGroups" }
         },
         "dose": {
-            "name": "Dose",
+            "name": "_23.2 RVC Doses",
+            "shortName": "Dose",
             "code": "RVC_DOSE",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromDoses" }
         },
         "team": {
-            "name": "Team",
+            "name": "_23.4 RVC Teams",
+            "shortName": "Team",
             "code": "RVC_TEAM",
             "dataDimensionType": "ATTRIBUTE",
             "dataDimension": true
         },
         "gender": {
             "name": "Gender",
+            "shortName": "Gender",
             "code": "RVC_GENDER",
             "dataDimensionType": "DISAGGREGATION",
-            "dataDimension": true,
+            "dataDimension": false,
             "$categoryOptions": { "kind": "values", "values": ["Female", "Male"] }
         },
         "severity": {
-            "name": "Severity",
+            "name": "_23.3 RVC Severity",
+            "shortName": "Severity",
             "code": "RVC_SEVERITY",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "values", "values": ["Minor", "Severe"] }
         },
         "displacement-status": {
-            "name": "Displacement Status",
+            "name": "_23.6 Displacement Status",
+            "shortName": "Displacement Status",
             "code": "RVC_DISTATUS",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,

@@ -296,8 +296,8 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
             return db.get("dataElementGroups", {
                 key: `data-elements-${antigen.key}-${typeString}`,
                 code: getCode([antigen.code, typeString]),
-                name: getName(["Antigen", antigen.name, typeString]),
-                shortName: getName([antigen.name, "DES", typeString]),
+                name: getName(["RVC", "Antigen", antigen.name, typeString]),
+                shortName: getName(["RVC", antigen.name, "DES", typeString]),
                 dataElements: getIds(dataElementsForGroup),
             });
         })
@@ -336,8 +336,8 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             const mainGroup = db.get("dataElementGroups", {
                 key: "data-elements-antigens",
                 code: "RVC_ANTIGEN",
-                name: "Antigens",
-                shortName: "Antigens",
+                name: "RVC - All Data Elements",
+                shortName: "RVC - All Data Elements",
                 dataElements: getIds(dataElementsMetadata.dataElements),
             });
 
@@ -466,7 +466,9 @@ function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
             return db.get("categoryCombos", {
                 dataDimensionType: "DISAGGREGATION",
                 categories: getIds(categoriesForCatCombo),
-                name: categoriesForCatCombo.map(category => category.name).join(" / "),
+                name: categoriesForCatCombo
+                    .map(category => category.shortName || category.name)
+                    .join(" / "),
                 code: getCode(categoriesForCatCombo.map(category => category.code)),
                 ...categoryCombo,
             });
