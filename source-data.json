@@ -501,80 +501,29 @@
     },
 
     "userRoles": {
+        "app": {
+            "name": "RVC App",
+            "authorities": ["M_Reactive_Vaccination"]
+        },
         "feedback": {
             "name": "RVC Feedback",
             "authorities": []
         },
-        "encoder": {
-            "name": "Campaign Encoder",
+        "manager": {
+            "name": "RVC Campaign Manager",
             "authorities": [
-                "F_DATAVALUE_ADD",
-                "F_DATAVALUE_DELETE",
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-dataentry",
-                "M_dhis-web-pivot",
-                "M_dhis-web-messaging",
-                "M_dhis-web-dashboard",
-                "M_dhis-web-visualizer",
-                "M_vaccinationapp"
-            ]
-        },
-        "configurator": {
-            "name": "Campaign Configurator",
-            "authorities": [
-                "F_DATASET_ADD",
+                "M_Reactive_Vaccination",
                 "F_DATASET_DELETE",
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-pivot",
-                "M_dhis-web-messaging",
-                "M_dhis-web-dashboard",
-                "M_dhis-web-visualizer",
-                "M_vaccinationapp"
-            ]
-        },
-        "dashboard": {
-            "name": "Campaign Dashboard",
-            "authorities": [
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-pivot",
-                "M_dhis-web-messaging",
-                "M_dhis-web-dashboard",
-                "M_dhis-web-visualizer",
-                "M_vaccinationapp"
-            ]
-        },
-        "admin": {
-            "name": "Campaign admin",
-            "authorities": [
-                "F_CATEGORY_COMBO_DELETE",
-                "F_CATEGORY_COMBO_PUBLIC_ADD",
-                "F_CATEGORY_DELETE",
-                "F_CATEGORY_OPTION_DELETE",
-                "F_CATEGORY_OPTION_GROUP_DELETE",
-                "F_CATEGORY_OPTION_GROUP_PUBLIC_ADD",
-                "F_CATEGORY_OPTION_GROUP_SET_DELETE",
-                "F_CATEGORY_OPTION_GROUP_SET_PUBLIC_ADD",
-                "F_CATEGORY_OPTION_PUBLIC_ADD",
-                "F_CATEGORY_PUBLIC_ADD",
-                "F_DATAELEMENT_DELETE",
-                "F_DATAELEMENTGROUP_DELETE",
-                "F_DATAELEMENTGROUP_PUBLIC_ADD",
-                "F_DATAELEMENTGROUPSET_DELETE",
-                "F_DATAELEMENTGROUPSET_PUBLIC_ADD",
-                "F_DATAELEMENT_PUBLIC_ADD",
-                "F_DATASET_DELETE",
+                "F_SECTION_ADD",
                 "F_DATASET_PUBLIC_ADD",
-                "F_INDICATOR_DELETE",
-                "F_INDICATORGROUP_DELETE",
-                "F_INDICATORGROUP_PUBLIC_ADD",
-                "F_INDICATORGROUPSET_DELETE",
-                "F_INDICATORGROUPSET_PUBLIC_ADD",
-                "F_INDICATOR_PUBLIC_ADD",
-                "F_INDICATORTYPE_ADD",
-                "F_INDICATORTYPE_DELETE",
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-messaging",
-                "M_vaccinationapp"
+                "F_SECTION_DELETE",
+                "F_CATEGORY_PUBLIC_ADD",
+                "F_CHART_PUBLIC_ADD",
+                "F_REPORTTABLE_PUBLIC_ADD",
+                "F_CATEGORY_COMBO_PUBLIC_ADD",
+                "F_CATEGORY_OPTION_PUBLIC_ADD",
+                "F_CATEGORY_OPTION_DELETE",
+                "F_PERFORM_MAINTENANCE"
             ]
         }
     },
