@@ -449,7 +449,7 @@
             "$categoryOptions": { "kind": "values", "values": ["Minor", "Severe"] }
         },
         "displacement-status": {
-            "name": "_23.6 Displacement Status",
+            "name": "_23.6 RVC Displacement Status",
             "shortName": "Displacement Status",
             "code": "RVC_DISTATUS",
             "dataDimensionType": "DISAGGREGATION",
