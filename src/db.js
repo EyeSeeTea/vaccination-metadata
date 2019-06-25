@@ -70,13 +70,19 @@ class Db {
 
     get(model, allAttributes, { field = "name" } = {}) {
         const { key, ...attributes } = allAttributes;
+        // By default, try to match by code and, if not found, by the passed field.
         const value = attributes[field];
+        const valuesByCode = _.keyBy(this.data[model], "code");
         const valuesByField = _.keyBy(this.data[model], field);
 
         if (!valuesByField) {
             throw `Model not found in data: ${model}`;
         } else if (!value) {
             throw `Property ${field} is required in attributes: ${inspect(attributes)}`;
+        } else if (attributes.code && valuesByCode[attributes.code]) {
+            const oldAttributes = valuesByCode[attributes.code];
+            const uid = getOrThrow(oldAttributes, "id");
+            return { ...oldAttributes, ...attributes, id: uid, key };
         } else if (valuesByField[value]) {
             const oldAttributes = valuesByField[value];
             const uid = getOrThrow(oldAttributes, "id");
