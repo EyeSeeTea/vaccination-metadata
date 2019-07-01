@@ -316,8 +316,7 @@
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "$order": 7,
-            "$categoryCombo": "antigen",
-            "$categories": [{ "key": "antigen", "optional": false }]
+            "$categoryCombo": null
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
