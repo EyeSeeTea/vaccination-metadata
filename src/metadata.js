@@ -261,28 +261,22 @@ function getCategoryComboId(db, categoriesMetadata, obj) {
 
 function getCategoryCombosForDataElements(db, dataElement, categoriesMetadata) {
     const categoriesByKey = _.keyBy(categoriesMetadata.categories, "key");
-    const categoriesForDataElement = dataElement.$categories;
+    const categoriesForDataElement = dataElement.$categories || [];
 
-    if (categoriesForDataElement) {
-        return _(categoriesForDataElement)
-            .partition("optional")
-            .map(categories =>
-                categories.map(category => getOrThrow(categoriesByKey, category.key))
-            )
-            .zip(["Optional", "Required"])
-            .flatMap(([categories, typeString]) => {
-                return db.get("categoryCombos", {
-                    key: `data-element-${dataElement.key}-${typeString}`,
-                    code: getCode(["RVC_DE", dataElement.code, typeString]),
-                    name: getName(["Data Element", dataElement.name, typeString]),
-                    dataDimensionType: "DISAGGREGATION",
-                    categories: getIds(categories),
-                });
-            })
-            .value();
-    } else {
-        return [];
-    }
+    return _(categoriesForDataElement)
+        .partition("optional")
+        .map(categories => categories.map(category => getOrThrow(categoriesByKey, category.key)))
+        .zip(["Optional", "Required"])
+        .flatMap(([categories, typeString]) => {
+            return db.get("categoryCombos", {
+                key: `data-element-${dataElement.key}-${typeString}`,
+                code: getCode(["RVC_DE", dataElement.code, typeString]),
+                name: getName(["Data Element", dataElement.name, typeString]),
+                dataDimensionType: "DISAGGREGATION",
+                categories: getIds(categories),
+            });
+        })
+        .value();
 }
 
 function getDataElementGroupsForAntigen(db, antigen, dataElements) {
