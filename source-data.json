@@ -363,6 +363,16 @@
             "denominatorDescription": "Total doses used",
             "denominator": "#{${dataElements['vaccine-doses-used']}}"
         },
+        "dilution-needles-ratio": {
+            "$dataElementsRequired": ["needles", "vaccine-doses-used"],
+            "name": "Dilution needles ratio",
+            "code": "RVC_CAMPAIGN_NEEDLES_RATIO",
+            "$indicatorType": "ratio",
+            "numeratorDescription": "Needles for dilution",
+            "numerator": "#{${dataElements['needles']}}",
+            "denominatorDescription": "Vaccine doses used",
+            "denominator": "#{${dataElements['vaccine-doses-used']}}"
+        },
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
             "name": "Vaccine utilization rate",
