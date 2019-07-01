@@ -357,7 +357,7 @@
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
             "name": "Dilution syringes ratio",
             "code": "RVC_DILUTION_SYRINGES_RATIO",
-            "$indicatorType": "percentage",
+            "$indicatorType": "ratio",
             "numeratorDescription": "Syringes for dilution",
             "numerator": "#{${dataElements['syringes']}}",
             "denominatorDescription": "Total doses used",
