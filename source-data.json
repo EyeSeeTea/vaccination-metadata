@@ -509,6 +509,25 @@
         }
     },
 
+    "legendSets": {
+        "aefi": {
+            "code": "RVC_LEGEND_ZERO",
+            "name": "RVC Zero Threshold",
+            "publicAccess": "rw------",
+            "legends": [
+                {
+                    "id": "PEBNlgcoN30",
+                    "name": "Over zero",
+                    "endValue": 10000000.0,
+                    "color": "#F64025",
+                    "displayName": "overZero",
+                    "externalAccess": false,
+                    "startValue": 1.0
+                }
+            ]
+        }
+    },
+
     "userRoles": {
         "app": {
             "name": "RVC App",
