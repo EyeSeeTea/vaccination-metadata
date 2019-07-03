@@ -400,12 +400,6 @@
             "code": "RVC_CREATED_BY_VACCINATION_APP",
             "valueType": "BOOLEAN",
             "dataSetAttribute": true
-        },
-        "dashboard-id": {
-            "name": "Dashboard ID",
-            "code": "RVC_DASHBOARD_ID",
-            "valueType": "TEXT",
-            "dataSetAttribute": true
         }
     },
 
