@@ -253,7 +253,7 @@
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "aggregationType": "LAST",
-            "$categoryCombo": "antigen-age-group",
+            "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
         },
 
