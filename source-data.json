@@ -253,7 +253,7 @@
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "aggregationType": "LAST",
-            "$categoryCombo": "antigen-age-group",
+            "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
         },
 
@@ -315,6 +315,7 @@
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "$order": 7,
             "$categoryCombo": null
         },
@@ -322,6 +323,7 @@
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "$order": 8,
             "$categoryCombo": ["antigen-severity"],
             "$categories": [
@@ -334,7 +336,7 @@
     "indicators": {
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
-            "name": "ADS (Auto Disable Syringe) wastage rate",
+            "name": "ADS (Auto Disable Syringe) wastage rate (%)",
             "code": "RVC_ADS_WASTAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "ADS used - Total Doses adm",
@@ -374,7 +376,7 @@
         },
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
-            "name": "Vaccine utilization rate",
+            "name": "Vaccine utilization rate (%)",
             "code": "RVC_VACCINE_UTILIZATION",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
@@ -384,7 +386,7 @@
         },
         "vaccine-campaign-coverage": {
             "$dataElementsRequired": ["vaccine-doses-administered", "population-by-age"],
-            "name": "Vaccine campaign coverage",
+            "name": "Vaccine campaign coverage (%)",
             "code": "RVC_CAMPAIGN_COVERAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
@@ -399,12 +401,6 @@
             "name": "Created by Vaccination App",
             "code": "RVC_CREATED_BY_VACCINATION_APP",
             "valueType": "BOOLEAN",
-            "dataSetAttribute": true
-        },
-        "dashboard-id": {
-            "name": "Dashboard ID",
-            "code": "RVC_DASHBOARD_ID",
-            "valueType": "TEXT",
             "dataSetAttribute": true
         }
     },
