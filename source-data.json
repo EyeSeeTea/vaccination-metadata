@@ -315,6 +315,7 @@
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "$order": 7,
             "$categoryCombo": null
         },
@@ -322,6 +323,7 @@
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "$order": 8,
             "$categoryCombo": ["antigen-severity"],
             "$categories": [
