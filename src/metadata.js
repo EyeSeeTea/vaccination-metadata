@@ -14,6 +14,7 @@ const models = [
     "categoryOptions",
     "categoryOptionGroups",
     "categoryOptionCombos",
+    "legendSets",
 
     "dataElementGroupSets",
     "dataElementGroups",
@@ -53,12 +54,11 @@ async function getPayloadFromDb(db, sourceData) {
         dataElementsMetadata
     );
 
+    const legendSets = getLegendSets(db, sourceData);
+
     const attributes = getAttributes(db, sourceData);
 
-    const payloadBase = {
-        userRoles,
-        attributes,
-    };
+    const payloadBase = { userRoles, attributes, legendSets };
 
     return flattenPayloads([
         payloadBase,
@@ -72,6 +72,12 @@ async function getPayloadFromDb(db, sourceData) {
 function getAttributes(db, sourceData) {
     return toKeyList(sourceData, "attributes").map(attribute => {
         return db.get("attributes", attribute);
+    });
+}
+
+function getLegendSets(db, sourceData) {
+    return toKeyList(sourceData, "legendSets").map(legendSet => {
+        return db.get("legendSets", legendSet);
     });
 }
 

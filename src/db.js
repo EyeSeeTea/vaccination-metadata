@@ -33,6 +33,17 @@ function getUid(key, prefix) {
     return result.uid;
 }
 
+async function safeParseJSON(response) {
+    const body = await response.text();
+    try {
+        return JSON.parse(body);
+    } catch (err) {
+        console.error("Error:", err);
+        console.error("Response body:", body);
+        throw err;
+    }
+}
+
 class Db {
     constructor(url, data) {
         this.url = url;
@@ -53,7 +64,7 @@ class Db {
 
                 const json = await fetch(
                     `${url}/api/${model}?fields=${allFields.join(",")}&paging=false`
-                ).then(res => res.json());
+                ).then(safeParseJSON);
                 return [model, json[model]];
             };
             data = _.fromPairs(await pMap(models, getExistingAsPairs, { concurrency: 2 }));
@@ -105,12 +116,11 @@ class Db {
 
     async postMetadata(payload) {
         const headers = { "Content-Type": "application/json" };
-        const response = await fetch(`${this.url}/api/metadata`, {
+        return fetch(`${this.url}/api/metadata`, {
             method: "POST",
             body: JSON.stringify(payload),
             headers,
-        });
-        return response.json();
+        }).then(safeParseJSON);
     }
 
     async updateCOCs() {

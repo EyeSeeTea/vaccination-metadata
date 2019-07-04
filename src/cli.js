@@ -1,10 +1,10 @@
 const _ = require("lodash");
 const fs = require("fs");
 const argparse = require("argparse");
-const {debug, inspect} = require("./utils");
-const {getPayload, postPayload} = require("./metadata");
+const { debug, inspect } = require("./utils");
+const { getPayload, postPayload } = require("./metadata");
 
-async function generate({url, sourceDataFilePath, outputMetadataFilePath}) {
+async function generate({ url, sourceDataFilePath, outputMetadataFilePath }) {
     debug(`Source data: ${sourceDataFilePath}`);
     const sourceData = JSON.parse(fs.readFileSync(sourceDataFilePath, "utf8"));
     const metadata = await getPayload(url, sourceData);
@@ -13,13 +13,13 @@ async function generate({url, sourceDataFilePath, outputMetadataFilePath}) {
     debug(`Metadata output: ${outputMetadataFilePath}`);
 }
 
-async function post({url, sourceMetadataFilePath}) {
+async function post({ url, sourceMetadataFilePath }) {
     const payloadAll = JSON.parse(fs.readFileSync(sourceMetadataFilePath, "utf8"));
     const payload = _(payloadAll)
         .omit(["organisationUnitLevels", "organisationUnits"])
         .value();
 
-    const responseJson = await postPayload(url, payload, {updateCOCs: true});
+    const responseJson = await postPayload(url, payload, { updateCOCs: true });
 
     if (responseJson.status === "OK") {
         debug(`Import success: ${inspect(responseJson.stats)}`);
@@ -41,12 +41,15 @@ function getArgsParser() {
         dest: "command",
     });
 
-    const parserGenerate = subparsers.addParser("generate", {addHelp: true});
-    const parserPost = subparsers.addParser("post", {addHelp: true});
-    const urlArg = [["-u", "--url"], {
-        required: true,
-        help: "DHIS2 instance URL: http://username:password@server:port",
-    }];
+    const parserGenerate = subparsers.addParser("generate", { addHelp: true });
+    const parserPost = subparsers.addParser("post", { addHelp: true });
+    const urlArg = [
+        ["-u", "--url"],
+        {
+            required: true,
+            help: "DHIS2 instance URL: http://username:password@server:port",
+        },
+    ];
 
     parserGenerate.addArgument(...urlArg);
     parserGenerate.addArgument(["-i", "--data-input"], {
@@ -74,12 +77,12 @@ function main() {
     const args = getArgsParser();
 
     switch (args.command) {
-    case "generate":
-        return generate(args);
-    case "post":
-        return post(args);
-    default:
-        throw new Error(`Command not implemented: ${args.command}`);
+        case "generate":
+            return generate(args);
+        case "post":
+            return post(args);
+        default:
+            throw new Error(`Command not implemented: ${args.command}`);
     }
 }
 
