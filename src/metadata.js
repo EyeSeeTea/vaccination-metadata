@@ -9,11 +9,12 @@ const models = [
 
     { name: "organisationUnits", fields: ["id", "name", "level"] },
 
-    "categories",
+    { name: "categories", fields: ["id", "name", "categoryOptions[id]"] },
     { name: "categoryCombos", fields: ["id", "name", "categoryOptionCombos"] },
     "categoryOptions",
     "categoryOptionGroups",
     "categoryOptionCombos",
+    "legendSets",
 
     "dataElementGroupSets",
     "dataElementGroups",
@@ -31,15 +32,12 @@ const models = [
 ];
 
 async function getPayloadFromDb(db, sourceData) {
-    const categoriesAntigensMetadata = getCategoriesMetadataForAntigens(db, sourceData);
-
-    const categoriesMetadata = addCategoryOptionCombos(
-        db,
-        flattenPayloads([
-            categoriesAntigensMetadata,
-            getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata),
-        ])
-    );
+    const categoryOptionsByKind = getCategoryOptionsByKind(db, sourceData);
+    const categoryMetadataBase = flattenPayloads([
+        categoryOptionsByKind.metadata,
+        getCategoriesMetadata(sourceData, db, categoryOptionsByKind),
+    ]);
+    const categoriesMetadata = addCategoryOptionCombos(db, categoryMetadataBase);
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
 
@@ -56,12 +54,11 @@ async function getPayloadFromDb(db, sourceData) {
         dataElementsMetadata
     );
 
+    const legendSets = getLegendSets(db, sourceData);
+
     const attributes = getAttributes(db, sourceData);
 
-    const payloadBase = {
-        userRoles,
-        attributes,
-    };
+    const payloadBase = { userRoles, attributes, legendSets };
 
     return flattenPayloads([
         payloadBase,
@@ -75,6 +72,12 @@ async function getPayloadFromDb(db, sourceData) {
 function getAttributes(db, sourceData) {
     return toKeyList(sourceData, "attributes").map(attribute => {
         return db.get("attributes", attribute);
+    });
+}
+
+function getLegendSets(db, sourceData) {
+    return toKeyList(sourceData, "legendSets").map(legendSet => {
+        return db.get("legendSets", legendSet);
     });
 }
 
@@ -150,12 +153,16 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
     const ageGroups = getOrThrow(antigen, "ageGroups");
     const mainAgeGroups = ageGroups.map(group => group[0][0]);
 
-    const mainGroup = db.get("categoryOptionGroups", {
-        name: getName([antigen.name, "Age groups"]),
-        code: `${antigen.code}_AGE_GROUP`,
-        shortName: getName([antigen.shortName || antigen.name, "AG"]),
-        categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
-    });
+    const mainGroup = db.get(
+        "categoryOptionGroups",
+        {
+            name: getName([antigen.name, "Age groups"]),
+            code: `${antigen.code}_AGE_GROUP`,
+            shortName: getName([antigen.shortName || antigen.name, "AG"]),
+            categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, mainAgeGroups)),
+        },
+        { field: "code" }
+    );
 
     const disaggregatedGroups = _.flatMap(ageGroups, group => {
         const [mainGroupValues, ...restOfAgeGroup] = group;
@@ -167,56 +174,74 @@ function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGrou
         } else {
             return restOfAgeGroup.map((options, index) => {
                 const sIndex = (index + 1).toString();
-                return db.get("categoryOptionGroups", {
-                    name: getName([antigen.name, "Age group", mainGroup, sIndex]),
-                    shortName: getName([
-                        antigen.shortName || antigen.name,
-                        "AGE",
-                        mainGroup,
-                        sIndex,
-                    ]),
-                    code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
-                    categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
-                });
+                return db.get(
+                    "categoryOptionGroups",
+                    {
+                        name: getName([antigen.name, "Age group", mainGroup, sIndex]),
+                        shortName: getName([
+                            antigen.shortName || antigen.name,
+                            "AGE",
+                            mainGroup,
+                            sIndex,
+                        ]),
+                        code: getCode([antigen.code, "AGE_GROUP", mainGroup, sIndex]),
+                        categoryOptions: getIds(_.at(categoryOptionsAgeGroupsByName, options)),
+                    },
+                    { field: "code" }
+                );
             });
         }
     });
 
     return [mainGroup, ...disaggregatedGroups];
 }
-function getCategoriesMetadataForAntigens(db, sourceData) {
+function getCategoryOptionsByKind(db, sourceData) {
     const ageGroups = _(toKeyList(sourceData, "antigens"))
         .map("ageGroups")
         .flattenDeep()
         .uniq()
         .value();
 
+    const maxDoses = _(toKeyList(sourceData, "antigens"))
+        .map("doses")
+        .max();
+
     const categoryOptionsAgeGroups = sortAgeGroups(ageGroups).map(ageGroup => {
         return db.get("categoryOptions", {
             name: ageGroup,
             shortName: ageGroup,
+            publicAccess: "rwrw----",
         });
     });
 
-    const metadata = flattenPayloads(
-        toKeyList(sourceData, "antigens").map(antigen => {
-            const categoryOptions = db.get("categoryOptions", {
+    const categoryOptionsDoses = _.range(1, maxDoses + 1).map(nDose => {
+        return db.get("categoryOptions", {
+            name: `Dose ${nDose}`,
+            publicAccess: "rwrw----",
+        });
+    });
+
+    const categoryOptionAntigens = toKeyList(sourceData, "antigens").map(antigen => {
+        return db.get(
+            "categoryOptions",
+            {
+                key: antigen.key,
                 name: antigen.name,
                 code: antigen.code,
                 shortName: antigen.name,
-            });
+                publicAccess: "rwrw----",
+            },
+            {
+                field: "code",
+            }
+        );
+    });
 
-            const categoryOptionGroups = getCategoryOptionGroupsForAgeGroups(
-                db,
-                antigen,
-                categoryOptionsAgeGroups
-            );
-
-            return { categoryOptions, categoryOptionGroups };
-        })
-    );
-
-    return flattenPayloads([metadata, { categoryOptions: categoryOptionsAgeGroups }]);
+    return {
+        fromAntigens: categoryOptionAntigens,
+        fromAgeGroups: categoryOptionsAgeGroups,
+        fromDoses: categoryOptionsDoses,
+    };
 }
 
 function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
@@ -242,28 +267,22 @@ function getCategoryComboId(db, categoriesMetadata, obj) {
 
 function getCategoryCombosForDataElements(db, dataElement, categoriesMetadata) {
     const categoriesByKey = _.keyBy(categoriesMetadata.categories, "key");
-    const categoriesForDataElement = dataElement.$categories;
+    const categoriesForDataElement = dataElement.$categories || [];
 
-    if (categoriesForDataElement) {
-        return _(categoriesForDataElement)
-            .partition("optional")
-            .map(categories =>
-                categories.map(category => getOrThrow(categoriesByKey, category.key))
-            )
-            .zip(["Optional", "Required"])
-            .flatMap(([categories, typeString]) => {
-                return db.get("categoryCombos", {
-                    key: `data-element-${dataElement.key}-${typeString}`,
-                    code: getCode(["RVC_DE", dataElement.code, typeString]),
-                    name: getName(["Data Element", dataElement.name, typeString]),
-                    dataDimensionType: "DISAGGREGATION",
-                    categories: getIds(categories),
-                });
-            })
-            .value();
-    } else {
-        return [];
-    }
+    return _(categoriesForDataElement)
+        .partition("optional")
+        .map(categories => categories.map(category => getOrThrow(categoriesByKey, category.key)))
+        .zip(["Optional", "Required"])
+        .flatMap(([categories, typeString]) => {
+            return db.get("categoryCombos", {
+                key: `data-element-${dataElement.key}-${typeString}`,
+                code: getCode(["RVC_DE", dataElement.code, typeString]),
+                name: getName(["Data Element", dataElement.name, typeString]),
+                dataDimensionType: "DISAGGREGATION",
+                categories: getIds(categories),
+            });
+        })
+        .value();
 }
 
 function getDataElementGroupsForAntigen(db, antigen, dataElements) {
@@ -277,8 +296,8 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
             return db.get("dataElementGroups", {
                 key: `data-elements-${antigen.key}-${typeString}`,
                 code: getCode([antigen.code, typeString]),
-                name: getName(["Antigen", antigen.name, typeString]),
-                shortName: getName([antigen.name, "DES", typeString]),
+                name: getName(["RVC", "Antigen", antigen.name, typeString]),
+                shortName: getName(["RVC", antigen.name, "DES", typeString]),
                 dataElements: getIds(dataElementsForGroup),
             });
         })
@@ -290,12 +309,16 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
 function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
     const dataElementsMetadata = flattenPayloads(
         toKeyList(sourceData, "dataElements").map(dataElement => {
+            const formName = _([dataElement.name, dataElement.$order])
+                .compact()
+                .join(" - ");
             const dataElements = db.get("dataElements", {
                 shortName: dataElement.shortName || dataElement.name,
                 domainType: "AGGREGATE",
                 aggregationType: "SUM",
                 categoryCombo: getCategoryComboId(db, categoriesMetadata, dataElement),
                 ...dataElement,
+                formName,
             });
 
             const categoryCombosForDataElements = getCategoryCombosForDataElements(
@@ -313,8 +336,8 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             const mainGroup = db.get("dataElementGroups", {
                 key: "data-elements-antigens",
                 code: "RVC_ANTIGEN",
-                name: "Antigens",
-                shortName: "Antigens",
+                name: "RVC - All Data Elements",
+                shortName: "RVC - All Data Elements",
                 dataElements: getIds(dataElementsMetadata.dataElements),
             });
 
@@ -382,42 +405,57 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
     return flattenPayloads([indicatorsMetadata, groupsMetadata]);
 }
 
-function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
+function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
     const customMetadata = toKeyList(sourceData, "categories").map(attributes => {
-        const $categoryOptions = getOrThrow(attributes, "$categoryOptions");
-        const antigenCodes = Object.values(sourceData.antigens).map(antigen => antigen.code);
-
-        const [antigenOptions, ageGroupOptions] = _(categoriesAntigensMetadata.categoryOptions)
-            .partition(categoryOption => antigenCodes.includes(categoryOption.code))
-            .value();
+        const $categoryOptions = attributes.$categoryOptions;
 
         let categoryOptions;
-        if ($categoryOptions.kind == "fromAntigens") {
-            categoryOptions = _.sortBy(antigenOptions, "name");
-        } else if ($categoryOptions.kind == "fromAgeGroups") {
-            categoryOptions = ageGroupOptions;
+        if (!$categoryOptions || !$categoryOptions.kind) {
+            categoryOptions = null;
         } else if ($categoryOptions.kind == "values") {
             categoryOptions = $categoryOptions.values.map(name => {
                 return db.get("categoryOptions", {
                     name: name,
                     shortName: name,
+                    publicAccess: "rwrw----",
                 });
             });
+        } else {
+            categoryOptions = getOrThrow(categoryOptionsByKind, $categoryOptions.kind);
         }
 
         const category = db.get("categories", {
             dataDimensionType: "DISAGGREGATION",
             dimensionType: "CATEGORY",
             dataDimension: false,
-            categoryOptions: getIds(categoryOptions),
-            ...attributes,
+            ...(categoryOptions ? { categoryOptions: getIds(categoryOptions) } : {}),
+            ..._.omit(attributes, ["$categoryOptions"]),
         });
 
-        return { categories: [category], categoryOptions };
+        return { categories: [category], categoryOptions: categoryOptions || [] };
     });
 
-    const payload = flattenPayloads([categoriesAntigensMetadata, ...customMetadata]);
+    const payload = flattenPayloads(customMetadata);
     const categoryByKey = _.keyBy(payload.categories, "key");
+    const { fromAgeGroups, fromDoses } = categoryOptionsByKind;
+
+    const categoryOptionGroupsAgeGroups = _.flatten(
+        toKeyList(sourceData, "antigens").map(antigen =>
+            getCategoryOptionGroupsForAgeGroups(db, antigen, fromAgeGroups)
+        )
+    );
+
+    const categoryOptionGroupsDoses = _.flatten(
+        toKeyList(sourceData, "antigens").map(antigen => {
+            const attributes = {
+                name: getName([antigen.name, "Doses"]),
+                shortName: getName([antigen.shortName || antigen.name, "Doses"]),
+                code: getCode([antigen.code, "DOSES"]),
+                categoryOptions: getIds(_.take(fromDoses, antigen.doses)),
+            };
+            return db.get("categoryOptionGroups", attributes, { field: "code" });
+        })
+    );
 
     const categoryCombos = _(toKeyList(sourceData, "categoryCombos"))
         .flatMap(categoryCombo => {
@@ -428,14 +466,18 @@ function getCategoriesMetadata(sourceData, db, categoriesAntigensMetadata) {
             return db.get("categoryCombos", {
                 dataDimensionType: "DISAGGREGATION",
                 categories: getIds(categoriesForCatCombo),
-                name: categoriesForCatCombo.map(category => category.name).join(" / "),
-                code: categoriesForCatCombo.map(category => category.code).join("_"),
+                name: categoriesForCatCombo
+                    .map(category => category.shortName || category.name)
+                    .join(" / "),
+                code: getCode(categoriesForCatCombo.map(category => category.code)),
                 ...categoryCombo,
             });
         })
         .value();
 
-    return flattenPayloads([payload, { categoryCombos }]);
+    const categoryOptionGroups = _.concat(categoryOptionGroupsAgeGroups, categoryOptionGroupsDoses);
+
+    return flattenPayloads([payload, { categoryCombos, categoryOptionGroups }]);
 }
 
 /* Public interface */

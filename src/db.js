@@ -2,7 +2,7 @@ const _ = require("lodash");
 const pMap = require("p-map");
 const md5 = require("md5");
 const fetch = require("node-fetch");
-const { repeat, inspect } = require("./utils");
+const { repeat, inspect, getOrThrow } = require("./utils");
 
 // DHIS2 UID :: /^[a-zA-Z]{1}[a-zA-Z0-9]{10}$/
 const asciiLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -33,6 +33,17 @@ function getUid(key, prefix) {
     return result.uid;
 }
 
+async function safeParseJSON(response) {
+    const body = await response.text();
+    try {
+        return JSON.parse(body);
+    } catch (err) {
+        console.error("Error:", err);
+        console.error("Response body:", body);
+        throw err;
+    }
+}
+
 class Db {
     constructor(url, data) {
         this.url = url;
@@ -48,9 +59,12 @@ class Db {
                     ? value
                     : { name: value, fields: ["id", "name"] };
 
+                // Always add code so we can reference by that field on existing objects
+                const allFields = fields.concat(["code"]);
+
                 const json = await fetch(
-                    `${url}/api/${model}?fields=${fields.join(",")}&paging=false`
-                ).then(res => res.json());
+                    `${url}/api/${model}?fields=${allFields.join(",")}&paging=false`
+                ).then(safeParseJSON);
                 return [model, json[model]];
             };
             data = _.fromPairs(await pMap(models, getExistingAsPairs, { concurrency: 2 }));
@@ -67,13 +81,23 @@ class Db {
 
     get(model, allAttributes, { field = "name" } = {}) {
         const { key, ...attributes } = allAttributes;
+        // By default, try to match by code and, if not found, by the passed field.
         const value = attributes[field];
+        const valuesByCode = _.keyBy(this.data[model], "code");
         const valuesByField = _.keyBy(this.data[model], field);
 
         if (!valuesByField) {
             throw `Model not found in data: ${model}`;
         } else if (!value) {
             throw `Property ${field} is required in attributes: ${inspect(attributes)}`;
+        } else if (attributes.code && valuesByCode[attributes.code]) {
+            const oldAttributes = valuesByCode[attributes.code];
+            const uid = getOrThrow(oldAttributes, "id");
+            return { ...oldAttributes, ...attributes, id: uid, key };
+        } else if (valuesByField[value]) {
+            const oldAttributes = valuesByField[value];
+            const uid = getOrThrow(oldAttributes, "id");
+            return { ...oldAttributes, ...attributes, id: uid, key };
         } else {
             const uid = _(valuesByField).get([value, "id"]) || getUid(key || value, model + "-");
             return { ...attributes, id: uid, key };
@@ -92,12 +116,11 @@ class Db {
 
     async postMetadata(payload) {
         const headers = { "Content-Type": "application/json" };
-        const response = await fetch(`${this.url}/api/metadata`, {
+        return fetch(`${this.url}/api/metadata`, {
             method: "POST",
             body: JSON.stringify(payload),
             headers,
-        });
-        return response.json();
+        }).then(safeParseJSON);
     }
 
     async updateCOCs() {

@@ -34,7 +34,7 @@ function getOrThrow(obj, path, { defaultValue } = {}) {
             const pathString = _(path)
                 .castArray()
                 .join(" -> ");
-            throw new Error(`No path '${pathString}' in object:\n${inspect(obj)}`);
+            throw new Error(`No path '${pathString}' in object:\n${inspect(Object.keys(obj))}`);
         } else {
             return defaultValue;
         }

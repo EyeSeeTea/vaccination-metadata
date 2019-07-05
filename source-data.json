@@ -3,6 +3,7 @@
         "measles": {
             "name": "Measles",
             "code": "RVC_ANTIGEN_MEASLES",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -23,6 +24,7 @@
         "meningitis-polysaccharide": {
             "name": "Meningitis Polysaccharide",
             "code": "RVC_ANTIGEN_MENPOLY",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -38,6 +40,7 @@
         "meningitis-conjugate": {
             "name": "Meningitis Conjugate",
             "code": "RVC_ANTIGEN_MENCONJ",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -53,6 +56,7 @@
         "cholera": {
             "name": "Cholera",
             "code": "RVC_ANTIGEN_CHOLERA",
+            "doses": 2,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -63,6 +67,7 @@
         "pcv": {
             "name": "PCV",
             "code": "RVC_ANTIGEN_PCV",
+            "doses": 3,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -79,8 +84,10 @@
             ]
         },
         "pertussis-penta": {
-            "name": "Pertussis Penta",
+            "name": "DTP - Hib - HEP B",
+            "shortName": "DTP",
             "code": "RVC_ANTIGEN_PERTPENTA",
+            "doses": 3,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -99,6 +106,7 @@
         "yellow-fever": {
             "name": "Yellow Fever",
             "code": "RVC_ANTIGEN_YELLOW_FEVER",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -116,7 +124,6 @@
                     ["12 - 59 m"],
                     ["12 - 23 m", "25 - 59 m"]
                 ],
-                [["12 - 23 m"]],
                 [["5 - 14 y"]],
                 [["15 - 99 y"], ["15 - 29 y", "> 30 y"]]
             ]
@@ -124,6 +131,7 @@
         "japanese-encephalitis": {
             "name": "Japanese Encephalitis",
             "code": "RVC_ANTIGEN_JPENC",
+            "doses": 2,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -144,6 +152,7 @@
         "dengue": {
             "name": "Dengue",
             "code": "RVC_ANTIGEN_DENGUE",
+            "doses": 2,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -159,6 +168,7 @@
         "typhoid-fever": {
             "name": "Typhoid Fever",
             "code": "RVC_ANTIGEN_TYPHOID_FEVER",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -179,6 +189,7 @@
         "polio-oral": {
             "name": "Poliomyelitis Oral",
             "code": "RVC_ANTIGEN_POLIO_ORAL",
+            "doses": 3,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -200,6 +211,7 @@
         "polio-injectable": {
             "name": "Poliomyelitis Injectable",
             "code": "RVC_ANTIGEN_POLIO_INJECTABLE",
+            "doses": 1,
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -230,7 +242,7 @@
         },
         "age-distribution": {
             "name": "Age distribution (%)",
-            "valueType": "PERCENTAGE",
+            "valueType": "NUMBER",
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group",
@@ -241,7 +253,7 @@
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "aggregationType": "LAST",
-            "$categoryCombo": "antigen-age-group",
+            "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
         },
 
@@ -249,8 +261,11 @@
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "$order": 1,
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
+                { "key": "antigen", "optional": false },
+                { "key": "dose", "optional": false },
                 { "key": "age-group", "optional": false },
                 { "key": "gender", "optional": true },
                 { "key": "displacement-status", "optional": true }
@@ -260,53 +275,68 @@
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
-            "$categoryCombo": "antigen"
+            "$order": 2,
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
 
         "ads-used": {
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
-            "$categoryCombo": "antigen"
+            "$order": 3,
+            "$categoryCombo": null
         },
         "syringes": {
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
-            "$categoryCombo": "antigen"
+            "$order": 5,
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
         "needles": {
             "name": "Needles for dilution",
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
-            "$categoryCombo": "antigen"
+            "$order": 4,
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
         },
         "safety-boxes": {
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
-            "$categoryCombo": "antigen"
+            "$order": 6,
+            "$categoryCombo": null
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
-            "$categoryCombo": "antigen"
+            "zeroIsSignificant": true,
+            "$order": 7,
+            "$categoryCombo": null
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
+            "$order": 8,
             "$categoryCombo": ["antigen-severity"],
-            "$categories": [{ "key": "severity", "optional": false }]
+            "$categories": [
+                { "key": "antigen", "optional": false },
+                { "key": "severity", "optional": false }
+            ]
         }
     },
 
     "indicators": {
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
-            "name": "ADS (Auto Disable Syringe) wastage rate",
+            "name": "ADS (Auto Disable Syringe) wastage rate (%)",
             "code": "RVC_ADS_WASTAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "ADS used - Total Doses adm",
@@ -328,15 +358,25 @@
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
             "name": "Dilution syringes ratio",
             "code": "RVC_DILUTION_SYRINGES_RATIO",
-            "$indicatorType": "percentage",
+            "$indicatorType": "ratio",
             "numeratorDescription": "Syringes for dilution",
             "numerator": "#{${dataElements['syringes']}}",
             "denominatorDescription": "Total doses used",
             "denominator": "#{${dataElements['vaccine-doses-used']}}"
         },
+        "dilution-needles-ratio": {
+            "$dataElementsRequired": ["needles", "vaccine-doses-used"],
+            "name": "Dilution needles ratio",
+            "code": "RVC_CAMPAIGN_NEEDLES_RATIO",
+            "$indicatorType": "ratio",
+            "numeratorDescription": "Needles for dilution",
+            "numerator": "#{${dataElements['needles']}}",
+            "denominatorDescription": "Vaccine doses used",
+            "denominator": "#{${dataElements['vaccine-doses-used']}}"
+        },
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
-            "name": "Vaccine utilization rate",
+            "name": "Vaccine utilization rate (%)",
             "code": "RVC_VACCINE_UTILIZATION",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
@@ -346,7 +386,7 @@
         },
         "vaccine-campaign-coverage": {
             "$dataElementsRequired": ["vaccine-doses-administered", "population-by-age"],
-            "name": "Vaccine campaign coverage",
+            "name": "Vaccine campaign coverage (%)",
             "code": "RVC_CAMPAIGN_COVERAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
@@ -362,56 +402,60 @@
             "code": "RVC_CREATED_BY_VACCINATION_APP",
             "valueType": "BOOLEAN",
             "dataSetAttribute": true
-        },
-        "dashboard-id": {
-            "name": "Dashboard ID",
-            "code": "RVC_DASHBOARD_ID",
-            "valueType": "TEXT",
-            "dataSetAttribute": true
         }
     },
 
     "categories": {
         "antigen": {
-            "name": "Antigen",
+            "name": "_23.1 RVC Antigen",
+            "shortName": "Antigen",
             "code": "RVC_ANTIGEN",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAntigens" }
         },
         "age-group": {
-            "name": "Age group",
+            "name": "_23.5 RVC Age groups",
+            "shortName": "Age group",
             "code": "RVC_AGE_GROUP",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "fromAgeGroups" }
         },
+        "dose": {
+            "name": "_23.2 RVC Doses",
+            "shortName": "Dose",
+            "code": "RVC_DOSE",
+            "dataDimensionType": "DISAGGREGATION",
+            "dataDimension": true,
+            "$categoryOptions": { "kind": "fromDoses" }
+        },
         "team": {
-            "name": "Team",
+            "name": "_23.4 RVC Teams",
+            "shortName": "Team",
             "code": "RVC_TEAM",
             "dataDimensionType": "ATTRIBUTE",
-            "dataDimension": true,
-            "$categoryOptions": {
-                "kind": "values",
-                "values": ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5"]
-            }
+            "dataDimension": true
         },
         "gender": {
             "name": "Gender",
+            "shortName": "Gender",
             "code": "RVC_GENDER",
             "dataDimensionType": "DISAGGREGATION",
-            "dataDimension": true,
+            "dataDimension": false,
             "$categoryOptions": { "kind": "values", "values": ["Female", "Male"] }
         },
         "severity": {
-            "name": "Severity",
+            "name": "_23.3 RVC Severity",
+            "shortName": "Severity",
             "code": "RVC_SEVERITY",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
             "$categoryOptions": { "kind": "values", "values": ["Minor", "Severe"] }
         },
         "displacement-status": {
-            "name": "Displacement Status",
+            "name": "_23.6 RVC Displacement Status",
+            "shortName": "Displacement Status",
             "code": "RVC_DISTATUS",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
@@ -433,14 +477,17 @@
         "antigen-age-group": {
             "$categories": ["antigen", "age-group"]
         },
+        "antigen-dose-age-group": {
+            "$categories": ["antigen", "dose", "age-group"]
+        },
         "antigen-age-group-gender": {
-            "$categories": ["antigen", "age-group", "gender"]
+            "$categories": ["antigen", "dose", "age-group", "gender"]
         },
         "antigen-age-group-displacement-status": {
-            "$categories": ["antigen", "age-group", "displacement-status"]
+            "$categories": ["antigen", "dose", "age-group", "displacement-status"]
         },
         "antigen-age-gender-displacement": {
-            "$categories": ["antigen", "age-group", "gender", "displacement-status"]
+            "$categories": ["antigen", "dose", "age-group", "gender", "displacement-status"]
         },
         "antigen-severity": {
             "$categories": ["antigen", "severity"]
@@ -458,77 +505,49 @@
         }
     },
 
+    "legendSets": {
+        "aefi": {
+            "code": "RVC_LEGEND_ZERO",
+            "name": "RVC Zero Threshold",
+            "publicAccess": "rw------",
+            "legends": [
+                {
+                    "id": "PEBNlgcoN30",
+                    "name": "Over zero",
+                    "endValue": 10000000.0,
+                    "color": "#F64025",
+                    "displayName": "overZero",
+                    "externalAccess": false,
+                    "startValue": 1.0
+                }
+            ]
+        }
+    },
+
     "userRoles": {
-        "encoder": {
-            "name": "Campaign Encoder",
-            "authorities": [
-                "F_DATAVALUE_ADD",
-                "F_DATAVALUE_DELETE",
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-dataentry",
-                "M_dhis-web-pivot",
-                "M_dhis-web-messaging",
-                "M_dhis-web-dashboard",
-                "M_dhis-web-visualizer",
-                "M_Vaccination_App"
-            ]
+        "app": {
+            "name": "RVC App",
+            "authorities": ["M_Reactive_Vaccination"]
         },
-        "configurator": {
-            "name": "Campaign Configurator",
+        "feedback": {
+            "name": "RVC Feedback",
+            "authorities": []
+        },
+        "manager": {
+            "name": "RVC Campaign Manager",
             "authorities": [
-                "F_DATASET_ADD",
+                "M_Reactive_Vaccination",
                 "F_DATASET_DELETE",
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-pivot",
-                "M_dhis-web-messaging",
-                "M_dhis-web-dashboard",
-                "M_dhis-web-visualizer",
-                "M_Vaccination_App"
-            ]
-        },
-        "dashboard": {
-            "name": "Campaign Dasbboard",
-            "authorities": [
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-pivot",
-                "M_dhis-web-messaging",
-                "M_dhis-web-dashboard",
-                "M_dhis-web-visualizer",
-                "M_Vaccination_App"
-            ]
-        },
-        "admin": {
-            "name": "Campaign admin",
-            "authorities": [
-                "F_CATEGORY_COMBO_DELETE",
-                "F_CATEGORY_COMBO_PUBLIC_ADD",
-                "F_CATEGORY_DELETE",
-                "F_CATEGORY_OPTION_DELETE",
-                "F_CATEGORY_OPTION_GROUP_DELETE",
-                "F_CATEGORY_OPTION_GROUP_PUBLIC_ADD",
-                "F_CATEGORY_OPTION_GROUP_SET_DELETE",
-                "F_CATEGORY_OPTION_GROUP_SET_PUBLIC_ADD",
-                "F_CATEGORY_OPTION_PUBLIC_ADD",
-                "F_CATEGORY_PUBLIC_ADD",
-                "F_DATAELEMENT_DELETE",
-                "F_DATAELEMENTGROUP_DELETE",
-                "F_DATAELEMENTGROUP_PUBLIC_ADD",
-                "F_DATAELEMENTGROUPSET_DELETE",
-                "F_DATAELEMENTGROUPSET_PUBLIC_ADD",
-                "F_DATAELEMENT_PUBLIC_ADD",
-                "F_DATASET_DELETE",
+                "F_SECTION_ADD",
                 "F_DATASET_PUBLIC_ADD",
-                "F_INDICATOR_DELETE",
-                "F_INDICATORGROUP_DELETE",
-                "F_INDICATORGROUP_PUBLIC_ADD",
-                "F_INDICATORGROUPSET_DELETE",
-                "F_INDICATORGROUPSET_PUBLIC_ADD",
-                "F_INDICATOR_PUBLIC_ADD",
-                "F_INDICATORTYPE_ADD",
-                "F_INDICATORTYPE_DELETE",
-                "M_dhis-web-cache-cleaner",
-                "M_dhis-web-messaging",
-                "M_Vaccination_App"
+                "F_SECTION_DELETE",
+                "F_CATEGORY_PUBLIC_ADD",
+                "F_CHART_PUBLIC_ADD",
+                "F_REPORTTABLE_PUBLIC_ADD",
+                "F_CATEGORY_COMBO_PUBLIC_ADD",
+                "F_CATEGORY_OPTION_PUBLIC_ADD",
+                "F_CATEGORY_OPTION_DELETE",
+                "F_PERFORM_MAINTENANCE"
             ]
         }
     },

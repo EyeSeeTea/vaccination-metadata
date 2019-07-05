@@ -1,8 +1,17 @@
 const _ = require("lodash");
 const { interpolate, getOrThrow, cartesianProduct, inspect } = require("./utils");
 
+// Join parts to build a composite code, removing leading RVC_ to avoid redundant and long codes.
 function getCode(parts) {
-    return parts.map(part => part.replace(/\s*/g, "").toUpperCase()).join("_");
+    const code = parts
+        .map(part =>
+            part
+                .replace(/\s*/g, "")
+                .replace(/^RVC_/, "")
+                .toUpperCase()
+        )
+        .join("_");
+    return "RVC_" + code;
 }
 
 function getName(parts) {
@@ -65,7 +74,7 @@ function addCategoryOptionCombos(db, payload) {
         .flatMap(categoryCombo => {
             const categoryOptionsList = _(categoryCombo.categories)
                 .map(category =>
-                    getOrThrow(categoriesById, [category.id, "categoryOptions"]).map(co => co.id)
+                    (_(categoriesById).get([category.id, "categoryOptions"]) || []).map(co => co.id)
                 )
                 .value();
 

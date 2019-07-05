@@ -29,6 +29,7 @@
             "error",
             {"args": "all", "argsIgnorePattern": "^_"}
         ],
+        "no-console": 0,
         "array-bracket-spacing": ["error", "never"]
     }
 }
