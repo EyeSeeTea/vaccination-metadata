@@ -27,7 +27,7 @@ const models = [
     "userRoles",
 ];
 
-async function getPayloadFromDb(db, sourceData) {
+async function getPayloadFromDb(db, sourceData, version) {
     const categoryOptionsByKind = getCategoryOptionsByKind(db, sourceData);
     const categoriesMetadata = flattenPayloads([
         categoryOptionsByKind.metadata,
@@ -44,7 +44,7 @@ async function getPayloadFromDb(db, sourceData) {
 
     const legendSets = getLegendSets(db, sourceData);
 
-    const attributes = getAttributes(db, sourceData);
+    const attributes = getAttributes(db, sourceData, version);
 
     const payloadBase = { userRoles, attributes, legendSets };
 
@@ -53,13 +53,16 @@ async function getPayloadFromDb(db, sourceData) {
         dataElementsMetadata,
         indicatorsMetadata,
         categoriesMetadata,
-        dataSetsMetadata,
     ]);
 }
 
-function getAttributes(db, sourceData) {
+function getAttributes(db, sourceData, version) {
     return toKeyList(sourceData, "attributes").map(attribute => {
-        return db.get("attributes", attribute);
+        const attributeWithVersion = {
+            ...attribute,
+            description: `Version: ${version || "unknown"}`,
+        };
+        return db.get("attributes", attributeWithVersion);
     });
 }
 
@@ -404,9 +407,9 @@ function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
 /* Public interface */
 
 /* Return JSON payload metadata from source data for a specific DHIS2 instance */
-async function getPayload(url, sourceData) {
+async function getPayload(url, sourceData, version) {
     const db = await Db.init(url, { models });
-    return getPayloadFromDb(db, sourceData);
+    return getPayloadFromDb(db, sourceData, version);
 }
 
 /* POST JSON payload metadata to a DHIS2 instance */
