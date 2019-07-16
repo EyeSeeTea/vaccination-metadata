@@ -362,7 +362,7 @@
             "numeratorDescription": "Syringes for dilution",
             "numerator": "#{${dataElements['syringes']}}",
             "denominatorDescription": "Total doses used",
-            "denominator": "#{${dataElements['vaccine-doses-used']}}"
+            "denominator": "#{${dataElements['vaccine-doses-used']}} / 10"
         },
         "dilution-needles-ratio": {
             "$dataElementsRequired": ["needles", "vaccine-doses-used"],
@@ -372,7 +372,7 @@
             "numeratorDescription": "Needles for dilution",
             "numerator": "#{${dataElements['needles']}}",
             "denominatorDescription": "Vaccine doses used",
-            "denominator": "#{${dataElements['vaccine-doses-used']}}"
+            "denominator": "#{${dataElements['vaccine-doses-used']}} / 10"
         },
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
@@ -549,28 +549,6 @@
                 "F_CATEGORY_OPTION_DELETE",
                 "F_PERFORM_MAINTENANCE"
             ]
-        }
-    },
-
-    "dataSets": {
-        "demography": {
-            "name": "Demographic Information",
-            "code": "RVC_DEMOGRAPHIC_INFORMATION",
-            "periodType": "Monthly",
-            "dataElementDecoration": true,
-            "renderAsTabs": true,
-            "openFuturePeriods": 1,
-            "timelyDays": 15,
-            "$dataElements": ["total-population", "age-distribution"],
-            "$organisationUnits": { "levels": [4, 5] },
-            "$sections": {
-                "Population": {
-                    "sortOrder": 0,
-                    "name": "Population Age Distribution (%)",
-                    "showRowTotals": true,
-                    "$dataElements": ["total-population", "age-distribution"]
-                }
-            }
         }
     }
 }

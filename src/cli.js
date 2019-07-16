@@ -1,13 +1,15 @@
 const _ = require("lodash");
 const fs = require("fs");
 const argparse = require("argparse");
-const { debug, inspect } = require("./utils");
+const { debug, inspect, getVersion } = require("./utils");
 const { getPayload, postPayload } = require("./metadata");
 
 async function generate({ url, sourceDataFilePath, outputMetadataFilePath }) {
+    const version = await getVersion();
     debug(`Source data: ${sourceDataFilePath}`);
+    debug(`Version: ${version}`);
     const sourceData = JSON.parse(fs.readFileSync(sourceDataFilePath, "utf8"));
-    const metadata = await getPayload(url, sourceData);
+    const metadata = await getPayload(url, sourceData, version);
     const json = JSON.stringify(metadata, null, 2);
     fs.writeFileSync(outputMetadataFilePath, json, "utf8");
     debug(`Metadata output: ${outputMetadataFilePath}`);
@@ -73,7 +75,7 @@ function getArgsParser() {
     return parser.parseArgs();
 }
 
-function main() {
+async function main() {
     const args = getArgsParser();
 
     switch (args.command) {
