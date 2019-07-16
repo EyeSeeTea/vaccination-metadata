@@ -2,7 +2,7 @@ const _ = require("lodash");
 const { Db } = require("./db");
 const { getOrThrow, debug } = require("./utils");
 const { flattenPayloads, interpolateObj, getName, getCode } = require("./metadata-utils");
-const { toKeyList, getIds, addCategoryOptionCombos, sortAgeGroups } = require("./metadata-utils");
+const { toKeyList, getIds, sortAgeGroups } = require("./metadata-utils");
 
 const models = [
     "attributes",
@@ -10,10 +10,9 @@ const models = [
     { name: "organisationUnits", fields: ["id", "name", "level"] },
 
     { name: "categories", fields: ["id", "name", "categoryOptions[id]"] },
-    { name: "categoryCombos", fields: ["id", "name", "categoryOptionCombos"] },
+    "categoryCombos",
     "categoryOptions",
     "categoryOptionGroups",
-    "categoryOptionCombos",
     "legendSets",
 
     "dataElementGroupSets",
@@ -26,18 +25,14 @@ const models = [
     "indicators",
 
     "userRoles",
-
-    "dataSets",
-    "sections",
 ];
 
 async function getPayloadFromDb(db, sourceData) {
     const categoryOptionsByKind = getCategoryOptionsByKind(db, sourceData);
-    const categoryMetadataBase = flattenPayloads([
+    const categoriesMetadata = flattenPayloads([
         categoryOptionsByKind.metadata,
         getCategoriesMetadata(sourceData, db, categoryOptionsByKind),
     ]);
-    const categoriesMetadata = addCategoryOptionCombos(db, categoryMetadataBase);
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
 
@@ -45,13 +40,6 @@ async function getPayloadFromDb(db, sourceData) {
 
     const userRoles = toKeyList(sourceData, "userRoles").map(userRole =>
         db.get("userRoles", userRole)
-    );
-
-    const dataSetsMetadata = getDataSetsMetadata(
-        db,
-        sourceData,
-        categoriesMetadata,
-        dataElementsMetadata
     );
 
     const legendSets = getLegendSets(db, sourceData);
@@ -79,73 +67,6 @@ function getLegendSets(db, sourceData) {
     return toKeyList(sourceData, "legendSets").map(legendSet => {
         return db.get("legendSets", legendSet);
     });
-}
-
-function getDataSetsMetadata(db, sourceData, categoriesMetadata, dataElementsMetadata) {
-    const organisationUnits = db.getObjectsForModel("organisationUnits"); //.concat(orgUnitsMetadata.organisationUnits);
-    const dataElementsById = _.keyBy(dataElementsMetadata.dataElements, "id");
-    const dataElementsByKey = _.keyBy(dataElementsMetadata.dataElements, "key");
-    const cocsByCategoryComboId = _.groupBy(
-        categoriesMetadata.categoryOptionCombos,
-        coc => coc.categoryCombo.id
-    );
-
-    return flattenPayloads(
-        toKeyList(sourceData, "dataSets").map($dataSet => {
-            const sections = toKeyList($dataSet, "$sections").map($section => {
-                const dataElements = _(dataElementsByKey)
-                    .at($section.$dataElements || [])
-                    .value();
-
-                const greyedFields = _(dataElementsByKey)
-                    .at($section.$greyedDataElements || [])
-                    .flatMap(dataElement => {
-                        const cocs = _.flatten(
-                            getOrThrow(cocsByCategoryComboId, dataElement.categoryCombo.id)
-                        );
-                        return cocs.map(coc => ({
-                            dataElement: { id: dataElement.id },
-                            categoryOptionCombo: { id: coc.id },
-                        }));
-                    });
-
-                return db.getByKey("sections", {
-                    ...$section,
-                    greyedFields,
-                    dataElements: getIds(dataElements),
-                });
-            });
-
-            const { keys, levels } = $dataSet.$organisationUnits || [];
-            const organisationUnitsForDataSet = organisationUnits.filter(orgUnit => {
-                return _(keys).includes(orgUnit.key) || _(levels).includes(orgUnit.level);
-            });
-
-            const dataSet = db.get("dataSets", {
-                ...$dataSet,
-                categoryCombo: getCategoryComboId(db, categoriesMetadata, $dataSet),
-                organisationUnits: getIds(organisationUnitsForDataSet),
-            });
-
-            const dataSetElements = _(sections)
-                .flatMap("dataElements")
-                .map(de => dataElementsById[de.id])
-                .map(dataElement => ({
-                    dataElement: { id: dataElement.id },
-                    dataSet: { id: dataSet.id },
-                    categoryCombo: { id: dataElement.categoryCombo.id },
-                }))
-                .value();
-
-            return {
-                dataSets: [{ ...dataSet, dataSetElements }],
-                sections: sections.map(section => ({
-                    ...section,
-                    dataSet: { id: dataSet.id },
-                })),
-            };
-        })
-    );
 }
 
 function getCategoryOptionGroupsForAgeGroups(db, antigen, categoryOptionsAgeGroups) {
@@ -495,12 +416,10 @@ async function postPayload(url, payload, { updateCOCs = false } = {}) {
 
     if (responseJson.status === "OK" && updateCOCs) {
         debug("Update category option combinations");
-        // We may need references to Category Option Combos in datasets->greyfields, so for
-        // now we generate them there
-        /* const res = await db.updateCOCs();
+        const res = await db.updateCOCs();
         if (res.status < 200 || res.status > 299) {
-            throw `Error upding category option combo: ${inspect(res)}`;
-        } */
+            console.error(`Error upding category option combo: ${JSON.stringify(res)}`);
+        }
     }
     return responseJson;
 }
