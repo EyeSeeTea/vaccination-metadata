@@ -4,6 +4,18 @@
             "name": "Measles",
             "code": "RVC_ANTIGEN_MEASLES",
             "doses": 1,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Sarampión"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Rougeole"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -25,6 +37,18 @@
             "name": "Meningitis Polysaccharide",
             "code": "RVC_ANTIGEN_MENPOLY",
             "doses": 1,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Meningitis polisacárida"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Méningite polysaccharide"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -41,6 +65,18 @@
             "name": "Meningitis Conjugate",
             "code": "RVC_ANTIGEN_MENCONJ",
             "doses": 1,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Meningitis conjugada"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Méningite conjugué"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -57,6 +93,18 @@
             "name": "Cholera",
             "code": "RVC_ANTIGEN_CHOLERA",
             "doses": 2,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Cólera"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Choléra"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -68,6 +116,18 @@
             "name": "PCV",
             "code": "RVC_ANTIGEN_PCV",
             "doses": 3,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "PCV"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "PCV"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -88,6 +148,18 @@
             "shortName": "DTP",
             "code": "RVC_ANTIGEN_PERTPENTA",
             "doses": 3,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "DTP - Hib - HEP B"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "DTP - Hib - HEP B"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -107,6 +179,18 @@
             "name": "Yellow Fever",
             "code": "RVC_ANTIGEN_YELLOW_FEVER",
             "doses": 1,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Fiebre amarilla"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Fièvre jaune"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -132,6 +216,18 @@
             "name": "Japanese Encephalitis",
             "code": "RVC_ANTIGEN_JPENC",
             "doses": 2,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Encefalitis japonesa"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Encéphalite japonaise"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -153,6 +249,18 @@
             "name": "Dengue",
             "code": "RVC_ANTIGEN_DENGUE",
             "doses": 2,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Dengue"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Dengue"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -169,6 +277,18 @@
             "name": "Typhoid Fever",
             "code": "RVC_ANTIGEN_TYPHOID_FEVER",
             "doses": 1,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Fiebre tifoidea"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Fièvre typhoïde"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -190,6 +310,18 @@
             "name": "Poliomyelitis Oral",
             "code": "RVC_ANTIGEN_POLIO_ORAL",
             "doses": 3,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Poliomyelitis Oral"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Poliomyélite oral"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -212,6 +344,18 @@
             "name": "Poliomyelitis Injectable",
             "code": "RVC_ANTIGEN_POLIO_INJECTABLE",
             "doses": 1,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Poliomyelitis injectable"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Poliomyélite injectable"
+                }
+            ],
             "dataElements": [
                 { "key": "vaccine-doses-administered", "optional": false },
                 { "key": "vaccine-doses-used", "optional": false },
@@ -261,6 +405,18 @@
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Dosis de vacuna administradas"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Doses de vaccin administrées"
+                }
+            ],
             "$order": 1,
             "$categoryCombo": "antigen-age-gender-displacement",
             "$categories": [
@@ -275,6 +431,18 @@
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Dosis de vacuna usadas"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Doses de vaccin utilisées"
+                }
+            ],
             "$order": 2,
             "$categoryCombo": "antigen",
             "$categories": [{ "key": "antigen", "optional": false }]
@@ -284,6 +452,18 @@
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Jeringas auto-desactivables (AD) usadas"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "ADS utilisées"
+                }
+            ],
             "$order": 3,
             "$categoryCombo": null
         },
@@ -291,6 +471,18 @@
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Jeringas para disolución"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Seringues pour dilution"
+                }
+            ],
             "$order": 5,
             "$categoryCombo": "antigen",
             "$categories": [{ "key": "antigen", "optional": false }]
@@ -300,6 +492,18 @@
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Agujas para disolución"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Aiguilles pour dilution"
+                }
+            ],
             "$order": 4,
             "$categoryCombo": "antigen",
             "$categories": [{ "key": "antigen", "optional": false }]
@@ -308,6 +512,18 @@
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Cajas de seguridad"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Boîtes de sûreté"
+                }
+            ],
             "$order": 6,
             "$categoryCombo": null
         },
@@ -316,6 +532,18 @@
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Exposición accidental a la sangre"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Exposition accidentelle au sang"
+                }
+            ],
             "$order": 7,
             "$categoryCombo": null
         },
@@ -324,6 +552,18 @@
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Efecto adverso posterior a la inmunización"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Effet secondaire suivant l'immunisation"
+                }
+            ],
             "$order": 8,
             "$categoryCombo": ["antigen-severity"],
             "$categories": [
@@ -337,6 +577,18 @@
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
             "name": "ADS (Auto Disable Syringe) wastage rate (%)",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "ADS tasa de pérdida (%)"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "ADS taux de déperdition (%)"
+                }
+            ],
             "code": "RVC_ADS_WASTAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "ADS used - Total Doses adm",
@@ -347,6 +599,18 @@
         "safety-boxes-ratio": {
             "$dataElementsRequired": ["syringes", "safety-boxes"],
             "name": "Safety boxes ratio",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Ratio de cajas de seguridad"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Ratio de boîtes de sûreté"
+                }
+            ],
             "code": "RVC_SAFETY_BOXES",
             "$indicatorType": "ratio",
             "numeratorDescription": "Syringes",
@@ -357,6 +621,18 @@
         "dilution-syringes-ratio": {
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
             "name": "Dilution syringes ratio",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Ratio jeringas de disolución"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Ratio seringues de dilution"
+                }
+            ],
             "code": "RVC_DILUTION_SYRINGES_RATIO",
             "$indicatorType": "ratio",
             "numeratorDescription": "Syringes for dilution",
@@ -367,6 +643,18 @@
         "dilution-needles-ratio": {
             "$dataElementsRequired": ["needles", "vaccine-doses-used"],
             "name": "Dilution needles ratio",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Ratio agujas de disolución"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Ratio seringues de dilution"
+                }
+            ],
             "code": "RVC_CAMPAIGN_NEEDLES_RATIO",
             "$indicatorType": "ratio",
             "numeratorDescription": "Needles for dilution",
@@ -377,6 +665,18 @@
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
             "name": "Vaccine utilization rate (%)",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Tasa de uso de vacuna"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Taux d'utilisation des vaccins"
+                }
+            ],
             "code": "RVC_VACCINE_UTILIZATION",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
@@ -387,6 +687,18 @@
         "vaccine-campaign-coverage": {
             "$dataElementsRequired": ["vaccine-doses-administered", "population-by-age"],
             "name": "Vaccine campaign coverage (%)",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Cobertura de campaña de vacunación"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Couverture de campagne de vaccination"
+                }
+            ],
             "code": "RVC_CAMPAIGN_COVERAGE",
             "$indicatorType": "percentage",
             "numeratorDescription": "Doses administered",
@@ -408,6 +720,18 @@
     "categories": {
         "antigen": {
             "name": "_23.1 RVC Antigen",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "_23.1 RVC Antígeno"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "_23.1 RVC Antigène"
+                }
+            ],
             "shortName": "Antigen",
             "code": "RVC_ANTIGEN",
             "dataDimensionType": "DISAGGREGATION",
@@ -417,6 +741,18 @@
         "age-group": {
             "name": "_23.5 RVC Age groups",
             "shortName": "Age group",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "_23.5 RVC Grupos de edad"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "_23.5 RVC Tranches d'âge"
+                }
+            ],
             "code": "RVC_AGE_GROUP",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
@@ -425,6 +761,18 @@
         "dose": {
             "name": "_23.2 RVC Doses",
             "shortName": "Dose",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "_23.2 RVC Dosis"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "_23.2 RVC Doses"
+                }
+            ],
             "code": "RVC_DOSE",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
@@ -433,6 +781,18 @@
         "team": {
             "name": "_23.4 RVC Teams",
             "shortName": "Team",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "_23.4 Equipo"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "_23.4 RVC Équipe"
+                }
+            ],
             "code": "RVC_TEAM",
             "dataDimensionType": "ATTRIBUTE",
             "dataDimension": true
@@ -440,26 +800,215 @@
         "gender": {
             "name": "Gender",
             "shortName": "Gender",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Género"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Genre"
+                }
+            ],
             "code": "RVC_GENDER",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": false,
-            "$categoryOptions": { "kind": "values", "values": ["Female", "Male"] }
+            "$categoryOptions": { "kind": "values", "values": ["female", "male"] }
         },
         "severity": {
             "name": "_23.3 RVC Severity",
             "shortName": "Severity",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "_23.3 RVC Severidad"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "_23.3 RVC Sévérité"
+                }
+            ],
             "code": "RVC_SEVERITY",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
-            "$categoryOptions": { "kind": "values", "values": ["Minor", "Severe"] }
+            "$categoryOptions": { "kind": "values", "values": ["minor", "severe"] }
         },
         "displacement-status": {
             "name": "_23.6 RVC Displacement Status",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "_23.6 RVC Estado de desplazamiento"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "_23.6 RVC État du déplacement"
+                }
+            ],
             "shortName": "Displacement Status",
             "code": "RVC_DISTATUS",
             "dataDimensionType": "DISAGGREGATION",
             "dataDimension": true,
-            "$categoryOptions": { "kind": "values", "values": ["Host", "IDP", "Refugees"] }
+            "$categoryOptions": { "kind": "values", "values": ["host", "idp", "refugees"] }
+        }
+    },
+
+    "categoryOptions": {
+        "dose-1": {
+            "name": "Dose 1",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Dosis 1"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Dose 1"
+                }
+            ]
+        },
+        "dose-2": {
+            "name": "Dose 2",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Dosis 2"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Dose 2"
+                }
+            ]
+        },
+        "dose-3": {
+            "name": "Dose 3",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Dosis 3"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Dose 3"
+                }
+            ]
+        },
+        "female": {
+            "name": "Female",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Femenino"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Fémenin"
+                }
+            ]
+        },
+        "male": {
+            "name": "Male",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Masculino"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Masculin"
+                }
+            ]
+        },
+        "minor": {
+            "name": "Minor",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Menor"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Mineur"
+                }
+            ]
+        },
+        "severe": {
+            "name": "Severe",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Grave"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Grave"
+                }
+            ]
+        },
+        "host": {
+            "name": "Host",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Host"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Host"
+                }
+            ]
+        },
+        "idp": {
+            "name": "IDP",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "IDP"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "IDP"
+                }
+            ]
+        },
+        "refugees": {
+            "name": "Refugees",
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Refugiado"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Réfugiés"
+                }
+            ]
         }
     },
 

@@ -139,8 +139,9 @@ function getCategoryOptionsByKind(db, sourceData) {
     });
 
     const categoryOptionsDoses = _.range(1, maxDoses + 1).map(nDose => {
+        const categoryOption = getOrThrow(sourceData.categoryOptions, `dose-${nDose}`);
         return db.get("categoryOptions", {
-            name: `Dose ${nDose}`,
+            ...categoryOption,
             publicAccess: "rwrw----",
         });
     });
@@ -153,6 +154,7 @@ function getCategoryOptionsByKind(db, sourceData) {
                 name: antigen.name,
                 code: antigen.code,
                 shortName: antigen.name,
+                translations: antigen.translations,
                 publicAccess: "rwrw----",
             },
             {
@@ -177,6 +179,7 @@ function getIndicator(db, indicatorTypesByKey, namespace, plainAttributes) {
             id: getOrThrow(indicatorTypesByKey, [attributes.$indicatorType, "id"]),
         },
         ...attributes,
+        translations: plainAttributes.translations,
     });
 }
 
@@ -338,9 +341,10 @@ function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
             categoryOptions = null;
         } else if ($categoryOptions.kind == "values") {
             categoryOptions = $categoryOptions.values.map(name => {
+                const categoryOption = getOrThrow(sourceData.categoryOptions, name);
                 return db.get("categoryOptions", {
-                    name: name,
-                    shortName: name,
+                    ...categoryOption,
+                    shortName: categoryOption.name,
                     publicAccess: "rwrw----",
                 });
             });
