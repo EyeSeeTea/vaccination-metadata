@@ -461,7 +461,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "ADS utilisées"
+                    "value": "Seringues Autobloquantes (SAB)"
                 }
             ],
             "$order": 3,
@@ -480,7 +480,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Seringues pour dilution"
+                    "value": "Seringues de Dilution"
                 }
             ],
             "$order": 5,
@@ -501,7 +501,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Aiguilles pour dilution"
+                    "value": "Aiguilles de Dilution"
                 }
             ],
             "$order": 4,
@@ -521,7 +521,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Boîtes de sûreté"
+                    "value": "Conteneur de sécurité"
                 }
             ],
             "$order": 6,
@@ -541,7 +541,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Exposition accidentelle au sang"
+                    "value": "Accident d'exposition au sang"
                 }
             ],
             "$order": 7,
@@ -561,7 +561,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Effet secondaire suivant l'immunisation"
+                    "value": "Manifestations post-vaccinales indésirables"
                 }
             ],
             "$order": 8,
@@ -581,12 +581,12 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "ADS tasa de pérdida (%)"
+                    "value": "Tasa de pérdida de Jeringas auto-desactivables (AD) (%)"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "ADS taux de déperdition (%)"
+                    "value": "Taux de perte des serigues autobloquantes (SAB)"
                 }
             ],
             "code": "RVC_ADS_WASTAGE",
@@ -608,7 +608,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio de boîtes de sûreté"
+                    "value": "Ratio Conteneur de sécurité"
                 }
             ],
             "code": "RVC_SAFETY_BOXES",
@@ -630,7 +630,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio seringues de dilution"
+                    "value": "Ratio Seringues de Dilution"
                 }
             ],
             "code": "RVC_DILUTION_SYRINGES_RATIO",
@@ -652,7 +652,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio seringues de dilution"
+                    "value": "Ratio Aiguille de dilution"
                 }
             ],
             "code": "RVC_CAMPAIGN_NEEDLES_RATIO",
@@ -691,12 +691,12 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Cobertura de campaña de vacunación"
+                    "value": "Cobertura vacunal"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Couverture de campagne de vaccination"
+                    "value": "Couverture vaccinale"
                 }
             ],
             "code": "RVC_CAMPAIGN_COVERAGE",
@@ -750,7 +750,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "_23.5 RVC Tranches d'âge"
+                    "value": "_23.5 RVC Groupes d'âge"
                 }
             ],
             "code": "RVC_AGE_GROUP",
@@ -790,7 +790,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "_23.4 RVC Équipe"
+                    "value": "_23.4 RVC Équipes"
                 }
             ],
             "code": "RVC_TEAM",
@@ -804,12 +804,12 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Género"
+                    "value": "Sexo"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Genre"
+                    "value": "Sexe"
                 }
             ],
             "code": "RVC_GENDER",
@@ -843,12 +843,12 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "_23.6 RVC Estado de desplazamiento"
+                    "value": "_23.6 RVC Tipo de desplazamiento"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "_23.6 RVC État du déplacement"
+                    "value": "_23.6 RVC Type de déplacement"
                 }
             ],
             "shortName": "Displacement Status",
@@ -971,12 +971,12 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Host"
+                    "value": "Residente"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Host"
+                    "value": "Hôte"
                 }
             ]
         },
@@ -986,12 +986,12 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "IDP"
+                    "value": "Desplazados internos"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "IDP"
+                    "value": "Déplacés internes"
                 }
             ]
         },
