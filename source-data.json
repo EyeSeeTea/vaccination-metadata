@@ -382,11 +382,13 @@
             "code": "RVC_TOTAL_POPULATION",
             "aggregationType": "LAST",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "age-distribution": {
             "name": "Age distribution (%)",
             "valueType": "NUMBER",
+            "zeroIsSignificant": true,
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group",
@@ -396,6 +398,7 @@
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "aggregationType": "LAST",
             "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
@@ -405,6 +408,7 @@
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -431,6 +435,7 @@
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -452,6 +457,7 @@
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -471,6 +477,7 @@
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -492,6 +499,7 @@
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -512,6 +520,7 @@
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
