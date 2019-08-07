@@ -415,6 +415,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Doses de vaccin administrées"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Dosis de vacuna administradas"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Doses de vaccin administrées"
                 }
             ],
             "$order": 1,
@@ -441,6 +451,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Doses de vaccin utilisées"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Dosis de vacuna usadas"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Doses de vaccin utilisées"
                 }
             ],
             "$order": 2,
@@ -462,6 +482,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Seringues Autobloquantes (SAB)"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Jeringas auto-desactivables (AD) usadas"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Seringues Autobloquantes (SAB)"
                 }
             ],
             "$order": 3,
@@ -479,6 +509,16 @@
                 },
                 {
                     "property": "NAME",
+                    "locale": "fr",
+                    "value": "Seringues de Dilution"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Jeringas para disolución"
+                },
+                {
+                    "property": "DESCRIPTION",
                     "locale": "fr",
                     "value": "Seringues de Dilution"
                 }
@@ -502,6 +542,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Aiguilles de Dilution"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Agujas para disolución"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Aiguilles de Dilution"
                 }
             ],
             "$order": 4,
@@ -520,6 +570,16 @@
                 },
                 {
                     "property": "NAME",
+                    "locale": "fr",
+                    "value": "Conteneur de sécurité"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Cajas de seguridad"
+                },
+                {
+                    "property": "DESCRIPTION",
                     "locale": "fr",
                     "value": "Conteneur de sécurité"
                 }
@@ -542,6 +602,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Accident d'exposition au sang"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Exposición accidental a la sangre"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Accident d'exposition au sang"
                 }
             ],
             "$order": 7,
@@ -560,6 +630,16 @@
                 },
                 {
                     "property": "NAME",
+                    "locale": "fr",
+                    "value": "Manifestations post-vaccinales indésirables"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Efecto adverso posterior a la inmunización"
+                },
+                {
+                    "property": "DESCRIPTION",
                     "locale": "fr",
                     "value": "Manifestations post-vaccinales indésirables"
                 }
@@ -587,6 +667,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Taux de perte des serigues autobloquantes (SAB)"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Tasa de pérdida de Jeringas auto-desactivables (AD) (%)"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Taux de perte des serigues autobloquantes (SAB)"
                 }
             ],
             "code": "RVC_ADS_WASTAGE",
@@ -607,6 +697,16 @@
                 },
                 {
                     "property": "NAME",
+                    "locale": "fr",
+                    "value": "Ratio Conteneur de sécurité"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Ratio de cajas de seguridad"
+                },
+                {
+                    "property": "DESCRIPTION",
                     "locale": "fr",
                     "value": "Ratio Conteneur de sécurité"
                 }
@@ -631,6 +731,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Ratio Seringues de Dilution"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Ratio jeringas de disolución"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Ratio Seringues de Dilution"
                 }
             ],
             "code": "RVC_DILUTION_SYRINGES_RATIO",
@@ -651,6 +761,16 @@
                 },
                 {
                     "property": "NAME",
+                    "locale": "fr",
+                    "value": "Ratio Aiguille de dilution"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Ratio agujas de disolución"
+                },
+                {
+                    "property": "DESCRIPTION",
                     "locale": "fr",
                     "value": "Ratio Aiguille de dilution"
                 }
@@ -675,6 +795,16 @@
                     "property": "NAME",
                     "locale": "fr",
                     "value": "Taux d'utilisation des vaccins"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Tasa de uso de vacuna"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Taux d'utilisation des vaccins"
                 }
             ],
             "code": "RVC_VACCINE_UTILIZATION",
@@ -695,6 +825,16 @@
                 },
                 {
                     "property": "NAME",
+                    "locale": "fr",
+                    "value": "Couverture vaccinale"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Cobertura vacunal"
+                },
+                {
+                    "property": "DESCRIPTION",
                     "locale": "fr",
                     "value": "Couverture vaccinale"
                 }
