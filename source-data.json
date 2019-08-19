@@ -573,6 +573,48 @@
         }
     },
 
+    "validationRules": {
+        "vaccine-doses": {
+            "name": "Vaccine doses administered <= used",
+            "importance": "MEDIUM",
+            "periodType": "Daily",
+            "skipFormValidation": false,
+            "leftSide": {
+                "expression": "#{mkgnDxyksQS}",
+                "description": "Vaccine doses administered",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            },
+            "operator": "less_than_or_equal_to",
+            "rightSide": {
+                "expression": "#{ycy4WvaTCtm}",
+                "description": "Vaccine doses used",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            }
+        },
+        "aefi": {
+            "name": "No Adverse Event Following Immunization",
+            "instruction": "Please fill in the AEFI registration form",
+            "importance": "MEDIUM",
+            "periodType": "Daily",
+            "skipFormValidation": false,
+            "leftSide": {
+                "expression": "#{OY40ChLj0YE}",
+                "description": "Adverse Event Following Immunization",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            },
+            "operator": "equal_to",
+            "rightSide": {
+                "expression": "0",
+                "description": "Zero",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            }
+        }
+    },
+
     "indicators": {
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],

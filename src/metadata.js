@@ -18,6 +18,7 @@ const models = [
     "dataElementGroupSets",
     "dataElementGroups",
     "dataElements",
+    "validationRules",
 
     "indicatorTypes",
     "indicatorGroupSets",
@@ -29,28 +30,24 @@ const models = [
 
 async function getPayloadFromDb(db, sourceData, version) {
     const categoryOptionsByKind = getCategoryOptionsByKind(db, sourceData);
+
     const categoriesMetadata = flattenPayloads([
         categoryOptionsByKind.metadata,
         getCategoriesMetadata(sourceData, db, categoryOptionsByKind),
     ]);
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
-
+    const validationMetadata = getValidation(db, sourceData);
     const indicatorsMetadata = getIndicatorsMetadata(db, sourceData, dataElementsMetadata);
-
-    const userRoles = toKeyList(sourceData, "userRoles").map(userRole =>
-        db.get("userRoles", userRole)
-    );
-
+    const userRoles = toKeyList(sourceData, "userRoles").map(ur => db.get("userRoles", ur));
     const legendSets = getLegendSets(db, sourceData);
-
     const attributes = getAttributes(db, sourceData, version);
-
     const payloadBase = { userRoles, attributes, legendSets };
 
     return flattenPayloads([
         payloadBase,
         dataElementsMetadata,
+        validationMetadata,
         indicatorsMetadata,
         categoriesMetadata,
     ]);
@@ -231,6 +228,14 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
         .value();
 
     return groupsByAntigens;
+}
+
+function getValidation(db, sourceData) {
+    const validationRules = toKeyList(sourceData, "validationRules").map(validationRule$ => {
+        return db.get("validationRules", validationRule$);
+    });
+
+    return { validationRules };
 }
 
 function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
