@@ -257,17 +257,8 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             return { dataElements, categoryCombos: categoryCombosForDataElements };
         })
     );
-
     const dataElementGroupsMetadata = flattenPayloads(
         toKeyList(sourceData, "antigens").map(antigen => {
-            const mainGroup = db.get("dataElementGroups", {
-                key: "data-elements-antigens",
-                code: "RVC_ANTIGEN",
-                name: "RVC - All Data Elements",
-                shortName: "RVC - All Data Elements",
-                dataElements: getIds(dataElementsMetadata.dataElements),
-            });
-
             const dataElementGroupsForAntigen = getDataElementGroupsForAntigen(
                 db,
                 antigen,
@@ -283,13 +274,22 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             });
 
             return {
-                dataElementGroups: [mainGroup, ...dataElementGroupsForAntigen],
+                dataElementGroups: dataElementGroupsForAntigen,
                 dataElementGroupSets: [dataElementGroupSetForAntigen],
             };
         })
     );
 
-    return flattenPayloads([dataElementGroupsMetadata, dataElementsMetadata]);
+    const mainGroup = db.get("dataElementGroups", {
+        ...getOrThrow(sourceData.dataElementGroups, "all"),
+        dataElements: getIds(dataElementsMetadata.dataElements),
+    });
+
+    return flattenPayloads([
+        dataElementGroupsMetadata,
+        dataElementsMetadata,
+        { dataElementGroups: [mainGroup] },
+    ]);
 }
 
 function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
@@ -329,7 +329,12 @@ function getIndicatorsMetadata(db, sourceData, dataElementsMetadata) {
         indicatorTypes: _.values(indicatorTypesByKey),
     };
 
-    return flattenPayloads([indicatorsMetadata, groupsMetadata]);
+    const mainGroup = db.get("indicatorsGroups", {
+        ...getOrThrow(sourceData.indicatorGroups, "all"),
+        indicators: getIds(indicatorsMetadata.indicators),
+    });
+
+    return flattenPayloads([indicatorsMetadata, groupsMetadata, { indicatorGroups: [mainGroup] }]);
 }
 
 function getCategoriesMetadata(sourceData, db, categoryOptionsByKind) {
