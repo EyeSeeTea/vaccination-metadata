@@ -376,6 +376,20 @@
         }
     },
 
+    "dataElementGroups": {
+        "all": {
+            "name": "RVC - All Data Elements",
+            "code": "RVC_DATA_ELEMENTS"
+        }
+    },
+
+    "indicatorGroups": {
+        "all": {
+            "name": "RVC - All Indicators",
+            "code": "RVC_INDICATORS"
+        }
+    },
+
     "dataElements": {
         "total-population": {
             "name": "Total population",
