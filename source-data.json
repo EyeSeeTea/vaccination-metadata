@@ -395,7 +395,7 @@
         "population-by-age": {
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
-            "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "valueType": "NUMBER",
             "aggregationType": "LAST",
             "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
