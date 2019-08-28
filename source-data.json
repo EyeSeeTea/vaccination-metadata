@@ -501,7 +501,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Seringues de Dilution"
+                    "value": "Seringues de dilution"
                 }
             ],
             "$order": 5,
@@ -523,7 +523,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Aiguilles de Dilution"
+                    "value": "Aiguilles de dilution"
                 }
             ],
             "$order": 4,
@@ -620,40 +620,40 @@
             "denominator": "#{${dataElements['ads-used']}}"
         },
         "safety-boxes-ratio": {
-            "$dataElementsRequired": ["syringes", "safety-boxes"],
-            "name": "Safety boxes ratio",
+            "$dataElementsRequired": ["ads-used", "safety-boxes"],
+            "name": "Syringe / Safety Box ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio de cajas de seguridad"
+                    "value": "Ratio Jeringa / Caja de seguridad"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio Conteneur de sécurité"
+                    "value": "Ratio Seringue / Conteneur de sécurité"
                 }
             ],
             "code": "RVC_SAFETY_BOXES",
             "$indicatorType": "ratio",
-            "numeratorDescription": "Syringes",
-            "numerator": "#{${dataElements['syringes']}}",
+            "numeratorDescription": "ADS used",
+            "numerator": "#{${dataElements['ads-used']}}",
             "denominatorDescription": "Safety Boxes",
             "denominator": "#{${dataElements['safety-boxes']}}"
         },
         "dilution-syringes-ratio": {
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
-            "name": "Dilution syringes ratio",
+            "name": "Dilution Syringe / Vaccine Vial Ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio jeringas de disolución"
+                    "value": "Ratio Jeringa de disolución / Vial de vacuna"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio Seringues de Dilution"
+                    "value": "Ratio Seringue de dilution / Flacon de vaccin"
                 }
             ],
             "code": "RVC_DILUTION_SYRINGES_RATIO",
@@ -665,17 +665,17 @@
         },
         "dilution-needles-ratio": {
             "$dataElementsRequired": ["needles", "vaccine-doses-used"],
-            "name": "Dilution needles ratio",
+            "name": "Dilution Needle / Vaccine Vial Ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio agujas de disolución"
+                    "value": "Ratio Aguja de disolución / Vial de vacuna"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio Aiguille de dilution"
+                    "value": "Ratio Aiguille de dilution / Flacon de vaccin"
                 }
             ],
             "code": "RVC_CAMPAIGN_NEEDLES_RATIO",
