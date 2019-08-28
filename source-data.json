@@ -620,24 +620,24 @@
             "denominator": "#{${dataElements['ads-used']}}"
         },
         "safety-boxes-ratio": {
-            "$dataElementsRequired": ["syringes", "safety-boxes"],
-            "name": "Safety boxes ratio",
+            "$dataElementsRequired": ["ads-used", "safety-boxes"],
+            "name": "Syringe / Safety Box ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio de cajas de seguridad"
+                    "value": "Ratio Jeringa / Caja de seguridad"
                 },
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Ratio Conteneur de sécurité"
+                    "value": "Ratio Seringue / Conteneur de sécurité"
                 }
             ],
             "code": "RVC_SAFETY_BOXES",
             "$indicatorType": "ratio",
-            "numeratorDescription": "Syringes",
-            "numerator": "#{${dataElements['syringes']}}",
+            "numeratorDescription": "ADS used",
+            "numerator": "#{${dataElements['ads-used']}}",
             "denominatorDescription": "Safety Boxes",
             "denominator": "#{${dataElements['safety-boxes']}}"
         },
