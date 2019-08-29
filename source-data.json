@@ -596,6 +596,50 @@
         }
     },
 
+    "validationRules": {
+        "vaccine-doses": {
+            "name": "Vaccine doses administered <= used (${antigen.name})",
+            "code": "RVC_DOSES_${antigen.code}",
+            "importance": "MEDIUM",
+            "periodType": "Daily",
+            "skipFormValidation": false,
+            "leftSide": {
+                "description": "Vaccine doses administered (${antigen.name})",
+                "expression": "${getSumExpression('vaccine-doses-administered', antigen)}",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            },
+            "operator": "less_than_or_equal_to",
+            "rightSide": {
+                "description": "Vaccine doses used (${antigen.name})",
+                "expression": "${getSumExpression('vaccine-doses-used', antigen)}",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            }
+        },
+        "aefi": {
+            "name": "No Adverse Event Following Immunization (${antigen.name})",
+            "code": "RVC_AEFI_${antigen.code}",
+            "instruction": "Please fill in the AEFI registration form (${antigen.name})",
+            "importance": "MEDIUM",
+            "periodType": "Daily",
+            "skipFormValidation": false,
+            "leftSide": {
+                "description": "Adverse Event Following Immunization (${antigen.name})",
+                "expression": "${getSumExpression('adverse-event', antigen)}",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            },
+            "operator": "equal_to",
+            "rightSide": {
+                "description": "Zero",
+                "expression": "0",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            }
+        }
+    },
+
     "indicators": {
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
@@ -1041,6 +1085,7 @@
             "$categories": ["team"]
         },
         "antigen": {
+            "$validationDataElementKeys": ["vaccine-doses-used"],
             "$categories": ["antigen"]
         },
         "age-group": {
@@ -1050,18 +1095,23 @@
             "$categories": ["antigen", "age-group"]
         },
         "antigen-dose-age-group": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group"]
         },
         "antigen-age-group-gender": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group", "gender"]
         },
         "antigen-age-group-displacement-status": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group", "displacement-status"]
         },
         "antigen-age-gender-displacement": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group", "gender", "displacement-status"]
         },
         "antigen-severity": {
+            "$validationDataElementKeys": ["adverse-event"],
             "$categories": ["antigen", "severity"]
         }
     },

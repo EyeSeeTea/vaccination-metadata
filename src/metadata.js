@@ -10,7 +10,7 @@ const models = [
     { name: "organisationUnits", fields: ["id", "name", "level"] },
 
     { name: "categories", fields: ["id", "name", "categoryOptions[id]"] },
-    "categoryCombos",
+    { name: "categoryCombos", fields: ["id", "name", "code", "categoryOptionCombos[id,name]"] },
     "categoryOptions",
     "categoryOptionGroups",
     "legendSets",
@@ -18,6 +18,7 @@ const models = [
     "dataElementGroupSets",
     "dataElementGroups",
     "dataElements",
+    "validationRules",
 
     "indicatorTypes",
     "indicatorGroupSets",
@@ -29,28 +30,24 @@ const models = [
 
 async function getPayloadFromDb(db, sourceData, version) {
     const categoryOptionsByKind = getCategoryOptionsByKind(db, sourceData);
+
     const categoriesMetadata = flattenPayloads([
         categoryOptionsByKind.metadata,
         getCategoriesMetadata(sourceData, db, categoryOptionsByKind),
     ]);
 
     const dataElementsMetadata = getDataElementsMetadata(db, sourceData, categoriesMetadata);
-
+    const validationRulesMetadata = getValidationRules(db, sourceData, dataElementsMetadata);
     const indicatorsMetadata = getIndicatorsMetadata(db, sourceData, dataElementsMetadata);
-
-    const userRoles = toKeyList(sourceData, "userRoles").map(userRole =>
-        db.get("userRoles", userRole)
-    );
-
+    const userRoles = toKeyList(sourceData, "userRoles").map(ur => db.get("userRoles", ur));
     const legendSets = getLegendSets(db, sourceData);
-
     const attributes = getAttributes(db, sourceData, version);
-
     const payloadBase = { userRoles, attributes, legendSets };
 
     return flattenPayloads([
         payloadBase,
         dataElementsMetadata,
+        validationRulesMetadata,
         indicatorsMetadata,
         categoriesMetadata,
     ]);
@@ -231,6 +228,62 @@ function getDataElementGroupsForAntigen(db, antigen, dataElements) {
         .value();
 
     return groupsByAntigens;
+}
+
+function getValidationRules(db, sourceData, dataElementsMetadata) {
+    const categoryCombosByCode = _.keyBy(db.getAllByModel("categoryCombos"), "code");
+    const antigens = toKeyList(sourceData, "antigens");
+
+    const taggedCocs = _.flatMap(toKeyList(sourceData, "categoryCombos"), catCombo => {
+        const codes = catCombo.$categories.map(k => getOrThrow(sourceData.categories[k], "code"));
+        const catComboObj = categoryCombosByCode[getCode(codes)];
+
+        if (catComboObj) {
+            return catComboObj.categoryOptionCombos.map(coc => ({
+                dataElementKeys: catCombo.$validationDataElementKeys,
+                coc,
+            }));
+        }
+    });
+
+    if (_(taggedCocs).some(_.isEmpty)) {
+        console.error("Could not find some category option combos, is this the first import?");
+        console.error("Please post the metadata and generate and post again");
+        return { validationRules: [] };
+    }
+
+    const dataElementIdsByKey = _(dataElementsMetadata.dataElements)
+        .keyBy("key")
+        .mapValues("id")
+        .value();
+
+    const validationRules = _.flatMap(antigens, antigen => {
+        const getSumExpression = (dataElementKey, antigen) => {
+            const dataElementId = getOrThrow(dataElementIdsByKey, dataElementKey);
+
+            return _(taggedCocs)
+                .map(({ dataElementKeys, coc }) => {
+                    const includedInExpression =
+                        _(dataElementKeys).includes(dataElementKey) &&
+                        coc.name.split(",")[0] === antigen.name;
+                    return includedInExpression ? coc : null;
+                })
+                .compact()
+                .map(coc => `#{${dataElementId}.${coc.id}}`)
+                .join(" + ");
+        };
+        const namespace = { antigen, getSumExpression };
+
+        return toKeyList(sourceData, "validationRules").map(validationRule$ => {
+            const validationRule = {
+                ...interpolateObj(validationRule$, namespace),
+                key: validationRule$.key + "-" + antigen.key,
+            };
+            return db.get("validationRules", validationRule);
+        });
+    });
+
+    return { validationRules };
 }
 
 function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
@@ -430,7 +483,7 @@ async function postPayload(url, payload, { updateCOCs = false } = {}) {
         debug("Update category option combinations");
         const res = await db.updateCOCs();
         if (res.status < 200 || res.status > 299) {
-            console.error(`Error upding category option combo: ${JSON.stringify(res)}`);
+            console.error(`Error updating category option combos: ${JSON.stringify(res)}`);
         }
     }
     return responseJson;
