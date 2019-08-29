@@ -275,7 +275,10 @@ function getValidationRules(db, sourceData, dataElementsMetadata) {
         const namespace = { antigen, getSumExpression };
 
         return toKeyList(sourceData, "validationRules").map(validationRule$ => {
-            const validationRule = interpolateObj(validationRule$, namespace);
+            const validationRule = {
+                ...interpolateObj(validationRule$, namespace),
+                key: validationRule$.key + "-" + antigen.key,
+            };
             return db.get("validationRules", validationRule);
         });
     });
