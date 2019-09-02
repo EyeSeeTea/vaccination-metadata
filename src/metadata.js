@@ -310,6 +310,7 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
             return { dataElements, categoryCombos: categoryCombosForDataElements };
         })
     );
+
     const dataElementGroupsMetadata = flattenPayloads(
         toKeyList(sourceData, "antigens").map(antigen => {
             const dataElementGroupsForAntigen = getDataElementGroupsForAntigen(
@@ -338,10 +339,19 @@ function getDataElementsMetadata(db, sourceData, categoriesMetadata) {
         dataElements: getIds(dataElementsMetadata.dataElements),
     });
 
+    const populationDataElements = dataElementsMetadata.dataElements.filter(
+        dataElement => dataElement.$type === "population"
+    );
+
+    const populationGroup = db.get("dataElementGroups", {
+        ...getOrThrow(sourceData.dataElementGroups, "population"),
+        dataElements: getIds(populationDataElements),
+    });
+
     return flattenPayloads([
         dataElementGroupsMetadata,
         dataElementsMetadata,
-        { dataElementGroups: [mainGroup] },
+        { dataElementGroups: [mainGroup, populationGroup] },
     ]);
 }
 

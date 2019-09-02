@@ -380,6 +380,10 @@
         "all": {
             "name": "RVC - All Data Elements",
             "code": "RVC_ANTIGEN"
+        },
+        "population": {
+            "name": "RVC - Population",
+            "code": "RVC_POPULATION"
         }
     },
 
@@ -397,6 +401,7 @@
             "aggregationType": "LAST",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
+            "$type": "population",
             "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "age-distribution": {
@@ -406,6 +411,7 @@
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group",
+            "$type": "population",
             "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "population-by-age": {
@@ -415,6 +421,7 @@
             "zeroIsSignificant": true,
             "aggregationType": "AVERAGE_SUM_ORG_UNIT",
             "$categoryCombo": "antigen-dose-age-group",
+            "$type": "population",
             "aggregationLevels": []
         },
 
