@@ -413,7 +413,7 @@
             "code": "RVC_POPULATION_BY_AGE",
             "valueType": "NUMBER",
             "zeroIsSignificant": true,
-            "aggregationType": "LAST",
+            "aggregationType": "AVERAGE_SUM_ORG_UNIT",
             "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
         },
