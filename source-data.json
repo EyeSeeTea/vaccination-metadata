@@ -376,17 +376,33 @@
         }
     },
 
+    "dataElementGroups": {
+        "all": {
+            "name": "RVC - All Data Elements",
+            "code": "RVC_ANTIGEN"
+        }
+    },
+
+    "indicatorGroups": {
+        "all": {
+            "name": "RVC - All Indicators",
+            "code": "RVC_INDICATORS"
+        }
+    },
+
     "dataElements": {
         "total-population": {
             "name": "Total population",
             "code": "RVC_TOTAL_POPULATION",
             "aggregationType": "LAST",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "aggregationLevels": [1, 2, 3, 4, 5, 6]
         },
         "age-distribution": {
             "name": "Age distribution (%)",
             "valueType": "NUMBER",
+            "zeroIsSignificant": true,
             "code": "RVC_AGE_DISTRIBUTION",
             "aggregationType": "LAST",
             "$categoryCombo": "age-group",
@@ -395,7 +411,8 @@
         "population-by-age": {
             "name": "Population by age",
             "code": "RVC_POPULATION_BY_AGE",
-            "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "valueType": "NUMBER",
+            "zeroIsSignificant": true,
             "aggregationType": "LAST",
             "$categoryCombo": "antigen-dose-age-group",
             "aggregationLevels": []
@@ -405,6 +422,7 @@
             "name": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -441,6 +459,7 @@
             "name": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -472,6 +491,7 @@
             "name": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -501,6 +521,7 @@
             "name": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -532,6 +553,7 @@
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -562,6 +584,7 @@
             "name": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
             "translations": [
                 {
                     "property": "NAME",
@@ -653,6 +676,50 @@
         }
     },
 
+    "validationRules": {
+        "vaccine-doses": {
+            "name": "Vaccine doses administered <= used (${antigen.name})",
+            "code": "RVC_DOSES_${antigen.code}",
+            "importance": "MEDIUM",
+            "periodType": "Daily",
+            "skipFormValidation": false,
+            "leftSide": {
+                "description": "Vaccine doses administered (${antigen.name})",
+                "expression": "${getSumExpression('vaccine-doses-administered', antigen)}",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            },
+            "operator": "less_than_or_equal_to",
+            "rightSide": {
+                "description": "Vaccine doses used (${antigen.name})",
+                "expression": "${getSumExpression('vaccine-doses-used', antigen)}",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            }
+        },
+        "aefi": {
+            "name": "No Adverse Event Following Immunization (${antigen.name})",
+            "code": "RVC_AEFI_${antigen.code}",
+            "instruction": "Please fill in the AEFI registration form (${antigen.name})",
+            "importance": "MEDIUM",
+            "periodType": "Daily",
+            "skipFormValidation": false,
+            "leftSide": {
+                "description": "Adverse Event Following Immunization (${antigen.name})",
+                "expression": "${getSumExpression('adverse-event', antigen)}",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            },
+            "operator": "equal_to",
+            "rightSide": {
+                "description": "Zero",
+                "expression": "0",
+                "missingValueStrategy": "NEVER_SKIP",
+                "slidingWindow": false
+            }
+        }
+    },
+
     "indicators": {
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
@@ -687,13 +754,13 @@
             "denominator": "#{${dataElements['ads-used']}}"
         },
         "safety-boxes-ratio": {
-            "$dataElementsRequired": ["syringes", "safety-boxes"],
-            "name": "Safety boxes ratio",
+            "$dataElementsRequired": ["ads-used", "safety-boxes"],
+            "name": "Syringe / Safety Box ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio de cajas de seguridad"
+                    "value": "Ratio Jeringa / Caja de seguridad"
                 },
                 {
                     "property": "NAME",
@@ -713,19 +780,19 @@
             ],
             "code": "RVC_SAFETY_BOXES",
             "$indicatorType": "ratio",
-            "numeratorDescription": "Syringes",
-            "numerator": "#{${dataElements['syringes']}}",
+            "numeratorDescription": "ADS used",
+            "numerator": "#{${dataElements['ads-used']}}",
             "denominatorDescription": "Safety Boxes",
             "denominator": "#{${dataElements['safety-boxes']}}"
         },
         "dilution-syringes-ratio": {
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
-            "name": "Dilution syringes ratio",
+            "name": "Dilution Syringe / Vaccine Vial Ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio jeringas de disolución"
+                    "value": "Ratio Jeringa de disolución / Vial de vacuna"
                 },
                 {
                     "property": "NAME",
@@ -752,12 +819,12 @@
         },
         "dilution-needles-ratio": {
             "$dataElementsRequired": ["needles", "vaccine-doses-used"],
-            "name": "Dilution needles ratio",
+            "name": "Dilution Needle / Vaccine Vial Ratio",
             "translations": [
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Ratio agujas de disolución"
+                    "value": "Ratio Aguja de disolución / Vial de vacuna"
                 },
                 {
                     "property": "NAME",
@@ -1158,6 +1225,7 @@
             "$categories": ["team"]
         },
         "antigen": {
+            "$validationDataElementKeys": ["vaccine-doses-used"],
             "$categories": ["antigen"]
         },
         "age-group": {
@@ -1167,18 +1235,23 @@
             "$categories": ["antigen", "age-group"]
         },
         "antigen-dose-age-group": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group"]
         },
         "antigen-age-group-gender": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group", "gender"]
         },
         "antigen-age-group-displacement-status": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group", "displacement-status"]
         },
         "antigen-age-gender-displacement": {
+            "$validationDataElementKeys": ["vaccine-doses-administered"],
             "$categories": ["antigen", "dose", "age-group", "gender", "displacement-status"]
         },
         "antigen-severity": {
+            "$validationDataElementKeys": ["adverse-event"],
             "$categories": ["antigen", "severity"]
         }
     },

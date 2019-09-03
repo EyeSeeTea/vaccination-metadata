@@ -62,7 +62,7 @@ function toKeyList(object, path) {
 }
 
 function getIds(objs) {
-    return objs.map(obj => ({ id: getOrThrow(obj, "id") }));
+    return (objs || []).map(obj => ({ id: getOrThrow(obj, "id") }));
 }
 
 function addCategoryOptionCombos(db, payload) {
