@@ -104,6 +104,10 @@ class Db {
         }
     }
 
+    getAllByModel(model) {
+        return this.data[model];
+    }
+
     getByKey(model, allAttributes) {
         const { key, ...attributes } = allAttributes;
         if (!key) {
