@@ -22,6 +22,7 @@
                 { "key": "ads-used", "optional": false },
                 { "key": "syringes", "optional": false },
                 { "key": "needles", "optional": false },
+                { "key": "advanced-needles", "optional": true },
                 { "key": "safety-boxes", "optional": false },
                 { "key": "aeb", "optional": false },
                 { "key": "adverse-event", "optional": false }
@@ -31,6 +32,39 @@
                 [["9 - 11 m"]],
                 [["12 - 59 m"], ["12 - 23 m", "24 - 59 m"]],
                 [["5 - 14 y"], ["5 - 9 y"], ["5 - 12 y"]]
+            ]
+        },
+        "ebola": {
+            "name": "Ebola",
+            "code": "RVC_ANTIGEN_EBOLA",
+            "doses": 2,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Ebola"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Ebola"
+                }
+            ],
+            "dataElements": [
+                { "key": "vaccine-doses-administered", "optional": false },
+                { "key": "vaccine-doses-used", "optional": false },
+                { "key": "ads-used", "optional": false },
+                { "key": "syringes", "optional": false },
+                { "key": "needles", "optional": false },
+                { "key": "safety-boxes", "optional": true },
+                { "key": "aeb", "optional": false },
+                { "key": "adverse-event", "optional": false }
+            ],
+            "ageGroups": [
+                [["6 - 8 m"]],
+                [["9 - 11 m"]],
+                [["12 - 59 m"], ["12 - 23 m", "24 - 59 m"]],
+                [["5 - 14 y"], ["5 - 9 y"], ["5 - 12 y", "13 - 14 y"]]
             ]
         },
         "meningitis-polysaccharide": {
@@ -584,6 +618,37 @@
                 }
             ],
             "$order": 4,
+            "$categoryCombo": "antigen",
+            "$categories": [{ "key": "antigen", "optional": false }]
+        },
+        "advanced-needles": {
+            "name": "Advanced Needles for dilution",
+            "code": "RVC_ADVANCED_NEEDLES",
+            "valueType": "INTEGER_ZERO_OR_POSITIVE",
+            "zeroIsSignificant": true,
+            "translations": [
+                {
+                    "property": "NAME",
+                    "locale": "es",
+                    "value": "Agujas para disolución"
+                },
+                {
+                    "property": "NAME",
+                    "locale": "fr",
+                    "value": "Aiguilles de Dilution"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "es",
+                    "value": "Agujas para disolución"
+                },
+                {
+                    "property": "DESCRIPTION",
+                    "locale": "fr",
+                    "value": "Aiguilles de Dilution"
+                }
+            ],
+            "$order": 9,
             "$categoryCombo": "antigen",
             "$categories": [{ "key": "antigen", "optional": false }]
         },
