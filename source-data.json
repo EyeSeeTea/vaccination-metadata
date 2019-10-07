@@ -427,6 +427,7 @@
 
         "vaccine-doses-administered": {
             "name": "Vaccine doses administered",
+            "description": "Vaccine doses administered",
             "code": "RVC_DOSES_ADMINISTERED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -464,6 +465,7 @@
         },
         "vaccine-doses-used": {
             "name": "Vaccine doses used",
+            "description": "Vaccine doses used",
             "code": "RVC_DOSES_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -496,6 +498,7 @@
 
         "ads-used": {
             "name": "ADS (Auto Disable Syringe) used",
+            "description": "ADS (Auto Disable Syringe) used",
             "code": "RVC_ADS_USED",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -526,6 +529,7 @@
         },
         "syringes": {
             "name": "Syringes for dilution",
+            "description": "Syringes for dilution",
             "code": "RVC_SYRINGES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -557,6 +561,7 @@
         },
         "needles": {
             "name": "Needles for dilution",
+            "description": "Needles for dilution",
             "key": "needles",
             "code": "RVC_NEEDLES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
@@ -589,6 +594,7 @@
         },
         "safety-boxes": {
             "name": "Safety boxes",
+            "description": "Safety boxes",
             "code": "RVC_SAFETY_BOXES",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -619,6 +625,7 @@
         },
         "aeb": {
             "name": "Accidental Exposure to Blood (AEB)",
+            "description": "Accidental Exposure to Blood (AEB)",
             "code": "RVC_AEB",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -649,6 +656,7 @@
         },
         "adverse-event": {
             "name": "Adverse Event Following Immunization",
+            "description": "Adverse Event Following Immunization",
             "code": "RVC_AEFI",
             "valueType": "INTEGER_ZERO_OR_POSITIVE",
             "zeroIsSignificant": true,
@@ -731,6 +739,7 @@
         "ads-wastage-rate": {
             "$dataElementsRequired": ["ads-used", "vaccine-doses-administered"],
             "name": "ADS (Auto Disable Syringe) wastage rate (%)",
+            "description": "ADS (Auto Disable Syringe) wastage rate (%)",
             "translations": [
                 {
                     "property": "NAME",
@@ -763,6 +772,7 @@
         "safety-boxes-ratio": {
             "$dataElementsRequired": ["ads-used", "safety-boxes"],
             "name": "Syringe / Safety Box ratio",
+            "description": "Syringe / Safety Box ratio",
             "translations": [
                 {
                     "property": "NAME",
@@ -795,6 +805,7 @@
         "dilution-syringes-ratio": {
             "$dataElementsRequired": ["syringes", "vaccine-doses-used"],
             "name": "Dilution Syringe / Vaccine Vial Ratio",
+            "description": "Dilution Syringe / Vaccine Vial Ratio",
             "translations": [
                 {
                     "property": "NAME",
@@ -827,6 +838,7 @@
         "dilution-needles-ratio": {
             "$dataElementsRequired": ["needles", "vaccine-doses-used"],
             "name": "Dilution Needle / Vaccine Vial Ratio",
+            "description": "Dilution Needle / Vaccine Vial Ratio",
             "translations": [
                 {
                     "property": "NAME",
@@ -859,6 +871,7 @@
         "vaccine-utilization-rate": {
             "$dataElementsRequired": ["vaccine-doses-administered", "vaccine-doses-used"],
             "name": "Vaccine utilization rate (%)",
+            "description": "Vaccine utilization rate (%)",
             "translations": [
                 {
                     "property": "NAME",
@@ -891,6 +904,7 @@
         "vaccine-campaign-coverage": {
             "$dataElementsRequired": ["vaccine-doses-administered", "population-by-age"],
             "name": "Vaccine campaign coverage (%)",
+            "description": "Vaccine campaign coverage (%)",
             "translations": [
                 {
                     "property": "NAME",
