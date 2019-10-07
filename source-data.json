@@ -715,7 +715,7 @@
         "aefi": {
             "name": "No Adverse Event Following Immunization (${antigen.name})",
             "code": "RVC_AEFI_${antigen.code}",
-            "instruction": "Please fill in the AEFI registration form (${antigen.name})",
+            "instruction": "Please fill in the AEFI registration form / Por favor, rellene el formulario de registro AEFI / SVP, remplissez le formulaire AEFI (${antigen.name})",
             "importance": "MEDIUM",
             "periodType": "Daily",
             "skipFormValidation": false,
@@ -749,7 +749,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Taux de perte des serigues autobloquantes (SAB)"
+                    "value": "Taux de perte des seringues autobloquantes (SAB)"
                 },
                 {
                     "property": "DESCRIPTION",
@@ -759,7 +759,7 @@
                 {
                     "property": "DESCRIPTION",
                     "locale": "fr",
-                    "value": "Taux de perte des serigues autobloquantes (SAB)"
+                    "value": "Taux de perte des seringues autobloquantes (SAB)"
                 }
             ],
             "code": "RVC_ADS_WASTAGE",
@@ -1144,7 +1144,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Fémenin"
+                    "value": "Féminin"
                 }
             ]
         },
@@ -1204,7 +1204,7 @@
                 {
                     "property": "NAME",
                     "locale": "fr",
-                    "value": "Hôte"
+                    "value": "Résident"
                 }
             ]
         },
@@ -1229,7 +1229,7 @@
                 {
                     "property": "NAME",
                     "locale": "es",
-                    "value": "Refugiado"
+                    "value": "Refugiados"
                 },
                 {
                     "property": "NAME",
