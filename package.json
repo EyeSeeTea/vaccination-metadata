@@ -1,7 +1,7 @@
 {
     "name": "vaccination-metadata",
     "description": "DHIS2 MSF Reactive Vaccination Metadata",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "main": "index.js",
     "repository": "https://github.com/EyeSeeTea/vaccination-metadata",
     "license": "GPL-3.0",
